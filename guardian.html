@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OpenClaw Guardian 守护进程</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: #0d1117;
+            color: #c9d1d9;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            padding: 40px 20px;
+            line-height: 1.7;
+        }
+        .container { max-width: 860px; margin: 0 auto; }
+        h1 {
+            font-size: 2rem;
+            color: #58a6ff;
+            margin-bottom: 32px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #30363d;
+        }
+        h2 {
+            font-size: 1.3rem;
+            color: #58a6ff;
+            margin: 36px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #21262d;
+        }
+        .section-label {
+            display: inline-block;
+            background: #161b22;
+            color: #f97316;
+            font-size: 0.85rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 4px;
+            margin-bottom: 12px;
+            border: 1px solid #30363d;
+        }
+        p { margin-bottom: 12px; color: #8b949e; }
+        ul { list-style: none; padding-left: 0; margin-bottom: 16px; }
+        ul li {
+            padding: 6px 0 6px 20px;
+            position: relative;
+            color: #c9d1d9;
+        }
+        ul li::before {
+            content: "•";
+            color: #58a6ff;
+            position: absolute;
+            left: 4px;
+        }
+        ul li strong { color: #58a6ff; }
+        .comment { color: #8b949e; }
+
+        /* Code block */
+        .code-block {
+            background: #161b22;
+            border: 1px solid #30363d;
+            border-radius: 8px;
+            margin: 16px 0 24px;
+            overflow: hidden;
+        }
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            background: #21262d;
+            border-bottom: 1px solid #30363d;
+            font-size: 0.8rem;
+            color: #8b949e;
+        }
+        .copy-btn {
+            background: #238636;
+            color: #fff;
+            border: none;
+            padding: 4px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.78rem;
+            transition: background 0.2s;
+        }
+        .copy-btn:hover { background: #2ea043; }
+        .copy-btn.copied { background: #388bfd; }
+        pre {
+            padding: 20px;
+            overflow-x: auto;
+            font-family: 'Fira Code', 'Cascadia Code', 'Courier New', monospace;
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+        /* Syntax colors */
+        .kw { color: #ff7b72; }       /* keywords */
+        .fn { color: #d2a8ff; }       /* function names */
+        .str { color: #a5d6ff; }      /* strings */
+        .var { color: #ffa657; }      /* variables */
+        .cm { color: #8b949e; font-style: italic; } /* comments */
+        .hl { color: #79c0ff; }       /* highlight/builtins */
+        .plain { color: #c9d1d9; }
+
+        /* Step blocks */
+        .steps { counter-reset: step; }
+        .step {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        .step-num {
+            flex-shrink: 0;
+            width: 32px;
+            height: 32px;
+            background: #238636;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-top: 4px;
+        }
+        .step-content { flex: 1; }
+        .step-title { color: #f0f6fc; font-weight: 600; margin-bottom: 8px; }
+
+        .warning {
+            background: #272115;
+            border: 1px solid #9e6a03;
+            border-radius: 8px;
+            padding: 14px 18px;
+            margin: 24px 0;
+            color: #e3b341;
+            font-size: 0.9rem;
+        }
+        .warning::before { content: "⚠️ "; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <h1>OpenClaw Guardian 守护进程</h1>
+    <p>OpenClaw 配置保护方案 - Guardian 守护进程</p>
+
+    <!-- 概述 -->
+    <h2>概述</h2>
+    <div class="section-label">=== 概述 ===</div>
+    <p>Guardian 是一个独立运行的守护进程，用于监控 OpenClaw Gateway 状态。<br>
+    当 Gateway 启动失败时，自动尝试修复或回滚，确保 AI 助手 24h 稳定运行。</p>
+
+    <!-- 功能特性 -->
+    <h2>功能特性</h2>
+    <div class="section-label">=== 功能特性 ===</div>
+    <ul>
+        <li><strong>自动监控</strong> - 每 30 秒检测 Gateway 状态</li>
+        <li><strong>自动修复</strong> - 启动失败先尝试 doctor --fix</li>
+        <li><strong>自动回滚</strong> - 修复失败自动回滚到上一稳定版本</li>
+        <li><strong>自动通知</strong> - 通过 Discord API 发送告警通知</li>
+    </ul>
+
+    <!-- 使用方法 -->
+    <h2>使用方法</h2>
+    <div class="section-label">=== 使用方法 ===</div>
+    <div class="steps">
+
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-content">
+                <div class="step-title">初始化 Git 仓库</div>
+                <div class="code-block">
+                    <div class="code-header"><span>bash</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div>
+                    <pre>cd ~/.openclaw/workspace
+git init &amp;&amp; git add -A &amp;&amp; git commit -m "initial"</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-content">
+                <div class="step-title">创建脚本</div>
+                <div class="code-block">
+                    <div class="code-header"><span>bash</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div>
+                    <pre>mkdir -p ~/.local/bin
+vim ~/.local/bin/guardian.sh
+chmod +x ~/.local/bin/guardian.sh</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-content">
+                <div class="step-title">配置 systemd</div>
+                <div class="code-block">
+                    <div class="code-header"><span>bash</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div>
+                    <pre>mkdir -p ~/.config/systemd/user
+vim ~/.config/systemd/user/openclaw-guardian.service</pre>
+                </div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-content">
+                <div class="step-title">启动服务</div>
+                <div class="code-block">
+                    <div class="code-header"><span>bash</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div>
+                    <pre>systemctl --user daemon-reload
+systemctl --user enable --now openclaw-guardian.service</pre>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- systemd 配置 -->
+    <h2>systemd 配置</h2>
+    <div class="section-label">=== systemd 配置 ===</div>
+    <div class="code-block">
+        <div class="code-header"><span>openclaw-guardian.service</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div>
+        <pre>[Unit]
+Description=OpenClaw Guardian
+
+[Service]
+ExecStart=/path/to/guardian.sh
+Restart=always
+
+[Install]
+WantedBy=default.target</pre>
+    </div>
+
+    <!-- 核心代码 -->
+    <h2>核心代码</h2>
+    <div class="section-label">=== guardian.sh 核心代码 ===</div>
+
+    <div class="code-block">
+        <div class="code-header"><span>guardian.sh（完整）</span><button class="copy-btn" onclick="copyCode(this)">复制</button></div>
+        <pre><span class="cm">#!/bin/bash</span>
+<span class="cm"># guardian.sh - OpenClaw Guardian 守护进程</span>
+
+<span class="var">WORKSPACE</span>=<span class="str">"$HOME/.openclaw/workspace"</span>
+<span class="var">LOG_FILE</span>=<span class="str">"/tmp/openclaw-guardian.log"</span>
+<span class="var">CHECK_INTERVAL</span>=<span class="hl">30</span>          <span class="cm"># 检测间隔(秒)</span>
+<span class="var">MAX_RESTART_ATTEMPTS</span>=<span class="hl">3</span>   <span class="cm"># 连续失败最大次数</span>
+<span class="var">COOLDOWN_PERIOD</span>=<span class="hl">300</span>       <span class="cm"># 失败后冷却期(秒)</span>
+<span class="var">OPENCLAW_CMD</span>=<span class="str">"openclaw"</span>
+
+<span class="cm"># 检查 Gateway 是否运行</span>
+<span class="fn">is_gateway_running</span>() {
+    <span class="kw">if</span> systemctl is-active --user openclaw-gateway &gt;/dev/null 2&gt;&amp;1; <span class="kw">then</span>
+        <span class="kw">return</span> 0
+    <span class="kw">fi</span>
+    <span class="kw">if</span> pgrep -f <span class="str">"openclaw.*gateway"</span> &gt;/dev/null 2&gt;&amp;1; <span class="kw">then</span>
+        <span class="kw">return</span> 0
+    <span class="kw">fi</span>
+    <span class="kw">return</span> 1
+}
+
+<span class="cm"># 获取上一个稳定版本的 commit</span>
+<span class="fn">get_stable_commit</span>() {
+    git -C <span class="str">"$WORKSPACE"</span> log --all --oneline -50 | \
+        grep -v -E <span class="str">"rollback|daily-backup|auto-backup"</span> | \
+        tail -1 | awk <span class="str">'{print $1}'</span>
+}
+
+<span class="cm"># 尝试 doctor --fix 修复</span>
+<span class="fn">try_doctor_fix</span>() {
+    <span class="var">$OPENCLAW_CMD</span> doctor --fix &gt;&gt; <span class="str">"$LOG_FILE"</span> 2&gt;&amp;1
+}
+
+<span class="cm"># 执行回滚</span>
+<span class="fn">do_rollback</span>() {
+    <span class="var">CURRENT_COMMIT</span>=$(git -C <span class="str">"$WORKSPACE"</span> rev-parse HEAD)
+    <span class="var">STABLE_COMMIT</span>=$(<span class="fn">get_stable_commit</span>)
+
+    <span class="kw">if</span> [ -z <span class="str">"$STABLE_COMMIT"</span> ]; <span class="kw">then</span>
+        <span class="hl">echo</span> <span class="str">"无法找到稳定版本"</span>
+        <span class="kw">return</span> 1
+    <span class="kw">fi</span>
+
+    git -C <span class="str">"$WORKSPACE"</span> reset --hard <span class="str">"$STABLE_COMMIT"</span>
+    git -C <span class="str">"$WORKSPACE"</span> commit --allow-empty -m <span class="str">"rollback: auto rollback from $CURRENT_COMMIT"</span>
+    <span class="kw">return</span> 0
+}</pre>
+    </div>
+
+    <div class="warning">
+        图4（核心代码2）中 do_rollback() 函数的最后一条 git commit 命令右侧在原图中被截断，完整内容已根据上下文补全：<br>
+        <code>git -C "$WORKSPACE" commit --allow-empty -m "rollback: auto rollback from $CURRENT_COMMIT"</code>
+    </div>
+
+</div>
+
+<script>
+function copyCode(btn) {
+    const pre = btn.closest('.code-block').querySelector('pre');
+    const text = pre.innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        btn.textContent = '已复制 ✓';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.textContent = '复制';
+            btn.classList.remove('copied');
+        }, 2000);
+    });
+}
+</script>
+
+</body>
+</html>

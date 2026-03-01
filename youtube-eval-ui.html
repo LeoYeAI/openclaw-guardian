@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>YouTube KOL 评估工具</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--yt-red:#FF0000;--yt-dark:#0f0f0f;--yt-light-bg:#f9f9f9;--yt-white:#fff;--yt-text:#0f0f0f;--yt-text-sec:#606060;--yt-border:#e5e5e5;--yt-hover:#f2f2f2;--yt-chip-bg:#f2f2f2;--yt-chip-active:#0f0f0f;--yt-chip-active-text:#fff;--yt-card-bg:#fff;--yt-shadow:0 1px 2px rgba(0,0,0,0.1)}
+[data-theme="dark"]{--yt-light-bg:#0f0f0f;--yt-white:#0f0f0f;--yt-text:#f1f1f1;--yt-text-sec:#aaa;--yt-border:#3f3f3f;--yt-hover:#272727;--yt-chip-bg:#272727;--yt-chip-active:#f1f1f1;--yt-chip-active-text:#0f0f0f;--yt-card-bg:#1a1a1a;--yt-shadow:0 1px 2px rgba(0,0,0,0.3)}
+body{font-family:'Roboto',sans-serif;background:var(--yt-light-bg);color:var(--yt-text);min-height:100vh;-webkit-font-smoothing:antialiased}
+.header{position:sticky;top:0;z-index:100;background:var(--yt-white);border-bottom:1px solid var(--yt-border);padding:0 16px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.header-logo{display:flex;align-items:center;gap:4px;font-size:18px;font-weight:700;text-decoration:none;color:var(--yt-text)}
+.header-logo svg{width:28px;height:20px}
+.header-logo span{font-size:13px;color:var(--yt-text-sec);margin-left:2px;font-weight:400}
+.header-actions{display:flex;align-items:center;gap:8px}
+.icon-btn{width:40px;height:40px;border-radius:50%;border:none;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--yt-text);font-size:18px;transition:background .2s}
+.icon-btn:hover{background:var(--yt-hover)}
+.main{max-width:860px;margin:0 auto;padding:16px}
+.search-section{margin:24px 0 20px;text-align:center}
+.search-section h1{font-size:20px;font-weight:500;margin-bottom:16px;color:var(--yt-text)}
+.search-bar{display:flex;max-width:600px;margin:0 auto;border:1px solid var(--yt-border);border-radius:40px;overflow:hidden;background:var(--yt-white);transition:border-color .2s}
+.search-bar:focus-within{border-color:var(--yt-text)}
+.search-bar input{flex:1;border:none;outline:none;padding:10px 16px;font-size:16px;background:transparent;color:var(--yt-text);font-family:'Roboto',sans-serif;min-height:44px}
+.search-bar input::placeholder{color:var(--yt-text-sec)}
+.search-btn{width:64px;border:none;background:var(--yt-chip-bg);cursor:pointer;display:flex;align-items:center;justify-content:center;border-left:1px solid var(--yt-border);color:var(--yt-text);font-size:18px;transition:background .2s}
+.search-btn:hover{background:var(--yt-hover)}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:8px 0 16px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{white-space:nowrap;padding:8px 16px;border-radius:8px;background:var(--yt-chip-bg);border:none;font-size:14px;font-family:'Roboto',sans-serif;cursor:pointer;color:var(--yt-text);transition:all .2s;min-height:32px}
+.chip:hover{background:var(--yt-hover)}
+.chip.active{background:var(--yt-chip-active);color:var(--yt-chip-active-text)}
+.loading-container{display:none;padding:20px 0}
+.loading-container.active{display:block}
+.skeleton{background:var(--yt-chip-bg);border-radius:8px;overflow:hidden;position:relative}
+.skeleton::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.3),transparent);animation:shimmer 1.5s infinite}
+[data-theme="dark"] .skeleton::after{background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent)}
+@keyframes shimmer{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.skeleton-card{padding:16px;margin-bottom:12px;border-radius:12px}
+.skeleton-line{height:14px;margin-bottom:10px;border-radius:4px;background:var(--yt-hover)}
+.skeleton-line.w80{width:80%}
+.skeleton-line.w60{width:60%}
+.skeleton-line.w40{width:40%}
+.skeleton-line.w90{width:90%}
+.result-card{display:none;background:var(--yt-card-bg);border-radius:12px;padding:20px;box-shadow:var(--yt-shadow);border:1px solid var(--yt-border);margin-top:16px}
+.result-card.active{display:block}
+.result-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid var(--yt-border)}
+.result-icon{width:48px;height:48px;background:var(--yt-red);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;flex-shrink:0}
+.result-title{font-size:18px;font-weight:500}
+.result-subtitle{font-size:13px;color:var(--yt-text-sec);margin-top:2px}
+.result-body{font-family:'Roboto',sans-serif;font-size:14px;line-height:1.6;color:var(--yt-text);max-height:600px;overflow-y:auto;padding:4px}
+.result-body::-webkit-scrollbar{width:6px}
+.result-body::-webkit-scrollbar-thumb{background:var(--yt-border);border-radius:3px}
+.error-msg{color:var(--yt-red);padding:16px;text-align:center;font-size:14px}
+/* KOL Card Styles */
+.kol-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;margin-bottom:16px}
+.kol-stat{background:var(--yt-light-bg);border-radius:10px;padding:14px;text-align:center;border:1px solid var(--yt-border)}
+.kol-stat-wide{grid-column:1/-1;text-align:left}
+.kol-stat-val{display:block;font-size:20px;font-weight:700;color:var(--yt-text);margin-bottom:4px}
+.kol-stat-wide .kol-stat-val{font-size:16px}
+.kol-stat-lbl{display:block;font-size:12px;color:var(--yt-text-sec)}
+.kol-section-title{font-size:14px;font-weight:600;color:var(--yt-text);margin:16px 0 10px;padding-left:4px}
+.kol-vcard{display:flex;gap:12px;padding:10px;border-radius:8px;margin-bottom:8px;background:var(--yt-light-bg);border:1px solid var(--yt-border);transition:background .15s}
+.kol-vcard:hover{background:var(--yt-hover)}
+.kol-vcard-thumb{position:relative;flex-shrink:0;width:160px;height:90px;border-radius:6px;overflow:hidden;background:#000}
+.kol-vcard-thumb img{width:100%;height:100%;object-fit:cover}
+.kol-vcard-dur{position:absolute;bottom:4px;right:4px;background:rgba(0,0,0,.8);color:#fff;font-size:11px;padding:2px 6px;border-radius:3px}
+.kol-vcard-info{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center}
+.kol-vcard-title{font-size:14px;font-weight:500;color:var(--yt-text);text-decoration:none;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+a.kol-vcard-title:hover{color:var(--yt-red)}
+.kol-vcard-meta{font-size:12px;color:var(--yt-text-sec);margin-top:6px;display:flex;flex-wrap:wrap;gap:8px}
+.kol-tags{display:flex;flex-wrap:wrap;gap:6px}
+.kol-tag{background:var(--yt-hover);color:var(--yt-text-sec);font-size:11px;padding:3px 10px;border-radius:12px;border:1px solid var(--yt-border)}
+@media(max-width:640px){
+.kol-stats{grid-template-columns:repeat(2,1fr)}
+.kol-vcard-thumb{width:120px;height:68px}
+.kol-vcard-title{font-size:13px}
+}
+.footer{text-align:center;padding:32px 16px;color:var(--yt-text-sec);font-size:12px}
+@media(max-width:640px){
+.main{padding:12px}
+.search-section{margin:16px 0 12px}
+.search-section h1{font-size:17px;margin-bottom:12px}
+.search-bar input{font-size:15px;padding:10px 14px}
+.search-btn{width:52px}
+.result-card{padding:14px}
+.result-body{font-size:12px;padding:10px;max-height:400px}
+.result-header{gap:10px}
+.result-icon{width:40px;height:40px;font-size:18px}
+.result-title{font-size:16px}
+}
+</style>
+</head>
+<body>
+<div class="header">
+<a class="header-logo" href="/">
+<svg viewBox="0 0 90 20" fill="none"><rect width="28" height="20" rx="4" fill="#FF0000"/><polygon points="11,4 11,16 21,10" fill="#fff"/><text x="32" y="15" font-family="Roboto" font-weight="700" font-size="14" fill="currentColor">KOL</text></svg>
+<span>评估工具</span>
+</a>
+<div class="header-actions">
+<button class="icon-btn" id="themeToggle" onclick="toggleTheme()" title="切换主题">🌙</button>
+</div>
+</div>
+
+<div class="main">
+<div class="search-section">
+<h1>输入YouTube频道链接，快速评估KOL数据</h1>
+<div class="search-bar">
+<input type="text" id="urlInput" placeholder="粘贴YouTube频道或视频链接..." />
+<button class="search-btn" onclick="evaluate()">🔍</button>
+</div>
+</div>
+
+<div class="chips">
+<span class="chip" onclick="setUrl('https://youtube.com/@NetworkChuck')">@NetworkChuck</span>
+<span class="chip" onclick="setUrl('https://youtube.com/@AIJasonZ')">@AIJasonZ</span>
+<span class="chip" onclick="setUrl('https://youtube.com/@MattVidPro')">@MattVidPro</span>
+<span class="chip" onclick="setUrl('https://youtube.com/@firabordo')">@FireshipIO</span>
+<span class="chip" onclick="setUrl('https://youtube.com/@TechLinked')">@TechLinked</span>
+</div>
+
+<div class="loading-container" id="loading">
+<div class="skeleton skeleton-card">
+<div class="skeleton-line w80"></div>
+<div class="skeleton-line w60"></div>
+<div class="skeleton-line w90"></div>
+<div class="skeleton-line w40"></div>
+<div class="skeleton-line w80"></div>
+<div class="skeleton-line w60"></div>
+</div>
+</div>
+
+<div class="result-card" id="resultCard">
+<div class="result-header">
+<div class="result-icon">📊</div>
+<div>
+<div class="result-title" id="resultTitle">评估结果</div>
+<div class="result-subtitle" id="resultSubtitle"></div>
+</div>
+</div>
+<div class="result-body" id="resultBody"></div>
+</div>
+</div>
+
+<div class="footer">Powered by MyClaw.ai 🌀</div>
+
+<script>
+function toggleTheme(){
+var d=document.documentElement;
+var t=d.getAttribute('data-theme')==='dark'?'':'dark';
+d.setAttribute('data-theme',t);
+document.getElementById('themeToggle').textContent=t==='dark'?'☀️':'🌙';
+localStorage.setItem('theme',t);
+}
+(function(){var t=localStorage.getItem('theme');if(t){document.documentElement.setAttribute('data-theme',t);document.getElementById('themeToggle').textContent=t==='dark'?'☀️':'🌙';}})();
+
+function setUrl(u){
+document.getElementById('urlInput').value=u;
+evaluate();
+}
+
+async function evaluate(){
+var input=document.getElementById('urlInput');
+var loading=document.getElementById('loading');
+var card=document.getElementById('resultCard');
+var body=document.getElementById('resultBody');
+var subtitle=document.getElementById('resultSubtitle');
+var ytUrl=input.value.trim();
+if(!ytUrl){input.focus();return;}
+card.classList.remove('active');
+loading.classList.add('active');
+body.textContent='';
+document.querySelectorAll('.chip').forEach(function(c){
+c.classList.toggle('active',ytUrl.includes(c.textContent.replace('@','')));
+});
+try{
+var res=await fetch('/api/evaluate?url='+encodeURIComponent(ytUrl));
+var raw=await res.json();
+loading.classList.remove('active');
+// Handle both old format {output:"json_string"} and new format {type:...}
+var data=raw;
+if(raw.output){try{data=JSON.parse(raw.output);}catch(e){data=raw;}}
+if(data.error){
+body.innerHTML='<div class="error-msg">❌ '+data.error+'</div>';
+}else{
+body.innerHTML=renderResult(data);
+}
+subtitle.textContent=ytUrl+' · '+new Date().toLocaleString('zh-CN');
+card.classList.add('active');
+}catch(e){
+loading.classList.remove('active');
+body.innerHTML='<div class="error-msg">❌ 请求失败: '+e.message+'</div>';
+card.classList.add('active');
+}
+}
+
+function fmtNum(n){
+if(!n&&n!==0)return'N/A';
+if(n>=1e9)return(n/1e9).toFixed(1)+'B';
+if(n>=1e6)return(n/1e6).toFixed(1)+'M';
+if(n>=1e3)return(n/1e3).toFixed(1)+'K';
+return n.toLocaleString('zh-CN');
+}
+function fmtDate(d){
+if(!d||d==='N/A')return'N/A';
+if(d.length===8)return d.slice(0,4)+'-'+d.slice(4,6)+'-'+d.slice(6,8);
+return d;
+}
+function fmtDur(s){
+if(!s)return'N/A';
+var m=Math.floor(s/60),sec=s%60;
+return m+'分'+Math.round(sec)+'秒';
+}
+
+function renderResult(data){
+if(data.type==='channel')return renderChannel(data);
+if(data.type==='video')return renderVideo(data);
+return'<pre>'+JSON.stringify(data,null,2)+'</pre>';
+}
+
+function renderChannel(d){
+var h='<div class="kol-stats">';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+d.channel+'</span><span class="kol-stat-lbl">'+(d.handle||'')+'</span></div>';
+if(d.subscribers)h+='<div class="kol-stat"><span class="kol-stat-val">'+fmtNum(d.subscribers)+'</span><span class="kol-stat-lbl">订阅数</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+fmtNum(d.avgViews)+'</span><span class="kol-stat-lbl">平均播放</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+fmtNum(d.avgLikes||0)+'</span><span class="kol-stat-lbl">平均点赞</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+fmtNum(d.avgComments||0)+'</span><span class="kol-stat-lbl">平均评论</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+(d.avgEngagement||0)+'%</span><span class="kol-stat-lbl">平均互动率</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+fmtNum(d.totalViews)+'</span><span class="kol-stat-lbl">总播放 ('+d.videoCount+'个视频)</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+fmtDur(d.avgDurationSec)+'</span><span class="kol-stat-lbl">平均时长</span></div>';
+if(d.viewSubRatio)h+='<div class="kol-stat"><span class="kol-stat-val">'+d.viewSubRatio+'%</span><span class="kol-stat-lbl">播放/订阅比</span></div>';
+h+='</div>';
+if(d.topVideo){
+h+='<div class="kol-section-title">🏆 最热视频</div>';
+h+=renderVideoCard(d.topVideo);
+}
+if(d.videos&&d.videos.length>0){
+h+='<div class="kol-section-title">📋 最近 '+d.videos.length+' 个视频</div>';
+h+='<div class="kol-video-list">';
+for(var i=0;i<d.videos.length;i++){
+h+=renderVideoCard(d.videos[i]);
+}
+h+='</div>';
+}
+return h;
+}
+
+function renderVideoCard(v){
+var h='<div class="kol-vcard">';
+if(v.thumbnail)h+='<div class="kol-vcard-thumb"><img src="'+v.thumbnail+'" alt="" loading="lazy"/>';
+if(v.duration)h+='<span class="kol-vcard-dur">'+v.duration+'</span>';
+if(v.thumbnail)h+='</div>';
+h+='<div class="kol-vcard-info">';
+var title=v.title||'N/A';
+if(v.url)h+='<a class="kol-vcard-title" href="'+v.url+'" target="_blank" rel="noopener">'+title+'</a>';
+else h+='<div class="kol-vcard-title">'+title+'</div>';
+h+='<div class="kol-vcard-meta">';
+h+='<span>👁 '+fmtNum(v.views)+'</span>';
+if(v.likes)h+=' <span>👍 '+fmtNum(v.likes)+'</span>';
+if(v.comments)h+=' <span>💬 '+fmtNum(v.comments)+'</span>';
+if(v.engagementRate)h+=' <span>📈 '+v.engagementRate+'%</span>';
+if(v.uploadDate)h+=' <span>📅 '+fmtDate(v.uploadDate)+'</span>';
+h+='</div></div></div>';
+return h;
+}
+
+function renderVideo(d){
+var h='<div class="kol-stats">';
+h+='<div class="kol-stat kol-stat-wide"><span class="kol-stat-val">'+d.title+'</span><span class="kol-stat-lbl">'+d.channel+(d.subscribers?' · '+fmtNum(d.subscribers)+' 订阅':'')+'</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+fmtNum(d.views)+'</span><span class="kol-stat-lbl">播放量</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+fmtNum(d.likes)+'</span><span class="kol-stat-lbl">点赞</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+fmtNum(d.comments)+'</span><span class="kol-stat-lbl">评论</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+d.engagementRate+'%</span><span class="kol-stat-lbl">互动率</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+d.duration+'</span><span class="kol-stat-lbl">时长</span></div>';
+h+='<div class="kol-stat"><span class="kol-stat-val">'+fmtDate(d.uploadDate)+'</span><span class="kol-stat-lbl">上传日期</span></div>';
+h+='</div>';
+if(d.thumbnail){
+h+='<div style="margin:16px 0;border-radius:8px;overflow:hidden"><img src="'+d.thumbnail+'" alt="" style="width:100%;display:block" loading="lazy"/></div>';
+}
+if(d.description){
+h+='<div class="kol-section-title">📝 简介</div>';
+h+='<div style="font-size:13px;line-height:1.6;color:var(--yt-text-sec);white-space:pre-wrap;max-height:200px;overflow-y:auto">'+d.description+'</div>';
+}
+if(d.tags&&d.tags.length>0){
+h+='<div class="kol-section-title">🏷️ 标签</div><div class="kol-tags">';
+for(var i=0;i<d.tags.length;i++)h+='<span class="kol-tag">'+d.tags[i]+'</span>';
+h+='</div>';
+}
+return h;
+}
+
+document.getElementById('urlInput').addEventListener('keypress',function(e){if(e.key==='Enter')evaluate();});
+</script>
+</body>
+</html>
