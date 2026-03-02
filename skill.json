@@ -1,0 +1,72 @@
+{
+  "name": "openclaw-guardian",
+  "version": "1.1.0",
+  "description": "Deploy and manage a Guardian watchdog process for OpenClaw Gateway. Provides automated health monitoring, self-repair via doctor --fix, git-based workspace rollback, daily snapshots, and optional Discord alerting. Powered by MyClaw.ai",
+  "homepage": "https://myclaw.ai",
+  "author": "LeoYeAI",
+  "license": "MIT",
+  "topics": ["myclaw", "openclaw", "guardian", "watchdog", "bash", "monitoring", "self-healing"],
+  "files": [
+    "SKILL.md",
+    "README.md",
+    "scripts/guardian.sh",
+    "references/setup.md"
+  ],
+  "env": {
+    "optional": [
+      {
+        "name": "DISCORD_WEBHOOK_URL",
+        "description": "Discord incoming webhook URL for failure and recovery alerts. If set, Guardian will POST JSON payloads to this URL when the Gateway goes down or recovers. No data from your workspace is transmitted — only status messages (e.g. 'Gateway restarted'). Leave unset to disable Discord alerts entirely.",
+        "example": "https://discord.com/api/webhooks/1234567890/xxxx"
+      },
+      {
+        "name": "GUARDIAN_WORKSPACE",
+        "description": "Path to the OpenClaw workspace git repository. Defaults to $HOME/.openclaw/workspace",
+        "default": "$HOME/.openclaw/workspace"
+      },
+      {
+        "name": "GUARDIAN_CHECK_INTERVAL",
+        "description": "Health check interval in seconds.",
+        "default": "30"
+      },
+      {
+        "name": "GUARDIAN_MAX_REPAIR",
+        "description": "Maximum number of doctor --fix attempts before falling back to git rollback.",
+        "default": "3"
+      },
+      {
+        "name": "GUARDIAN_COOLDOWN",
+        "description": "Cooldown period in seconds after all repair attempts fail.",
+        "default": "300"
+      }
+    ]
+  },
+  "permissions": {
+    "paths": [
+      "$HOME/.openclaw/workspace",
+      "$HOME/.openclaw/guardian.sh",
+      "$HOME/.openclaw/start-gateway.sh"
+    ],
+    "network": {
+      "outbound": [
+        {
+          "host": "discord.com",
+          "description": "Optional Discord webhook alerts. Only used when DISCORD_WEBHOOK_URL is set. Payload contains only status messages, no workspace data."
+        }
+      ]
+    },
+    "justification": "Guardian monitors and repairs the OpenClaw Gateway process. It requires write access to the workspace for git commits/rollback (daily snapshots and repair fallback), and to the start-gateway.sh for optional auto-start integration. All operations are local except the optional Discord webhook."
+  },
+  "warnings": [
+    {
+      "severity": "medium",
+      "topic": "git rollback",
+      "message": "The guardian's last-resort repair step runs 'git reset --hard' on your workspace, which discards any uncommitted changes. Always commit or stash important work before deploying Guardian. The rollback only triggers after doctor --fix has failed 3 times — it is not the first response."
+    },
+    {
+      "severity": "low",
+      "topic": "auto-start integration",
+      "message": "Step 4 (auto-start) asks you to edit start-gateway.sh. Review the script contents before adding this — it is optional and the guardian works fine without it if you prefer to start it manually."
+    }
+  ]
+}
