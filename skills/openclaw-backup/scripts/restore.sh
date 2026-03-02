@@ -58,6 +58,22 @@ print(f\"  Credentials : {'included ✓' if has_creds else 'NOT included (old ba
   echo ""
 fi
 
+# ── Explicit confirmation before destructive restore ─────────────────────────
+if ! $DRY_RUN; then
+  echo ""
+  echo -e "${RED}⚠️  WARNING: This will OVERWRITE ~/.openclaw/ with backup data.${NC}"
+  echo "   Backup: $(basename $ARCHIVE)"
+  echo "   Target: ${OPENCLAW_HOME}"
+  echo ""
+  echo -n "   Type 'yes' to confirm: "
+  read -r CONFIRM
+  if [ "$CONFIRM" != "yes" ]; then
+    echo "Aborted."
+    exit 0
+  fi
+  echo ""
+fi
+
 # ── Safety: auto-backup current state before overwriting ─────────────────────
 if ! $DRY_RUN; then
   AUTO_BACKUP="/tmp/openclaw-pre-restore-$(date +%Y%m%d_%H%M%S).tar.gz"

@@ -1,88 +1,116 @@
 ---
 name: myclaw-backup
-description: "Backup and restore all OpenClaw configuration, agent memory, skills, and workspace data. Use when the user wants to create a snapshot of their OpenClaw instance, schedule periodic backups, restore from a backup, migrate to a new server, download a backup file locally, upload a backup file from another machine, or protect against data loss. Includes a built-in HTTP server for browser-based download/upload/restore without needing cloud storage."
+description: "Backup and restore all OpenClaw configuration, agent memory, skills, and workspace data. Use when the user wants to create a snapshot of their OpenClaw instance, schedule periodic backups, restore from a backup, migrate to a new server, download a backup file locally, upload a backup file from another machine, or protect against data loss. Includes a built-in HTTP server for browser-based download/upload/restore without needing cloud storage. TRUST BOUNDARY: This skill archives and restores highly sensitive data including bot tokens, API keys, and channel credentials. Only install if you trust the operator. Always use --dry-run before restore. Never start the HTTP server without a --token."
+metadata:
+  openclaw:
+    requires:
+      bins: ["node", "rsync", "tar", "python3", "openclaw"]
+    trust: high
+    permissions:
+      - read: ~/.openclaw
+      - write: ~/.openclaw
+      - network: listen
 ---
 
-# OpenClaw Backup Skill
+# MyClaw Backup
 
-Backs up all critical OpenClaw data to a single `.tar.gz` archive and restores it to any OpenClaw instance. Includes a built-in HTTP server for browser-based backup management — download backups to your laptop, upload from another machine, restore with one click.
+Backs up all critical OpenClaw data to a single `.tar.gz` archive and restores it to any OpenClaw instance. Includes a built-in HTTP server for browser-based backup management.
+
+## ⚠️ Trust Boundary
+
+This skill handles **highly sensitive data**: bot tokens, API keys, channel credentials, session history. Understand what it does before use:
+
+- **backup.sh** reads and archives the entire `~/.openclaw/` directory (excluding logs/media)
+- **restore.sh** overwrites `~/.openclaw/` — always run `--dry-run` first, confirm output, then apply
+- **serve.sh** opens a TCP port — **always set `--token`**, never expose to public internet without it
+- Backup archives are `chmod 600`; treat them like passwords
+
+## Dependencies
+
+Requires: `node`, `rsync`, `tar`, `python3`, `openclaw` CLI (all standard on OpenClaw instances).
+
+Check: `which node rsync tar python3 openclaw`
 
 ## Scripts
 
 | Script | Purpose |
 |---|---|
-| `scripts/backup.sh [output-dir]` | Create a backup archive (default: `/tmp/openclaw-backups/`) |
-| `scripts/restore.sh <archive.tar.gz> [--dry-run]` | Restore from archive; always use `--dry-run` first |
-| `scripts/serve.sh start [--port 7373] [--token TOKEN]` | Start HTTP server for browser-based management |
-| `scripts/serve.sh stop\|status\|url` | Stop/check server |
-| `scripts/schedule.sh [--interval daily\|weekly\|hourly]` | Set up system cron for automatic backups |
+| `scripts/backup.sh [output-dir]` | Create backup (default: `/tmp/openclaw-backups/`) |
+| `scripts/restore.sh <archive> [--dry-run]` | Restore — **always dry-run first** |
+| `scripts/serve.sh start --token TOKEN [--port 7373]` | Start HTTP server — **token required** |
+| `scripts/serve.sh stop\|status` | Stop/check server |
+| `scripts/schedule.sh [--interval daily\|weekly\|hourly]` | System cron scheduling |
 
 ## What Gets Backed Up
 
-See `references/what-gets-saved.md` for full breakdown.
+See `references/what-gets-saved.md` for full details.
 
-**Includes:** workspace, openclaw.json (bot tokens + API keys), credentials, channel pairing state, agent config + session history, devices, identity, cron jobs, guardian scripts.
+**Includes:** workspace (MEMORY.md, skills, agent files), openclaw.json (bot tokens + API keys), credentials, channel pairing state, agent config + session history, devices, identity, cron jobs, guardian scripts.
 
-**Excludes:** logs, binary media, node_modules.
-
-**Security:** archive is `chmod 600`. Contains credentials — keep secure.
+**Excludes:** logs, binary media, node_modules, canvas system files.
 
 ## Common Workflows
 
-### One-time backup
+### Create backup
 
 ```bash
 bash scripts/backup.sh /tmp/openclaw-backups
+# → /tmp/openclaw-backups/openclaw-backup_TIMESTAMP.tar.gz (chmod 600)
 ```
 
-### Restore (always dry-run first)
+### Restore — always dry-run first
 
 ```bash
-bash scripts/restore.sh /tmp/openclaw-backups/openclaw-backup_TIMESTAMP.tar.gz --dry-run
-bash scripts/restore.sh /tmp/openclaw-backups/openclaw-backup_TIMESTAMP.tar.gz
+# Step 1: preview what will change
+bash scripts/restore.sh openclaw-backup_TIMESTAMP.tar.gz --dry-run
+
+# Step 2: review the output, then apply
+bash scripts/restore.sh openclaw-backup_TIMESTAMP.tar.gz
 ```
 
-### Start HTTP server (download/upload via browser)
+The restore script saves a pre-restore snapshot before overwriting anything.
+
+### HTTP server — token is mandatory
 
 ```bash
-bash scripts/serve.sh start --port 7373 --token mysecrettoken
-# → Opens: http://localhost:7373/?token=mysecrettoken
-# → Web UI: create backup, download .tar.gz, upload, restore
+# Token is required — server refuses to start without one
+bash scripts/serve.sh start --token $(openssl rand -hex 16) --port 7373
+# → http://localhost:7373/?token=<generated-token>
 ```
 
-**HTTP API endpoints:**
-- `GET  /`                    — Web UI (browser)
-- `GET  /backups`             — List backups (JSON)
-- `POST /backup`              — Trigger new backup
-- `GET  /download/:filename`  — Download a backup file
-- `POST /upload`              — Upload a backup (multipart, field: `backup`)
-- `POST /restore/:filename`   — Restore; add `?dry_run=1` for preview
-- `GET  /health`              — Health check (no auth)
+**Never share the URL on a public network without a reverse proxy + TLS.**
 
-All endpoints require `?token=xxx` or `Authorization: Bearer xxx` (except `/health`).
+The Web UI provides: create backup, download `.tar.gz`, upload, dry-run preview, restore.
+
+**HTTP API (all require token except /health):**
+- `GET  /health`              — Health check (unauthenticated, read-only)
+- `GET  /backups`             — List backups
+- `POST /backup`              — Create backup
+- `GET  /download/:filename`  — Download archive
+- `POST /upload`              — Upload archive (multipart, field: `backup`)
+- `POST /restore/:filename`   — Restore; add `?dry_run=1` to preview
 
 ### Migrate to a new instance
 
-**On old machine:**
+**Old machine:**
 ```bash
-bash scripts/serve.sh start --port 7373 --token mytoken
-# note the URL
+bash scripts/serve.sh start --token MYTOKEN --port 7373
 ```
 
-**On new machine (after installing OpenClaw):**
+**New machine (after installing OpenClaw):**
 ```bash
-# Download the backup
-curl -O "http://OLD_IP:7373/download/openclaw-backup_TIMESTAMP.tar.gz?token=mytoken"
+# Download
+curl -O "http://OLD_IP:7373/download/openclaw-backup_TIMESTAMP.tar.gz?token=MYTOKEN"
 
-# Or upload via browser at http://NEW_IP:7373
-
-# Restore
+# Always dry-run first
 bash scripts/restore.sh openclaw-backup_TIMESTAMP.tar.gz --dry-run
+
+# Apply
 bash scripts/restore.sh openclaw-backup_TIMESTAMP.tar.gz
 # All channels reconnect automatically — no re-pairing needed
 ```
 
-### Schedule daily auto-backup via OpenClaw cron
+### Schedule daily auto-backup (OpenClaw cron)
 
 ```json
 {
@@ -90,7 +118,7 @@ bash scripts/restore.sh openclaw-backup_TIMESTAMP.tar.gz
   "schedule": { "kind": "cron", "expr": "0 3 * * *", "tz": "UTC" },
   "payload": {
     "kind": "agentTurn",
-    "message": "Run a backup using the openclaw-backup skill. Output dir: /tmp/openclaw-backups",
+    "message": "Run a backup using the myclaw-backup skill. Output dir: /tmp/openclaw-backups",
     "timeoutSeconds": 120
   },
   "sessionTarget": "isolated"

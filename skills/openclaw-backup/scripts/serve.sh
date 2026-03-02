@@ -34,10 +34,10 @@ error() { echo -e "${RED}[✗]${NC} $*"; exit 1; }
 
 case "$ACTION" in
   start)
-    # Auto-generate token if not provided
+    # Token is mandatory — this server exposes credentials and API keys
     if [ -z "$TOKEN" ]; then
-      TOKEN=$(node -e "console.log(require('crypto').randomBytes(16).toString('hex'))")
-      warn "No --token provided, generated: ${TOKEN}"
+      echo ""
+      error "❌ --token is required. This server handles sensitive data."$'\n'"   Example: serve.sh start --token \$(openssl rand -hex 16)"
     fi
 
     # Kill existing

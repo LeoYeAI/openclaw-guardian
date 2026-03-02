@@ -37,14 +37,30 @@ const SKILL_DIR = path.resolve(__dirname, '..');
 const BACKUP_SCRIPT = path.join(SKILL_DIR, 'scripts', 'backup.sh');
 const RESTORE_SCRIPT = path.join(SKILL_DIR, 'scripts', 'restore.sh');
 
+// ── Token enforcement ─────────────────────────────────────────────────────────
+// Token is required — this server handles highly sensitive data (credentials, API keys).
+// Refusing to start without a token prevents accidental open exposure.
+if (!TOKEN) {
+  console.error('');
+  console.error('❌ ERROR: --token is required.');
+  console.error('');
+  console.error('   This server handles sensitive data (bot tokens, API keys, credentials).');
+  console.error('   You must set a token to protect access.');
+  console.error('');
+  console.error('   Example:');
+  console.error('     node server.js --token $(openssl rand -hex 16)');
+  console.error('');
+  process.exit(1);
+}
+
 // Ensure backup dir exists
 fs.mkdirSync(BACKUP_DIR, { recursive: true });
 
 // ── Auth ─────────────────────────────────────────────────────────────────────
 function checkAuth(req) {
-  if (!TOKEN) return true; // no token configured = open (local use)
+  // Token is always required (enforced at startup above)
   const fromQuery = new URL('http://x' + req.url).searchParams.get('token');
-  const fromHeader = (req.headers['authorization'] || '').replace('Bearer ', '');
+  const fromHeader = (req.headers['authorization'] || '').replace('Bearer ', '').trim();
   return fromQuery === TOKEN || fromHeader === TOKEN;
 }
 
@@ -73,8 +89,17 @@ function formatBytes(bytes) {
   return (bytes / 1024 / 1024).toFixed(1) + ' MB';
 }
 
+// ── Security headers helper ───────────────────────────────────────────────────
+function secureHeaders() {
+  return {
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY',
+    'Cache-Control': 'no-store'
+  };
+}
+
 function json(res, status, data) {
-  res.writeHead(status, { 'Content-Type': 'application/json' });
+  res.writeHead(status, { 'Content-Type': 'application/json', ...secureHeaders() });
   res.end(JSON.stringify(data, null, 2));
 }
 
@@ -238,22 +263,30 @@ function handleDrop(e) {
 
 async function restore(filename, dryRun) {
   const label = dryRun ? 'Dry run' : 'RESTORE';
-  if (!dryRun && !confirm('⚠️ This will overwrite your current OpenClaw data with: ' + filename + '\\n\\nContinue?')) return;
+  if (!dryRun) {
+    const msg = '⚠️ RESTORE will OVERWRITE your current OpenClaw data with:\\n\\n' + filename + '\\n\\nHave you reviewed the dry-run output first?\\n\\nType YES to confirm:';
+    const input = prompt(msg);
+    if (input !== 'YES') { alert('Aborted. Run dry-run first to review what will change.'); return; }
+  }
   const el = document.getElementById('create-status');
   el.className = 'status ok'; el.textContent = '⏳ ' + label + ' in progress...'; el.style.display = 'block';
   try {
-    const url = '/restore/' + encodeURIComponent(filename) + (dryRun ? '?dry_run=1' : '') + (token ? (dryRun ? '&' : '?') + 'token=' + token : '');
+    const params = new URLSearchParams();
+    if (token) params.set('token', token);
+    if (dryRun) params.set('dry_run', '1');
+    else params.set('confirm', '1');
+    const url = '/restore/' + encodeURIComponent(filename) + '?' + params.toString();
     const r = await fetch(url, { method: 'POST', headers });
     const d = await r.json();
     if (r.ok) {
-      el.textContent = '✅ ' + label + ' complete. Check logs below.';
+      el.textContent = '✅ ' + label + ' complete.';
       if (d.output) {
         const pre = document.createElement('pre');
         pre.style = 'margin-top:0.75rem;font-size:0.75rem;color:#94a3b8;white-space:pre-wrap;max-height:300px;overflow-y:auto';
         pre.textContent = d.output;
         el.appendChild(pre);
       }
-    } else { el.className = 'status err'; el.textContent = '❌ ' + (d.error || 'Failed'); }
+    } else { el.className = 'status err'; el.textContent = '❌ ' + (d.error || 'Failed') + (d.hint ? ' — ' + d.hint : ''); }
   } catch(e) { el.className = 'status err'; el.textContent = '❌ ' + e.message; }
 }
 </script>
@@ -267,9 +300,10 @@ async function restore(filename, dryRun) {
 const server = http.createServer((req, res) => {
   const urlPath = parseUrlPath(req.url);
 
-  // Health check — no auth required
+  // Health check — unauthenticated, returns minimal read-only info only
+  // Does NOT expose backup dir path or file listings (those require auth)
   if (req.method === 'GET' && urlPath === '/health') {
-    return json(res, 200, { status: 'ok', backupDir: BACKUP_DIR, backups: listBackups().length });
+    return json(res, 200, { status: 'ok', service: 'myclaw-backup' });
   }
 
   // Auth
@@ -346,19 +380,35 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  // POST /restore/:filename[?dry_run=1]
+  // POST /restore/:filename[?dry_run=1&confirm=1]
+  // Non-dry-run restore requires ?confirm=1 to prevent accidental overwrites
   if (req.method === 'POST' && urlPath.startsWith('/restore/')) {
     const filename = path.basename(decodeURIComponent(urlPath.slice('/restore/'.length)));
     const filePath = path.join(BACKUP_DIR, filename);
-    const isDryRun = new URL('http://x' + req.url).searchParams.get('dry_run') === '1';
+    const params = new URL('http://x' + req.url).searchParams;
+    const isDryRun = params.get('dry_run') === '1';
+    const isConfirmed = params.get('confirm') === '1';
 
     if (!fs.existsSync(filePath)) {
       return json(res, 404, { error: 'Backup file not found: ' + filename });
     }
 
+    // Require explicit confirm=1 for destructive restores
+    if (!isDryRun && !isConfirmed) {
+      return json(res, 400, {
+        error: 'Restore requires explicit confirmation.',
+        hint: 'First run with ?dry_run=1 to preview, then add ?confirm=1 to apply.',
+        dryRunUrl: `/restore/${filename}?dry_run=1`,
+        confirmUrl: `/restore/${filename}?confirm=1`
+      });
+    }
+
     try {
       execSync(`chmod +x "${RESTORE_SCRIPT}"`, { stdio: 'ignore' });
-      const cmd = `bash "${RESTORE_SCRIPT}" "${filePath}"${isDryRun ? ' --dry-run' : ''}`;
+      // Pass 'yes' via stdin to satisfy the interactive confirmation in restore.sh
+      const cmd = isDryRun
+        ? `bash "${RESTORE_SCRIPT}" "${filePath}" --dry-run`
+        : `echo 'yes' | bash "${RESTORE_SCRIPT}" "${filePath}"`;
       const output = execSync(cmd, { encoding: 'utf8', timeout: 180000 });
       return json(res, 200, {
         message: isDryRun ? 'Dry run complete' : 'Restore complete',
@@ -375,11 +425,10 @@ const server = http.createServer((req, res) => {
 
 // ── Start ─────────────────────────────────────────────────────────────────────
 server.listen(PORT, '0.0.0.0', () => {
-  const tokenNote = TOKEN ? ` (token protected)` : ' ⚠️  no token set — accessible to anyone on this host';
-  console.log(`🦞 OpenClaw Backup Server`);
-  console.log(`   http://localhost:${PORT}${tokenNote}`);
+  console.log(`🦞 OpenClaw Backup Server (token protected)`);
+  console.log(`   http://localhost:${PORT}/?token=${TOKEN}`);
   console.log(`   Backup dir: ${BACKUP_DIR}`);
-  if (TOKEN) console.log(`   Access URL: http://localhost:${PORT}/?token=${TOKEN}`);
+  console.log(`   ⚠️  Do not expose this port to the public internet without TLS.`);
   console.log('');
 });
 
