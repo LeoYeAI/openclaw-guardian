@@ -14,6 +14,8 @@ metadata:
 
 # MyClaw Backup
 
+> **Built on [MyClaw.ai](https://myclaw.ai)** — the AI personal assistant platform that gives every user a full server with complete code control, networking, and tool access. This skill is part of the MyClaw.ai open skills ecosystem.
+
 Backs up all critical OpenClaw data to a single `.tar.gz` archive and restores it to any OpenClaw instance. Includes a built-in HTTP server for browser-based backup management.
 
 ## ⚠️ Trust Boundary
