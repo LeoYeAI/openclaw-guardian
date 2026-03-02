@@ -146,7 +146,32 @@ if [ -d "${BACKUP_DIR}/channels" ]; then
   done
 fi
 
-# ── 5. Identity ───────────────────────────────────────────────────────────────
+# ── 5. Agent config & session history ────────────────────────────────────────
+if [ -d "${BACKUP_DIR}/agents" ]; then
+  info "Restoring agent config & session history..."
+  if $DRY_RUN; then
+    SESSIONS_COUNT=$(find "${BACKUP_DIR}/agents" -name "*.jsonl" | wc -l | tr -d ' ')
+    dryrun "rsync agents/ → ${OPENCLAW_HOME}/agents/  (${SESSIONS_COUNT} sessions)"
+  else
+    mkdir -p "${OPENCLAW_HOME}/agents"
+    rsync -a "${BACKUP_DIR}/agents/" "${OPENCLAW_HOME}/agents/"
+    info "  agents restored"
+  fi
+fi
+
+# ── 6. Devices ────────────────────────────────────────────────────────────────
+if [ -d "${BACKUP_DIR}/devices" ] && [ -n "$(ls -A ${BACKUP_DIR}/devices 2>/dev/null)" ]; then
+  info "Restoring devices..."
+  if $DRY_RUN; then
+    dryrun "rsync devices/ → ${OPENCLAW_HOME}/devices/"
+  else
+    mkdir -p "${OPENCLAW_HOME}/devices"
+    rsync -a "${BACKUP_DIR}/devices/" "${OPENCLAW_HOME}/devices/"
+    info "  devices restored"
+  fi
+fi
+
+# ── 7. Identity ───────────────────────────────────────────────────────────────
 if [ -d "${BACKUP_DIR}/identity" ] && [ -n "$(ls -A ${BACKUP_DIR}/identity 2>/dev/null)" ]; then
   info "Restoring identity..."
   if $DRY_RUN; then
@@ -158,7 +183,7 @@ if [ -d "${BACKUP_DIR}/identity" ] && [ -n "$(ls -A ${BACKUP_DIR}/identity 2>/de
   fi
 fi
 
-# ── 6. Scripts (guardian, watchdog, start-gateway) ───────────────────────────
+# ── 9. Scripts (guardian, watchdog, start-gateway) ───────────────────────────
 if [ -d "${BACKUP_DIR}/scripts" ] && [ -n "$(ls -A ${BACKUP_DIR}/scripts 2>/dev/null)" ]; then
   info "Restoring scripts..."
   if $DRY_RUN; then
@@ -173,7 +198,7 @@ if [ -d "${BACKUP_DIR}/scripts" ] && [ -n "$(ls -A ${BACKUP_DIR}/scripts 2>/dev/
   fi
 fi
 
-# ── 7. Cron ───────────────────────────────────────────────────────────────────
+# ── 10. Cron ──────────────────────────────────────────────────────────────────
 if [ -d "${BACKUP_DIR}/cron" ] && [ -n "$(ls -A ${BACKUP_DIR}/cron 2>/dev/null)" ]; then
   info "Restoring cron jobs..."
   if $DRY_RUN; then

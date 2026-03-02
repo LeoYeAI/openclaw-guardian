@@ -8,6 +8,9 @@
 | **Gateway config** | `~/.openclaw/openclaw.json` | Models, channels config, **bot tokens**, **API keys**, plugins |
 | **Credentials** | `~/.openclaw/credentials/` | Channel pairing state (telegram-allowFrom, telegram-pairing, etc.) |
 | **Channel state** | `~/.openclaw/telegram/` etc. | Update offsets, session data — allows resume without re-pairing |
+| **Agent config** | `~/.openclaw/agents/main/agent/` | Model provider config (apiKey, baseUrl, custom models) |
+| **Session history** | `~/.openclaw/agents/main/sessions/` | Full conversation history (.jsonl) |
+| **Devices** | `~/.openclaw/devices/` | Paired nodes/phones (paired.json) |
 | **System skills** | `~/.openclaw/skills/` | Installed skills (find-skills, etc.) |
 | **Cron jobs** | `~/.openclaw/cron/` | Scheduled tasks |
 | **Identity** | `~/.openclaw/identity/` | Device identity files |
@@ -22,10 +25,12 @@
 | `node_modules/` | Reinstall with npm |
 | `.git/` | Source control managed separately |
 | Binary assets (png/jpg/mp4/gif/webp) | Size; regenerate as needed |
+| `subagents/runs.json` | Ephemeral sub-agent run state, not needed |
+| `canvas/index.html` | Static system file, reinstalled with OpenClaw |
 
 ## Security Note
 
-The backup archive contains **bot tokens and API keys** (inside `openclaw.json` and `credentials/`).
+The backup archive contains **bot tokens, API keys, and session credentials**.
 
 - Archive is created with `chmod 600` (owner read/write only)
 - Store backups in a secure location
@@ -34,7 +39,7 @@ The backup archive contains **bot tokens and API keys** (inside `openclaw.json` 
 
 ## Post-Restore
 
-After restore, all channels should reconnect automatically — no re-pairing needed.
+After restore, all channels reconnect automatically — **no re-pairing needed**.
 
 If Telegram is silent after 30 seconds, send `/start` to your bot to re-trigger the connection.
 

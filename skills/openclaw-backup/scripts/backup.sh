@@ -92,7 +92,31 @@ for channel_dir in telegram whatsapp signal discord; do
   fi
 done
 
-# ── 5. Identity ───────────────────────────────────────────────────────────
+# ── 5. Agent config & session history ────────────────────────────────────
+# agents/main/agent/ — model provider config (apiKey, baseUrl, models)
+# agents/main/sessions/ — full conversation history (.jsonl)
+info "Backing up agent config & session history..."
+AGENTS_DIR="${OPENCLAW_HOME}/agents"
+if [ -d "$AGENTS_DIR" ]; then
+  mkdir -p "${WORK_DIR}/agents"
+  rsync -a \
+    --exclude='*.lock' \
+    --exclude='*.deleted.*' \
+    "$AGENTS_DIR/" "${WORK_DIR}/agents/"
+  SESSIONS_COUNT=$(find "${WORK_DIR}/agents" -name "*.jsonl" | wc -l | tr -d ' ')
+  info "  agents → model config + ${SESSIONS_COUNT} sessions"
+fi
+
+# ── 6. Devices (paired nodes/phones) ─────────────────────────────────────
+info "Backing up devices..."
+DEVICES_DIR="${OPENCLAW_HOME}/devices"
+if [ -d "$DEVICES_DIR" ]; then
+  mkdir -p "${WORK_DIR}/devices"
+  rsync -a "$DEVICES_DIR/" "${WORK_DIR}/devices/"
+  info "  devices → $(ls ${WORK_DIR}/devices | tr '\n' ' ')"
+fi
+
+# ── 7. Identity ───────────────────────────────────────────────────────────
 info "Backing up identity..."
 IDENTITY_DIR="${OPENCLAW_HOME}/identity"
 if [ -d "$IDENTITY_DIR" ]; then
@@ -101,7 +125,7 @@ if [ -d "$IDENTITY_DIR" ]; then
   info "  identity → $(ls ${WORK_DIR}/identity | tr '\n' ' ')"
 fi
 
-# ── 6. Guardian & watchdog scripts ───────────────────────────────────────
+# ── 8. Guardian & watchdog scripts ───────────────────────────────────────
 info "Backing up scripts..."
 mkdir -p "${WORK_DIR}/scripts"
 for f in guardian.sh gw-watchdog.sh start-gateway.sh; do
@@ -109,7 +133,7 @@ for f in guardian.sh gw-watchdog.sh start-gateway.sh; do
 done
 info "  scripts → $(ls ${WORK_DIR}/scripts | tr '\n' ' ')"
 
-# ── 7. Cron jobs ──────────────────────────────────────────────────────────
+# ── 9. Cron jobs ──────────────────────────────────────────────────────────
 info "Backing up cron state..."
 CRON_DIR="${OPENCLAW_HOME}/cron"
 if [ -d "$CRON_DIR" ]; then
@@ -118,7 +142,7 @@ if [ -d "$CRON_DIR" ]; then
   info "  cron → $(ls ${WORK_DIR}/cron | wc -l | tr -d ' ') files"
 fi
 
-# ── 8. Manifest ──────────────────────────────────────────────────────────
+# ── 10. Manifest ─────────────────────────────────────────────────────────
 cat > "${WORK_DIR}/MANIFEST.json" <<EOF
 {
   "backup_name": "${BACKUP_NAME}",
@@ -126,22 +150,24 @@ cat > "${WORK_DIR}/MANIFEST.json" <<EOF
   "hostname": "$(hostname)",
   "openclaw_home": "${OPENCLAW_HOME}",
   "openclaw_version": "$(openclaw --version 2>/dev/null | head -1 || echo 'unknown')",
-  "created_by": "openclaw-backup skill v1.1",
+  "created_by": "openclaw-backup skill v1.2",
   "contents": {
     "workspace": true,
     "gateway_config": true,
     "system_skills": true,
     "credentials": true,
     "channel_state": true,
+    "agents": true,
+    "devices": true,
     "identity": true,
     "guardian_scripts": true,
     "cron_jobs": true
   },
-  "notes": "All channels should reconnect automatically after restore — no re-pairing needed. This archive contains credentials and API keys — keep it secure."
+  "notes": "Full backup. All channels reconnect automatically after restore. Contains credentials and API keys — keep secure."
 }
 EOF
 
-# ── 9. Package ───────────────────────────────────────────────────────────
+# ── 11. Package ──────────────────────────────────────────────────────────
 echo ""
 info "Packaging backup..."
 ARCHIVE="${OUTPUT_DIR}/${BACKUP_NAME}.tar.gz"
@@ -156,7 +182,7 @@ info "Backup saved: ${ARCHIVE}"
 info "Size: ${ARCHIVE_SIZE}"
 warn "Archive contains credentials — keep it secure (chmod 600 applied)"
 
-# ── 10. Prune old backups (keep last 7) ──────────────────────────────────
+# ── 12. Prune old backups (keep last 7) ──────────────────────────────────
 BACKUP_COUNT=$(ls "${OUTPUT_DIR}"/openclaw-backup_*.tar.gz 2>/dev/null | wc -l)
 if [ "$BACKUP_COUNT" -gt 7 ]; then
   info "Pruning old backups (keeping last 7)..."
