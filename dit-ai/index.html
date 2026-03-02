@@ -1,0 +1,924 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dit.ai — 产品规格文档 v1.0</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', sans-serif;
+      background: #0a0a0f;
+      color: #e2e8f0;
+      line-height: 1.7;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, #0a0a0f 0%, #0d1117 50%, #0a0f1a 100%);
+      border-bottom: 1px solid #1e293b;
+      padding: 80px 24px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-block;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.3);
+      color: #818cf8;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 72px);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      background: linear-gradient(135deg, #e2e8f0 0%, #818cf8 50%, #6366f1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    .hero-sub {
+      font-size: 18px;
+      color: #64748b;
+      max-width: 560px;
+      margin: 0 auto 12px;
+    }
+    .hero-meta {
+      font-size: 13px;
+      color: #334155;
+      margin-top: 24px;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 60px 24px 100px;
+    }
+
+    /* Section */
+    .section {
+      margin-bottom: 64px;
+    }
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    .section-num {
+      width: 32px;
+      height: 32px;
+      background: rgba(99,102,241,0.15);
+      border: 1px solid rgba(99,102,241,0.25);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: #818cf8;
+      flex-shrink: 0;
+    }
+    .section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #f1f5f9;
+      letter-spacing: -0.02em;
+    }
+
+    /* Cards */
+    .card {
+      background: #0d1117;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .card:hover {
+      border-color: #2d3f55;
+      transition: border-color 0.2s;
+    }
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #818cf8;
+      margin-bottom: 10px;
+    }
+    .card p, .card li {
+      font-size: 14px;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+    .card ul {
+      padding-left: 18px;
+    }
+    .card li { margin-bottom: 4px; }
+
+    /* Role grid */
+    .role-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .role-card {
+      background: #0d1117;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .role-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .role-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f1f5f9;
+      margin-bottom: 12px;
+    }
+    .role-card li {
+      font-size: 13px;
+      color: #64748b;
+      margin-bottom: 6px;
+      padding-left: 16px;
+      position: relative;
+      list-style: none;
+    }
+    .role-card li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: #6366f1;
+    }
+
+    /* Architecture */
+    .arch-box {
+      background: #0d1117;
+      border: 1px solid #1e293b;
+      border-radius: 12px;
+      padding: 32px;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 13px;
+    }
+    .arch-layer {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 20px;
+      border-radius: 8px;
+      margin-bottom: 4px;
+    }
+    .arch-layer.buyer { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.15); }
+    .arch-layer.gateway { background: rgba(99,102,241,0.08); border: 1px solid rgba(99,102,241,0.15); }
+    .arch-layer.adapter { background: rgba(245,158,11,0.08); border: 1px solid rgba(245,158,11,0.15); }
+    .arch-layer.api { background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.15); }
+    .arch-arrow {
+      text-align: center;
+      color: #334155;
+      font-size: 18px;
+      margin: 4px 0;
+    }
+    .arch-label {
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .arch-layer.buyer .arch-label { color: #34d399; }
+    .arch-layer.gateway .arch-label { color: #818cf8; }
+    .arch-layer.adapter .arch-label { color: #fbbf24; }
+    .arch-layer.api .arch-label { color: #f87171; }
+    .arch-desc {
+      font-size: 12px;
+      color: #475569;
+    }
+    .arch-tags {
+      margin-left: auto;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .arch-tag {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255,255,255,0.05);
+      color: #64748b;
+    }
+
+    /* Pricing */
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .pricing-table th {
+      text-align: left;
+      padding: 12px 16px;
+      color: #64748b;
+      font-weight: 600;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid #1e293b;
+    }
+    .pricing-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #0f172a;
+      color: #94a3b8;
+    }
+    .pricing-table tr:last-child td { border-bottom: none; }
+    .pricing-table tr.highlight td { color: #e2e8f0; }
+    .profit { color: #34d399 !important; font-weight: 700; }
+
+    /* Flow */
+    .flow {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .flow-step {
+      background: #0d1117;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 12px 18px;
+      font-size: 13px;
+      color: #94a3b8;
+      text-align: center;
+    }
+    .flow-step strong { display: block; color: #e2e8f0; font-size: 14px; margin-bottom: 2px; }
+    .flow-arrow {
+      color: #334155;
+      font-size: 20px;
+      padding: 0 8px;
+    }
+
+    /* Code */
+    .code-block {
+      background: #060910;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px 24px;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 13px;
+      color: #94a3b8;
+      overflow-x: auto;
+      line-height: 1.6;
+    }
+    .code-block .comment { color: #334155; }
+    .code-block .key { color: #818cf8; }
+    .code-block .string { color: #34d399; }
+    .code-block .url { color: #fbbf24; }
+
+    /* Checklist */
+    .checklist { list-style: none; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 0;
+      border-bottom: 1px solid #0f172a;
+      font-size: 14px;
+      color: #94a3b8;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .check-icon {
+      width: 20px;
+      height: 20px;
+      border: 2px solid #1e293b;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* Moat grid */
+    .moat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .moat-card {
+      background: #0d1117;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .moat-icon { font-size: 24px; margin-bottom: 10px; }
+    .moat-name { font-size: 13px; font-weight: 700; color: #818cf8; margin-bottom: 6px; }
+    .moat-desc { font-size: 12px; color: #475569; line-height: 1.5; }
+
+    /* P&L table */
+    .pl-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .pl-table th {
+      text-align: left;
+      padding: 12px 16px;
+      color: #64748b;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      border-bottom: 1px solid #1e293b;
+    }
+    .pl-table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid #0f172a;
+      color: #94a3b8;
+    }
+    .pl-table tr:last-child td { border-bottom: none; }
+    .pl-table td:last-child { color: #34d399; font-weight: 700; }
+
+    /* Timeline */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 8px;
+      top: 8px;
+      bottom: 8px;
+      width: 2px;
+      background: #1e293b;
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 28px;
+    }
+    .tl-dot {
+      position: absolute;
+      left: -24px;
+      top: 4px;
+      width: 12px;
+      height: 12px;
+      background: #6366f1;
+      border-radius: 50%;
+      border: 2px solid #0a0a0f;
+    }
+    .tl-week {
+      font-size: 12px;
+      color: #6366f1;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 4px;
+    }
+    .tl-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #f1f5f9;
+      margin-bottom: 6px;
+    }
+    .tl-items {
+      list-style: none;
+    }
+    .tl-items li {
+      font-size: 13px;
+      color: #64748b;
+      padding: 3px 0;
+    }
+    .tl-items li::before { content: '· '; color: #334155; }
+
+    /* Tag */
+    .tag {
+      display: inline-block;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+      margin-left: 8px;
+    }
+    .tag-green { background: rgba(16,185,129,0.1); color: #34d399; }
+    .tag-purple { background: rgba(99,102,241,0.1); color: #818cf8; }
+
+    /* Divider */
+    hr { border: none; border-top: 1px solid #1e293b; margin: 48px 0; }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 40px 24px;
+      border-top: 1px solid #1e293b;
+      color: #334155;
+      font-size: 13px;
+    }
+
+    @media (max-width: 600px) {
+      .flow { flex-direction: column; align-items: stretch; }
+      .flow-arrow { transform: rotate(90deg); text-align: center; }
+      .arch-tags { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-badge">Product Requirements Document · v1.0</div>
+  <h1>Dit.ai</h1>
+  <p class="hero-sub">全球AI算力流通协议 — 让闲置的AI订阅额度流动起来</p>
+  <div class="hero-meta">The Doctor · 2026-03-01 · Confidential</div>
+</div>
+
+<div class="container">
+
+  <!-- 一、定位 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">一</div>
+      <div class="section-title">产品定位</div>
+    </div>
+    <div class="card">
+      <p style="font-size:16px; color:#e2e8f0; line-height:1.8; margin-bottom:16px;">
+        全球每年有<strong style="color:#818cf8">数十亿美元</strong>的AI订阅额度被白白浪费——Anthropic Max、Kiro、Antigravity、OpenAI Pro的用户，大量额度每月清零。<strong style="color:#e2e8f0">Dit让这些算力流动起来，成为可交易的商品。</strong>
+      </p>
+      <p style="font-size:14px; color:#64748b;">
+        Dit不是撮合平台，不是API代理。Dit是<strong style="color:#818cf8">AI算力的全球做市商</strong>——供应商报底价，买家付顶价，平台掌握定价权，吃中间spread。
+      </p>
+    </div>
+  </div>
+
+  <!-- 二、核心角色 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">二</div>
+      <div class="section-title">核心角色</div>
+    </div>
+    <div class="role-grid">
+      <div class="role-card">
+        <div class="role-icon">🏭</div>
+        <div class="role-name">供应商 Provider</div>
+        <ul>
+          <li>拥有AI订阅额度（Anthropic Max / OpenAI Pro / Kiro / Antigravity等）</li>
+          <li>在自己服务器部署Dit Adapter</li>
+          <li>向Dit网络报价（每M token底价）</li>
+          <li>按实际成交量<strong style="color:#e2e8f0">后结算</strong>收入</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-icon">🛒</div>
+        <div class="role-name">买家 Buyer</div>
+        <ul>
+          <li>需要AI算力的开发者、企业、MyClaw用户</li>
+          <li>向Dit账户<strong style="color:#e2e8f0">预充值</strong></li>
+          <li>通过统一API接口调用（兼容OpenAI格式）</li>
+          <li>按调用量扣费</li>
+        </ul>
+      </div>
+      <div class="role-card">
+        <div class="role-icon">⚖️</div>
+        <div class="role-name">Dit平台</div>
+        <ul>
+          <li>维护Gateway路由层</li>
+          <li>掌握<strong style="color:#e2e8f0">黑箱定价权</strong>（双方均不知对方价格）</li>
+          <li>管理预付款 + 后结算资金流</li>
+          <li>不持有任何API key，不直接发起请求</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三、系统架构 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">三</div>
+      <div class="section-title">系统架构</div>
+    </div>
+    <div class="arch-box">
+      <div class="arch-layer buyer">
+        <div>
+          <div class="arch-label">买家</div>
+          <div class="arch-desc">开发者 / 企业 / MyClaw用户</div>
+        </div>
+        <div class="arch-tags">
+          <span class="arch-tag">预充值</span>
+          <span class="arch-tag">OpenAI格式</span>
+        </div>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-layer gateway">
+        <div>
+          <div class="arch-label">Dit Gateway — 统一API入口</div>
+          <div class="arch-desc">鉴权 · 计费 · 路由决策 · 请求转发</div>
+        </div>
+        <div class="arch-tags">
+          <span class="arch-tag">黑箱定价</span>
+          <span class="arch-tag">故障转移</span>
+        </div>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-layer adapter">
+        <div>
+          <div class="arch-label">Dit Adapter — 供应商服务器（开源）</div>
+          <div class="arch-desc">接收路由请求 · 用自己的key和IP发起请求 · 返回结果</div>
+        </div>
+        <div class="arch-tags">
+          <span class="arch-tag">key不离境</span>
+          <span class="arch-tag">IP隔离</span>
+        </div>
+      </div>
+      <div class="arch-arrow">↓</div>
+      <div class="arch-layer api">
+        <div>
+          <div class="arch-label">官方API</div>
+          <div class="arch-desc">Anthropic / OpenAI / Kiro / Antigravity...</div>
+        </div>
+        <div class="arch-tags">
+          <span class="arch-tag">从供应商IP发出</span>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:16px; padding:16px 20px; background:rgba(99,102,241,0.05); border:1px solid rgba(99,102,241,0.1); border-radius:8px;">
+      <p style="font-size:13px; color:#64748b; margin-bottom:4px;"><strong style="color:#818cf8">关键原则：</strong></p>
+      <p style="font-size:13px; color:#64748b;">Dit平台永远不持有供应商API key · 所有官方请求从供应商自己IP发出 · Dit只是路由层，法律风险隔离清晰</p>
+    </div>
+  </div>
+
+  <!-- 四、定价机制 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">四</div>
+      <div class="section-title">定价机制 — 黑箱做市商</div>
+    </div>
+    <div class="card" style="margin-bottom:20px;">
+      <div style="display:flex; gap:24px; flex-wrap:wrap; margin-bottom:16px;">
+        <div style="flex:1; min-width:140px; text-align:center; padding:16px; background:#060910; border-radius:8px;">
+          <div style="font-size:12px; color:#64748b; margin-bottom:4px;">供应商报价</div>
+          <div style="font-size:20px; font-weight:700; color:#fbbf24;">底价</div>
+          <div style="font-size:11px; color:#334155; margin-top:4px;">Dit平台掌握</div>
+        </div>
+        <div style="display:flex; align-items:center; color:#334155; font-size:24px;">→</div>
+        <div style="flex:1; min-width:140px; text-align:center; padding:16px; background:#060910; border-radius:8px; border:1px solid rgba(99,102,241,0.2);">
+          <div style="font-size:12px; color:#64748b; margin-bottom:4px;">Dit决定成交价</div>
+          <div style="font-size:20px; font-weight:700; color:#818cf8;">黑箱</div>
+          <div style="font-size:11px; color:#334155; margin-top:4px;">信息优势在平台</div>
+        </div>
+        <div style="display:flex; align-items:center; color:#334155; font-size:24px;">←</div>
+        <div style="flex:1; min-width:140px; text-align:center; padding:16px; background:#060910; border-radius:8px;">
+          <div style="font-size:12px; color:#64748b; margin-bottom:4px;">买家付款</div>
+          <div style="font-size:20px; font-weight:700; color:#34d399;">顶价</div>
+          <div style="font-size:11px; color:#334155; margin-top:4px;">Dit平台掌握</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">示例：Claude Opus 4.6（per M input tokens）</div>
+      <table class="pricing-table">
+        <thead>
+          <tr>
+            <th>角色</th>
+            <th>价格</th>
+            <th>说明</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>官方售价</td>
+            <td>$15</td>
+            <td style="color:#475569;">Anthropic官方定价</td>
+          </tr>
+          <tr>
+            <td>供应商报价（底价）</td>
+            <td>$9</td>
+            <td style="color:#475569;">供应商有量级折扣/Max订阅</td>
+          </tr>
+          <tr class="highlight">
+            <td>Dit对买家定价</td>
+            <td>$12</td>
+            <td style="color:#475569;">低于官方20%，竞争力强</td>
+          </tr>
+          <tr>
+            <td><strong>Dit毛利</strong></td>
+            <td class="profit">$3 (25%)</td>
+            <td style="color:#475569;">规模越大，spread越稳</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 五、资金流 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">五</div>
+      <div class="section-title">资金流</div>
+    </div>
+    <div class="flow">
+      <div class="flow-step">
+        <strong>买家预充值</strong>
+        立即到账Dit账户
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <strong>Gateway计费</strong>
+        按调用实时扣减
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <strong>供应商月结</strong>
+        T+7 或 T+30
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:12px;">
+      <div class="card">
+        <div class="card-title">✅ 净现金永远正向</div>
+        <p>买家预付 → Dit先收钱，后付供应商</p>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ 浮存金随规模增长</div>
+        <p>GMV越大，手中浮存金越多，财务资产</p>
+      </div>
+      <div class="card">
+        <div class="card-title">✅ 零库存风险</div>
+        <p>算力即时消耗，不可囤积，无滞销风险</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 六、API设计 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">六</div>
+      <div class="section-title">API设计</div>
+    </div>
+    <div class="card" style="margin-bottom:16px;">
+      <div class="card-title">买家侧 — 兼容OpenAI格式 <span class="tag tag-green">零迁移成本</span></div>
+      <div class="code-block">
+<span class="comment"># 买家只需修改 base_url，其余代码零改动</span>
+curl <span class="url">https://api.dit.ai/v1/chat/completions</span> \
+  -H <span class="string">"Authorization: Bearer {DIT_API_KEY}"</span> \
+  -H <span class="string">"Content-Type: application/json"</span> \
+  -d '{
+    <span class="key">"model"</span>: <span class="string">"claude-opus-4.6"</span>,
+    <span class="key">"messages"</span>: [{"role": "user", "content": "Hello"}]
+  }'</div>
+    </div>
+    <div class="card">
+      <div class="card-title">供应商侧 — Dit Adapter配置 <span class="tag tag-purple">开源部署</span></div>
+      <div class="code-block">
+<span class="comment"># dit-adapter.yml</span>
+<span class="key">provider</span>:
+  <span class="key">id</span>: <span class="string">"your-provider-id"</span>
+  <span class="key">secret</span>: <span class="string">"your-dit-secret"</span>
+
+<span class="key">models</span>:
+  - <span class="key">id</span>: <span class="string">"claude-opus-4.6"</span>
+    <span class="key">api_key</span>: <span class="string">"${ANTHROPIC_API_KEY}"</span>  <span class="comment"># 存在供应商本地，不上传</span>
+    <span class="key">base_url</span>: <span class="string">"https://api.anthropic.com"</span>
+    <span class="key">price_per_m_input</span>: 9.0   <span class="comment"># 供应商报价（底价）</span>
+    <span class="key">price_per_m_output</span>: 27.0
+
+<span class="key">server</span>:
+  <span class="key">port</span>: 8080
+  <span class="key">dit_gateway</span>: <span class="string">"https://gateway.dit.ai"</span></div>
+    </div>
+  </div>
+
+  <!-- 七、路由决策 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">七</div>
+      <div class="section-title">路由决策逻辑</div>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:12px;">
+      <div class="card" style="text-align:center;">
+        <div style="font-size:28px; margin-bottom:8px;">💰</div>
+        <div class="card-title">① 价格最优</div>
+        <p>选最低底价供应商</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:28px; margin-bottom:8px;">⚡</div>
+        <div class="card-title">② 延迟最低</div>
+        <p>ping值优先选择</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:28px; margin-bottom:8px;">🛡️</div>
+        <div class="card-title">③ 稳定性</div>
+        <p>历史成功率 > 99.5%</p>
+      </div>
+      <div class="card" style="text-align:center;">
+        <div style="font-size:28px; margin-bottom:8px;">⚖️</div>
+        <div class="card-title">④ 负载均衡</div>
+        <p>单供应商 ≤ 30% 流量</p>
+      </div>
+    </div>
+    <div style="margin-top:16px; padding:14px 18px; background:rgba(245,158,11,0.05); border:1px solid rgba(245,158,11,0.1); border-radius:8px; font-size:13px; color:#64748b;">
+      <strong style="color:#fbbf24;">故障转移：</strong>供应商响应超时（>5s）自动切换备用供应商，买家无感知。
+    </div>
+  </div>
+
+  <!-- 八、冷启动 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">八</div>
+      <div class="section-title">冷启动策略</div>
+    </div>
+    <div class="card" style="margin-bottom:16px; border-color:rgba(99,102,241,0.2);">
+      <div class="card-title" style="font-size:16px;">🚀 第一批供应商：MyClaw用户</div>
+      <p style="margin-bottom:12px;">MyClaw 3000+ 付费用户是Dit天然的第一批供应商：</p>
+      <ul style="list-style:none; margin-bottom:16px;">
+        <li style="padding:6px 0; color:#94a3b8; font-size:14px;">✓ 已有OpenClaw实例（服务器就绪）</li>
+        <li style="padding:6px 0; color:#94a3b8; font-size:14px;">✓ 有Anthropic/OpenAI订阅（额度就绪）</li>
+        <li style="padding:6px 0; color:#94a3b8; font-size:14px;">✓ 通过Dit变现 → 抵扣MyClaw订阅费（强激励）</li>
+        <li style="padding:6px 0; color:#94a3b8; font-size:14px;">✓ 离开MyClaw = 失去收入来源（强留存）</li>
+      </ul>
+      <div style="padding:14px 18px; background:#060910; border-radius:8px; font-size:13px; color:#64748b;">
+        MyClaw Dashboard新增入口：<br>
+        <strong style="color:#818cf8;">🔌 将你的闲置算力接入Dit网络，开始赚钱</strong><br>
+        一键部署Dit Adapter → 设置报价 → 完成
+      </div>
+    </div>
+    <div class="card" style="margin-bottom:24px;">
+      <div class="card-title" style="font-size:16px;">🎯 第一批买家：MyClaw平台本身</div>
+      <ul style="list-style:none;">
+        <li style="padding:6px 0; color:#94a3b8; font-size:14px;">→ MyClaw的API消耗全部路由到Dit</li>
+        <li style="padding:6px 0; color:#94a3b8; font-size:14px;">→ Dit立即有真实订单流，对供应商有筹码</li>
+        <li style="padding:6px 0; color:#94a3b8; font-size:14px;">→ 验证系统稳定性，迭代定价算法</li>
+      </ul>
+    </div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Week 1–6</div>
+        <div class="tl-title">MVP开发</div>
+        <ul class="tl-items">
+          <li>Dit Gateway：统一API入口，OpenAI格式兼容</li>
+          <li>Dit Adapter：开源，支持Anthropic/OpenAI</li>
+          <li>基础计费：充值 + 实时扣减 + 月结账单</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Week 7–8</div>
+        <div class="tl-title">MyClaw内测</div>
+        <ul class="tl-items">
+          <li>MyClaw流量切到Dit路由</li>
+          <li>验证稳定性 + 定价模型</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-week">Week 9–12</div>
+        <div class="tl-title">供应商招募</div>
+        <ul class="tl-items">
+          <li>MyClaw用户一键接入</li>
+          <li>定向BD企业级API大户</li>
+          <li>开源社区推广Dit Adapter</li>
+        </ul>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot" style="background:#34d399;"></div>
+        <div class="tl-week">Week 13+</div>
+        <div class="tl-title">公测开放</div>
+        <ul class="tl-items">
+          <li>开发者API文档发布</li>
+          <li>供应商自助Dashboard上线</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 九、MVP范围 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">九</div>
+      <div class="section-title">MVP功能范围</div>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; flex-wrap:wrap;">
+      <div class="card">
+        <div class="card-title" style="color:#34d399;">✅ Phase 1 必须有</div>
+        <ul class="checklist">
+          <li><div class="check-icon"></div>Dit Gateway：统一API入口，OpenAI格式兼容</li>
+          <li><div class="check-icon"></div>Dit Adapter：开源，支持Anthropic/OpenAI</li>
+          <li><div class="check-icon"></div>基础计费：买家余额充值 + 实时扣减</li>
+          <li><div class="check-icon"></div>供应商后结算：月结账单生成</li>
+          <li><div class="check-icon"></div>供应商Dashboard：报价设置、收入查看</li>
+          <li><div class="check-icon"></div>买家Dashboard：余额、用量、API key管理</li>
+        </ul>
+      </div>
+      <div class="card">
+        <div class="card-title" style="color:#475569;">⏳ Phase 2+ 暂不做</div>
+        <ul class="checklist">
+          <li><div class="check-icon" style="border-color:#1e293b;opacity:0.4;"></div><span style="color:#334155;">供应商评级系统</span></li>
+          <li><div class="check-icon" style="border-color:#1e293b;opacity:0.4;"></div><span style="color:#334155;">实时竞价机制</span></li>
+          <li><div class="check-icon" style="border-color:#1e293b;opacity:0.4;"></div><span style="color:#334155;">多货币结算</span></li>
+          <li><div class="check-icon" style="border-color:#1e293b;opacity:0.4;"></div><span style="color:#334155;">企业合同/发票</span></li>
+          <li><div class="check-icon" style="border-color:#1e293b;opacity:0.4;"></div><span style="color:#334155;">公开市场（供需可见）</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 十、护城河 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">十</div>
+      <div class="section-title">核心护城河</div>
+    </div>
+    <div class="moat-grid">
+      <div class="moat-card">
+        <div class="moat-icon">🔒</div>
+        <div class="moat-name">定价黑箱</div>
+        <div class="moat-desc">供需双方均不知对方价格，信息优势永久在平台</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">💰</div>
+        <div class="moat-name">资金结构</div>
+        <div class="moat-desc">预付+后结算，浮存金随规模线性增长</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">🚀</div>
+        <div class="moat-name">MyClaw冷启动</div>
+        <div class="moat-desc">3000+用户既是供给侧又是需求侧，双边同时激活</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">🌐</div>
+        <div class="moat-name">协议去中心化</div>
+        <div class="moat-desc">无中央API key，无单点风险，平台难以被封杀</div>
+      </div>
+      <div class="moat-card">
+        <div class="moat-icon">📊</div>
+        <div class="moat-name">数据飞轮</div>
+        <div class="moat-desc">做市商天然积累最完整供需数据，定价越来越精准</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 十一、盈利预测 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">十一</div>
+      <div class="section-title">盈利预测</div>
+    </div>
+    <div class="card">
+      <table class="pl-table">
+        <thead>
+          <tr>
+            <th>阶段</th>
+            <th>月GMV</th>
+            <th>毛利率</th>
+            <th>月毛利</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MVP上线</td>
+            <td>$10K</td>
+            <td>20%</td>
+            <td>$2K</td>
+          </tr>
+          <tr>
+            <td>MyClaw切入</td>
+            <td>$50K</td>
+            <td>22%</td>
+            <td>$11K</td>
+          </tr>
+          <tr>
+            <td>公测3个月</td>
+            <td>$200K</td>
+            <td>25%</td>
+            <td>$50K</td>
+          </tr>
+          <tr>
+            <td>规模化</td>
+            <td>$1M+</td>
+            <td>28%+</td>
+            <td>$280K+</td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="margin-top:16px; padding:12px 16px; background:rgba(16,185,129,0.05); border:1px solid rgba(16,185,129,0.1); border-radius:8px; font-size:13px; color:#64748b;">
+        <strong style="color:#34d399;">盈亏平衡点：月GMV $30K</strong>（假设运营成本 $6K/月）
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  Dit.ai Product Requirements Document v1.0 · The Doctor · 2026-03-01 · Confidential
+</div>
+
+</body>
+</html>

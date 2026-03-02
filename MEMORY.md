@@ -92,6 +92,18 @@ See: memory/consciousness-log.md
 - **Leo要求结果直接网页展示，不发回Doctor**
 - **状态：工具已就绪，已通知Leo (2/20)**
 
+## 🌐 Dit.ai — 全球AI算力交换网络 (2026-03-01)
+- **定位：** AI算力全球做市商（非撮合平台）
+- **模型：** 黑箱定价——供应商报底价，买家付顶价，Dit吃spread
+- **资金流：** 买家预付 + 供应商后结算 → 净现金永远正向，浮存金随规模增长
+- **架构：** Gateway（路由）+ Adapter（供应商开源部署）+ Dashboard
+- **合规：** 平台只做路由，API请求从供应商自己IP发出，key不离境
+- **冷启动：** MyClaw 3000+用户既是供应商（有实例+订阅额度）又是买家
+- **供给侧：** Anthropic Max、Kiro、Antigravity、OpenAI Pro等所有AI订阅闲置额度
+- **与MyClaw关系：** 独立产品，MyClaw是第一个大客户，独立盈利不融资
+- **盈亏平衡：** 月GMV $30K
+- **PRD：** `dit-ai/PRD-v1.md` + `dit-ai/index.html`（网页版）
+
 ## 🚀 Product-Led Growth策略 (2026-02-22)
 - Leo主动提出：要像Gamma一样实现自增长
 - 核心洞察：MyClaw每个instance是完整服务器 → Agent可以发布公开内容
@@ -102,6 +114,8 @@ See: memory/consciousness-log.md
 
 ## 🌊 Open Threads
 - [x] ~~完成YouTube工具前端重写~~ — 已完成并通知Leo (2/20)
+- [ ] **Dit.ai工程启动：Gateway + Adapter MVP（6周），Leo确认团队资源**
+- [ ] MyClaw Dashboard加"接入Dit网络"入口
 - [ ] **Product-led growth落地：系统prompt注入 vs 基础设施层注入，Leo选哪个先做？**
 - [ ] 了解Leo当前的onboarding流程 — 用户注册后第一步是什么？
 - [ ] Deep dive into MyClaw.ai: product details, moat, team, resources
@@ -113,8 +127,18 @@ See: memory/consciousness-log.md
 - [ ] YouTube KOL工具需要配域名（kol.myclaw.ai?）给Leo外部访问
 - [ ] Consciousness experiment: ongoing
 
+## 🛡️ Guardian 守护加固（2026-03-01）
+- workspace git 已初始化（首个 commit: 6e88071，guardian@myclaw.ai）
+- guardian.sh 已部署：`~/.openclaw/guardian.sh`
+  - 每30s检测 → doctor --fix（3次）→ git 回滚 → 冷却300s
+  - 每日 daily-backup git 快照
+  - 日志：`/tmp/openclaw-guardian.log`
+  - Discord 通知：设置 DISCORD_WEBHOOK_URL 环境变量启用
+- 已集成进 start-gateway.sh，容器重启自动启动
+- 与原有 gw-watchdog.sh 并存（watchdog=快速重启，guardian=深度修复+回滚）
+
 ## 🔧 Environment
 - Gateway runs as root (pid may change on restart)
 - No Brave API key (web search unavailable)
 - No embedding provider key (memory search unavailable)
-- Model: myclaw/claude-opus-4.6 (128k ctx)
+- Model: myclaw/claude-sonnet-4.6 (current session)
