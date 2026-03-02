@@ -19,9 +19,11 @@ Backs up all critical OpenClaw data to a single `.tar.gz` archive and restores i
 
 See `references/what-gets-saved.md` for the full breakdown.
 
-**Key items:** workspace (MEMORY.md, skills, agent files), openclaw.json, system skills, cron jobs, guardian scripts, device identity.
+**Key items:** workspace (MEMORY.md, skills, agent files), openclaw.json (incl. bot tokens & API keys), credentials/channel pairing state, system skills, cron jobs, guardian scripts, identity.
 
-**NOT included:** auth tokens/credentials (security), logs, binary media files.
+**NOT included:** logs, binary media files, node_modules.
+
+**Security:** archive is `chmod 600` — contains bot tokens and API keys. Store securely.
 
 ## Common Workflows
 

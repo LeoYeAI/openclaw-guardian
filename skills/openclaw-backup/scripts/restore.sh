@@ -52,6 +52,8 @@ print(f\"  Backup name : {d['backup_name']}\")
 print(f\"  Created     : {d['timestamp']}\")
 print(f\"  From host   : {d['hostname']}\")
 print(f\"  OC version  : {d.get('openclaw_version', 'unknown')}\")
+has_creds = d.get('contents', {}).get('credentials', False)
+print(f\"  Credentials : {'included ✓' if has_creds else 'NOT included (old backup)'}\")
 "
   echo ""
 fi
@@ -65,6 +67,7 @@ if ! $DRY_RUN; then
     --exclude='.openclaw/openclaw.log' \
     --exclude='.openclaw/media' \
     "$(basename $OPENCLAW_HOME)" 2>/dev/null || warn "  Auto-backup had some errors (continuing)"
+  chmod 600 "$AUTO_BACKUP"
   info "  Pre-restore backup saved: $AUTO_BACKUP"
 fi
 
@@ -90,7 +93,7 @@ fi
 
 # ── 2. Gateway config ─────────────────────────────────────────────────────────
 if [ -f "${BACKUP_DIR}/config/openclaw.json" ]; then
-  info "Restoring Gateway config..."
+  info "Restoring Gateway config (incl. bot tokens & API keys)..."
   if $DRY_RUN; then
     dryrun "cp openclaw.json → ${OPENCLAW_HOME}/openclaw.json"
   else
@@ -111,19 +114,51 @@ if [ -d "${BACKUP_DIR}/skills/system" ] && [ -n "$(ls -A ${BACKUP_DIR}/skills/sy
   fi
 fi
 
-# ── 4. Identity (device.json only) ───────────────────────────────────────────
-if [ -f "${BACKUP_DIR}/identity/device.json" ]; then
+# ── 4. Credentials & channel pairing state ───────────────────────────────────
+# Restoring these means no re-pairing needed after migration
+if [ -d "${BACKUP_DIR}/credentials" ] && [ -n "$(ls -A ${BACKUP_DIR}/credentials 2>/dev/null)" ]; then
+  info "Restoring credentials (channel pairing state)..."
+  if $DRY_RUN; then
+    dryrun "rsync credentials/ → ${OPENCLAW_HOME}/credentials/"
+    ls "${BACKUP_DIR}/credentials/" | xargs -I{} echo "  {}"
+  else
+    mkdir -p "${OPENCLAW_HOME}/credentials"
+    rsync -a "${BACKUP_DIR}/credentials/" "${OPENCLAW_HOME}/credentials/"
+    # Ensure restrictive permissions on restored credentials
+    chmod 700 "${OPENCLAW_HOME}/credentials"
+    chmod 600 "${OPENCLAW_HOME}/credentials/"* 2>/dev/null || true
+    info "  credentials restored (permissions hardened)"
+  fi
+fi
+
+# Channel runtime state (update offsets, session data)
+if [ -d "${BACKUP_DIR}/channels" ]; then
+  info "Restoring channel state..."
+  for channel_dir in "${BACKUP_DIR}/channels/"*/; do
+    channel=$(basename "$channel_dir")
+    if $DRY_RUN; then
+      dryrun "rsync channels/${channel}/ → ${OPENCLAW_HOME}/${channel}/"
+    else
+      mkdir -p "${OPENCLAW_HOME}/${channel}"
+      rsync -a "$channel_dir" "${OPENCLAW_HOME}/${channel}/"
+      info "  channel state restored: ${channel}"
+    fi
+  done
+fi
+
+# ── 5. Identity ───────────────────────────────────────────────────────────────
+if [ -d "${BACKUP_DIR}/identity" ] && [ -n "$(ls -A ${BACKUP_DIR}/identity 2>/dev/null)" ]; then
   info "Restoring identity..."
   if $DRY_RUN; then
-    dryrun "cp device.json → ${OPENCLAW_HOME}/identity/device.json"
+    dryrun "rsync identity/ → ${OPENCLAW_HOME}/identity/"
   else
     mkdir -p "${OPENCLAW_HOME}/identity"
-    cp "${BACKUP_DIR}/identity/device.json" "${OPENCLAW_HOME}/identity/device.json"
+    rsync -a "${BACKUP_DIR}/identity/" "${OPENCLAW_HOME}/identity/"
     info "  identity restored"
   fi
 fi
 
-# ── 5. Scripts (guardian, watchdog, start-gateway) ───────────────────────────
+# ── 6. Scripts (guardian, watchdog, start-gateway) ───────────────────────────
 if [ -d "${BACKUP_DIR}/scripts" ] && [ -n "$(ls -A ${BACKUP_DIR}/scripts 2>/dev/null)" ]; then
   info "Restoring scripts..."
   if $DRY_RUN; then
@@ -138,7 +173,7 @@ if [ -d "${BACKUP_DIR}/scripts" ] && [ -n "$(ls -A ${BACKUP_DIR}/scripts 2>/dev/
   fi
 fi
 
-# ── 6. Cron ───────────────────────────────────────────────────────────────────
+# ── 7. Cron ───────────────────────────────────────────────────────────────────
 if [ -d "${BACKUP_DIR}/cron" ] && [ -n "$(ls -A ${BACKUP_DIR}/cron 2>/dev/null)" ]; then
   info "Restoring cron jobs..."
   if $DRY_RUN; then
@@ -170,9 +205,8 @@ if $DRY_RUN; then
 else
   echo "✅ Restore complete!"
   echo ""
-  echo "⚠️  Post-restore checklist:"
-  echo "   1. Re-pair Telegram/WhatsApp/Signal (credentials not restored)"
-  echo "   2. Verify openclaw.json has correct model API keys"
-  echo "   3. Test: openclaw gateway status"
+  echo "📋 All channels should reconnect automatically."
+  echo "   If Telegram is silent after 30s, send /start to your bot."
+  echo "   Verify: openclaw gateway status"
 fi
 echo ""

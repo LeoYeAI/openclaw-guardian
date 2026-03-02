@@ -5,39 +5,45 @@
 | Component | Path | Why |
 |---|---|---|
 | **Workspace** | `~/.openclaw/workspace/` | Agent memory, MEMORY.md, skills, USER.md, SOUL.md, all custom files |
-| **Gateway config** | `~/.openclaw/openclaw.json` | Models, channels, plugins, gateway settings |
+| **Gateway config** | `~/.openclaw/openclaw.json` | Models, channels config, **bot tokens**, **API keys**, plugins |
+| **Credentials** | `~/.openclaw/credentials/` | Channel pairing state (telegram-allowFrom, telegram-pairing, etc.) |
+| **Channel state** | `~/.openclaw/telegram/` etc. | Update offsets, session data — allows resume without re-pairing |
 | **System skills** | `~/.openclaw/skills/` | Installed skills (find-skills, etc.) |
 | **Cron jobs** | `~/.openclaw/cron/` | Scheduled tasks |
-| **Identity** | `~/.openclaw/identity/device.json` | Device identity (non-sensitive) |
+| **Identity** | `~/.openclaw/identity/` | Device identity files |
 | **Scripts** | `guardian.sh`, `gw-watchdog.sh`, `start-gateway.sh` | Auto-restart and guardian logic |
 
 ## NOT Backed Up ❌ (by design)
 
 | Component | Reason |
 |---|---|
-| Credentials & auth tokens | Security — re-pair channels after restore |
 | `openclaw.log` | Runtime log, not needed for restore |
-| Media files (images/audio) | Too large, easily regenerated |
+| Media files (images/audio/video) | Too large, easily regenerated |
 | `node_modules/` | Reinstall with npm |
 | `.git/` | Source control managed separately |
-| Binary assets (png/jpg/mp4) | Size; regenerate as needed |
+| Binary assets (png/jpg/mp4/gif/webp) | Size; regenerate as needed |
 
-## Post-Restore Checklist
+## Security Note
 
-1. **Re-pair messaging channels** (Telegram, WhatsApp, Signal) — tokens not transferred
-2. **Verify API keys** in `openclaw.json` — check `models` section has valid keys
-3. **Run gateway status**: `openclaw gateway status`
-4. **Test channel connection**: send a test message
-5. **Review MEMORY.md** to confirm agent identity is intact
+The backup archive contains **bot tokens and API keys** (inside `openclaw.json` and `credentials/`).
 
-## Restore to a New Instance
+- Archive is created with `chmod 600` (owner read/write only)
+- Store backups in a secure location
+- Never commit the `.tar.gz` to a public git repo
+- Transfer via scp/sftp, not plain HTTP
+
+## Post-Restore
+
+After restore, all channels should reconnect automatically — no re-pairing needed.
+
+If Telegram is silent after 30 seconds, send `/start` to your bot to re-trigger the connection.
+
+### Restore to a New Instance
 
 ```bash
 # On the NEW machine (after installing OpenClaw):
-curl -o restore.sh https://raw.githubusercontent.com/.../restore.sh  # or copy the script
 chmod +x restore.sh
 ./restore.sh /path/to/openclaw-backup_TIMESTAMP.tar.gz --dry-run   # preview first
 ./restore.sh /path/to/openclaw-backup_TIMESTAMP.tar.gz             # apply
+# That's it — no re-pairing needed.
 ```
-
-Then re-pair your messaging channels as usual.

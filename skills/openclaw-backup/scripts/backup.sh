@@ -28,7 +28,6 @@ info "Backing up workspace..."
 WORKSPACE_DIR="${OPENCLAW_HOME}/workspace"
 if [ -d "$WORKSPACE_DIR" ]; then
   mkdir -p "${WORK_DIR}/workspace"
-  # Exclude large binary files and node_modules
   rsync -a \
     --exclude='node_modules/' \
     --exclude='.git/' \
@@ -49,12 +48,12 @@ else
 fi
 
 # ── 2. Gateway config (openclaw.json) ────────────────────────────────────
+# Contains bot tokens, model API keys, channel config — all needed for restore
 info "Backing up Gateway config..."
 CONFIG_FILE="${OPENCLAW_HOME}/openclaw.json"
 if [ -f "$CONFIG_FILE" ]; then
   mkdir -p "${WORK_DIR}/config"
   cp "$CONFIG_FILE" "${WORK_DIR}/config/openclaw.json"
-  # Also backup the bak if it exists
   [ -f "${CONFIG_FILE}.bak" ] && cp "${CONFIG_FILE}.bak" "${WORK_DIR}/config/openclaw.json.bak"
   info "  openclaw.json → $(wc -c < ${WORK_DIR}/config/openclaw.json) bytes"
 else
@@ -72,26 +71,45 @@ else
   warn "  no system skills found"
 fi
 
-# ── 4. Identity & credentials (strip secrets, keep structure) ────────────
-info "Backing up identity info..."
+# ── 4. Credentials & channel pairing state ───────────────────────────────
+# Includes: telegram-allowFrom.json, telegram-pairing.json, etc.
+# These allow channels to reconnect without re-pairing on the new instance.
+info "Backing up credentials & channel state..."
+CREDS_DIR="${OPENCLAW_HOME}/credentials"
+if [ -d "$CREDS_DIR" ]; then
+  mkdir -p "${WORK_DIR}/credentials"
+  rsync -a "$CREDS_DIR/" "${WORK_DIR}/credentials/"
+  info "  credentials → $(ls ${WORK_DIR}/credentials | tr '\n' ' ')"
+fi
+
+# Channel runtime state (e.g. telegram update-offset)
+for channel_dir in telegram whatsapp signal discord; do
+  CHAN_DIR="${OPENCLAW_HOME}/${channel_dir}"
+  if [ -d "$CHAN_DIR" ]; then
+    mkdir -p "${WORK_DIR}/channels/${channel_dir}"
+    rsync -a "$CHAN_DIR/" "${WORK_DIR}/channels/${channel_dir}/"
+    info "  channel state: ${channel_dir}"
+  fi
+done
+
+# ── 5. Identity ───────────────────────────────────────────────────────────
+info "Backing up identity..."
 IDENTITY_DIR="${OPENCLAW_HOME}/identity"
 if [ -d "$IDENTITY_DIR" ]; then
   mkdir -p "${WORK_DIR}/identity"
-  # Copy device.json (non-sensitive); skip auth tokens
-  [ -f "${IDENTITY_DIR}/device.json" ] && \
-    cp "${IDENTITY_DIR}/device.json" "${WORK_DIR}/identity/device.json"
-  info "  identity → device.json"
+  rsync -a "$IDENTITY_DIR/" "${WORK_DIR}/identity/"
+  info "  identity → $(ls ${WORK_DIR}/identity | tr '\n' ' ')"
 fi
 
-# ── 5. Guardian & watchdog scripts ───────────────────────────────────────
-info "Backing up guardian scripts..."
+# ── 6. Guardian & watchdog scripts ───────────────────────────────────────
+info "Backing up scripts..."
 mkdir -p "${WORK_DIR}/scripts"
 for f in guardian.sh gw-watchdog.sh start-gateway.sh; do
   [ -f "${OPENCLAW_HOME}/${f}" ] && cp "${OPENCLAW_HOME}/${f}" "${WORK_DIR}/scripts/${f}"
 done
 info "  scripts → $(ls ${WORK_DIR}/scripts | tr '\n' ' ')"
 
-# ── 6. Cron jobs snapshot ────────────────────────────────────────────────
+# ── 7. Cron jobs ──────────────────────────────────────────────────────────
 info "Backing up cron state..."
 CRON_DIR="${OPENCLAW_HOME}/cron"
 if [ -d "$CRON_DIR" ]; then
@@ -100,7 +118,7 @@ if [ -d "$CRON_DIR" ]; then
   info "  cron → $(ls ${WORK_DIR}/cron | wc -l | tr -d ' ') files"
 fi
 
-# ── 7. Manifest ──────────────────────────────────────────────────────────
+# ── 8. Manifest ──────────────────────────────────────────────────────────
 cat > "${WORK_DIR}/MANIFEST.json" <<EOF
 {
   "backup_name": "${BACKUP_NAME}",
@@ -108,31 +126,37 @@ cat > "${WORK_DIR}/MANIFEST.json" <<EOF
   "hostname": "$(hostname)",
   "openclaw_home": "${OPENCLAW_HOME}",
   "openclaw_version": "$(openclaw --version 2>/dev/null | head -1 || echo 'unknown')",
-  "created_by": "openclaw-backup skill v1.0",
+  "created_by": "openclaw-backup skill v1.1",
   "contents": {
     "workspace": true,
     "gateway_config": true,
     "system_skills": true,
-    "identity_device": true,
+    "credentials": true,
+    "channel_state": true,
+    "identity": true,
     "guardian_scripts": true,
     "cron_jobs": true
   },
-  "notes": "Credentials and auth tokens are NOT included for security. Re-pair channels after restore."
+  "notes": "All channels should reconnect automatically after restore — no re-pairing needed. This archive contains credentials and API keys — keep it secure."
 }
 EOF
 
-# ── 8. Package ───────────────────────────────────────────────────────────
+# ── 9. Package ───────────────────────────────────────────────────────────
 echo ""
 info "Packaging backup..."
 ARCHIVE="${OUTPUT_DIR}/${BACKUP_NAME}.tar.gz"
 tar -czf "$ARCHIVE" -C "/tmp" "$BACKUP_NAME"
 rm -rf "$WORK_DIR"
 
+# Set restrictive permissions on archive (contains secrets)
+chmod 600 "$ARCHIVE"
+
 ARCHIVE_SIZE=$(du -sh "$ARCHIVE" | cut -f1)
 info "Backup saved: ${ARCHIVE}"
 info "Size: ${ARCHIVE_SIZE}"
+warn "Archive contains credentials — keep it secure (chmod 600 applied)"
 
-# ── 9. Prune old backups (keep last 7) ───────────────────────────────────
+# ── 10. Prune old backups (keep last 7) ──────────────────────────────────
 BACKUP_COUNT=$(ls "${OUTPUT_DIR}"/openclaw-backup_*.tar.gz 2>/dev/null | wc -l)
 if [ "$BACKUP_COUNT" -gt 7 ]; then
   info "Pruning old backups (keeping last 7)..."
