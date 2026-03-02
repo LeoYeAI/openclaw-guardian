@@ -47,6 +47,16 @@ Gateway down detected
   cooldown 300s → resume monitoring
 ```
 
+## ⚡ One-Line Deploy (OpenClaw Users)
+
+Already using OpenClaw? Just tell your AI agent:
+
+> **"Help me install openclaw-guardian to harden my gateway"**
+
+Your agent will handle everything automatically — git init, script install, and auto-start. No terminal needed.
+
+---
+
 ## Quick Start
 
 ```bash

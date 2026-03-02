@@ -47,6 +47,16 @@ OpenClaw Guardian 是 MyClaw.ai 生产基础设施孕育的开源项目。我们
   冷却 300s → 继续监控
 ```
 
+## ⚡ 一句话部署（OpenClaw 用户）
+
+已经在使用 OpenClaw？直接告诉你的 AI 助手：
+
+> **「帮我安装 openclaw-guardian，加固我的 gateway」**
+
+Agent 会自动完成所有步骤——git 初始化、脚本安装、自动启动。无需打开终端。
+
+---
+
 ## 快速开始
 
 ```bash

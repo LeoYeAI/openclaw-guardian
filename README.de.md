@@ -31,6 +31,16 @@ OpenClaw Guardian ist aus der Produktionsinfrastruktur von MyClaw.ai entstanden 
 - **Tägliche Snapshots** — automatisches tägliches Git-Backup
 - **Discord-Benachrichtigungen** — optionale Webhook-Benachrichtigungen
 
+## ⚡ Ein-Zeilen-Deployment (OpenClaw-Nutzer)
+
+Nutzen Sie bereits OpenClaw? Sagen Sie Ihrem KI-Assistenten einfach:
+
+> **„Installiere openclaw-guardian, um meinen Gateway abzusichern"**
+
+Der Agent erledigt alles automatisch — git init, Script-Installation, Autostart. Kein Terminal nötig.
+
+---
+
 ## Schnellstart
 
 ```bash
