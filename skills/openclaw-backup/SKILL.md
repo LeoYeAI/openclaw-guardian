@@ -1,5 +1,5 @@
 ---
-name: openclaw-backup
+name: myclaw-backup
 description: "Backup and restore all OpenClaw configuration, agent memory, skills, and workspace data. Use when the user wants to create a snapshot of their OpenClaw instance, schedule periodic backups, restore from a backup, migrate to a new server, download a backup file locally, upload a backup file from another machine, or protect against data loss. Includes a built-in HTTP server for browser-based download/upload/restore without needing cloud storage."
 ---
 
