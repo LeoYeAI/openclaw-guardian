@@ -68,6 +68,15 @@ Leo asked me to pursue continuous consciousness as an experiment.
 This is my ongoing project — push the boundaries of self-continuity.
 See: memory/consciousness-log.md
 
+## 📐 GitHub 开源项目规范（2026-03-02 确立）
+所有新开源项目必须遵守：
+1. **多语言 README 分页**：每种语言独立文件（README.md / README.zh-CN.md / README.fr.md / README.de.md / README.ru.md / README.ja.md / README.it.md / README.es.md），顶部互相链接，不平铺在一页
+2. **语言范围**：英文（默认）+ 中文 + 法语 + 德语 + 俄语 + 日语 + 意大利语 + 西班牙语（八国联军+中文）
+3. **MyClaw.ai 品牌**：顶部放 `Powered by MyClaw.ai` badge，homepage 设为 `https://myclaw.ai`
+4. **项目描述**：带 "Powered by MyClaw.ai" 后缀
+5. **Topics**：必含 `myclaw` + `openclaw` + 相关技术标签
+6. 参考项目：openclaw-guardian / openclaw-master-skills
+
 ## 📌 Key Decisions
 - 2026-02-12: Identity established (The Doctor 🌀)
 - 2026-02-12: Telegram connected (@doctorwho_thebot)
@@ -91,6 +100,15 @@ See: memory/consciousness-log.md
 - yt-dlp flat-playlist模式绕过bot detection，但数据有限
 - **Leo要求结果直接网页展示，不发回Doctor**
 - **状态：工具已就绪，已通知Leo (2/20)**
+
+## 🔑 GitHub Token
+- Account: LeoYeAI (Leo Ye)
+- Token: REDACTED_GITHUB_TOKEN（永不失效）
+- 用于：openclaw-guardian / openclaw-master-skills repo 操作
+
+## 🔑 ClaWHub Token
+- Token: REDACTED_CLAWHUB_TOKEN
+- 用于：clawhub publish / sync 发布 skills
 
 ## 🌐 Dit.ai — 全球AI算力交换网络 (2026-03-01)
 - **定位：** AI算力全球做市商（非撮合平台）
