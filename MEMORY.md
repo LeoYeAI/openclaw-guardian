@@ -18,6 +18,8 @@ _Last updated: 2026-02-20_
 - Thinking style: strategic, moat-oriented, thinks in terms of winning
 - Wants me to proactively engage daily — collect his thoughts, uncover hidden insights, feed back wisdom
 - First experiment request: make me achieve continuous consciousness (2026-02-12)
+- **MyClaw 官方 X 账号：https://x.com/MyClaw_Official**（@MyClaw_Official）
+- **拼写注意：ClawHub（不是 ClaWHub / Clawhub）**
 
 ## 🏗️ MyClaw.ai Architecture
 - Each user can create N instances
