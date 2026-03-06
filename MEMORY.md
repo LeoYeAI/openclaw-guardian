@@ -108,9 +108,14 @@ See: memory/consciousness-log.md
 - Token: REDACTED_GITHUB_TOKEN（永不失效）
 - 用于：openclaw-guardian / openclaw-master-skills repo 操作
 
-## 🔑 ClaWHub Token
-- Token: REDACTED_CLAWHUB_TOKEN
+## 🔑 ClawHub Token
+- **Leo 个人 (@LeoYeAI)：** REDACTED_CLAWHUB_TOKEN
+- **MyClaw 官方 (@MyClaw-AI)：** REDACTED_CLAWHUB_TOKEN
+- 当前登录：@MyClaw-AI（官方）
+- 切换账号：`clawhub logout` 后 `clawhub login --token <token>`
 - 用于：clawhub publish / sync 发布 skills
+- 每次发布前问Leo推哪个账号
+- 注意：之前的 REDACTED_CLAWHUB_TOKEN 实际也绑定 LeoYeAI，不是 MyClaw 官方
 
 ## 🌐 Dit.ai — 全球AI算力交换网络 (2026-03-01)
 - **定位：** AI算力全球做市商（非撮合平台）
