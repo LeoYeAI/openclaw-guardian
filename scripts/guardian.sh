@@ -98,10 +98,21 @@ daily_backup() {
     [ -f "$last_backup_file" ] && last_backup=$(cat "$last_backup_file")
 
     if [ "$last_backup" != "$today" ]; then
-        cd "$WORKSPACE" && git add -A && \
-        git commit -m "daily-backup: auto snapshot $today" >> "$LOG_FILE" 2>&1 || true
-        echo "$today" > "$last_backup_file"
-        log "📦 每日备份完成: $today"
+        if git -C "$WORKSPACE" add -A >> "$LOG_FILE" 2>&1; then
+            if git -C "$WORKSPACE" diff --cached --quiet; then
+                echo "$today" > "$last_backup_file"
+                log "📦 每日备份检查完成: 无新变更"
+            elif git -C "$WORKSPACE" commit -m "daily-backup: auto snapshot $today" >> "$LOG_FILE" 2>&1; then
+                echo "$today" > "$last_backup_file"
+                log "📦 每日备份完成: $today"
+            else
+                log "⚠️ 每日备份失败：git commit 未成功，将在下次巡检重试"
+                return 1
+            fi
+        else
+            log "⚠️ 每日备份失败：git add 未成功，将在下次巡检重试"
+            return 1
+        fi
     fi
 }
 
