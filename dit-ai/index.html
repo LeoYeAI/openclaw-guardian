@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <title>Dit.ai — PRD v3.0</title>
+  <title>Dit.ai — PRD v3.1</title>
   <style>
     :root {
       --bg: #060b12;
@@ -25,12 +25,12 @@
       --radius: 10px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
-    html { font-size: 16px; }
+    html { font-size: 18px; }
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
       background: var(--bg);
       color: var(--text);
-      line-height: 1.6;
+      line-height: 1.75;
       min-height: 100vh;
     }
 
@@ -83,7 +83,7 @@
       color: var(--text); margin-bottom: 10px;
     }
     .hero h1 span { color: var(--blue); }
-    .hero-desc { font-size: 14px; color: var(--text2); max-width: 340px; margin: 0 auto 28px; line-height: 1.7; }
+    .hero-desc { font-size: 16px; color: var(--text2); max-width: 420px; margin: 0 auto 28px; line-height: 1.8; }
 
     /* ── TICKER ── */
     .ticker {
@@ -98,9 +98,9 @@
       border-radius: 8px; padding: 10px 14px;
       display: flex; flex-direction: column; gap: 2px;
     }
-    .ticker-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
-    .ticker-value { font-size: 16px; font-weight: 700; color: var(--text); }
-    .ticker-change { font-size: 11px; font-weight: 600; }
+    .ticker-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
+    .ticker-value { font-size: 18px; font-weight: 700; color: var(--text); }
+    .ticker-change { font-size: 12px; font-weight: 600; }
     .up { color: var(--green); }
     .down { color: var(--red); }
 
@@ -111,19 +111,19 @@
     .section { padding: 32px 0 0; }
     .section-label {
       display: flex; align-items: center; gap: 8px;
-      font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
+      font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em;
       color: var(--text3); margin-bottom: 14px;
     }
     .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
-    .section-title { font-size: 20px; font-weight: 700; color: var(--text); margin-bottom: 16px; letter-spacing: -0.3px; }
+    .section-title { font-size: 24px; font-weight: 700; color: var(--text); margin-bottom: 18px; letter-spacing: -0.3px; }
 
     /* ── CARDS ── */
     .card {
       background: var(--bg2); border: 1px solid var(--border);
       border-radius: var(--radius); padding: 16px; margin-bottom: 12px;
     }
-    .card-title { font-size: 13px; font-weight: 600; color: var(--blue); margin-bottom: 10px; }
-    .card p { font-size: 14px; color: var(--text2); line-height: 1.7; margin-bottom: 8px; }
+    .card-title { font-size: 15px; font-weight: 600; color: var(--blue); margin-bottom: 10px; }
+    .card p { font-size: 16px; color: var(--text2); line-height: 1.8; margin-bottom: 10px; }
     .card p:last-child { margin-bottom: 0; }
 
     /* ── KPI GRID ── */
@@ -137,12 +137,12 @@
     .kpi-card.blue { border-color: rgba(45,126,247,0.3); background: rgba(45,126,247,0.05); }
     .kpi-card.green { border-color: rgba(0,212,160,0.3); background: rgba(0,212,160,0.05); }
     .kpi-card.yellow { border-color: rgba(247,201,72,0.3); background: rgba(247,201,72,0.05); }
-    .kpi-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
-    .kpi-value { font-size: 20px; font-weight: 800; color: var(--text); line-height: 1.1; }
+    .kpi-label { font-size: 11px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.06em; }
+    .kpi-value { font-size: 24px; font-weight: 800; color: var(--text); line-height: 1.1; }
     .kpi-card.blue .kpi-value { color: var(--blue); }
     .kpi-card.green .kpi-value { color: var(--green); }
     .kpi-card.yellow .kpi-value { color: var(--yellow); }
-    .kpi-sub { font-size: 11px; color: var(--text3); }
+    .kpi-sub { font-size: 12px; color: var(--text3); }
 
     /* ── ARCH ── */
     .arch { display: flex; flex-direction: column; gap: 2px; }
@@ -155,12 +155,12 @@
     .arch-row.adapter { background: rgba(247,201,72,0.07); border: 1px solid rgba(247,201,72,0.15); }
     .arch-row.api { background: rgba(247,110,110,0.07); border: 1px solid rgba(247,110,110,0.15); }
     .arch-arrow { text-align: center; font-size: 14px; color: var(--text3); padding: 2px 0; }
-    .arch-name { font-size: 13px; font-weight: 700; }
+    .arch-name { font-size: 15px; font-weight: 700; }
     .arch-row.buyer .arch-name { color: var(--green); }
     .arch-row.gateway .arch-name { color: var(--blue); }
     .arch-row.adapter .arch-name { color: var(--yellow); }
     .arch-row.api .arch-name { color: var(--red); }
-    .arch-desc { font-size: 11px; color: var(--text3); margin-top: 2px; }
+    .arch-desc { font-size: 13px; color: var(--text3); margin-top: 2px; }
     .arch-tags { display: flex; gap: 4px; flex-wrap: wrap; flex-shrink: 0; }
     .arch-tag { font-size: 10px; padding: 2px 7px; border-radius: 4px; background: rgba(255,255,255,0.04); color: var(--text3); white-space: nowrap; }
 
@@ -172,15 +172,15 @@
     }
     .pf-item { flex: 1; padding: 14px 10px; text-align: center; border-right: 1px solid var(--border); }
     .pf-item:last-child { border-right: none; }
-    .pf-label { font-size: 10px; color: var(--text3); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
-    .pf-val { font-size: 18px; font-weight: 800; }
-    .pf-sub { font-size: 10px; color: var(--text3); margin-top: 3px; }
+    .pf-label { font-size: 12px; color: var(--text3); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.05em; }
+    .pf-val { font-size: 22px; font-weight: 800; }
+    .pf-sub { font-size: 12px; color: var(--text3); margin-top: 3px; }
 
     /* ── TABLE ── */
     .tbl-wrap { overflow-x: auto; border-radius: var(--radius); border: 1px solid var(--border); margin-bottom: 12px; }
-    table { width: 100%; border-collapse: collapse; font-size: 13px; }
-    th { padding: 10px 12px; text-align: left; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text3); border-bottom: 1px solid var(--border); background: var(--bg3); white-space: nowrap; }
-    td { padding: 11px 12px; border-bottom: 1px solid rgba(26,45,74,0.6); color: var(--text2); white-space: nowrap; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th { padding: 12px 14px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text3); border-bottom: 1px solid var(--border); background: var(--bg3); white-space: nowrap; }
+    td { padding: 13px 14px; border-bottom: 1px solid rgba(26,45,74,0.6); color: var(--text2); white-space: nowrap; }
     tr:last-child td { border-bottom: none; }
     tr.peak td { color: var(--blue); font-weight: 700; background: rgba(45,126,247,0.04); }
     .cg { color: var(--green) !important; font-weight: 700; }
@@ -196,28 +196,28 @@
     .sc.mid { border-color: rgba(45,126,247,0.4); background: rgba(45,126,247,0.06); }
     .sc-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text3); margin-bottom: 8px; }
     .sc.mid .sc-tag { color: var(--blue); }
-    .sc-gmv { font-size: 18px; font-weight: 800; color: var(--text); line-height: 1; margin-bottom: 4px; }
+    .sc-gmv { font-size: 22px; font-weight: 800; color: var(--text); line-height: 1; margin-bottom: 4px; }
     .sc.mid .sc-gmv { color: var(--blue); }
-    .sc-profit { font-size: 12px; color: var(--green); font-weight: 600; margin-bottom: 6px; }
-    .sc-detail { font-size: 11px; color: var(--text3); line-height: 1.5; }
+    .sc-profit { font-size: 14px; color: var(--green); font-weight: 600; margin-bottom: 6px; }
+    .sc-detail { font-size: 13px; color: var(--text3); line-height: 1.5; }
 
     /* ── TIMELINE ── */
     .tl { position: relative; padding-left: 24px; }
     .tl::before { content: ''; position: absolute; left: 5px; top: 6px; bottom: 6px; width: 2px; background: var(--border); }
     .tl-item { position: relative; margin-bottom: 24px; }
     .tl-dot { position: absolute; left: -22px; top: 4px; width: 10px; height: 10px; background: var(--blue); border-radius: 50%; border: 2px solid var(--bg); }
-    .tl-phase { font-size: 10px; color: var(--blue); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
-    .tl-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .tl-phase { font-size: 12px; color: var(--blue); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 3px; }
+    .tl-title { font-size: 18px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
     .tl-list { list-style: none; }
-    .tl-list li { font-size: 13px; color: var(--text2); padding: 2px 0; }
+    .tl-list li { font-size: 15px; color: var(--text2); padding: 3px 0; }
     .tl-list li::before { content: '·  '; color: var(--text3); }
 
     /* ── CODE ── */
     .code {
       background: #020508; border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 14px 16px;
+      border-radius: var(--radius); padding: 16px 18px;
       font-family: 'SF Mono','Fira Code','Consolas',monospace;
-      font-size: 12px; color: var(--text2); overflow-x: auto; line-height: 1.7;
+      font-size: 14px; color: var(--text2); overflow-x: auto; line-height: 1.8;
     }
     .cm { color: var(--text3); } .ck { color: var(--purple); } .cv { color: var(--green); } .cn { color: var(--yellow); }
 
@@ -225,17 +225,17 @@
     .moat-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
     .moat { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 14px; }
     .moat-icon { font-size: 20px; margin-bottom: 8px; }
-    .moat-name { font-size: 13px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
-    .moat-desc { font-size: 12px; color: var(--text3); line-height: 1.5; }
+    .moat-name { font-size: 15px; font-weight: 700; color: var(--blue); margin-bottom: 4px; }
+    .moat-desc { font-size: 14px; color: var(--text3); line-height: 1.6; }
 
     /* ── CHECKLIST ── */
     .cl { list-style: none; }
-    .cl li { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid rgba(26,45,74,0.5); font-size: 13px; color: var(--text2); }
+    .cl li { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid rgba(26,45,74,0.5); font-size: 15px; color: var(--text2); }
     .cl li:last-child { border-bottom: none; }
     .cl-box { width: 16px; height: 16px; border: 1.5px solid var(--border2); border-radius: 4px; flex-shrink: 0; margin-top: 1px; }
 
     /* ── INFO BOX ── */
-    .infobox { padding: 12px 14px; border-radius: 8px; font-size: 12px; color: var(--text2); margin-top: 12px; line-height: 1.6; }
+    .infobox { padding: 14px 16px; border-radius: 8px; font-size: 14px; color: var(--text2); margin-top: 12px; line-height: 1.7; }
     .infobox.blue { background: rgba(45,126,247,0.06); border: 1px solid rgba(45,126,247,0.15); }
     .infobox.green { background: rgba(0,212,160,0.06); border: 1px solid rgba(0,212,160,0.15); }
     .infobox.yellow { background: rgba(247,201,72,0.06); border: 1px solid rgba(247,201,72,0.15); }
@@ -247,8 +247,8 @@
     }
     .nav::-webkit-scrollbar { display: none; }
     .nav a {
-      flex-shrink: 0; font-size: 12px; font-weight: 600;
-      padding: 6px 14px; border-radius: 20px;
+      flex-shrink: 0; font-size: 14px; font-weight: 600;
+      padding: 8px 16px; border-radius: 20px;
       background: var(--bg3); border: 1px solid var(--border);
       color: var(--text2); text-decoration: none;
       transition: all 0.15s;
@@ -256,7 +256,7 @@
     .nav a:hover { border-color: var(--blue); color: var(--blue); }
 
     /* ── FOOTER ── */
-    .footer { text-align: center; padding: 32px 16px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text3); }
+    .footer { text-align: center; padding: 32px 16px; border-top: 1px solid var(--border); font-size: 14px; color: var(--text3); }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 400px) {
@@ -267,7 +267,7 @@
     }
     @media (min-width: 640px) {
       .kpi-grid { grid-template-columns: repeat(3,1fr); }
-      .hero-desc { font-size: 15px; }
+      .hero-desc { font-size: 17px; }
       .hero { padding: 56px 24px 40px; }
       .container { padding: 0 24px 80px; }
     }
@@ -373,40 +373,40 @@
 <!-- TOP BAR -->
 <div class="topbar">
   <div class="topbar-logo">Dit<span>.</span>ai</div>
-  <div class="topbar-badge">PRD v3.0 · Confidential</div>
+  <div class="topbar-badge">PRD v3.1 · Confidential</div>
 </div>
 
 <!-- HERO -->
 <div class="hero">
   <div class="hero-tag">全球AI算力流通协议</div>
   <h1>全球AI算力<br><span>交易网络</span></h1>
-  <p class="hero-desc">30万OpenClaw节点 · 年GMV $2.82亿 · 年毛利 $9,000万</p>
+  <p class="hero-desc">50万OpenClaw节点 · 年GMV $2.6亿 · 年毛利 $8,000万</p>
 
   <!-- 实时行情风格 ticker -->
   <div class="ticker" style="justify-content:center;">
     <div class="ticker-item">
       <span class="ticker-label">目标节点</span>
-      <span class="ticker-value">300,000</span>
+      <span class="ticker-value">500,000</span>
       <span class="ticker-change up">↑ 年底目标</span>
     </div>
     <div class="ticker-item">
-      <span class="ticker-label">单节点日GMV</span>
-      <span class="ticker-value">$10</span>
-      <span class="ticker-change up">↑ $300/月</span>
+      <span class="ticker-label">单节点日消耗</span>
+      <span class="ticker-value">$5</span>
+      <span class="ticker-change up">↑ $150/月</span>
     </div>
     <div class="ticker-item">
       <span class="ticker-label">毛利率</span>
-      <span class="ticker-value">30%+</span>
+      <span class="ticker-value">28-32%</span>
       <span class="ticker-change up">↑ 规模提升</span>
     </div>
     <div class="ticker-item">
       <span class="ticker-label">全年GMV</span>
-      <span class="ticker-value">$2.82亿</span>
+      <span class="ticker-value">$2.6亿</span>
       <span class="ticker-change up">↑ 中性预测</span>
     </div>
     <div class="ticker-item">
       <span class="ticker-label">年底浮存金</span>
-      <span class="ticker-value">$4,800万</span>
+      <span class="ticker-value">$5,000万</span>
       <span class="ticker-change up">↑ 无成本</span>
     </div>
   </div>
@@ -417,6 +417,7 @@
   <!-- NAV -->
   <div class="nav">
     <a href="#positioning">定位</a>
+    <a href="#supply">供应来源</a>
     <a href="#assumptions">核心假设</a>
     <a href="#arch">系统架构</a>
     <a href="#pricing">定价机制</a>
@@ -432,12 +433,53 @@
     <div class="section-label">01</div>
     <div class="section-title">产品定位</div>
     <div class="card">
-      <p>全球每年有<strong style="color:var(--blue)">数十亿美元</strong>的AI订阅额度被白白浪费——Anthropic Max、Kiro、Antigravity、OpenAI Pro用户的大量额度每月清零。</p>
+      <p>全球每年有<strong style="color:var(--blue)">数十亿美元</strong>的AI算力被低效使用——个人订阅额度月底清零，企业批量采购的折扣额度大量闲置，云厂商的committed use合约远未跑满。</p>
       <p><strong style="color:var(--text)">Dit让这些算力流动起来，成为可交易的商品。</strong></p>
       <p>Dit不是撮合平台，不是API代理。Dit是<strong style="color:var(--blue)">AI算力的全球做市商</strong>——供应商报底价，买家付顶价，平台掌握定价权，吃中间spread。</p>
     </div>
     <div class="infobox blue">
-      <strong style="color:var(--blue)">核心洞察：</strong>每一个OpenClaw实例天然是Dit的一个节点——既可作为供应商贡献闲置算力，也可作为买家获取全网成本最优算力。年底目标接入 <strong style="color:var(--text)">30万台实例</strong>，构建全球最大去中心化AI算力网络。
+      <strong style="color:var(--blue)">核心洞察：</strong>每一个OpenClaw实例天然是Dit的一个节点——既可作为供应商贡献闲置算力，也可作为买家获取全网成本最优算力。年底目标接入 <strong style="color:var(--text)">50万台实例</strong>，构建全球最大去中心化AI算力网络。
+    </div>
+  </div>
+
+  <!-- 供应来源 -->
+  <div class="section" id="supply">
+    <div class="section-label">01.1</div>
+    <div class="section-title">多层供应来源</div>
+    <div class="card">
+      <div class="card-title" style="color:var(--yellow);">🏢 Tier 1 · 企业级折扣接入（核心供给）</div>
+      <p>企业客户通过与AI厂商签订的<strong style="color:var(--text)">年度批量采购协议</strong>获得大幅折扣（通常官方价的40-60%），但实际使用率往往不足50%。Dit将这些闲置的企业级折扣额度变现。</p>
+    </div>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>供应来源</th><th>折扣深度</th><th>供给稳定性</th><th>Dit毛利空间</th></tr></thead>
+        <tbody>
+          <tr><td style="color:var(--yellow);font-weight:600;">企业年度协议</td><td class="cg">40-60% off</td><td class="cg">极高</td><td class="cg">35-45%</td></tr>
+          <tr><td style="color:var(--yellow);font-weight:600;">云厂商committed use</td><td class="cg">30-50% off</td><td class="cg">极高</td><td class="cg">30-40%</td></tr>
+          <tr><td style="color:var(--yellow);font-weight:600;">AI厂商渠道伙伴折扣</td><td class="cy">25-40% off</td><td class="cb">高</td><td class="cy">25-35%</td></tr>
+          <tr><td>个人Max/Pro订阅</td><td class="cy">20-35% off</td><td>中</td><td class="cy">20-30%</td></tr>
+          <tr><td>开源模型自建推理</td><td class="cg">50-70% off</td><td class="cb">高</td><td class="cg">40-55%</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--green);">供给结构演进</div>
+      <div class="code">
+<span class="cm"># 早期（Q1-Q2）</span>
+个人订阅节点  <span class="cn">70%</span>  ←  MyClaw用户闲置额度
+企业折扣接入  <span class="cn">20%</span>  ←  首批BD合作
+自建推理      <span class="cn">10%</span>  ←  开源模型补充
+
+<span class="cm"># 规模期（Q3-Q4）</span>
+企业折扣接入  <span class="cv">50%</span>  ←  核心供给，毛利最高
+个人订阅节点  <span class="cn">30%</span>  ←  长尾覆盖
+自建推理      <span class="cn">15%</span>  ←  成本兜底
+云厂商合约    <span class="cn"> 5%</span>  ←  峰值弹性
+
+<span class="cm"># 企业供给越多 → 成本越低 → 毛利率越高 → 定价更有竞争力</span></div>
+    </div>
+    <div class="infobox green">
+      <strong style="color:var(--green)">为什么企业级供给是关键：</strong>企业折扣的深度和稳定性远超个人订阅。一家持有Anthropic年度协议的企业，闲置额度可能等于数千个个人Max用户。Dit不需要逐个获取节点——一个企业BD就能带来海量供给，且合约期内价格锁定，成本高度可预测。
     </div>
   </div>
 
@@ -447,30 +489,33 @@
     <div class="section-title">核心假设</div>
     <div class="kpi-grid">
       <div class="kpi-card blue">
-        <div class="kpi-label">单节点日均GMV</div>
-        <div class="kpi-value">$10</div>
+        <div class="kpi-label">单节点日均消耗</div>
+        <div class="kpi-value">$5</div>
         <div class="kpi-sub">每台实例每天</div>
       </div>
       <div class="kpi-card blue">
         <div class="kpi-label">单节点月均GMV</div>
-        <div class="kpi-value">$300</div>
-        <div class="kpi-sub">$10 × 30天</div>
+        <div class="kpi-value">$150</div>
+        <div class="kpi-sub">$5 × 30天</div>
       </div>
       <div class="kpi-card green">
         <div class="kpi-label">毛利率</div>
-        <div class="kpi-value">30%+</div>
+        <div class="kpi-value">28-32%</div>
         <div class="kpi-sub">规模化后持续提升</div>
       </div>
       <div class="kpi-card green">
         <div class="kpi-label">单节点月毛利</div>
-        <div class="kpi-value">$90+</div>
-        <div class="kpi-sub">$300 × 30%</div>
+        <div class="kpi-value">$42-48</div>
+        <div class="kpi-sub">$150 × 28~32%</div>
       </div>
       <div class="kpi-card blue">
         <div class="kpi-label">目标节点（年底）</div>
-        <div class="kpi-value">30万</div>
+        <div class="kpi-value">50万</div>
         <div class="kpi-sub">OpenClaw实例</div>
       </div>
+    </div>
+    <div class="infobox blue">
+      <strong style="color:var(--blue)">假设依据：</strong>$5/天 ≈ 每台实例日均消耗约330K tokens（按$15/M官方价），相当于Agent执行15-20次中等复杂度任务。对于活跃用户的Agent而言，这是一个保守且可持续的消耗水平。
     </div>
   </div>
 
@@ -504,8 +549,8 @@
         <div class="arch-arrow">↓</div>
         <div class="arch-row adapter">
           <div>
-            <div class="arch-name">OpenClaw实例（供应商，内置Adapter）</div>
-            <div class="arch-desc">用自己的key和IP请求官方API</div>
+            <div class="arch-name">供应商层（多源混合）</div>
+            <div class="arch-desc">企业折扣接入 · 个人订阅节点 · 自建推理 · 云厂商合约</div>
           </div>
           <div class="arch-tags">
             <span class="arch-tag">key不离境</span>
@@ -525,7 +570,7 @@
       </div>
     </div>
     <div class="infobox blue">
-      <strong style="color:var(--blue)">关键原则：</strong>Dit平台永远不持有API key · 所有官方请求从供应商自己IP发出 · 每个OpenClaw实例可同时是供应商和买家
+      <strong style="color:var(--blue)">关键原则：</strong>Dit平台永远不持有API key · 所有官方请求从供应商自己IP发出 · 供给侧多层混合：企业批量折扣（核心）+ 个人订阅节点（长尾）+ 自建推理（兜底）
     </div>
   </div>
 
@@ -557,44 +602,49 @@
         <thead><tr><th>角色</th><th>价格/M tokens</th><th>说明</th></tr></thead>
         <tbody>
           <tr><td>官方售价</td><td>$15</td><td>Anthropic官方</td></tr>
-          <tr><td>供应商底价</td><td class="cy">$9</td><td>Max订阅折扣</td></tr>
+          <tr><td>企业折扣成本</td><td class="cg">$6-9</td><td>年度协议/批量采购</td></tr>
+          <tr><td>个人订阅成本</td><td class="cy">$9-10</td><td>Max/Pro订阅折扣</td></tr>
           <tr><td style="color:var(--text)">Dit对买家定价</td><td style="color:var(--text);font-weight:600;">$12</td><td>低于官方20%</td></tr>
-          <tr><td><strong>Dit毛利</strong></td><td class="cg">$3（25%）</td><td>规模越大越稳</td></tr>
+          <tr><td><strong>Dit毛利（企业源）</strong></td><td class="cg">$3-6（25-50%）</td><td>核心利润来源</td></tr>
+          <tr><td><strong>Dit毛利（个人源）</strong></td><td class="cy">$2-3（17-25%）</td><td>长尾补充</td></tr>
         </tbody>
       </table>
+    </div>
+    <div class="infobox green">
+      <strong style="color:var(--green)">混合供给的利润优势：</strong>随着企业级供给占比从20%提升到50%+，整体加权成本持续下降，同等售价下毛利率从初期的20%爬升至32%+。这就是供给侧结构优化驱动的利润增长。
     </div>
   </div>
 
   <!-- 五、业务规模预测 -->
   <div class="section" id="forecast">
     <div class="section-label">05</div>
-    <div class="section-title">业务规模预测（v3.0）</div>
+    <div class="section-title">业务规模预测（v3.1）</div>
 
     <!-- 年底目标 -->
     <div class="kpi-grid" style="margin-bottom:12px;">
       <div class="kpi-card green">
         <div class="kpi-label">12月单月GMV</div>
-        <div class="kpi-value">$7,200万</div>
-        <div class="kpi-sub">24万活跃节点</div>
+        <div class="kpi-value">$7,500万</div>
+        <div class="kpi-sub">50万活跃节点</div>
       </div>
       <div class="kpi-card green">
         <div class="kpi-label">12月单月毛利</div>
-        <div class="kpi-value">$2,376万</div>
-        <div class="kpi-sub">毛利率33%</div>
+        <div class="kpi-value">$2,400万</div>
+        <div class="kpi-sub">毛利率32%</div>
       </div>
       <div class="kpi-card blue">
         <div class="kpi-label">全年GMV</div>
-        <div class="kpi-value">$2.82亿</div>
+        <div class="kpi-value">$2.6亿</div>
         <div class="kpi-sub">2026年累计</div>
       </div>
       <div class="kpi-card blue">
         <div class="kpi-label">全年毛利</div>
-        <div class="kpi-value">$9,000万</div>
+        <div class="kpi-value">$8,000万</div>
         <div class="kpi-sub">2026年累计</div>
       </div>
       <div class="kpi-card yellow">
         <div class="kpi-label">年底浮存金</div>
-        <div class="kpi-value">$4,800万</div>
+        <div class="kpi-value">$5,000万</div>
         <div class="kpi-sub">无成本持有</div>
       </div>
     </div>
@@ -605,16 +655,16 @@
       <table>
         <thead><tr><th>月份</th><th>活跃节点</th><th>月GMV</th><th>毛利率</th><th>月毛利</th></tr></thead>
         <tbody>
-          <tr><td>2026-03</td><td>400</td><td>$12万</td><td>20%</td><td class="cg">$2.4万</td></tr>
-          <tr><td>2026-04</td><td>1,600</td><td>$48万</td><td>22%</td><td class="cg">$10.6万</td></tr>
-          <tr><td>2026-05</td><td>6,400</td><td>$192万</td><td>25%</td><td class="cg">$48万</td></tr>
-          <tr><td>2026-06</td><td>20,000</td><td>$600万</td><td>28%</td><td class="cg">$168万</td></tr>
-          <tr><td>2026-07</td><td>48,000</td><td>$1,440万</td><td>30%</td><td class="cg">$432万</td></tr>
-          <tr><td>2026-08</td><td>88,000</td><td>$2,640万</td><td>30%</td><td class="cg">$792万</td></tr>
-          <tr><td>2026-09</td><td>136,000</td><td>$4,080万</td><td>32%</td><td class="cg">$1,306万</td></tr>
-          <tr><td>2026-10</td><td>184,000</td><td>$5,520万</td><td>32%</td><td class="cg">$1,766万</td></tr>
-          <tr><td>2026-11</td><td>216,000</td><td>$6,480万</td><td>33%</td><td class="cg">$2,138万</td></tr>
-          <tr class="peak"><td>2026-12 🏆</td><td>240,000</td><td>$7,200万</td><td>33%</td><td class="cg">$2,376万</td></tr>
+          <tr><td>2026-03</td><td>500</td><td>$7.5万</td><td>20%</td><td class="cg">$1.5万</td></tr>
+          <tr><td>2026-04</td><td>2,000</td><td>$30万</td><td>22%</td><td class="cg">$6.6万</td></tr>
+          <tr><td>2026-05</td><td>8,000</td><td>$120万</td><td>24%</td><td class="cg">$28.8万</td></tr>
+          <tr><td>2026-06</td><td>28,000</td><td>$420万</td><td>26%</td><td class="cg">$109万</td></tr>
+          <tr><td>2026-07</td><td>68,000</td><td>$1,020万</td><td>28%</td><td class="cg">$286万</td></tr>
+          <tr><td>2026-08</td><td>140,000</td><td>$2,100万</td><td>28%</td><td class="cg">$588万</td></tr>
+          <tr><td>2026-09</td><td>230,000</td><td>$3,450万</td><td>30%</td><td class="cg">$1,035万</td></tr>
+          <tr><td>2026-10</td><td>330,000</td><td>$4,950万</td><td>30%</td><td class="cg">$1,485万</td></tr>
+          <tr><td>2026-11</td><td>420,000</td><td>$6,300万</td><td>32%</td><td class="cg">$2,016万</td></tr>
+          <tr class="peak"><td>2026-12 🏆</td><td>500,000</td><td>$7,500万</td><td>32%</td><td class="cg">$2,400万</td></tr>
         </tbody>
       </table>
     </div>
@@ -623,28 +673,28 @@
     <div class="card-title" style="margin:16px 0 8px;">情景分析</div>
     <div class="scenario-grid">
       <div class="sc">
-        <div class="sc-tag">保守 · 50%</div>
-        <div class="sc-gmv">$8,000万</div>
-        <div class="sc-profit">毛利 ~$2,200万</div>
-        <div class="sc-detail">15万节点<br>$8/节点/天</div>
+        <div class="sc-tag">保守 · 60%</div>
+        <div class="sc-gmv">$1亿</div>
+        <div class="sc-profit">毛利 ~$2,600万</div>
+        <div class="sc-detail">30万节点<br>$4/节点/天</div>
       </div>
       <div class="sc mid">
         <div class="sc-tag">✦ 中性 · 100%</div>
-        <div class="sc-gmv">$2.82亿</div>
-        <div class="sc-profit">毛利 ~$9,000万</div>
-        <div class="sc-detail">30万节点<br>$10/节点/天</div>
+        <div class="sc-gmv">$2.6亿</div>
+        <div class="sc-profit">毛利 ~$8,000万</div>
+        <div class="sc-detail">50万节点<br>$5/节点/天</div>
       </div>
       <div class="sc">
         <div class="sc-tag">乐观 · 超额</div>
-        <div class="sc-gmv">$4亿+</div>
-        <div class="sc-profit">毛利 ~$1.3亿</div>
-        <div class="sc-detail">36万节点<br>$12/节点/天</div>
+        <div class="sc-gmv">$3.8亿+</div>
+        <div class="sc-profit">毛利 ~$1.2亿</div>
+        <div class="sc-detail">65万节点<br>$6/节点/天</div>
       </div>
     </div>
 
     <!-- 浮存金 -->
     <div class="infobox yellow" style="margin-top:12px;">
-      <strong style="color:var(--yellow)">💰 浮存金战略价值：</strong>年底$4,800万无成本持有，相当于零息贷款；短期理财年化2-3%额外产生$100万+收益；随规模持续扩大，形成准金融资产。
+      <strong style="color:var(--yellow)">💰 浮存金战略价值：</strong>年底$5,000万无成本持有，相当于零息贷款；短期理财年化2-3%额外产生$100万+收益；随规模持续扩大，形成准金融资产。
     </div>
   </div>
 
@@ -676,7 +726,7 @@
   <!-- 七、增长路径 -->
   <div class="section" id="growth">
     <div class="section-label">07</div>
-    <div class="section-title">增长路径（0 → 30万节点）</div>
+    <div class="section-title">增长路径（0 → 50万节点）</div>
     <div class="tl">
       <div class="tl-item">
         <div class="tl-dot"></div>
@@ -685,12 +735,12 @@
         <ul class="tl-list">
           <li>MyClaw Dashboard一键接入Dit，早期节点分成+10%</li>
           <li>验证产品跑通，首批收入落地</li>
-          <li>盈亏平衡：~600个活跃节点（月GMV $18万）</li>
+          <li>盈亏平衡：~400个活跃节点（月GMV $6万）</li>
         </ul>
       </div>
       <div class="tl-item">
         <div class="tl-dot"></div>
-        <div class="tl-phase">阶段二 · Q2 · 2,000→25,000节点</div>
+        <div class="tl-phase">阶段二 · Q2 · 2,000→30,000节点</div>
         <div class="tl-title">飞轮启动</div>
         <ul class="tl-list">
           <li>新用户注册流程内嵌Dit接入引导</li>
@@ -700,7 +750,7 @@
       </div>
       <div class="tl-item">
         <div class="tl-dot" style="background:var(--green);"></div>
-        <div class="tl-phase">阶段三 · Q3~Q4 · 25,000→300,000节点</div>
+        <div class="tl-phase">阶段三 · Q3~Q4 · 30,000→500,000节点</div>
         <div class="tl-title">规模爆发</div>
         <ul class="tl-list">
           <li>Dit接入成为OpenClaw默认功能（opt-out）</li>
@@ -752,9 +802,9 @@
     <div class="section-label">09</div>
     <div class="section-title">核心护城河</div>
     <div class="moat-grid">
-      <div class="moat"><div class="moat-icon">🌐</div><div class="moat-name">30万节点网络</div><div class="moat-desc">全球最大去中心化AI算力网络，新进者无法短期复制</div></div>
+      <div class="moat"><div class="moat-icon">🌐</div><div class="moat-name">50万节点网络</div><div class="moat-desc">全球最大去中心化AI算力网络，新进者无法短期复制</div></div>
       <div class="moat"><div class="moat-icon">🔒</div><div class="moat-name">定价黑箱</div><div class="moat-desc">供需双方均不知对方价格，信息优势永久在平台</div></div>
-      <div class="moat"><div class="moat-icon">💰</div><div class="moat-name">$4,800万浮存金</div><div class="moat-desc">年底无成本持有，随规模线性增长，准金融资产</div></div>
+      <div class="moat"><div class="moat-icon">💰</div><div class="moat-name">$5,000万浮存金</div><div class="moat-desc">年底无成本持有，随规模线性增长，准金融资产</div></div>
       <div class="moat"><div class="moat-icon">🔗</div><div class="moat-name">用户深度绑定</div><div class="moat-desc">节点有收入依赖，离开MyClaw = 断收入，留存极强</div></div>
       <div class="moat"><div class="moat-icon">⚡</div><div class="moat-name">协议去中心化</div><div class="moat-desc">无中央API key，无单点风险，节点越多越反脆弱</div></div>
     </div>
@@ -770,8 +820,8 @@
         <tbody>
           <tr><td>节点质量参差</td><td class="cy">高</td><td>自动评分+降权，低质节点不参与路由</td></tr>
           <tr><td>官方政策收紧</td><td style="color:var(--red)">中</td><td>多模型分散，单一来源不超过20%流量</td></tr>
-          <tr><td>增速不及预期</td><td style="color:var(--red)">中</td><td>保守情景全年毛利仍达$2,200万</td></tr>
-          <tr><td>竞争对手跟进</td><td class="cg">低</td><td>先发+网络效应，30万节点护城河极深</td></tr>
+          <tr><td>增速不及预期</td><td style="color:var(--red)">中</td><td>保守情景全年毛利仍达$2,600万</td></tr>
+          <tr><td>竞争对手跟进</td><td class="cg">低</td><td>先发+网络效应，50万节点护城河极深</td></tr>
         </tbody>
       </table>
     </div>
@@ -779,7 +829,7 @@
 
 </div>
 
-<div class="footer">Dit.ai · PRD v3.0 · The Doctor · 2026-03-02 · Confidential</div>
+<div class="footer">Dit.ai · PRD v3.1 · The Doctor · 2026-03-06 · Confidential</div>
 
 </body>
 </html>
