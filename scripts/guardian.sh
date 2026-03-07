@@ -39,7 +39,7 @@ is_gateway_running() {
 get_stable_commit() {
     git -C "$WORKSPACE" log --all --oneline -50 2>/dev/null | \
         grep -v -E "rollback|daily-backup|auto-backup|guardian-auto" | \
-        sed -n '2p' | awk '{print $1}'
+        sed -n '1p' | awk '{print $1}'
 }
 
 # 尝试 doctor --fix 修复
