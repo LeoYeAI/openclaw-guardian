@@ -42,6 +42,11 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - Dit.ai site: dit-ai-official (id: 989f9371-70a0-48d3-8e00-29d5de7fb86a)
 - URL: https://dit-ai-official.netlify.app
 
+### Twitter (X) Authentication
+- auth_token (cookie): aafcff5c7252e3ba36ea6c4e3da68086d56b52d1
+- ct0 (cookie): aa5e183b91e63095652387ca41c3603d81ecbacf8850addb39187e3648061eef01f3c1bbd014d747a757a344a4df83762c7e660c4b2e4c0e3245337c47a066caf6ec3e4121d81d2d4cd26e2331b73df2
+- 用法：作为 Cookie header 传入 → `auth_token=<val>; ct0=<val>`，ct0 同时作为 `x-csrf-token` header
+
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
