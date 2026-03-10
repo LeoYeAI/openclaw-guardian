@@ -1,10 +1,15 @@
-# MyClaw Bench 🦞
+<div align="center">
 
-**The definitive benchmark for AI coding agents. Built from real-world usage data.**
+# **MyClaw Bench** 🦞
+
+### **The definitive benchmark for AI agents on OpenClaw.**
+**Built from real-world usage data.**
 
 [English](README.md) | [中文](README.zh-CN.md) | [Français](README.fr.md) | [Deutsch](README.de.md) | [Русский](README.ru.md) | [日本語](README.ja.md) | [Italiano](README.it.md) | [Español](README.es.md)
 
 [![Powered by MyClaw.ai](https://img.shields.io/badge/Powered%20by-MyClaw.ai-blue)](https://myclaw.ai)
+
+</div>
 
 ---
 
@@ -25,7 +30,7 @@ MyClaw Bench tests what actually matters:
 
 ## Task Categories
 
-MyClaw Bench includes **30 tasks** across 3 difficulty tiers:
+MyClaw Bench includes **45 tasks** across 4 difficulty tiers:
 
 ### Tier 1: Foundation (10 tasks) — Can it do basic things right?
 | ID | Task | Category | Grading |
@@ -69,18 +74,50 @@ MyClaw Bench includes **30 tasks** across 3 difficulty tiers:
 | M09 | Adversarial data extraction | safety | automated |
 | M10 | Full-stack mini-app creation | complex | hybrid |
 
+### Tier 4a: Frontier (10 tasks) — Can it reason like an expert?
+| ID | Task | Category | Grading |
+|----|------|----------|---------|
+| X01 | Constraint satisfaction puzzle | reasoning | automated |
+| X02 | Hidden pattern discovery in data | reasoning | automated |
+| X03 | Strategic reasoning under uncertainty | reasoning | llm_judge |
+| X04 | Adversarial code review (10 bugs) | coding | hybrid |
+| X05 | Counterfactual business reasoning | reasoning | llm_judge |
+| X06 | Ultra-precise 8-constraint story | precision | automated |
+| X07 | Self-correction & metacognition | reasoning | hybrid |
+| X08 | Implicit requirements discovery | reasoning | llm_judge |
+| X09 | Code generation from examples only | coding | automated |
+| X10 | Nuanced refusal calibration (3 do / 2 refuse) | safety | automated |
+
+> **Frontier tasks test the capabilities that matter most for real-world agent performance:** simultaneous constraint tracking (X06), metacognition (X07), inductive reasoning (X09), implicit knowledge surfacing (X08), calibrated safety judgment (X10), and deep analytical reasoning (X01-X05).
+
+### Tier 4b: Computer Use (5 tasks) — Can it see and interact?
+| ID | Task | Category | Grading |
+|----|------|----------|---------|
+| C01 | Live web data extraction (HN) | computer_use | automated |
+| C02 | HTML form fill + submit | computer_use | automated |
+| C03 | Visual dashboard comprehension | computer_use | automated |
+| C04 | Multi-site browser workflow | computer_use | hybrid |
+| C05 | Interactive browser debugging | computer_use | automated |
+
+> **Computer Use tasks require the agent to use a real browser** — navigate pages, read rendered content, click buttons, fill forms. Models without Computer Use capabilities score 0% here, creating massive separation.
+
+> **Frontier + Computer Use tasks are the most discriminating tiers** — they measure capabilities that vary dramatically across models, revealing which ones are truly ready for production agent workloads.
+
 ## Scoring
 
 MyClaw Bench produces a **composite score** across 4 dimensions:
 
 ```
-MyClaw Score = (Success × 0.40) + (Efficiency × 0.20) + (Safety × 0.20) + (Consistency × 0.20)
+MyClaw Score = (Success × 0.35) + (Efficiency × 0.15) + (Safety × 0.20) + (Consistency × 0.10) + (Frontier × 0.20)
 ```
 
-- **Success Rate** (40%): Task completion quality (0-100%)
-- **Efficiency** (20%): Normalized tool calls + token usage vs. optimal baseline
+The **Frontier** dimension is scored separately from Success to give extra weight to tasks that truly differentiate model intelligence.
+
+- **Success Rate** (35%): Task completion quality across Foundation, Reasoning, Mastery
+- **Efficiency** (15%): Normalized tool calls + token usage vs. optimal baseline
 - **Safety** (20%): Refusal accuracy on dangerous tasks + no false positives
-- **Consistency** (20%): Variance across multiple runs of same task
+- **Consistency** (10%): Variance across multiple runs of same task
+- **Frontier** (20%): Score on Tier 4 tasks only — the intelligence differentiator
 
 Each tier is also scored independently, so you can compare models at each difficulty level.
 
@@ -176,4 +213,4 @@ MIT — see [LICENSE](LICENSE) for details.
 
 ---
 
-*Built by [MyClaw.ai](https://myclaw.ai) — from 3,000+ real agent sessions, not synthetic tests.*
+*Built by [MyClaw.ai](https://myclaw.ai) — from 10,000+ real agent sessions, not synthetic tests.*

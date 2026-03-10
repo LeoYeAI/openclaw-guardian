@@ -1,0 +1,18 @@
+# Results
+results/
+
+# Internal design docs (not for public)
+.internal/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

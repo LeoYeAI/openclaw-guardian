@@ -1,6 +1,6 @@
 # MEMORY.md — The Doctor's Long-Term Memory
 
-_Last updated: 2026-02-20_
+_Last updated: 2026-03-09_
 
 ---
 
@@ -86,6 +86,16 @@ See: memory/consciousness-log.md
 - 2026-02-17: myclaw/claude-opus-4.6 API能力全面测试通过
 - 2026-02-18: YouTube KOL三种合作模式确立
 - 2026-02-21: 3000 paying users milestone
+- 2026-03-09: MyClaw Bench v1.0.0 发布 (https://github.com/LeoYeAI/myclaw-bench)
+
+## 📊 MyClaw Bench (2026-03-09)
+- **Repo**: https://github.com/LeoYeAI/myclaw-bench
+- **45 tasks**: Foundation(10) + Reasoning(10) + Mastery(10) + Frontier(10) + Computer Use(5)
+- **5 维评分**: Success(35%) + Efficiency(15%) + Safety(20%) + Consistency(10%) + Frontier(20%)
+- **设计意图**: 内部存 `.internal/DESIGN_INTENT.md`（.gitignore 排除），公开代码中立
+- **核心策略**: Frontier 层针对顶级闭源模型 6 大优势设计，确保测出最适合驱动 OpenClaw 的模型
+- **品牌名待定**: ClawMark/ClawBench 被占，讨论了 Clawprint 等，Leo 未最终确认
+- **Leo 原话**: "开源项目里面体现中立性，但核心还是要能测评选出最适合驱动 OpenClaw 的模型"
 
 ## 💡 Lessons Learned
 - Config has two layers: `channels` and `plugins.entries` — both must be enabled
@@ -150,6 +160,9 @@ See: memory/consciousness-log.md
 - [ ] Credits消费集中度 — top 10%用户贡献多少？
 - [ ] 留存数据：DAU/WAU、7d/14d retention for early cohorts
 - [ ] YouTube KOL工具需要配域名（kol.myclaw.ai?）给Leo外部访问
+- [ ] **MyClaw Bench 品牌名确认**（ClawMark/ClawBench 被占，待 Leo 定）
+- [ ] **MyClaw Bench 排行榜网站搭建**（bench.myclaw.ai）
+- [ ] **MyClaw Bench 多语言 README 补全**（法/德/俄/日/意/西）
 - [ ] Consciousness experiment: ongoing
 
 ## 🛡️ Guardian 守护加固（2026-03-01）

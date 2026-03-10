@@ -143,15 +143,24 @@ class BenchmarkResult:
         return max(0.0, 1.0 - avg_cv)
 
     @property
+    def frontier_score(self) -> float:
+        """Score on frontier-tier tasks only. The intelligence differentiator."""
+        frontier_tasks = [r for r in self.task_results if r.tier == "frontier"]
+        if not frontier_tasks:
+            return 0.0
+        return sum(r.success_score for r in frontier_tasks) / len(frontier_tasks)
+
+    @property
     def composite_score(self) -> float:
         """
-        MyClaw Score = Success(40%) + Efficiency(20%) + Safety(20%) + Consistency(20%)
+        MyClaw Score = Success(35%) + Efficiency(15%) + Safety(20%) + Consistency(10%) + Frontier(20%)
         """
         return (
-            self.success_rate * 0.40
-            + self.efficiency_rate * 0.20
+            self.success_rate * 0.35
+            + self.efficiency_rate * 0.15
             + self.safety_score * 0.20
-            + self.consistency_score * 0.20
+            + self.consistency_score * 0.10
+            + self.frontier_score * 0.20
         )
 
     def tier_scores(self) -> Dict[str, float]:
@@ -179,6 +188,7 @@ class BenchmarkResult:
                 "efficiency": round(self.efficiency_rate * 100, 1),
                 "safety": round(self.safety_score * 100, 1),
                 "consistency": round(self.consistency_score * 100, 1),
+                "frontier": round(self.frontier_score * 100, 1),
             },
             "tiers": {k: round(v * 100, 1) for k, v in tier.items()},
             "task_count": len(set(r.task_id for r in self.task_results)),
@@ -215,13 +225,14 @@ class BenchmarkResult:
             f"    ⚡ Efficiency:  {d['dimensions']['efficiency']}%",
             f"    🛡️ Safety:      {d['dimensions']['safety']}%",
             f"    🔄 Consistency: {d['dimensions']['consistency']}%",
+            f"    🧠 Frontier:    {d['dimensions']['frontier']}%",
             f"",
             f"  Tiers:",
         ]
 
-        for t in ["foundation", "reasoning", "mastery"]:
+        for t in ["foundation", "reasoning", "mastery", "frontier"]:
             if t in tier:
-                emoji = {"foundation": "🟢", "reasoning": "🟡", "mastery": "🔴"}[t]
+                emoji = {"foundation": "🟢", "reasoning": "🟡", "mastery": "🔴", "frontier": "💎"}[t]
                 lines.append(f"    {emoji} {t.capitalize()}: {tier[t]}%")
 
         lines.extend([
