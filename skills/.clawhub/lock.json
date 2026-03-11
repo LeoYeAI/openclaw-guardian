@@ -2,8 +2,16 @@
   "version": 1,
   "skills": {
     "openclaw-slides": {
-      "version": "1.0.0",
-      "installedAt": 1772514369076
+      "version": "1.0.3",
+      "installedAt": 1773230317150
+    },
+    "myclaw-backup": {
+      "version": "1.7.0",
+      "installedAt": 1773230315178
+    },
+    "openclaw-ultra-scraping": {
+      "version": "1.0.2",
+      "installedAt": 1773230319064
     }
   }
 }
