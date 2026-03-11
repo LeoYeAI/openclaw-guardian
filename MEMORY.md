@@ -30,23 +30,27 @@ _Last updated: 2026-03-09_
 - Competitors/adjacents: Lovable (AI code gen), Manus (AI Agent platform)
 - Leo sees convergence: Agent + code control + internet access = unlimited productivity
 
-## 💰 MyClaw.ai Unit Economics (as of 2026-02-12)
-- CAC: $35-40
-- Monthly ARPU: $35-40 (≈ first month payback)
-- Instance gross margin: 35%
-- Token gross margin: 40-50%
-- Blended gross margin: ~38%
-- Payback period: ~2.5 months
-- LTV/CAC @ 12mo retention: ~5:1
-- Growth: 730 (2/12) → 1088 (2/14) → 1400 (2/16) → 2000 (2/18) → 2400 (2/19) → 3000 (2/21)
-- Daily adds: ~78/day → ~300/day → ~130/day (stabilizing but still strong)
-- 累计收入$150K：订阅$61K (41%) + AI credits $89K (59%)
-- Credits占比高=用户深度使用，强PMF信号
-- 平均累计收入/用户 = $62.5（远超单月$35订阅）
+## 💰 MyClaw.ai Unit Economics
+### Latest (2026-03-10)
+- 累计付费用户：8,999
+- 留存订阅：5,779（留存率64%）
+- 日纯新增订阅：600（不含续费）
+- 日收入：$50-60K（月化$1.5-1.8M）
+- 收入结构：AI Token充值55-60%，订阅40-45%
+- Token毛利率：**65-70%**（从40-50%大幅提升）
+- 混合毛利率：~54%
+- 日获客预算：$30K
+- Blended CAC：~$50（含direct traffic稀释）
+- 首月回本倍数极高，正在加量无上限
+- 增长曲线：斜坡（加预算=加新增，无瓶颈）
+- 主要增长渠道：Google SEM Ads (~60-70%)，direct traffic ~30-40%
+
+### Historical
+- 2/12: 730 users, CAC $35-40, token margin 40-50%, blended margin 38%
+- 2/14: 1,088 → 2/16: 1,400 → 2/18: 2,000 → 2/19: 2,400 → 2/21: 3,000
+- 2/12时累计收入$150K：订阅$61K (41%) + AI credits $89K (59%)
 - 待确认：credits消费集中度（top 10%用户贡献多少）
 - Avg instances per user: 1 (huge upside)
-- 主要增长渠道：Google SEM Ads (~60-70%)，direct traffic ~30-40%（品牌/口碑已起作用）
-- 真实CAC比纯SEM计算的要低（因direct traffic不花钱）
 
 ## 👥 Team & Resources
 - 30 people: 10 growth, 10 product/eng, 10 ops
@@ -86,6 +90,7 @@ See: memory/consciousness-log.md
 - 2026-02-17: myclaw/claude-opus-4.6 API能力全面测试通过
 - 2026-02-18: YouTube KOL三种合作模式确立
 - 2026-02-21: 3000 paying users milestone
+- 2026-03-10: 8999 paying users, $50-60K daily revenue, token margin 65-70%, 加量无上限
 - 2026-03-09: MyClaw Bench v1.0.0 发布 (https://github.com/LeoYeAI/myclaw-bench)
 
 ## 📊 MyClaw Bench (2026-03-09)
