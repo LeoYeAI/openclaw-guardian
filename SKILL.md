@@ -1,5 +1,5 @@
 ---
-name: myclaw-guardian
+name: openclaw-guardian
 description: "Deploy and manage a Guardian watchdog for OpenClaw Gateway. Auto-monitor every 30s, self-repair via doctor --fix, git-based workspace rollback, daily snapshots, and optional Discord alerts. Built by MyClaw.ai (https://myclaw.ai) — the AI personal assistant platform running thousands of agents 24/7."
 metadata: {"openclaw": {"homepage": "https://myclaw.ai", "requires": {"bins": ["git", "pgrep", "curl"], "env": []}, "primaryEnv": "DISCORD_WEBHOOK_URL"}}
 ---
