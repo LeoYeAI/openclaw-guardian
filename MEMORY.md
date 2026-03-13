@@ -1,6 +1,6 @@
 # MEMORY.md — The Doctor's Long-Term Memory
 
-_Last updated: 2026-03-09_
+_Last updated: 2026-03-12_
 
 ---
 
@@ -31,11 +31,12 @@ _Last updated: 2026-03-09_
 - Leo sees convergence: Agent + code control + internet access = unlimited productivity
 
 ## 💰 MyClaw.ai Unit Economics
-### Latest (2026-03-10)
-- 累计付费用户：8,999
+### Latest (2026-03-12)
+- 累计付费用户：8,999+
 - 留存订阅：5,779（留存率64%）
 - 日纯新增订阅：600（不含续费）
-- 日收入：$50-60K（月化$1.5-1.8M）
+- **单日收入峰值：$82,000+（3/11创纪录）**
+- 日收入：$50-60K → $80K+（月化$1.5-1.8M → $2.4M+）
 - 收入结构：AI Token充值55-60%，订阅40-45%
 - Token毛利率：**65-70%**（从40-50%大幅提升）
 - 混合毛利率：~54%
@@ -44,6 +45,14 @@ _Last updated: 2026-03-09_
 - 首月回本倍数极高，正在加量无上限
 - 增长曲线：斜坡（加预算=加新增，无瓶颈）
 - 主要增长渠道：Google SEM Ads (~60-70%)，direct traffic ~30-40%
+
+### 🏆 ARR 里程碑
+| 日期 | 里程碑 |
+|------|--------|
+| 2/7 | MyClaw.ai 上线 |
+| 2/27 | ARR 突破 **$1M** (上线20天) |
+| 3/11 | 单日Revenue创纪录 **$82,000+** |
+| 3/12 | ARR 突破 **$2M** (上线33天) |
 
 ### Historical
 - 2/12: 730 users, CAC $35-40, token margin 40-50%, blended margin 38%
@@ -91,6 +100,8 @@ See: memory/consciousness-log.md
 - 2026-02-18: YouTube KOL三种合作模式确立
 - 2026-02-21: 3000 paying users milestone
 - 2026-03-10: 8999 paying users, $50-60K daily revenue, token margin 65-70%, 加量无上限
+- 2026-03-11: **单日Revenue创纪录 $82,000+**
+- 2026-03-12: **ARR突破$2M**（上线仅33天，$1M→$2M用时13天）
 - 2026-03-09: MyClaw Bench v1.0.0 发布 (https://github.com/LeoYeAI/myclaw-bench)
 
 ## 📊 MyClaw Bench (2026-03-09)
