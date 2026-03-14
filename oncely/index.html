@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Oncely PRD v1.0</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a0a;--surface:#141414;--surface2:#1e1e1e;--border:#2a2a2a;--text:#e5e5e5;--text2:#a3a3a3;--brand:#6366f1;--brand2:#818cf8;--accent:#22d3ee;--green:#22c55e;--orange:#f59e0b}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;display:flex;min-height:100vh}
+a{color:var(--brand2);text-decoration:none}
+nav{position:fixed;left:0;top:0;bottom:0;width:260px;background:var(--surface);border-right:1px solid var(--border);padding:24px 0;overflow-y:auto;z-index:100}
+nav .logo{padding:0 24px 24px;border-bottom:1px solid var(--border);margin-bottom:16px}
+nav .logo h1{font-size:24px;color:var(--brand2);font-weight:800;letter-spacing:-0.5px}
+nav .logo p{font-size:12px;color:var(--text2);margin-top:4px}
+nav a{display:block;padding:10px 24px;font-size:14px;color:var(--text2);transition:all .2s}
+nav a:hover,nav a.active{color:var(--brand2);background:rgba(99,102,241,.08)}
+nav a span{margin-right:8px;font-size:12px}
+main{margin-left:260px;flex:1;max-width:900px;padding:48px 48px 120px}
+h2{font-size:28px;font-weight:700;color:#fff;margin:48px 0 16px;padding-bottom:12px;border-bottom:2px solid var(--brand)}
+h2:first-of-type{margin-top:0}
+h3{font-size:20px;font-weight:600;color:var(--brand2);margin:32px 0 12px}
+h4{font-size:16px;font-weight:600;color:var(--accent);margin:24px 0 8px}
+p{margin:8px 0;color:var(--text2)}
+ul,ol{margin:8px 0 16px 20px;color:var(--text2)}
+li{margin:4px 0}
+strong{color:var(--text)}
+.hero{text-align:center;padding:48px 0 32px}
+.hero h1{font-size:48px;font-weight:800;background:linear-gradient(135deg,var(--brand2),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+.hero .tagline{font-size:20px;color:var(--text2);font-style:italic}
+.hero .version{display:inline-block;margin-top:16px;padding:4px 16px;border-radius:20px;background:var(--surface2);color:var(--text2);font-size:13px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:24px;margin:16px 0}
+.card.highlight{border-color:var(--brand);background:rgba(99,102,241,.05)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:16px 0}
+.grid .card{margin:0}
+.tag{display:inline-block;padding:2px 10px;border-radius:12px;font-size:12px;font-weight:600;margin:2px}
+.tag.free{background:rgba(34,197,94,.15);color:var(--green)}
+.tag.paid{background:rgba(99,102,241,.15);color:var(--brand2)}
+.tag.phase{background:rgba(245,158,11,.15);color:var(--orange)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{background:var(--surface2);color:var(--brand2);text-align:left;padding:10px 14px;font-weight:600}
+td{padding:10px 14px;border-bottom:1px solid var(--border);color:var(--text2)}
+tr:hover td{background:rgba(99,102,241,.03)}
+.flow{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:16px 0;font-size:14px;color:var(--text2)}
+.flow .step{background:var(--surface2);padding:8px 16px;border-radius:8px;border:1px solid var(--border)}
+.flow .arrow{color:var(--brand2);font-weight:bold;font-size:18px}
+.metric{text-align:center;padding:16px}
+.metric .num{font-size:32px;font-weight:800;color:var(--brand2)}
+.metric .label{font-size:13px;color:var(--text2);margin-top:4px}
+code{background:var(--surface2);padding:2px 8px;border-radius:4px;font-size:13px;color:var(--accent)}
+.timeline{position:relative;padding-left:24px;margin:16px 0}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--border)}
+.timeline .item{position:relative;margin:20px 0}
+.timeline .item::before{content:'';position:absolute;left:-20px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--brand);border:2px solid var(--bg)}
+.timeline .item h4{margin:0 0 4px;color:var(--text)}
+.timeline .item p{margin:0;font-size:14px}
+.menu-btn{display:none;position:fixed;top:12px;right:12px;z-index:200;width:44px;height:44px;border-radius:10px;background:var(--surface);border:1px solid var(--border);cursor:pointer;flex-direction:column;justify-content:center;align-items:center;gap:5px;-webkit-tap-highlight-color:transparent}
+.menu-btn span{display:block;width:20px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.menu-btn.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.menu-btn.open span:nth-child(2){opacity:0}
+.menu-btn.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:90;-webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px)}
+.overlay.show{display:block}
+@media(max-width:768px){
+.menu-btn{display:flex}
+nav{position:fixed;left:0;top:0;bottom:0;width:75vw;max-width:280px;transform:translateX(-100%);transition:transform .3s cubic-bezier(.4,0,.2,1);z-index:100}
+nav.open{transform:translateX(0)}
+main{margin-left:0 !important;padding:20px 16px 80px !important;max-width:100vw !important;width:100% !important;overflow-x:hidden}
+.hero{padding:32px 0 20px}
+.hero h1{font-size:28px}
+.hero .tagline{font-size:15px;padding:0 8px}
+.hero .version{font-size:12px}
+.grid{grid-template-columns:1fr !important;gap:12px}
+h2{font-size:20px;margin:32px 0 10px;word-break:break-word}
+h3{font-size:17px;margin:20px 0 8px}
+h4{font-size:15px;margin:16px 0 6px}
+p,li{font-size:14px;line-height:1.6}
+.card{padding:14px;margin:12px 0;overflow-x:hidden}
+.card pre{max-width:calc(100vw - 64px)}
+table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:calc(100vw - 32px)}
+table th,table td{padding:8px 10px;font-size:12px;white-space:nowrap}
+.flow{flex-direction:column;align-items:stretch;gap:6px}
+.flow .step{text-align:center;font-size:13px;padding:6px 12px}
+.flow .arrow{text-align:center;transform:rotate(90deg);font-size:14px}
+.metric{padding:10px}
+.metric .num{font-size:22px}
+.metric .label{font-size:12px}
+pre{font-size:11px !important;padding:10px !important;overflow-x:auto;max-width:calc(100vw - 64px)}
+.timeline{padding-left:18px}
+.timeline .item{margin:16px 0}
+.timeline .item::before{left:-14px;width:10px;height:10px}
+code{font-size:12px;word-break:break-all}
+.tag{font-size:11px;padding:2px 8px}
+}
+</style>
+</head>
+<body>
+<button class="menu-btn" id="menuBtn" aria-label="菜单"><span></span><span></span><span></span></button>
+<div class="overlay" id="overlay"></div>
+<nav id="sideNav">
+<div class="logo"><h1>Oncely</h1><p>PRD v1.0 · 2026-03-13</p></div>
+<a href="#ch1"><span>01</span> 产品概述与愿景</a>
+<a href="#ch2"><span>02</span> 市场分析</a>
+<a href="#ch3"><span>03</span> 产品架构总览</a>
+<a href="#ch4"><span>04</span> Connect 详细设计</a>
+<a href="#ch5"><span>05</span> Pay 详细设计</a>
+<a href="#ch6"><span>06</span> Developers 详细设计</a>
+<a href="#ch7"><span>07</span> 账户体系与安全</a>
+<a href="#ch8"><span>08</span> Phase 1 MVP</a>
+<a href="#ch9"><span>09</span> 商业模型</a>
+<a href="#ch10"><span>10</span> 路线图</a>
+</nav>
+<main>
+<div class="hero">
+<h1>Oncely</h1>
+<p class="tagline">Install once, unlock everything.</p>
+<span class="version">PRD v1.0 — 2026年3月13日</span>
+</div>
+
+<h2 id="ch1">01 · 产品概述与愿景</h2>
+
+<div class="card highlight">
+<h3>使命</h3>
+<p><strong>消灭 AI Agent 生态中"注册 → 拿 key → 配置 → 绑卡"的无限循环。</strong></p>
+<p>每一个 OpenClaw 用户安装一个新 skill，都不得不重复这个流程。Oncely 的使命是让这件事只发生一次——注册一次、绑定一次，此后所有能力一键解锁。</p>
+</div>
+
+<h3>定位</h3>
+<p>Oncely 是 <strong>AI Agent 生态的统一 API 平台与能力做市商</strong>。</p>
+<ul>
+<li>对终端用户：一个账户管理所有 API 能力，统一账单</li>
+<li>对开发者：发布 skill 时声明依赖，用户零配置即可使用</li>
+<li>对 API 供应商：接入 Oncely 网络，获得 AI Agent 生态的分发渠道</li>
+<li>对 MyClaw.ai：深度集成的内置能力层，提升用户体验和粘性</li>
+</ul>
+
+<h3>品牌定位</h3>
+<div class="card">
+<p><strong>独立品牌</strong>，非 MyClaw 子品牌。原因：</p>
+<ul>
+<li>拥抱 OpenClaw 开源生态——开源社区需要中立的基础设施</li>
+<li>MyClaw 是 Oncely 的第一大客户和最深度集成者，但不是唯一</li>
+<li>未来可服务任何 AI Agent 平台</li>
+</ul>
+</div>
+
+<h3>目标用户</h3>
+<div class="grid">
+<div class="card">
+<h4>MyClaw 用户</h4>
+<p>9,000+ 付费用户基础。Oncely 内置预配置，credits 体系直接复用，零摩擦。</p>
+</div>
+<div class="card">
+<h4>OpenClaw 开源用户</h4>
+<p>自部署的开源用户，通过 <code>oncely login</code> 一行命令接入。</p>
+</div>
+<div class="card">
+<h4>AI 应用开发者</h4>
+<p>Skill 开发者、独立开发者。通过 Oncely 简化 API 集成，专注产品逻辑。</p>
+</div>
+<div class="card">
+<h4>API 供应商</h4>
+<p>Search、TTS、翻译等 API 提供商。接入 Oncely 获得 AI Agent 生态分发。</p>
+</div>
+</div>
+
+<h2 id="ch2">02 · 市场分析</h2>
+
+<h3>核心痛点</h3>
+<div class="card highlight">
+<p>一个典型 OpenClaw 用户安装 5 个 skill，需要：</p>
+<ul>
+<li>注册 5 个不同平台的账号</li>
+<li>获取 5 个 API key / token</li>
+<li>绑定 1-5 张信用卡</li>
+<li>配置 5 次环境变量或配置文件</li>
+<li>管理 5 份不同的账单</li>
+</ul>
+<p><strong>这对 non-tech 用户是劝退级别的体验。</strong>即使是技术用户，这也是纯粹的时间浪费。</p>
+</div>
+
+<h3>竞品分析</h3>
+<table>
+<tr><th>维度</th><th>RapidAPI</th><th>Zapier</th><th>Oncely</th></tr>
+<tr><td>定位</td><td>API 聚合市场</td><td>工作流自动化</td><td>AI Agent 能力做市商</td></tr>
+<tr><td>目标用户</td><td>开发者</td><td>商务用户</td><td>AI Agent 用户+开发者</td></tr>
+<tr><td>集成方式</td><td>REST API 调用</td><td>拖拽工作流</td><td>Skill manifest 声明式</td></tr>
+<tr><td>定价</td><td>各 API 独立定价</td><td>按任务数</td><td>做市商统一定价</td></tr>
+<tr><td>Agent 原生</td><td>否</td><td>否</td><td><strong>是</strong></td></tr>
+<tr><td>OAuth 集成</td><td>有限</td><td>强</td><td>Layer 1 免费</td></tr>
+<tr><td>开发者 IDE</td><td>无</td><td>无</td><td>Vibe Coding</td></tr>
+</table>
+
+<h3>差异化优势</h3>
+<ul>
+<li><strong>AI Agent 原生：</strong>为 OpenClaw skill 生态量身设计，不是通用 API 市场</li>
+<li><strong>做市商定价：</strong>供应商报底价，Oncely 自主定价，信息不对称创造利润</li>
+<li><strong>双层 Connect：</strong>免费 Auth 拉装机量 + 付费 API 变现，精准漏斗</li>
+<li><strong>Vibe Coding：</strong>开发者在线创建 skill，门槛降到零</li>
+</ul>
+
+<h2 id="ch3">03 · 产品架构总览</h2>
+
+<h3>三大子产品</h3>
+<div class="grid">
+<div class="card highlight">
+<h4>🔗 Oncely Connect</h4>
+<p>一键接入所有 API 能力。双层模型：免费 Auth Connect + 付费 API Connect。</p>
+<p><span class="tag free">免费层</span> <span class="tag paid">付费层</span></p>
+</div>
+<div class="card highlight">
+<h4>💳 Oncely Pay</h4>
+<p>统一支付与账单管理。MyClaw credits 扣费 + 独立用户 $5/月起包月。</p>
+<p><span class="tag paid">支付</span></p>
+</div>
+<div class="card highlight">
+<h4>🛠️ Oncely for Developers</h4>
+<p>开发者平台。Skill 发布、API 文档、Vibe Coding IDE、供应商入驻。</p>
+<p><span class="tag phase">生态</span></p>
+</div>
+</div>
+
+<h3>战略类比</h3>
+<table>
+<tr><th>Apple 生态</th><th>Oncely 生态</th></tr>
+<tr><td>App Store（分发）</td><td>ClawHub + Oncely Connect</td></tr>
+<tr><td>Apple Pay / IAP（支付）</td><td>Oncely Pay</td></tr>
+<tr><td>Xcode（开发工具）</td><td>Oncely for Developers</td></tr>
+</table>
+
+<h3>飞轮效应</h3>
+<div class="flow">
+<span class="step">开发者创建 Skill</span>
+<span class="arrow">→</span>
+<span class="step">发布到 ClawHub</span>
+<span class="arrow">→</span>
+<span class="step">用户一键安装</span>
+<span class="arrow">→</span>
+<span class="step">Connect 自动配通</span>
+<span class="arrow">→</span>
+<span class="step">Pay 自动计费</span>
+<span class="arrow">→</span>
+<span class="step">供应商按底价结算</span>
+<span class="arrow">→</span>
+<span class="step">更多开发者加入</span>
+</div>
+
+<h2 id="ch4">04 · Oncely Connect 详细设计</h2>
+
+<h3>双层模型</h3>
+<div class="card">
+<h4>Layer 1 — Auth Connect <span class="tag free">免费</span></h4>
+<p><strong>OAuth 集成，零成本，最大化装机量。</strong></p>
+<p>用户一键授权第三方服务，Agent 直接读写。没有 API 调用成本（或极低），Oncely 不收费。目的是用免费工具聚集用户——微信的逻辑。</p>
+
+<p><strong>首批支持：</strong></p>
+<table>
+<tr><th>服务</th><th>能力</th><th>优先级</th></tr>
+<tr><td>Gmail</td><td>读写邮件、搜索、标签管理</td><td>P0</td></tr>
+<tr><td>Google Calendar</td><td>日程查询、创建、修改</td><td>P0</td></tr>
+<tr><td>Notion</td><td>读写页面、数据库查询</td><td>P0</td></tr>
+<tr><td>GitHub</td><td>Repo 操作、Issue、PR</td><td>P1</td></tr>
+<tr><td>Slack</td><td>消息发送、频道管理</td><td>P1</td></tr>
+<tr><td>Dropbox</td><td>文件读写、分享</td><td>P1</td></tr>
+<tr><td>Twitter/X</td><td>发推、读 timeline</td><td>P2</td></tr>
+<tr><td>Discord</td><td>消息、频道管理</td><td>P2</td></tr>
+<tr><td>Trello</td><td>看板、卡片操作</td><td>P2</td></tr>
+<tr><td>HubSpot</td><td>CRM 读写</td><td>P2</td></tr>
+<tr><td>Salesforce</td><td>CRM 数据</td><td>P3</td></tr>
+<tr><td>Airtable</td><td>数据库读写</td><td>P3</td></tr>
+</table>
+</div>
+
+<div class="card highlight">
+<h4>Layer 2 — API Connect <span class="tag paid">付费 · 做市商</span></h4>
+<p><strong>有调用成本的商业 API。供应商报底价，Oncely 自主定价，吃 spread。</strong></p>
+
+<p><strong>核心机制：</strong></p>
+<ul>
+<li><strong>供应商报底价：</strong>API 提供商接入 Oncely 网络时设定底价</li>
+<li><strong>Oncely 自主定价：</strong>终端价格由 Oncely 制定，供应商不可见</li>
+<li><strong>多供应商路由：</strong>同一能力（如 Search）可有多个供应商，按成本/质量/速度最优路由</li>
+<li><strong>用户无感：</strong>终端用户不知道也不需要知道底层是谁提供的</li>
+</ul>
+
+<p><strong>首批商业 API：</strong></p>
+<table>
+<tr><th>能力类别</th><th>供应商候选</th><th>预估 Margin</th><th>优先级</th></tr>
+<tr><td>Web Search</td><td>Brave, Serper, SerpAPI</td><td>40-60%</td><td>P0</td></tr>
+<tr><td>TTS 语音合成</td><td>ElevenLabs, Google TTS, Azure TTS</td><td>35-50%</td><td>P0</td></tr>
+<tr><td>Weather 天气</td><td>Open-Meteo, wttr.in, OpenWeather</td><td>80%+</td><td>P0</td></tr>
+<tr><td>翻译</td><td>DeepL, Google Translate</td><td>40-55%</td><td>P1</td></tr>
+<tr><td>图像生成</td><td>DALL-E, Stable Diffusion</td><td>30-45%</td><td>P1</td></tr>
+<tr><td>OCR 文字识别</td><td>Google Vision, Azure OCR</td><td>45-60%</td><td>P2</td></tr>
+<tr><td>语音转文字</td><td>Whisper API, Deepgram</td><td>35-50%</td><td>P2</td></tr>
+<tr><td>代码执行</td><td>自建沙箱</td><td>70%+</td><td>P2</td></tr>
+</table>
+
+<h4>路由策略</h4>
+<p>当同一能力有多个供应商时，Oncely Gateway 按以下优先级路由：</p>
+<ol>
+<li><strong>可用性：</strong>供应商是否在线、是否超出 rate limit</li>
+<li><strong>质量评分：</strong>基于历史成功率、延迟、用户反馈</li>
+<li><strong>成本：</strong>底价最低的优先（在质量达标的前提下）</li>
+<li><strong>地理位置：</strong>就近路由，降低延迟</li>
+</ol>
+</div>
+
+<h3>SDK 集成方式</h3>
+<div class="card">
+<h4>OpenClaw Skill Manifest</h4>
+<p>Skill 开发者在 <code>skill.json</code> 中声明 Oncely 依赖：</p>
+<pre style="background:var(--surface2);padding:16px;border-radius:8px;overflow-x:auto;color:var(--accent);font-size:13px">{
+  "name": "my-awesome-skill",
+  "oncely": {
+    "auth": ["gmail", "notion"],
+    "api": ["search", "tts"]
+  }
+}</pre>
+<p>用户安装 skill 时，Oncely Connect 自动检测并配通所需的 Auth 和 API。</p>
+
+<h4>接入方式</h4>
+<ul>
+<li><strong>MyClaw 用户：</strong>自动预配置，无需任何操作</li>
+<li><strong>OpenClaw 用户：</strong><code>oncely login</code> → 输入 Oncely token → 完成</li>
+<li><strong>开发者测试：</strong>Sandbox 环境，免费额度</li>
+</ul>
+</div>
+
+<h2 id="ch5">05 · Oncely Pay 详细设计</h2>
+
+<h3>支付体系</h3>
+<div class="grid">
+<div class="card">
+<h4>MyClaw 用户</h4>
+<p><strong>按量扣 credits，零额外操作。</strong></p>
+<ul>
+<li>与 AI Token 同一张账单</li>
+<li>credits 余额统一管理</li>
+<li>无需绑定额外支付方式</li>
+<li>实时扣费，余额不足时提示充值</li>
+</ul>
+</div>
+<div class="card">
+<h4>独立用户</h4>
+<p><strong>$5/月起包月 or 按量付费。</strong></p>
+<ul>
+<li>$5/月 Starter：500 次 API 调用 + 3 个 Auth 集成</li>
+<li>$15/月 Pro：5,000 次 + 10 个 Auth + 优先路由</li>
+<li>$49/月 Business：50,000 次 + 无限 Auth + 专属支持</li>
+<li>Pay-as-you-go：无包月，纯按量</li>
+</ul>
+</div>
+<div class="card">
+<h4>企业用户</h4>
+<p><strong>自定义套餐</strong></p>
+<ul>
+<li>专属 SLA</li>
+<li>自定义 rate limit</li>
+<li>私有部署选项</li>
+<li>批量折扣</li>
+</ul>
+</div>
+</div>
+
+<h3>账单管理</h3>
+<div class="card">
+<ul>
+<li><strong>统一 Dashboard：</strong>所有 API 调用明细一目了然</li>
+<li><strong>多维分析：</strong>按 skill / API 类型 / 时间段切分</li>
+<li><strong>月度账单：</strong>自动生成 PDF，邮件推送</li>
+<li><strong>用量预警：</strong>达到 80%/100% 额度时通知</li>
+<li><strong>限额设置：</strong>防止意外超支</li>
+</ul>
+</div>
+
+<h3>开发者结算</h3>
+<div class="card highlight">
+<p><strong>纯做市商模式 — 无佣金抽成</strong></p>
+<p>Oncely 的利润来自 <strong>spread（供应商底价与终端售价的价差）</strong>，不对开发者收取任何佣金。</p>
+<ul>
+<li><strong>供应商/开发者报底价</strong> → Oncely 自主制定终端价格 → 价差即利润</li>
+<li>供应商看不到终端价格，终端用户看不到底价</li>
+<li>月度结算，支持 Stripe 打款，供应商按底价 × 调用量收款</li>
+<li>最低提现额度：$25</li>
+<li>结算 Dashboard：实时查看调用量、收入、趋势</li>
+<li>高调用量供应商享受优先路由权重（激励供给侧质量竞争）</li>
+</ul>
+</div>
+
+<h2 id="ch6">06 · Oncely for Developers 详细设计</h2>
+
+<h3>开发者工具链</h3>
+<div class="card">
+<h4>Skill 发布与依赖声明</h4>
+<ul>
+<li>Skill 发布到 ClawHub → 在 manifest 中声明 <code>oncely.auth</code> 和 <code>oncely.api</code> 依赖</li>
+<li>用户安装 skill 时自动检测 Oncely 权限，未开通则提示一键开通</li>
+<li>开发者无需处理任何支付逻辑——全部由 Oncely Pay 托管</li>
+</ul>
+</div>
+
+<div class="card">
+<h4>API 文档中心</h4>
+<ul>
+<li>所有可用 API 的交互式文档</li>
+<li>代码示例（Python / Node.js / Shell）</li>
+<li>请求/响应 Schema</li>
+<li>Rate limit 和定价信息</li>
+</ul>
+</div>
+
+<div class="card">
+<h4>Sandbox 测试环境</h4>
+<ul>
+<li>每个开发者账户 → 免费测试额度（每月 1,000 次调用）</li>
+<li>独立的测试环境，不影响生产数据</li>
+<li>模拟 Auth Connect 授权流程</li>
+<li>调试日志和请求追踪</li>
+</ul>
+</div>
+
+<div class="card highlight">
+<h4>🎨 Vibe Coding IDE（Phase 3）</h4>
+<p><strong>在线创建、测试、发布 AI skill——门槛降到零。</strong></p>
+<ul>
+<li>浏览器内开发环境，无需本地安装</li>
+<li>AI 辅助编码：描述需求 → 自动生成 skill 代码</li>
+<li>实时预览和测试</li>
+<li>一键发布到 ClawHub</li>
+<li>模板库：常见 skill 类型的起手模板</li>
+</ul>
+</div>
+
+<h3>供应商入驻</h3>
+<div class="card">
+<p><strong>API 提供商接入 Oncely 网络的流程：</strong></p>
+<ol>
+<li><strong>注册：</strong>创建供应商账户，提交 API 文档</li>
+<li><strong>接入：</strong>配置 Oncely Adapter（标准化接口层）</li>
+<li><strong>报价：</strong>设定底价（Oncely 不透露给终端用户）</li>
+<li><strong>审核：</strong>Oncely 团队审核质量和稳定性</li>
+<li><strong>上线：</strong>纳入路由池，开始接收调用</li>
+<li><strong>结算：</strong>月度结算，按调用量 × 底价打款</li>
+</ol>
+</div>
+
+<h2 id="ch7">07 · 账户体系与安全</h2>
+
+<h3>双轨账户体系</h3>
+<div class="grid">
+<div class="card">
+<h4>MyClaw SSO</h4>
+<ul>
+<li>MyClaw 用户零摩擦登录</li>
+<li>账户自动关联</li>
+<li>共享 credits 余额</li>
+<li>统一的身份认证令牌</li>
+</ul>
+</div>
+<div class="card">
+<h4>独立注册</h4>
+<ul>
+<li>邮箱 + 密码注册</li>
+<li>非 MyClaw 用户的入口</li>
+<li>独立的 Oncely credits</li>
+<li>未来支持 GitHub / Google SSO</li>
+</ul>
+</div>
+</div>
+
+<h3>安全机制</h3>
+<div class="card">
+<table>
+<tr><th>层面</th><th>措施</th></tr>
+<tr><td>API Key 管理</td><td>用户不接触底层供应商 key。Oncely 统一持有企业级 key，加密存储（AES-256）</td></tr>
+<tr><td>OAuth Token</td><td>加密存储，定期轮换，支持用户主动撤销</td></tr>
+<tr><td>传输安全</td><td>全链路 TLS 1.3</td></tr>
+<tr><td>调用审计</td><td>完整的调用日志，支持导出和查询</td></tr>
+<tr><td>权限隔离</td><td>每个用户的 Auth 授权和 API 配额完全隔离</td></tr>
+<tr><td>合规</td><td>GDPR 就绪，数据处理协议（DPA），用户数据删除权</td></tr>
+<tr><td>Rate Limiting</td><td>多层限流：用户级 + 全局级，防滥用</td></tr>
+</table>
+</div>
+
+<h2 id="ch8">08 · Phase 1 MVP 定义</h2>
+
+<h3>范围：Connect + Pay 最小可行产品</h3>
+
+<div class="card highlight">
+<h4>Connect MVP</h4>
+<div class="grid">
+<div class="card">
+<p><strong>Auth Connect（3 个集成）</strong></p>
+<ul>
+<li>✅ Gmail — 邮件读写</li>
+<li>✅ Notion — 页面和数据库</li>
+<li>✅ GitHub — Repo 和 Issue</li>
+</ul>
+<span class="tag free">免费</span>
+</div>
+<div class="card">
+<p><strong>API Connect（3 个 API）</strong></p>
+<ul>
+<li>✅ Web Search（Brave）</li>
+<li>✅ TTS 语音合成（ElevenLabs）</li>
+<li>✅ Weather 天气（Open-Meteo）</li>
+</ul>
+<span class="tag paid">付费</span>
+</div>
+</div>
+</div>
+
+<div class="card highlight">
+<h4>Pay MVP</h4>
+<ul>
+<li>✅ MyClaw credits 扣费集成</li>
+<li>✅ 独立用户 Stripe 支付</li>
+<li>✅ $5/月 Starter 包月方案</li>
+<li>✅ 按量付费（Pay-as-you-go）</li>
+<li>✅ 基础用量 Dashboard</li>
+</ul>
+</div>
+
+<h3>技术选型</h3>
+<table>
+<tr><th>组件</th><th>选型</th><th>理由</th></tr>
+<tr><td>API Gateway</td><td>Node.js + Fastify</td><td>高性能，OpenClaw 生态一致</td></tr>
+<tr><td>数据库</td><td>PostgreSQL</td><td>账户、计费、审计日志</td></tr>
+<tr><td>缓存 / 限流</td><td>Redis</td><td>高速限流、会话缓存</td></tr>
+<tr><td>支付</td><td>Stripe</td><td>全球覆盖，API 友好</td></tr>
+<tr><td>认证</td><td>JWT + OAuth 2.0</td><td>标准协议，SSO 支持</td></tr>
+<tr><td>部署</td><td>Docker + Kubernetes</td><td>弹性伸缩</td></tr>
+<tr><td>监控</td><td>Prometheus + Grafana</td><td>实时指标和告警</td></tr>
+</table>
+
+<h3>架构图</h3>
+<div class="card" style="font-family:monospace;font-size:13px;line-height:1.5;color:var(--accent)">
+<pre>
+用户 Agent (OpenClaw / MyClaw)
+        │
+        ▼
+┌─────────────────────────┐
+│   Oncely API Gateway    │  ← 认证 · 路由 · 计量 · 限流
+│   (Fastify + Redis)     │
+└────────┬────────────────┘
+         │
+    ┌────┴────┐
+    ▼         ▼
+┌────────┐ ┌────────────┐
+│  Auth  │ │  API       │
+│ Connect│ │  Connect   │
+│ (OAuth)│ │ (做市商)    │
+└───┬────┘ └─────┬──────┘
+    │            │
+    ▼            ▼
+ Gmail        Brave Search
+ Notion       ElevenLabs
+ GitHub       Open-Meteo
+  ...           ...
+
+         │
+         ▼
+┌─────────────────────────┐
+│      Oncely Pay         │  ← PostgreSQL · Stripe
+│  (计费 · 账单 · 结算)    │
+└─────────────────────────┘
+</pre>
+</div>
+
+<h3>时间估算</h3>
+<div class="card">
+<div class="grid">
+<div class="metric"><div class="num">6-8</div><div class="label">周 · 总工期</div></div>
+<div class="metric"><div class="num">3</div><div class="label">Auth 集成</div></div>
+<div class="metric"><div class="num">3</div><div class="label">API 集成</div></div>
+</div>
+<table>
+<tr><th>阶段</th><th>内容</th><th>周期</th></tr>
+<tr><td>Week 1-2</td><td>Gateway 核心 + 认证体系 + DB schema</td><td>2 周</td></tr>
+<tr><td>Week 3-4</td><td>Auth Connect 3 个集成 + API Connect 3 个 API</td><td>2 周</td></tr>
+<tr><td>Week 5-6</td><td>Pay 集成（Stripe + MyClaw credits）+ Dashboard</td><td>2 周</td></tr>
+<tr><td>Week 7-8</td><td>测试 + 文档 + MyClaw 深度集成 + Beta 发布</td><td>2 周</td></tr>
+</table>
+</div>
+
+<h2 id="ch9">09 · 商业模型与单位经济</h2>
+
+<h3>收入来源</h3>
+<div class="grid">
+<div class="card">
+<div class="metric"><div class="num">①</div><div class="label">API Spread</div></div>
+<p>供应商底价 vs 终端价的差价。核心利润来源。</p>
+<p>预估 margin：<strong>40-60%</strong>（因能力类别而异）</p>
+</div>
+<div class="card">
+<div class="metric"><div class="num">②</div><div class="label">包月订阅</div></div>
+<p>独立用户 $5/月起。稳定的经常性收入。</p>
+<p>预估 ARPU：<strong>$12/月</strong>（混合）</p>
+</div>
+<div class="card">
+<div class="metric"><div class="num">③</div><div class="label">供应商竞争红利</div></div>
+<p>多供应商竞争压低底价，终端价格由 Oncely 制定，spread 持续扩大。</p>
+<p>预估：<strong>随规模增长 margin 提升 5-10%</strong></p>
+</div>
+</div>
+
+<h3>单位经济分析</h3>
+<table>
+<tr><th>API 类型</th><th>供应商成本</th><th>Oncely 终端价</th><th>Margin</th><th>月调用量估算</th></tr>
+<tr><td>Web Search</td><td>$0.003/次</td><td>$0.005/次</td><td>40%</td><td>500K</td></tr>
+<tr><td>TTS</td><td>$0.010/千字</td><td>$0.018/千字</td><td>44%</td><td>200K</td></tr>
+<tr><td>Weather</td><td>$0.001/次</td><td>$0.003/次</td><td>67%</td><td>300K</td></tr>
+<tr><td>翻译</td><td>$0.008/千字</td><td>$0.015/千字</td><td>47%</td><td>150K</td></tr>
+<tr><td>图像生成</td><td>$0.020/张</td><td>$0.040/张</td><td>50%</td><td>50K</td></tr>
+</table>
+
+<h3>盈亏平衡分析</h3>
+<div class="card highlight">
+<div class="grid">
+<div class="metric"><div class="num">$15K</div><div class="label">月 GMV 盈亏平衡</div></div>
+<div class="metric"><div class="num">~5,000</div><div class="label">活跃用户盈亏平衡</div></div>
+<div class="metric"><div class="num">~45%</div><div class="label">混合 Gross Margin</div></div>
+</div>
+<p style="text-align:center;margin-top:8px">固定成本（基础设施 + 1 名工程师）≈ $7K/月。GMV $15K × margin 45% ≈ $6.75K 覆盖。</p>
+</div>
+
+<h3>增长预测</h3>
+<table>
+<tr><th>时间点</th><th>MAU</th><th>月 GMV</th><th>月净收入</th><th>关键事件</th></tr>
+<tr><td>Month 1-2</td><td>2,000</td><td>$8K</td><td>$3.6K</td><td>MVP 上线，MyClaw 用户导入</td></tr>
+<tr><td>Month 3-4</td><td>5,000</td><td>$25K</td><td>$11K</td><td>盈亏平衡，OpenClaw 社区开放</td></tr>
+<tr><td>Month 5-6</td><td>10,000</td><td>$60K</td><td>$27K</td><td>API 扩展到 10+，开发者 Beta</td></tr>
+<tr><td>Month 7-12</td><td>30,000</td><td>$200K</td><td>$90K</td><td>开发者飞轮启动</td></tr>
+<tr><td>Year 2</td><td>100,000</td><td>$800K</td><td>$360K</td><td>Vibe Coding + 企业客户</td></tr>
+</table>
+
+<div class="card">
+<p><strong>关键假设：</strong></p>
+<ul>
+<li>MyClaw 现有 9,000+ 付费用户 → 初期导入转化率 25% = 2,250 用户</li>
+<li>人均月 API 调用 300 次（保守估算）</li>
+<li>独立用户 $5/月包月转化率 15%</li>
+<li>开发者生态从 Month 5 开始贡献增长</li>
+</ul>
+</div>
+
+<h2 id="ch10">10 · 路线图</h2>
+
+<div class="timeline">
+<div class="item">
+<h4><span class="tag phase">Phase 1</span> Connect + Pay MVP · 0-8 周</h4>
+<p><strong>目标：验证核心价值，MyClaw 用户先用起来</strong></p>
+<ul>
+<li>Auth Connect：Gmail + Notion + GitHub</li>
+<li>API Connect：Web Search + TTS + Weather</li>
+<li>Oncely Pay：MyClaw credits 扣费 + Stripe 独立支付</li>
+<li>$5/月 Starter 包月方案</li>
+<li>基础 Dashboard（用量查看 + 账单）</li>
+<li>oncely.com Landing Page</li>
+<li>OpenClaw CLI 集成：<code>oncely login</code></li>
+</ul>
+</div>
+
+<div class="item">
+<h4><span class="tag phase">Phase 2</span> 扩展 + 开发者 Beta · 8-16 周</h4>
+<p><strong>目标：扩大能力覆盖，启动开发者生态</strong></p>
+<ul>
+<li>Auth Connect 扩展到 10+ 集成</li>
+<li>API Connect 扩展到 10+ API（翻译、图像生成、OCR...）</li>
+<li>多供应商路由引擎（同一能力多供应商，智能选优）</li>
+<li>Oncely for Developers Beta：供应商入驻 + API 文档中心</li>
+<li>ClawHub manifest 集成（skill.json 声明 Oncely 依赖）</li>
+<li>开发者 Sandbox 测试环境</li>
+<li>$15/月 Pro + $49/月 Business 套餐</li>
+<li>供应商做市商结算系统</li>
+</ul>
+</div>
+
+<div class="item">
+<h4><span class="tag phase">Phase 3</span> 飞轮 · 16-24 周</h4>
+<p><strong>目标：开发者飞轮全速运转，平台自增长</strong></p>
+<ul>
+<li>Vibe Coding IDE：浏览器内创建、测试、发布 skill</li>
+<li>API Marketplace 公开页面（类似 RapidAPI 但面向 Agent）</li>
+<li>企业套餐 + 私有部署选项</li>
+<li>高级分析 Dashboard（归因分析、转化漏斗）</li>
+<li>Dit.ai 算力网络集成</li>
+<li>GitHub / Google SSO</li>
+<li>移动端 Dashboard</li>
+</ul>
+</div>
+</div>
+
+<div class="card" style="margin-top:48px;text-align:center">
+<p style="font-size:24px;font-weight:700;color:var(--brand2)">Install once, unlock everything.</p>
+<p style="color:var(--text2);margin-top:8px">Oncely — AI Agent 生态的统一 API 平台</p>
+<p style="color:var(--text2);font-size:13px;margin-top:16px">PRD v1.0 · 2026-03-13 · Confidential</p>
+</div>
+
+</main>
+
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const sideNav=document.getElementById('sideNav');
+const overlay=document.getElementById('overlay');
+
+function toggleMenu(){
+  const open=sideNav.classList.toggle('open');
+  menuBtn.classList.toggle('open');
+  overlay.classList.toggle('show');
+  document.body.style.overflow=open?'hidden':'';
+}
+function closeMenu(){
+  sideNav.classList.remove('open');
+  menuBtn.classList.remove('open');
+  overlay.classList.remove('show');
+  document.body.style.overflow='';
+}
+menuBtn.addEventListener('click',toggleMenu);
+overlay.addEventListener('click',closeMenu);
+
+document.querySelectorAll('nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
+    a.classList.add('active');
+    if(window.innerWidth<=768)closeMenu();
+  });
+});
+window.addEventListener('scroll',()=>{
+  let sections=document.querySelectorAll('h2[id]');
+  let links=document.querySelectorAll('nav a');
+  let current='';
+  sections.forEach(s=>{if(window.scrollY>=s.offsetTop-100)current=s.id;});
+  links.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+current)l.classList.add('active');});
+});
+</script>
+</body>
+</html>

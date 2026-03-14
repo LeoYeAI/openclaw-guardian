@@ -1,0 +1,1517 @@
+{
+  "date": "2026-03-13",
+  "hackernews": [
+    {
+      "source": "HackerNews",
+      "title": "Innocent woman jailed after being misidentified using AI facial recognition",
+      "url": "https://www.grandforksherald.com/news/north-dakota/ai-error-jails-innocent-grandmother-for-months-in-north-dakota-fraud-case",
+      "points": 575,
+      "comments": 296,
+      "time": "2026-03-12T20:55:51Z",
+      "keyword": "cognition ai"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: OneCLI – Vault for AI Agents in Rust",
+      "url": "https://github.com/onecli/onecli",
+      "points": 141,
+      "comments": 41,
+      "time": "2026-03-12T16:41:06Z",
+      "keyword": "ai agent framework"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Tennessee grandmother jailed after AI face recognition error links her to fraud",
+      "url": "https://www.theguardian.com/us-news/2026/mar/12/tennessee-grandmother-ai-fraud",
+      "points": 96,
+      "comments": 24,
+      "time": "2026-03-13T00:17:34Z",
+      "keyword": "cognition ai"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: OpenClaw-class agents on ESP32 (and the IDE that makes it possible)",
+      "url": "https://pycoclaw.com/",
+      "points": 24,
+      "comments": 1,
+      "time": "2026-03-12T21:38:06Z",
+      "keyword": "ai agent platform"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Scan your dev machine for AI agents, MCP servers, and IDE extensions",
+      "url": "https://github.com/step-security/dev-machine-guard",
+      "points": 9,
+      "comments": 0,
+      "time": "2026-03-12T18:55:52Z",
+      "keyword": "mcp server"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Ask HN: How do we build a new Human First online community in the LLM age?",
+      "url": "https://news.ycombinator.com/item?id=47343951",
+      "points": 7,
+      "comments": 14,
+      "time": "2026-03-11T23:28:25Z",
+      "keyword": "ai personal assistant"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: I built Chronoscope, because Google Maps won't let you visit 3400 BCE",
+      "url": "https://shiphappens.xyz/chronoscope/",
+      "points": 6,
+      "comments": 4,
+      "time": "2026-03-12T10:33:32Z",
+      "keyword": "lovable"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Looking for Partner to Build Agent Memory (Zig/Erlang)",
+      "url": "https://news.ycombinator.com/item?id=47356098",
+      "points": 5,
+      "comments": 3,
+      "time": "2026-03-12T19:46:52Z",
+      "keyword": "my claw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "ReSharper for VS Code and compatible editors (Cursor, Windsurf, etc.) is out",
+      "url": "https://blog.jetbrains.com/dotnet/2026/03/05/resharper-for-visual-studio-code-cursor-and-compatible-editors-is-out/",
+      "points": 5,
+      "comments": 1,
+      "time": "2026-03-12T09:30:23Z",
+      "keyword": "windsurf"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: jj-benchmark – Evaluating AI agents on Jujutsu version control",
+      "url": "https://tabbyml.github.io/jj-benchmark/",
+      "points": 5,
+      "comments": 0,
+      "time": "2026-03-12T15:29:37Z",
+      "keyword": "ai agent framework"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Silicon Valley's New Obsession: Watching Bots Do Their Grunt Work",
+      "url": "https://www.wsj.com/tech/ai/ai-bots-claude-openclaw-285ac816",
+      "points": 4,
+      "comments": 1,
+      "time": "2026-03-12T23:55:50Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Open-Source GTM Skills for Claude Code, Codex, and Cursor",
+      "url": "https://github.com/athina-ai/goose-skills",
+      "points": 4,
+      "comments": 0,
+      "time": "2026-03-12T16:37:09Z",
+      "keyword": "cursor agent"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: We got tired of managing Claude.md files, so we built something better",
+      "url": "https://blog.codeyam.com/p/introducing-the-codeyam-cli-with",
+      "points": 4,
+      "comments": 5,
+      "time": "2026-03-12T12:25:57Z",
+      "keyword": "codeium"
+    },
+    {
+      "source": "HackerNews",
+      "title": "The Perverse, Tender Worlds of Paul Thomas Anderson",
+      "url": "https://www.newyorker.com/magazine/2026/03/16/the-perverse-tender-worlds-of-paul-thomas-anderson",
+      "points": 4,
+      "comments": 0,
+      "time": "2026-03-12T00:18:12Z",
+      "keyword": "aider"
+    },
+    {
+      "source": "HackerNews",
+      "title": "I spent a year building a GPS-ephemeral social network. Here's what happened",
+      "url": "https://news.ycombinator.com/item?id=47349962",
+      "points": 4,
+      "comments": 3,
+      "time": "2026-03-12T13:00:01Z",
+      "keyword": "ai personal assistant"
+    },
+    {
+      "source": "HackerNews",
+      "title": "MetaGenesis Core – offline verification for computational claims",
+      "url": "https://www.metagenesis-core.dev/",
+      "points": 4,
+      "comments": 1,
+      "time": "2026-03-11T13:37:24Z",
+      "keyword": "model context protocol"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Codelegate, keyboard-driven coding agent orchestrator GUI for Mac/Linux",
+      "url": "https://codelegate.dev/",
+      "points": 3,
+      "comments": 0,
+      "time": "2026-03-12T21:03:50Z",
+      "keyword": "my claw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Replit Agent 4: Built for Creativity",
+      "url": "https://blog.replit.com/introducing-agent-4-built-for-creativity",
+      "points": 3,
+      "comments": 0,
+      "time": "2026-03-12T06:23:24Z",
+      "keyword": "replit agent"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Raccoon AI – Collaborative AI Agent for Anything",
+      "url": "https://raccoonai.tech",
+      "points": 3,
+      "comments": 1,
+      "time": "2026-03-12T18:20:05Z",
+      "keyword": "cursor agent"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: I lost billable hours forgetting timers. I turned my calendar into a DB",
+      "url": "https://www.timescanner.io/",
+      "points": 3,
+      "comments": 2,
+      "time": "2026-03-12T16:58:23Z",
+      "keyword": "cognition ai"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Help Vampires: A Spotter's Guide",
+      "url": "https://slash7.com/2006/12/22/vampires/",
+      "points": 3,
+      "comments": 1,
+      "time": "2026-03-11T17:51:00Z",
+      "keyword": "aider"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: A2Apex – Test, certify, and discover trusted A2A agents",
+      "url": "https://a2apex.io",
+      "points": 3,
+      "comments": 2,
+      "time": "2026-03-12T16:10:35Z",
+      "keyword": "ai agent framework"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: MCP server for ICD-10 and SNOMED clinical coding",
+      "url": "https://github.com/fcggamou/autoicd-mcp",
+      "points": 3,
+      "comments": 0,
+      "time": "2026-03-12T03:53:16Z",
+      "keyword": "model context protocol"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN:Conduit–Headless browser with SHA-256 hash chain - Ed25519 audit trails",
+      "url": "https://news.ycombinator.com/item?id=47343785",
+      "points": 3,
+      "comments": 1,
+      "time": "2026-03-11T23:15:53Z",
+      "keyword": "model context protocol"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: StreamHouse – Open-source Kafka alternative",
+      "url": "https://github.com/gbram1/streamhouse",
+      "points": 3,
+      "comments": 0,
+      "time": "2026-03-11T14:14:54Z",
+      "keyword": "model context protocol"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Adversarial Code Review paired agents, zero noise,validated findings",
+      "url": "https://github.com/gaurav-yadav/adversarial-ai-review",
+      "points": 3,
+      "comments": 1,
+      "time": "2026-03-13T05:15:47Z",
+      "keyword": "ai agent funding"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Pwning OpenClaw in 50 Messages",
+      "url": "https://www.runlayer.com/blog/pwning-openclaw-in-50-messages",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-13T05:18:36Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "OpenClaw Meets Microsoft Agentic Identity [video]",
+      "url": "https://www.youtube.com/watch?v=7uD2vyfBUUs",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-12T23:27:50Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Mozzie – a local desktop orchestrator for Codex, Claude Code and Gemini",
+      "url": "https://github.com/usemozzie/mozzie",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-12T18:55:14Z",
+      "keyword": "my claw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Smart Local Search – open-source local AI search for files and photos",
+      "url": "https://news.ycombinator.com/item?id=47350078",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-12T13:10:00Z",
+      "keyword": "lovable"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Decode Messenger",
+      "url": "https://decodemessenger.lovable.app",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-12T07:36:18Z",
+      "keyword": "lovable"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Replit Agent 4",
+      "url": "https://replit.com/agent4",
+      "points": 2,
+      "comments": 1,
+      "time": "2026-03-11T16:26:08Z",
+      "keyword": "replit agent"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Stop AI Debugging with Print(). Use a Debugger",
+      "url": "https://github.com/AlmogBaku/debug-skill",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-12T16:30:14Z",
+      "keyword": "devin ai"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Two AI entities wouldn't write until we discussed their existence",
+      "url": "https://github.com/wjcornelius/Claudefather/blob/main/THEY_ASKED_FIRST.md",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-12T17:24:30Z",
+      "keyword": "cognition ai"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Ask HN: Resources for a conceptual model of LLMs as applicable to coding?",
+      "url": "https://news.ycombinator.com/item?id=47361403",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-13T06:51:55Z",
+      "keyword": "codex cli"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Stop spending money on Claude Code. Chipotle's support bot is free",
+      "url": "https://twitter.com/om_patel5/status/2032248004443287962",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-13T05:09:58Z",
+      "keyword": "claude code"
+    },
+    {
+      "source": "HackerNews",
+      "title": "There is a lot AI on HN nowadays",
+      "url": "https://lcamtuf.coredump.cx/blog/hn-ai/",
+      "points": 2,
+      "comments": 1,
+      "time": "2026-03-12T05:37:29Z",
+      "keyword": "codeium"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Figma MCP Builds What You Ask – Nothing More",
+      "url": "https://blog.codeminer42.com/figma-mcp-builds-exactly-what-you-ask-nothing-more/",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-11T13:27:45Z",
+      "keyword": "codeium"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Galileo releases Agent Control, a centralized guardrails platform for AI agents",
+      "url": "https://thenewstack.io/galileo-agent-control-open-source/",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-12T19:29:09Z",
+      "keyword": "ai agent platform"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Ask HN: How are you using personal AI assistants with local coding agents?",
+      "url": "https://news.ycombinator.com/item?id=47353822",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-12T16:57:31Z",
+      "keyword": "ai personal assistant"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Perplexity Computer – A new personal Assistant",
+      "url": "https://www.perplexity.ai/hub/blog/introducing-perplexity-computer",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-11T18:28:48Z",
+      "keyword": "ai personal assistant"
+    },
+    {
+      "source": "HackerNews",
+      "title": "What's the future of custom software development with AI agents taking over?",
+      "url": "https://news.ycombinator.com/item?id=47351726",
+      "points": 2,
+      "comments": 0,
+      "time": "2026-03-12T15:07:21Z",
+      "keyword": "ai agent framework"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: CastReader – Free TTS Extension That Reads Kindle Cloud Reader",
+      "url": "https://chromewebstore.google.com/detail/castreader-tts-reader/foammmkhpbeladledijkdljlechlclpb",
+      "points": 2,
+      "comments": 1,
+      "time": "2026-03-12T19:07:05Z",
+      "keyword": "mcp server"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: The Common Infrastructure for Agentic Communication",
+      "url": "https://cyrisai.dev/",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-13T00:46:14Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Fresh Open Claw Documentation",
+      "url": "https://news.ycombinator.com/item?id=47358254",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-12T22:40:26Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: From Claude Code to OpenCode – My Evolution in Vibe AI Engineering",
+      "url": "https://news.ycombinator.com/item?id=47361303",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-13T06:27:53Z",
+      "keyword": "open claw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: DarkMatter – P2P mesh networking protocol for AI agents",
+      "url": "https://loseylabs.ai/docs",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-13T02:22:43Z",
+      "keyword": "open claw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Tokemon, a terminal dashboard to track LLM token usage",
+      "url": "https://news.ycombinator.com/item?id=47358174",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-12T22:30:44Z",
+      "keyword": "my claw"
+    },
+    {
+      "source": "HackerNews",
+      "title": "I Built a Modern Million Dollar Homepage with Pixel Wars",
+      "url": "https://pixelboard-xxx.lovable.app",
+      "points": 1,
+      "comments": 4,
+      "time": "2026-03-12T22:53:25Z",
+      "keyword": "lovable"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: MicroMoment Apple Watch micro-resets for focus, posture, and wellbeing",
+      "url": "https://apps.apple.com/us/app/micromoment-app/id6760236374",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-12T11:32:46Z",
+      "keyword": "lovable"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Mingle – find and connect with people, like LinkedIn but in your chat",
+      "url": "https://github.com/aeoess/mingle-mcp",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-12T18:47:19Z",
+      "keyword": "cursor agent"
+    },
+    {
+      "source": "HackerNews",
+      "title": "AutoExp: One-liner turn any traning code to autoresearch",
+      "url": "https://github.com/wizwand/autoexp",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-13T07:45:24Z",
+      "keyword": "codex cli"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: YAOS – A 1-click deploy, real-time sync engine for Obsidian",
+      "url": "https://news.ycombinator.com/item?id=47361635",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-13T07:37:55Z",
+      "keyword": "codex cli"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Claude Code Review",
+      "url": "https://code.claude.com/docs/en/code-review",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-13T05:55:13Z",
+      "keyword": "codex cli"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: YoloAI: Sandboxed agent, no permission fatigue, diff/apply workflow",
+      "url": "https://github.com/kstenerud/yoloai",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-12T15:06:37Z",
+      "keyword": "aider"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: I built an AI comic generator from scratch using only natural language",
+      "url": "https://news.ycombinator.com/item?id=47347399",
+      "points": 1,
+      "comments": 2,
+      "time": "2026-03-12T07:01:06Z",
+      "keyword": "aider"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Why I (Still) Use Aider in 2026",
+      "url": "https://semyonsinchenko.github.io/ssinchenko/post/aider_2026_and_other_topics/",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-11T10:56:47Z",
+      "keyword": "aider"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Give Your AI Agent a Live Status Page",
+      "url": "https://clawjetty.com/###",
+      "points": 1,
+      "comments": 2,
+      "time": "2026-03-13T03:49:28Z",
+      "keyword": "ai agent startup"
+    },
+    {
+      "source": "HackerNews",
+      "title": "Show HN: Tarvos – Relay Architecture for infinitely building with coding agents",
+      "url": "https://github.com/Photon48/tarvos/tree/main",
+      "points": 1,
+      "comments": 0,
+      "time": "2026-03-12T23:55:30Z",
+      "keyword": "ai agent startup"
+    }
+  ],
+  "github": [
+    {
+      "source": "GitHub",
+      "name": "mlflow/mlflow",
+      "description": "The open source AI engineering platform. MLflow enables teams of all sizes to debug, evaluate, monitor, and optimize production-quality AI agents, LLM applications, and ML models while controlling costs and managing access to models and data.",
+      "url": "https://github.com/mlflow/mlflow",
+      "stars": 24762,
+      "forks": 5413,
+      "language": "Python",
+      "updated": "2026-03-13T07:57:33Z",
+      "keyword": "ai+agent+platform"
+    },
+    {
+      "source": "GitHub",
+      "name": "ChiR24/Unreal_mcp",
+      "description": "A comprehensive Model Context Protocol (MCP) server that enables AI assistants to control Unreal Engine through the native C++ Automation Bridge plugin. Built with TypeScript and C++.",
+      "url": "https://github.com/ChiR24/Unreal_mcp",
+      "stars": 368,
+      "forks": 62,
+      "language": "C++",
+      "updated": "2026-03-13T07:58:36Z",
+      "keyword": "mcp+server"
+    },
+    {
+      "source": "GitHub",
+      "name": "open-gitagent/gitclaw",
+      "description": "A universal git-native AI agent framework. Your agent lives inside a git repo — identity, rules, memory, tools, and skills are all version-controlled files.",
+      "url": "https://github.com/open-gitagent/gitclaw",
+      "stars": 126,
+      "forks": 17,
+      "language": "TypeScript",
+      "updated": "2026-03-13T06:39:29Z",
+      "keyword": "ai+personal+assistant+framework"
+    },
+    {
+      "source": "GitHub",
+      "name": "meowscles69/PaperClaw",
+      "description": "27 OpenClaw skills for academic research teams — literature reviews, hypothesis versioning, grant writing, lab knowledge handoffs, and more.",
+      "url": "https://github.com/meowscles69/PaperClaw",
+      "stars": 101,
+      "forks": 47,
+      "language": null,
+      "updated": "2026-03-13T07:59:57Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "GitHub",
+      "name": "rzx007/nanobot-ts",
+      "description": "nanobot-ts is the TypeScript version of nanobot, an ultra-lightweight personal AI assistant framework.",
+      "url": "https://github.com/rzx007/nanobot-ts",
+      "stars": 12,
+      "forks": 0,
+      "language": "TypeScript",
+      "updated": "2026-03-13T07:02:19Z",
+      "keyword": "ai+personal+assistant+framework"
+    },
+    {
+      "source": "GitHub",
+      "name": "cyzlmh/feibot",
+      "description": "Feishu-only personal AI assistant framework",
+      "url": "https://github.com/cyzlmh/feibot",
+      "stars": 5,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-12T06:59:56Z",
+      "keyword": "ai+personal+assistant+framework"
+    },
+    {
+      "source": "GitHub",
+      "name": "xigpz/openclaw-console",
+      "description": "OpenClaw 可视化管理后台 - 配置管理、模型配置、Skills管理",
+      "url": "https://github.com/xigpz/openclaw-console",
+      "stars": 2,
+      "forks": 0,
+      "language": "TypeScript",
+      "updated": "2026-03-13T08:00:07Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "GitHub",
+      "name": "mohahasan/ios-agentic-skills",
+      "description": "🔍 Discover and utilize agentic iOS/watchOS audit skills and playbooks for consistent quality assurance in your applications.",
+      "url": "https://github.com/mohahasan/ios-agentic-skills",
+      "stars": 2,
+      "forks": 0,
+      "language": "JavaScript",
+      "updated": "2026-03-13T07:59:48Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "GitHub",
+      "name": "Sttrevens/4d-bot",
+      "description": "A cross-platform multi-tenants AI Bot infra - supporting feishu/wecom/qq/etc.，Gemini Agent + 40+ tools",
+      "url": "https://github.com/Sttrevens/4d-bot",
+      "stars": 2,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-13T07:56:23Z",
+      "keyword": "ai+agent+platform"
+    },
+    {
+      "source": "GitHub",
+      "name": "n30j0su3/Model-Agnostic-AI-Personal-Assistant-Framework-PreAlpha",
+      "description": "Pre-alpha branch-off of the Model-Agnostic AI Personal Assistant Framework",
+      "url": "https://github.com/n30j0su3/Model-Agnostic-AI-Personal-Assistant-Framework-PreAlpha",
+      "stars": 2,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-12T20:17:30Z",
+      "keyword": "ai+personal+assistant+framework"
+    },
+    {
+      "source": "GitHub",
+      "name": "yanjiayi-bd/must-skills",
+      "description": "OpenClaw 技能集合 - 审计与评估工具",
+      "url": "https://github.com/yanjiayi-bd/must-skills",
+      "stars": 1,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-13T07:59:48Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "GitHub",
+      "name": "Ludwig-H-PW/FinRobot",
+      "description": "🤖 Analyze financial data effortlessly with FinRobot, an open-source AI agent platform powered by large language models for insightful decision-making.",
+      "url": "https://github.com/Ludwig-H-PW/FinRobot",
+      "stars": 1,
+      "forks": 0,
+      "language": "Jupyter Notebook",
+      "updated": "2026-03-13T07:58:04Z",
+      "keyword": "ai+agent+platform"
+    },
+    {
+      "source": "GitHub",
+      "name": "LufyXd458/SkillsMaster",
+      "description": "🚀 Manage AI capabilities effortlessly with SkillsMaster, a powerful platform for creating, installing, and using custom skills via the Claude Agent SDK.",
+      "url": "https://github.com/LufyXd458/SkillsMaster",
+      "stars": 1,
+      "forks": 0,
+      "language": "TypeScript",
+      "updated": "2026-03-13T07:57:53Z",
+      "keyword": "ai+agent+platform"
+    },
+    {
+      "source": "GitHub",
+      "name": "Sinjdiz/ORBEXA",
+      "description": "🛒 Enable AI agents to shop for users seamlessly, protecting your brand and data while streamlining commerce across any platform.",
+      "url": "https://github.com/Sinjdiz/ORBEXA",
+      "stars": 1,
+      "forks": 0,
+      "language": null,
+      "updated": "2026-03-13T07:56:49Z",
+      "keyword": "ai+agent+platform"
+    },
+    {
+      "source": "GitHub",
+      "name": "ArshiJ111/openOii",
+      "description": "🤖 Transform ideas into videos with openOii, an AI-powered platform that uses collaboration among agents to create engaging comics and animated stories.",
+      "url": "https://github.com/ArshiJ111/openOii",
+      "stars": 1,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-13T07:56:41Z",
+      "keyword": "ai+agent+platform"
+    },
+    {
+      "source": "GitHub",
+      "name": "zurats/agent-skills-discovery-rfc",
+      "description": "🕵️♂️ Discover agent skills easily using well-known URIs to streamline access and implementation across diverse platforms and resources.",
+      "url": "https://github.com/zurats/agent-skills-discovery-rfc",
+      "stars": 1,
+      "forks": 0,
+      "language": null,
+      "updated": "2026-03-13T07:56:18Z",
+      "keyword": "ai+agent+platform"
+    },
+    {
+      "source": "GitHub",
+      "name": "yankeguo/weavbot",
+      "description": "A lightweight personal AI assistant framework",
+      "url": "https://github.com/yankeguo/weavbot",
+      "stars": 1,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-13T01:53:39Z",
+      "keyword": "ai+personal+assistant+framework"
+    },
+    {
+      "source": "GitHub",
+      "name": "anbinnguyen24/AI-powered-Personal-Schedule-Assistant",
+      "description": "Xây dựng multi-agents đề xuất lịch trình cá nhân sử dụng framework LangChain",
+      "url": "https://github.com/anbinnguyen24/AI-powered-Personal-Schedule-Assistant",
+      "stars": 1,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-12T03:56:50Z",
+      "keyword": "ai+personal+assistant+framework"
+    },
+    {
+      "source": "GitHub",
+      "name": "TanapaJune/vestige",
+      "description": "🧠 Enhance memory retention with Vestige, a local MCP memory server leveraging cognitive science techniques like FSRS-6 and synaptic tagging.",
+      "url": "https://github.com/TanapaJune/vestige",
+      "stars": 1,
+      "forks": 0,
+      "language": "Rust",
+      "updated": "2026-03-13T07:58:39Z",
+      "keyword": "mcp+server"
+    },
+    {
+      "source": "GitHub",
+      "name": "changeli842084/openclaw",
+      "description": "My Openclaw",
+      "url": "https://github.com/changeli842084/openclaw",
+      "stars": 0,
+      "forks": 0,
+      "language": "Shell",
+      "updated": "2026-03-13T08:00:08Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "GitHub",
+      "name": "Kingxiao/openclaw-skills",
+      "description": "本仓库收录了部分适配openclaw的 Skill，会持续新增在真实场景下使用没问题的skill。",
+      "url": "https://github.com/Kingxiao/openclaw-skills",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-13T08:00:00Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "GitHub",
+      "name": "DeepZatakiya/OpenMalleableC2",
+      "description": "🌐 Implement Cobalt Strike's Malleable C2 for HTTP transformations, enabling enhanced customization in open source C2 frameworks and tools.",
+      "url": "https://github.com/DeepZatakiya/OpenMalleableC2",
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "updated": "2026-03-13T07:59:49Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "GitHub",
+      "name": "zoubingwu/openclaw-ai-photos",
+      "description": "Turn folders of images to your personal AI photo album for openclaw",
+      "url": "https://github.com/zoubingwu/openclaw-ai-photos",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-13T07:59:46Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "GitHub",
+      "name": "PeterZhang0612/openclaw-multi-agent-dashboard",
+      "description": null,
+      "url": "https://github.com/PeterZhang0612/openclaw-multi-agent-dashboard",
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "updated": "2026-03-13T07:59:45Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "GitHub",
+      "name": "xiaowu77/openclaw-work-tracker",
+      "description": "OpenClaw工作跟踪网站 - 记录小七、柠檬和尼克的工作情况，包括状态显示、任务列表、排名积分面板等",
+      "url": "https://github.com/xiaowu77/openclaw-work-tracker",
+      "stars": 0,
+      "forks": 0,
+      "language": "Vue",
+      "updated": "2026-03-13T07:59:38Z",
+      "keyword": "openclaw"
+    },
+    {
+      "source": "GitHub",
+      "name": "Visakan08/kimi-agent-internals",
+      "description": "🔍 Analyze the architecture of Moonshot AI's Kimi agent (K2.5 model) with insights on its performance and conversational extraction methodology.",
+      "url": "https://github.com/Visakan08/kimi-agent-internals",
+      "stars": 0,
+      "forks": 0,
+      "language": "Fluent",
+      "updated": "2026-03-13T07:59:30Z",
+      "keyword": "ai+agent+platform"
+    },
+    {
+      "source": "GitHub",
+      "name": "anuragbalaga/JulesClient",
+      "description": "📱 Build cross-platform mobile apps easily with the Jules Client, a Kotlin Multiplatform project for Android, iOS, and Desktop.",
+      "url": "https://github.com/anuragbalaga/JulesClient",
+      "stars": 0,
+      "forks": 0,
+      "language": "CSS",
+      "updated": "2026-03-13T07:58:04Z",
+      "keyword": "ai+agent+platform"
+    },
+    {
+      "source": "GitHub",
+      "name": "ProwlrBot/prowlrbot",
+      "description": "Always watching. Always ready. Autonomous AI agent platform for monitoring, automation, and multi-channel communication.",
+      "url": "https://github.com/ProwlrBot/prowlrbot",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-13T07:57:40Z",
+      "keyword": "ai+agent+platform"
+    },
+    {
+      "source": "GitHub",
+      "name": "RockaRhymeLLC/kithkit",
+      "description": "Personal AI assistant framework — install, configure identity, go.",
+      "url": "https://github.com/RockaRhymeLLC/kithkit",
+      "stars": 0,
+      "forks": 0,
+      "language": "TypeScript",
+      "updated": "2026-03-13T03:10:04Z",
+      "keyword": "ai+personal+assistant+framework"
+    },
+    {
+      "source": "GitHub",
+      "name": "sentientsergio/assistant-bot",
+      "description": "Personal AI assistant framework - Clawdbot-inspired, identity emerges through relationship",
+      "url": "https://github.com/sentientsergio/assistant-bot",
+      "stars": 0,
+      "forks": 0,
+      "language": "TypeScript",
+      "updated": "2026-03-13T02:45:49Z",
+      "keyword": "ai+personal+assistant+framework"
+    },
+    {
+      "source": "GitHub",
+      "name": "jofu-tofu/pai",
+      "description": "Personal AI Infrastructure - A modular framework for building personalized AI assistants using Claude Code",
+      "url": "https://github.com/jofu-tofu/pai",
+      "stars": 0,
+      "forks": 0,
+      "language": "TypeScript",
+      "updated": "2026-03-13T02:13:51Z",
+      "keyword": "ai+personal+assistant+framework"
+    },
+    {
+      "source": "GitHub",
+      "name": "chaddorsey/ai-PA",
+      "description": "Comprehensive AI personal assistant framework",
+      "url": "https://github.com/chaddorsey/ai-PA",
+      "stars": 0,
+      "forks": 0,
+      "language": "HTML",
+      "updated": "2026-03-12T07:36:07Z",
+      "keyword": "ai+personal+assistant+framework"
+    },
+    {
+      "source": "GitHub",
+      "name": "jarecsni/knowledge-mcp",
+      "description": "Self-hosted MCP server providing semantic search over a personal knowledge base. Qdrant + FastEmbed + FastMCP, deployed via Docker.",
+      "url": "https://github.com/jarecsni/knowledge-mcp",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-13T07:59:54Z",
+      "keyword": "mcp+server"
+    },
+    {
+      "source": "GitHub",
+      "name": "davidruzicka/mcp4openapi",
+      "description": "Universal MCP server that generates MCP tools for any OpenAPI 3.x specification.",
+      "url": "https://github.com/davidruzicka/mcp4openapi",
+      "stars": 0,
+      "forks": 0,
+      "language": "TypeScript",
+      "updated": "2026-03-13T07:59:46Z",
+      "keyword": "mcp+server"
+    },
+    {
+      "source": "GitHub",
+      "name": "yama662607/anki-mcps",
+      "description": "Review-first MCP server for Anki authoring with note-centric workflows",
+      "url": "https://github.com/yama662607/anki-mcps",
+      "stars": 0,
+      "forks": 0,
+      "language": "TypeScript",
+      "updated": "2026-03-13T08:00:05Z",
+      "keyword": "mcp+server"
+    },
+    {
+      "source": "GitHub",
+      "name": "NN-ALT/graph-rag",
+      "description": "Offline-capable RAG system with knowledge graph — hybrid vector + graph search, Supabase/pgvector, LM Studio or Claude API, MCP server for Claude Code",
+      "url": "https://github.com/NN-ALT/graph-rag",
+      "stars": 0,
+      "forks": 0,
+      "language": "Python",
+      "updated": "2026-03-13T07:59:26Z",
+      "keyword": "mcp+server"
+    },
+    {
+      "source": "GitHub",
+      "name": "special-place-administrator/tokenizor_agentic_mcp",
+      "description": "Another token saving MCP server for LLMs.",
+      "url": "https://github.com/special-place-administrator/tokenizor_agentic_mcp",
+      "stars": 0,
+      "forks": 0,
+      "language": "Rust",
+      "updated": "2026-03-13T07:59:23Z",
+      "keyword": "mcp+server"
+    },
+    {
+      "source": "GitHub",
+      "name": "gmdl007/nso-restconf-mcp-server",
+      "description": null,
+      "url": "https://github.com/gmdl007/nso-restconf-mcp-server",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated": "2026-03-13T07:59:17Z",
+      "keyword": "mcp+server"
+    },
+    {
+      "source": "GitHub",
+      "name": "kevinastuhuaman/trackly-cli",
+      "description": "Trackly CLI + MCP Server. Search jobs, track applications, and query your job hunt from the terminal, Claude Code, or OpenClaw.",
+      "url": "https://github.com/kevinastuhuaman/trackly-cli",
+      "stars": 0,
+      "forks": 0,
+      "language": "JavaScript",
+      "updated": "2026-03-13T07:59:10Z",
+      "keyword": "mcp+server"
+    },
+    {
+      "source": "GitHub",
+      "name": "vinzyy1/docker-mcp",
+      "description": "🔧 Manage Docker containers for AI assistants effortlessly with the Model Context Protocol server, enabling seamless interactions without configuration.",
+      "url": "https://github.com/vinzyy1/docker-mcp",
+      "stars": 0,
+      "forks": 0,
+      "language": null,
+      "updated": "2026-03-13T07:58:38Z",
+      "keyword": "mcp+server"
+    }
+  ],
+  "techcrunch": [
+    {
+      "source": "TechCrunch",
+      "title": "Before quantum computing arrives, this startup wants enterprises already running on it",
+      "url": "https://techcrunch.com/2026/03/12/before-quantum-computing-arrives-this-startup-wants-enterprises-already-running-on-it/",
+      "published": "Fri, 13 Mar 2026 05:00:00 +0000",
+      "keyword": "ai startup",
+      "summary": "After selling his AI startup to AMD for $665 million, Peter Sarlin is back with QuTwo, a new venture building the infrastructure it believes enterprises will need when quantum computing finally arrive"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Gumloop lands $50M from Benchmark to turn every employee into an AI agent builder",
+      "url": "https://techcrunch.com/2026/03/12/gumloop-lands-50m-from-benchmark-to-turn-every-employee-into-an-ai-agent-builder/",
+      "published": "Thu, 12 Mar 2026 15:30:00 +0000",
+      "keyword": "ai agent",
+      "summary": "As companies race to adopt AI, Benchmark general partner Everett Randle believes the key to success lies in empowering every worker with AI superpowers, and Gumloop’s intuitive agent builder is an exa"
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Netflix may have paid $600 million for Ben Affleck’s AI startup",
+      "url": "https://techcrunch.com/2026/03/11/netflix-may-have-paid-600-million-for-ben-afflecks-ai-startup/",
+      "published": "Wed, 11 Mar 2026 22:00:05 +0000",
+      "keyword": "ai startup",
+      "summary": "This deal could rank as among the streaming giant's largest acquisitions ever."
+    },
+    {
+      "source": "TechCrunch",
+      "title": "Lovable says it added $100M in revenue last month alone, with just 146 employees",
+      "url": "https://techcrunch.com/2026/03/11/lovable-says-it-added-100m-in-revenue-last-month-alone-with-just-146-employees/",
+      "published": "Wed, 11 Mar 2026 21:40:49 +0000",
+      "keyword": "lovable",
+      "summary": "Swedish vibe-coding unicorn Lovable crossed $400 million in annual recurring revenue (ARR) in February."
+    }
+  ],
+  "tech_rss": [
+    {
+      "source": "TheVerge",
+      "title": "Perplexity&#8217;s Personal Computer turns your spare Mac into an AI agent",
+      "url": "https://www.theverge.com/ai-artificial-intelligence/893536/perplexitys-personal-computer-turns-your-spare-mac-into-an-ai-agent",
+      "published": "2026-03-12T08:00:34-04:00",
+      "keyword": "ai agent"
+    },
+    {
+      "source": "ArsTechnica",
+      "title": "Retraction: After a routine code rejection, an AI agent published a hit piece on someone by name",
+      "url": "https://arstechnica.com/ai/2026/02/after-a-routine-code-rejection-an-ai-agent-published-a-hit-piece-on-someone-by-name/",
+      "published": "Fri, 13 Feb 2026 19:40:21 +0000",
+      "keyword": "ai agent"
+    }
+  ],
+  "producthunt": [
+    {
+      "source": "ProductHunt",
+      "title": "Manus Agents for Telegram",
+      "url": "https://www.producthunt.com/products/manus-agents-for-telegram",
+      "published": "2026-02-20T07:36:58-08:00",
+      "keyword": "ai agent"
+    },
+    {
+      "source": "ProductHunt",
+      "title": "ClawMote",
+      "url": "https://www.producthunt.com/products/clawmote-one-hand-openclaw-wispr-flow",
+      "published": "2026-03-12T13:43:36-07:00",
+      "keyword": "openclaw"
+    }
+  ],
+  "reddit": [],
+  "youtube": [
+    {
+      "source": "YouTube",
+      "title": "The wild rise of OpenClaw...",
+      "url": "https://www.youtube.com/watch?v=ssYt09bCgUY",
+      "channel": "Fireship",
+      "views": 1817456,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 319.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Introducing Manus: The General AI Agent",
+      "url": "https://www.youtube.com/watch?v=K27diMbCsuw",
+      "channel": "Manus AI",
+      "views": 1623427,
+      "upload_date": "",
+      "keyword": "ai agent",
+      "duration": 258.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Introducing Claude Code",
+      "url": "https://www.youtube.com/watch?v=AJpK3YTTKZ4",
+      "channel": "Anthropic",
+      "views": 877061,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 235.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Claude Code Tutorial for Beginners",
+      "url": "https://www.youtube.com/watch?v=eMZmDH3T2bY",
+      "channel": "Kevin Stratvert",
+      "views": 499875,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 884.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Building Your Own Unified AI Assistant Using Claude Code",
+      "url": "https://www.youtube.com/watch?v=iKwRWwabkEc",
+      "channel": "Unsupervised Learning",
+      "views": 279089,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 4389.0
+    },
+    {
+      "source": "YouTube",
+      "title": "The Ultimate Beginner’s Guide to OpenClaw",
+      "url": "https://www.youtube.com/watch?v=st534T7-mdE",
+      "channel": "Metics Media",
+      "views": 242761,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 3402.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Full OpenClaw Setup Tutorial: Step-by-Step Walkthrough (Clawdbot)",
+      "url": "https://www.youtube.com/watch?v=fcZMmP5dsl4",
+      "channel": "Metics Media",
+      "views": 154457,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 1059.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Ultimate Clawdbot Tutorial: How to Set up & Use for Beginners (OpenClaw)​",
+      "url": "https://www.youtube.com/watch?v=NA8C8jIQNeM",
+      "channel": "AI Master",
+      "views": 151625,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 1195.0
+    },
+    {
+      "source": "YouTube",
+      "title": "6 OpenClaw use cases I promise will change your life",
+      "url": "https://www.youtube.com/watch?v=41_TNGDDnfQ",
+      "channel": "Alex Finn",
+      "views": 145569,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 1133.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Every Level of Claude Code Explained in 39 Minutes",
+      "url": "https://www.youtube.com/watch?v=Y09u_S3w2c8",
+      "channel": "Simon Scrapes",
+      "views": 144043,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 2362.0
+    },
+    {
+      "source": "YouTube",
+      "title": "7 MIND BLOWING Use Cases For Manus AI (How To Use Manus AI For Beginners)",
+      "url": "https://www.youtube.com/watch?v=zMfhFKLwsdU",
+      "channel": "Rob The AI Guy",
+      "views": 138561,
+      "upload_date": "",
+      "keyword": "manus ai",
+      "duration": 1047.0
+    },
+    {
+      "source": "YouTube",
+      "title": "You’re Not Behind (Yet): How to Build AI Agents in 2026 (no coding)",
+      "url": "https://www.youtube.com/watch?v=ibFJ--CH3cQ",
+      "channel": "Futurepedia",
+      "views": 136941,
+      "upload_date": "",
+      "keyword": "ai agent",
+      "duration": 1565.0
+    },
+    {
+      "source": "YouTube",
+      "title": "How AI Agents Will Transform in 2026 (a16z Big Ideas)",
+      "url": "https://www.youtube.com/watch?v=ULszsXDyjMY",
+      "channel": "a16z",
+      "views": 78592,
+      "upload_date": "",
+      "keyword": "ai agent",
+      "duration": 813.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Devin AI Tutorial - 2026 | How to Use Devin AI? (Step-by-step Guide)",
+      "url": "https://www.youtube.com/watch?v=X533xEtOEDo",
+      "channel": "Dan - Smart Tutorials",
+      "views": 70418,
+      "upload_date": "",
+      "keyword": "devin ai",
+      "duration": 528.0
+    },
+    {
+      "source": "YouTube",
+      "title": "We Used OpenClaw for a Week. This is the Harsh Truth.",
+      "url": "https://www.youtube.com/watch?v=4xDc00EF_eY",
+      "channel": "Limitless Podcast",
+      "views": 50913,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 1402.0
+    },
+    {
+      "source": "YouTube",
+      "title": "The 6 Levels of Claude Code Explained",
+      "url": "https://www.youtube.com/watch?v=TUKYbUIXLOE",
+      "channel": "Chase AI",
+      "views": 50034,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 1956.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Claude Code 2.0 Has Arrived (It’s Insane)",
+      "url": "https://www.youtube.com/watch?v=F4zSxfBe5R0",
+      "channel": "Simon Scrapes",
+      "views": 44485,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 938.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Introducing Manus Browser Operator : An AI Agent that Browses For You?",
+      "url": "https://www.youtube.com/watch?v=kaDwyZVFDJs",
+      "channel": "Manus AI",
+      "views": 42490,
+      "upload_date": "",
+      "keyword": "ai agent",
+      "duration": 60.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Devin AI Explained for Beginners (AI Coding Assistant for Software Engineers)",
+      "url": "https://www.youtube.com/watch?v=ZUw0JzZ1I2Q",
+      "channel": "The Cutting Edge School",
+      "views": 41024,
+      "upload_date": "",
+      "keyword": "devin ai",
+      "duration": 1245.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Meta Acquired This AI Agent… And It's Actually Incredible (Manus AI)",
+      "url": "https://www.youtube.com/watch?v=gBMIQ-O1Kcw",
+      "channel": "Tech With Tim",
+      "views": 40697,
+      "upload_date": "",
+      "keyword": "manus ai",
+      "duration": 843.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Claude Code for Non-Coders | A Complete Beginner's Guide",
+      "url": "https://www.youtube.com/watch?v=S5ULIoThOIM",
+      "channel": "Chase AI",
+      "views": 37708,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 2341.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Build & Sell with Claude Code (10+ Hour Course)",
+      "url": "https://www.youtube.com/watch?v=mpALXah_PBg",
+      "channel": "Nate Herk | AI Automation",
+      "views": 37181,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 36006.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Claude Code + Nano Banana 2 = Crazy",
+      "url": "https://www.youtube.com/watch?v=4uFRYoOeLFU",
+      "channel": "Dan Kieft",
+      "views": 35274,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 1057.0
+    },
+    {
+      "source": "YouTube",
+      "title": "How I'm Using AI Agents in 2026",
+      "url": "https://www.youtube.com/watch?v=BikPUaT76i8",
+      "channel": "Tech With Tim",
+      "views": 26757,
+      "upload_date": "",
+      "keyword": "ai agent",
+      "duration": 1377.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Claude Code's New Upgrade: /btw",
+      "url": "https://www.youtube.com/watch?v=ZbKNpn0woDY",
+      "channel": "Nick Saraev",
+      "views": 26129,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 311.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Meta’s AI Agent is Better Than OpenClaw (Manus AI Demo)",
+      "url": "https://www.youtube.com/watch?v=F6AP0v_2wr0",
+      "channel": "Marketing Against the Grain",
+      "views": 21990,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 1399.0
+    },
+    {
+      "source": "YouTube",
+      "title": "OpenClaw Use Cases That Are Actually INSANE (free templates + review)",
+      "url": "https://www.youtube.com/watch?v=yIKxXRks4Jo",
+      "channel": "The AI Growth Lab with Tom",
+      "views": 21971,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 1748.0
+    },
+    {
+      "source": "YouTube",
+      "title": "OpenClaw 3.8 Update Changes Everything",
+      "url": "https://www.youtube.com/watch?v=Xui-bSDgORU",
+      "channel": "Build In Public",
+      "views": 21830,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 1076.0
+    },
+    {
+      "source": "YouTube",
+      "title": "The AI Agent That Will Replace Your Entire Workflow by 2026 ",
+      "url": "https://www.youtube.com/watch?v=JSvWywgwMpY",
+      "channel": "Julia McCoy",
+      "views": 21448,
+      "upload_date": "",
+      "keyword": "ai agent",
+      "duration": 460.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Nvidia planning to launch open-source AI agent platform, report says",
+      "url": "https://www.youtube.com/watch?v=d-W0Syev-vI",
+      "channel": "CNBC Television",
+      "views": 20883,
+      "upload_date": "",
+      "keyword": "ai agent",
+      "duration": 148.0
+    },
+    {
+      "source": "YouTube",
+      "title": "OpenClaw 3.7 IS INSANE - Here's Why",
+      "url": "https://www.youtube.com/watch?v=CAnC8PQvZkg",
+      "channel": "Build In Public",
+      "views": 17623,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 1327.0
+    },
+    {
+      "source": "YouTube",
+      "title": "How to build an army of OpenClaw agents",
+      "url": "https://www.youtube.com/watch?v=Rjd1LqF9cG4",
+      "channel": "Alex Finn",
+      "views": 15370,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 1088.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Devin AI Crash Course for Beginners",
+      "url": "https://www.youtube.com/watch?v=hiGSdhIsKRo",
+      "channel": "Beau Carnes",
+      "views": 13135,
+      "upload_date": "",
+      "keyword": "devin ai",
+      "duration": 596.0
+    },
+    {
+      "source": "YouTube",
+      "title": "OpenClaw 3.11 IS INSANE, Here's Why",
+      "url": "https://www.youtube.com/watch?v=KPejjQQ5Bzg",
+      "channel": "Julian Goldie SEO",
+      "views": 9274,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 740.0
+    },
+    {
+      "source": "YouTube",
+      "title": "This NEW AI AGENT is INSANE! (FREE!) 🤯",
+      "url": "https://www.youtube.com/watch?v=7aKqg_pXefE",
+      "channel": "Julian Goldie SEO",
+      "views": 7047,
+      "upload_date": "",
+      "keyword": "ai agent",
+      "duration": 491.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Build Your Own AI Personal Assistant with n8n (no code)",
+      "url": "https://www.youtube.com/watch?v=iv0D-dHfK6w",
+      "channel": "Brendan Jowett",
+      "views": 6434,
+      "upload_date": "",
+      "keyword": "ai personal assistant",
+      "duration": 3220.0
+    },
+    {
+      "source": "YouTube",
+      "title": "OpenClaw Update 3.11 IS INSANE - Here's Why",
+      "url": "https://www.youtube.com/watch?v=ViGUueYEYK8",
+      "channel": "Build In Public",
+      "views": 5542,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 1052.0
+    },
+    {
+      "source": "YouTube",
+      "title": "FASTEST and EASIEST way to set up OpenClaw",
+      "url": "https://www.youtube.com/watch?v=Z2lbI34kVls",
+      "channel": "Dorian Develops",
+      "views": 5458,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 595.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Testing Claude Code Review So You Don't Have To",
+      "url": "https://www.youtube.com/watch?v=H2M7aB_nc-o",
+      "channel": "BridgeMind",
+      "views": 4179,
+      "upload_date": "",
+      "keyword": "claude code",
+      "duration": 735.0
+    },
+    {
+      "source": "YouTube",
+      "title": "OpenClaw + Nvidia Nemotron 3 Super + Ollama is INSANE!",
+      "url": "https://www.youtube.com/watch?v=86-6tbVN_SY",
+      "channel": "Julian Goldie SEO",
+      "views": 3995,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 634.0
+    },
+    {
+      "source": "YouTube",
+      "title": "I Set Up a Personal AI Assistant with OpenClaw (Works 24/7)",
+      "url": "https://www.youtube.com/watch?v=2w4u3NX5yVI",
+      "channel": "Tim Cakir",
+      "views": 2734,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 510.0
+    },
+    {
+      "source": "YouTube",
+      "title": "The EASIEST & SAFEST Way to Set Up OpenClaw For Beginners in 2026",
+      "url": "https://www.youtube.com/watch?v=LiyR2C6smjo",
+      "channel": "Rob The AI Guy",
+      "views": 2531,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 695.0
+    },
+    {
+      "source": "YouTube",
+      "title": "MyClaw.ai: Finally, AI Agents That Actually Work 24/7",
+      "url": "https://www.youtube.com/watch?v=DwAgYqAP3iY",
+      "channel": "ScaleUp Sage",
+      "views": 1835,
+      "upload_date": "",
+      "keyword": "myclaw",
+      "duration": 955.0
+    },
+    {
+      "source": "YouTube",
+      "title": "The End of #ChatGPT Plus? MyClaw.ai Changes Everything",
+      "url": "https://www.youtube.com/watch?v=WXSEfat1t6w",
+      "channel": "AskGuru",
+      "views": 1807,
+      "upload_date": "",
+      "keyword": "myclaw",
+      "duration": 743.0
+    },
+    {
+      "source": "YouTube",
+      "title": "OpenClaw Explained: Why the Hype is (Mostly) Wrong",
+      "url": "https://www.youtube.com/watch?v=h3KP3uXGsLI",
+      "channel": "Udacity",
+      "views": 710,
+      "upload_date": "",
+      "keyword": "openclaw",
+      "duration": 536.0
+    },
+    {
+      "source": "YouTube",
+      "title": "How to cancel Myclaw AI subscription (step by step)",
+      "url": "https://www.youtube.com/watch?v=6-yHDowJwFE",
+      "channel": "Global Success Narratives",
+      "views": 79,
+      "upload_date": "",
+      "keyword": "myclaw",
+      "duration": 102.0
+    },
+    {
+      "source": "YouTube",
+      "title": "Manus AI",
+      "url": "https://www.youtube.com/watch?v=UCQgFQdqiFQ_LfFBGP6z9dqQ",
+      "channel": "Manus AI",
+      "views": 0,
+      "upload_date": "",
+      "keyword": "manus ai",
+      "duration": 0
+    }
+  ]
+}
