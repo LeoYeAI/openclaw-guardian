@@ -1,4 +1,4 @@
-# MyClaw 生态增长战略 v1.0
+# MyClaw 生态增长战略 v2.0
 
 _目标：建立多样化的生态节点，每天稳定产生新增实例_
 _Last updated: 2026-03-21 | Author: The Doctor 🌀_
@@ -7,82 +7,59 @@ _Last updated: 2026-03-21 | Author: The Doctor 🌀_
 
 ## 🧭 核心逻辑
 
+MyClaw 不是应用，是平台。平台的增长靠生态，不靠买量。
+
 ```
-开源生态（最上层漏斗）
+开源生态（流量入口）
         ↓
-三大商业化入口（转化层）
+开发者 API（核心基础设施）—— MyClaw 唯一要做好的技术产品
+        ↓
+三类生态节点（开发者/渠道方自驱动）
         ↓
 每日新增实例（目标）
 ```
 
-不依赖单一渠道。每个节点独立产生实例，节点越多，日增越稳定，抗风险能力越强。
+**收敛后的核心原则：**
+MyClaw 只做两件事——**把 API 做到极致好用**，**把生态节点激励设计好**。
+具体场景、具体应用、具体内容，交给生态方去做。
 
 ---
 
 ## 🌐 第零层：开源生态（流量总闸）
 
-### O1｜成为 OpenClaw 官方推荐托管方
-- 以技术贡献者身份进入社区（提 PR、修 bug、做文档）
-- 目标：OpenClaw README 出现「推荐托管：MyClaw」官方链接
-- 终极目标：OpenClaw 安装流程内嵌「一键迁移到 MyClaw」选项
-- **价值：OpenClaw 27.5 万 stars，每天数万 UV，精准高意向**
+这是所有节点的上游，做好了其他一切都受益。
 
-### O2｜开源工具矩阵
-每个工具 README 带「Powered by MyClaw」+ 注册链接：
+### 动作 1｜成为 OpenClaw 官方推荐托管方
+- 路径：先以技术贡献者身份进入（提 PR、修 bug）→ 建立可信度 → 谈官方合作
+- 目标 A：OpenClaw README 加「推荐托管：MyClaw」官方链接
+- 目标 B：OpenClaw 安装流程内嵌「一键迁移到 MyClaw」选项
+- **价值：OpenClaw 27.5 万 stars，每天数万精准高意向 UV，永久免费流量**
 
-| 工具 | 定位 |
+### 动作 2｜开源工具矩阵，覆盖开发者工作流
+每个工具 README 带「Powered by MyClaw」+ 注册链接，持续曝光品牌：
+
+| 工具 | 作用 |
 |------|------|
-| myclaw-cli | 命令行管理实例，开发者每天用 |
-| myclaw-sdk-js / python | API 集成必用 |
-| myclaw-templates | 常用 Agent 模板，fork 即用 |
+| myclaw-sdk-js / python | API 集成必用，开发者天天接触 |
+| myclaw-cli | 命令行管理实例 |
+| myclaw-templates | 常用 Agent 模板库，fork 即用 |
 | openclaw-installer | 一键装 OpenClaw，结尾推 MyClaw 托管 |
-| myclaw-bench（已有）| 测评显示最佳模型跑在 MyClaw 上 |
 
-### O3｜ClawHub 做成「AI Skills 的 npm」
-- **Verified 认证**：MyClaw 官方审核标签，解决恶意 skill 信任问题
-- **「Deploy to MyClaw」按钮**：任何 GitHub skill 仓库一键部署
-- **开发者 Credits 分成**：热门 skill top 10% 开发者拿 MyClaw token 奖励
-- **飞轮**：skill 越多 → OpenClaw 越好用 → 更多人需要 MyClaw 托管
+### 动作 3｜ClawHub 做成「AI Skills 的 npm」
+- **Verified 认证标签**：官方审核，解决恶意 skill 信任危机
+- **「Deploy to MyClaw」按钮**：任何 GitHub skill 仓库一键部署，类比 Vercel 按钮
+- **开发者 Credits 分成**：热门 skill top 10% 开发者拿 token 奖励
+- **飞轮效应**：skill 越丰富 → OpenClaw 越好用 → 更多人需要 MyClaw 托管
 
-### O4｜开源社区作为 B2B 销售渠道
-- 监控 OpenClaw Issues 里的「部署太复杂」类帖子
-- 团队介入回复，顺带提 MyClaw 托管方案（真实帮助，不是广告）
-- 开发者 → 推给公司用 → 企业版漏斗
+### 动作 4｜社区渗透，开源社区即 B2B 销售渠道
+- 监控 OpenClaw Issues 里「self-hosting 太复杂」类帖子，团队真实介入帮助
+- 开发者评估 → 推给公司使用 → 企业版漏斗自然形成
 
 ---
 
-## 🔌 入口一：嵌入型（Embedded MyClaw）
+## ⚙️ 核心基础设施：开发者 API Platform
 
-**定位：让 MyClaw 变成别人产品的 AI 基础设施层**
-
-### 产品形态：Embed SDK
-
-```js
-import { MyClaw } from '@myclaw/embed'
-MyClaw.init({ apiKey: 'xxx', plan: 'starter' })
-MyClaw.createInstance({ userId: user.id })
-```
-
-### 三个优先场景
-
-| 场景 | 目标平台 | 用户价值 |
-|------|----------|----------|
-| 建站工具插件 | Webflow / Framer / WordPress | 网站自动获得 AI 客服/助手 |
-| Shopify App | 200 万+ 商家 | 智能店铺运营助手 |
-| Notion/Obsidian 插件 | 知识工作者 | 笔记库变成会思考的 Agent |
-
-### 商业结构
-```
-合作方向用户收 $X
-MyClaw 批发价 = 零售价 7 折
-差价归合作方 → 合作方有动力主动推
-```
-
----
-
-## 🛠️ 入口二：开发者 API（MyClaw Developer Platform）
-
-**定位：AI Agent 基础设施的 Stripe**
+**这是整个生态战略的地基。入口一（嵌入场景）不再由 MyClaw 自己做，全部开放给开发者，他们用 API 构建。**
 
 ### MVP 五个核心接口
 
@@ -94,70 +71,86 @@ POST   /v1/instances/:id/message  向实例发消息
 POST   /v1/instances/:id/topup    充值 token
 ```
 
-加 Webhook：实例状态变更 / token 余额不足回调。
+加 Webhook：实例状态变更 / token 余额不足时回调通知开发者。
 
-### 开发者分成体系
+### 开发者体验（DX）要求
+- 5 分钟快速开始，复制 3 行代码跑通第一个实例
+- Sandbox 环境（测试不扣费）
+- Dashboard：实时查看带来的实例数 + 累计收益
+
+### 开发者分成（激励生态构建者）
 
 | 月带量 | 订阅分成（首月）| Token 分成（持续）|
 |--------|----------------|------------------|
-| 1-9 个 | 15% | 无 |
-| 10-99 个 | 20% | 5% |
-| 100-499 个 | 30% | 8% |
+| 1–9 个 | 15% | 无 |
+| 10–99 个 | 20% | 5% |
+| 100–499 个 | 30% | 8% |
 | 500+ | 定制 | 定制 |
 
-Token 持续分成是核心钩子——开发者的用户越活跃，开发者赚得越多，主动优化用户深度使用。
+**Token 持续分成是核心钩子**：开发者的用户越活跃，开发者赚得越多 → 主动优化用户深度使用 → MyClaw 留存同步提升。
 
-### 触达路径
-1. OpenClaw GitHub README 加「Build on MyClaw」
+### Partner Marketplace
+在 MyClaw 官网做「Built on MyClaw」展示页：
+- 所有基于 API 构建的应用上架展示
+- 用户在这里发现各类垂直应用（Shopify 版、Notion 版、教育版…）
+- 开发者有展示位和流量激励，持续做高质量产品
+- MyClaw 不生产内容，只运营市场
+
+### API 触达路径
+1. OpenClaw GitHub README 加「Build on MyClaw API」
 2. dev.myclaw.ai 开发者文档独立站
 3. HackerNews Show HN 发布
 4. Product Hunt Developer Platform 发布
 
 ---
 
-## 🎙️ 入口三：渠道合作（Partner Program）
+## 🎙️ 三类生态节点
 
-**定位：让有流量的人跟 MyClaw 的 LTV 绑定**
+API 是基础设施，三类节点是在上面跑的不同分发层，互不依赖，各自产生实例。
 
-### 渠道 A：YouTube / 内容 KOL
+### 节点 A：内容 KOL（最快出量）
 
-专属邀请码 + 长期分成：
+从一次性付费改为**长期分成合同**，把 KOL 变成永久合伙人：
 
-| 等级 | 粉丝量 | 合作方式 | 分成 |
-|------|--------|----------|------|
-| 纳米 KOL | <1 万 | 纯分成零固定费 | 30% 首月 + 8% 持续 |
-| 中腰部 | 1-50 万 | 小固定 + 分成 | 25% 首月 + 6% 持续 |
-| 头部 | 50 万+ | 定制谈判 | 定制 |
+| 等级 | 粉丝量 | 分成 |
+|------|--------|------|
+| 纳米 KOL（<1 万）| 纯分成，零固定费 | 30% 首月 + 8% 持续 |
+| 中腰部（1–50 万）| 小固定 + 分成 | 25% 首月 + 6% 持续 |
+| 头部（50 万+）| 定制谈判 | 定制 |
 
-纳米 KOL 策略：找 500 个垂直小 KOL，每人带 50 注册 = 25,000 实例。
+**纳米 KOL 批量策略**：500 个垂直小 KOL × 每人带 50 注册 = 25,000 实例，分散风险，单个成本极低。
 
-### 渠道 B：AI 课程 / 训练营
+KOL 接受的原因：YouTube 视频永久产生流量 = 永久被动收入，比一次性固定费强得多。
+
+### 节点 B：AI 课程 / 训练营（最高 LTV）
+
 ```
-课程作者批发购买实例（$15/月）
-「本课程配套 MyClaw 实例 3 个月」打包进课程
-学员完课继续用 → 高留存
+课程作者批发购买实例（$15/月，零售价 7 折）
+「本课程配套 MyClaw 实例 3 个月」打包进课程定价
+学员完课后继续订阅 → 天然高留存
 ```
+
 目标：Udemy AI Agent 课程作者、独立训练营、企业内训机构
 
-### 渠道 C：企业 IT 顾问 / MSP
+### 节点 C：企业 IT 顾问 / MSP（最高客单价）
+
 ```
-IT 顾问帮客户部署 AI 助手
-向客户收 $200-500/月服务费
+IT 顾问帮中小企业部署 AI 助手
+向客户收 $200–500/月服务费
 MyClaw 实例成本 $39/月，毛利极厚
-顾问主动推，因为利润最高
+顾问主动推，因为 MyClaw 是利润最高的方案
 ```
 
 ---
 
-## 📊 各节点对比
+## 📊 节点全景图
 
 | 节点 | 启动难度 | 出量速度 | 量级 | LTV | 壁垒 |
 |------|----------|----------|------|-----|------|
 | OpenClaw 官方合作 | 高 | 慢 | 极高 | 极高 | 极高 |
 | 开源工具矩阵 | 低 | 中 | 中 | 高 | 高 |
 | ClawHub 飞轮 | 中 | 慢 | 高 | 高 | 极高 |
-| 嵌入型 SDK | 中 | 慢 | 高 | 高 | 高 |
-| 开发者 API | 高 | 中 | 极高 | 极高 | 极高 |
+| 开发者 API + Marketplace | 高 | 中 | 极高 | 极高 | 极高 |
 | KOL 分成体系 | 低 | 快 | 中 | 中 | 低 |
 | AI 训练营 | 低 | 中 | 中 | 高 | 中 |
 | 企业 IT 顾问 | 中 | 慢 | 中 | 极高 | 中 |
@@ -166,41 +159,45 @@ MyClaw 实例成本 $39/月，毛利极厚
 
 ## 🗓️ 落地节奏
 
-### Month 1：商务先跑，技术并行启动
-- [ ] KOL 分成体系上线，改造现有合作关系
-- [ ] 找 2-3 个 AI 训练营谈批发合作
-- [ ] API 平台 MVP 开始开发（5 个核心接口）
+### Month 1：商务先跑，API 开始开发
+- [ ] KOL 分成体系上线，改造现有合作（一次性 → 长期分成）
+- [ ] 找 2–3 个 AI 训练营谈批发合作
+- [ ] API MVP 开始开发（5 个核心接口 + Webhook）
 - [ ] ClawHub 加 Verified 认证标签
-- [ ] 情报系统加入 OpenClaw Issues 监控
+- [ ] 情报系统加入 OpenClaw Issues 监控，团队介入
 
-### Month 2：API 平台上线，开源矩阵起步
-- [ ] API MVP 上线，OpenClaw 社区找 10 个种子开发者内测
+### Month 2：API 上线，开源矩阵起步
+- [ ] API MVP 上线，找 10 个种子开发者内测
 - [ ] myclaw-sdk-js 开源发布
 - [ ] openclaw-installer 脚本开源
+- [ ] dev.myclaw.ai 文档站上线
 - [ ] HackerNews Show HN 发布
 - [ ] 联系 OpenClaw maintainer，建立贡献者关系
 
-### Month 3：嵌入型首个场景，生态节点验证
-- [ ] Shopify App 或 Webflow 插件上线（选一个先打透）
-- [ ] Embed SDK 发布
+### Month 3：Partner Marketplace 上线，生态节点验证
+- [ ] Built on MyClaw 展示页上线
 - [ ] 「Deploy to MyClaw」按钮在 GitHub 上铺开
 - [ ] 开发者 Credits 分成计划上线
-- [ ] 企业版产品形态设计完成
-
-### Month 4+：数据驱动，集中资源压最优节点
-- [ ] 各节点日均新增实例数统计对比
-- [ ] Top 3 节点加倍投入
+- [ ] 企业版产品形态完成
 - [ ] OpenClaw 官方合作谈判推进
+
+### Month 4+：数据驱动，压最优节点
+- [ ] 各节点日均新增实例数统计对比
+- [ ] Top 3 节点加倍投入资源
+- [ ] 启动第二批垂直场景（开发者自发构建）
 
 ---
 
-## 🎯 核心判断
+## 🎯 战略本质
 
-短期靠 SEM 买流量，中期靠渠道分成，长期靠生态壁垒。
+**v1.0 的思路：** MyClaw 自己铺多个入口
 
-当生态节点足够多、足够多样时：
-- 某个渠道波动 → 其他渠道补位
-- 竞品高价抢 SEM → 生态流量不受影响
-- 用户在生态里深度集成 → 迁移成本极高
+**v2.0 的收敛：** MyClaw 做平台，生态方铺入口
 
-> Google SEM 买来的是用户。生态建立的是护城河。用户可以被抢走，生态位不能。
+> MyClaw 的角色是平台运营者，不是应用开发者。
+> 把 API 做好，把激励设计好，让一千个开发者替你创造一千个入口。
+> 这才是 Stripe 真正的秘密。
+
+---
+
+_v2.0 更新说明：入口一（嵌入型）不再由 MyClaw 自建，合并入开发者 API 生态，由开发者用 API 自主构建各类垂直场景。MyClaw 专注平台基础设施和激励机制。_
