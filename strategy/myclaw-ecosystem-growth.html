@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyClaw 生态增长战略 v2.0</title>
+<style>
+:root{--bg:#0f0f1a;--bg2:#161625;--bg3:#1e1e30;--card:#1a1a2e;--card-border:#2a2a45;--text:#e8e8f0;--text-muted:#8888aa;--accent1:#6c63ff;--accent2:#4fc3f7;--accent-grad:linear-gradient(135deg,#6c63ff,#4fc3f7);--purple-soft:rgba(108,99,255,0.15);--blue-soft:rgba(79,195,247,0.1);--sidebar-w:260px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);line-height:1.75;display:flex;min-height:100vh}
+.sidebar{width:var(--sidebar-w);min-height:100vh;background:var(--bg2);border-right:1px solid var(--card-border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;padding:28px 0 40px;flex-shrink:0}
+.sidebar-logo{padding:0 22px 24px;border-bottom:1px solid var(--card-border);margin-bottom:20px}
+.logo-text{font-size:14px;font-weight:700;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;letter-spacing:.5px}
+.logo-sub{font-size:11px;color:var(--text-muted);margin-top:4px}
+.nav-section-label{font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:1.2px;color:var(--text-muted);padding:0 22px 8px;margin-top:8px}
+.nav-item{display:flex;align-items:center;gap:10px;padding:9px 22px;font-size:13.5px;color:var(--text-muted);text-decoration:none;border-left:3px solid transparent;transition:all .2s ease;cursor:pointer}
+.nav-item:hover{color:var(--text);background:var(--purple-soft);border-left-color:var(--accent1)}
+.main{flex:1;max-width:900px;padding:0 52px 100px;margin:0 auto}
+.top-badge{display:inline-flex;align-items:center;gap:6px;background:var(--accent-grad);color:#fff;font-size:11px;font-weight:600;padding:5px 14px;border-radius:20px;margin:40px 0 28px;letter-spacing:.5px;box-shadow:0 4px 20px rgba(108,99,255,.4)}
+.page-header{margin-bottom:50px;padding-bottom:34px;border-bottom:1px solid var(--card-border)}
+.page-title{font-size:34px;font-weight:800;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1.25;margin-bottom:12px;letter-spacing:-.5px}
+.page-subtitle{font-size:16px;color:var(--text-muted)}
+.page-meta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
+.page-meta span{font-size:12px;color:var(--text-muted);background:var(--bg3);padding:4px 12px;border-radius:6px;border:1px solid var(--card-border)}
+.section{margin-bottom:68px}
+.section-title{font-size:22px;font-weight:700;color:var(--text);margin-bottom:24px;padding-bottom:12px;border-bottom:1px solid var(--card-border);display:flex;align-items:center;gap:10px;scroll-margin-top:30px}
+p{color:var(--text);margin-bottom:16px;font-size:15px}
+em{color:var(--text-muted);font-style:italic}
+strong{color:var(--accent2);font-weight:600}
+.code-block{background:#09091a;border:1px solid var(--card-border);border-radius:10px;padding:20px 24px;font-family:"SF Mono","Fira Code",Consolas,monospace;font-size:13px;line-height:1.7;color:#a8b4d0;margin:20px 0;overflow-x:auto;position:relative;white-space:pre}
+.code-block::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent-grad);border-radius:10px 10px 0 0}
+.callout{background:var(--purple-soft);border:1px solid rgba(108,99,255,.3);border-left:4px solid var(--accent1);border-radius:8px;padding:16px 20px;margin:20px 0;font-size:14.5px;color:var(--text)}
+.subsection{margin-bottom:36px}
+.subsection-title{font-size:16px;font-weight:600;color:var(--accent2);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.data-table{width:100%;border-collapse:separate;border-spacing:0;margin:20px 0;border-radius:10px;overflow:hidden;border:1px solid var(--card-border)}
+.data-table th{background:var(--bg3);color:var(--text-muted);font-size:12px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;padding:12px 16px;text-align:left;border-bottom:1px solid var(--card-border)}
+.data-table td{padding:12px 16px;font-size:13.5px;color:var(--text);border-bottom:1px solid rgba(42,42,69,.5);vertical-align:middle}
+.data-table tr:last-child td{border-bottom:none}
+.data-table tbody tr{background:var(--card);transition:background .15s}
+.data-table tbody tr:hover{background:var(--bg3)}
+.badge{display:inline-flex;align-items:center;font-size:11px;font-weight:600;padding:3px 10px;border-radius:20px}
+.badge-purple{background:rgba(108,99,255,.2);color:#a89fff}
+.badge-blue{background:rgba(79,195,247,.15);color:#7dd3f5}
+.badge-green{background:rgba(72,199,142,.15);color:#72c98e}
+.badge-orange{background:rgba(255,165,80,.15);color:#ffa550}
+.badge-red{background:rgba(255,90,90,.15);color:#ff7070}
+ul.styled{list-style:none;margin:14px 0}
+ul.styled li{padding:7px 0 7px 24px;position:relative;font-size:14.5px;color:var(--text);border-bottom:1px solid rgba(42,42,69,.3)}
+ul.styled li:last-child{border-bottom:none}
+ul.styled li::before{content:"\25B8";position:absolute;left:0;color:var(--accent1);font-size:12px;top:10px}
+.api-block{background:#09091a;border:1px solid var(--card-border);border-radius:10px;overflow:hidden;margin:20px 0}
+.api-block-header{background:var(--bg3);padding:10px 18px;font-size:12px;color:var(--text-muted);font-weight:600;letter-spacing:.5px;border-bottom:1px solid var(--card-border)}
+.api-endpoint{display:flex;align-items:center;gap:14px;padding:12px 18px;border-bottom:1px solid rgba(42,42,69,.4);transition:background .15s}
+.api-endpoint:last-child{border-bottom:none}
+.api-endpoint:hover{background:rgba(108,99,255,.05)}
+.api-method{font-family:"SF Mono",Consolas,monospace;font-size:11px;font-weight:700;padding:3px 8px;border-radius:4px;min-width:54px;text-align:center}
+.method-post{background:rgba(72,199,142,.2);color:#72c98e}
+.method-get{background:rgba(79,195,247,.2);color:#7dd3f5}
+.method-delete{background:rgba(255,90,90,.2);color:#ff7070}
+.api-path{font-family:"SF Mono",Consolas,monospace;font-size:13px;color:#c0c8e0;flex:1}
+.api-desc{font-size:12.5px;color:var(--text-muted)}
+.timeline{position:relative;padding-left:32px;margin:24px 0}
+.timeline::before{content:'';position:absolute;left:10px;top:4px;bottom:4px;width:2px;background:linear-gradient(to bottom,var(--accent1),var(--accent2),rgba(79,195,247,.1));border-radius:2px}
+.timeline-item{position:relative;margin-bottom:32px}
+.timeline-item::before{content:'';position:absolute;left:-26px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--accent-grad);box-shadow:0 0 12px rgba(108,99,255,.6)}
+.timeline-month{font-size:13px;font-weight:700;color:var(--accent1);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.timeline-tasks{background:var(--card);border:1px solid var(--card-border);border-radius:10px;overflow:hidden}
+.timeline-task{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border-bottom:1px solid rgba(42,42,69,.4);font-size:14px;color:var(--text);transition:background .15s}
+.timeline-task:last-child{border-bottom:none}
+.timeline-task:hover{background:var(--bg3)}
+.task-dot{width:18px;height:18px;border:2px solid rgba(108,99,255,.4);border-radius:4px;flex-shrink:0;margin-top:2px;background:var(--bg)}
+.kol-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}
+.kol-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:20px;text-align:center;transition:all .2s;position:relative;overflow:hidden}
+.kol-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.kol-card.nano::before{background:linear-gradient(90deg,#a78bfa,#818cf8)}
+.kol-card.mid::before{background:var(--accent-grad)}
+.kol-card.top::before{background:linear-gradient(90deg,#fbbf24,#f59e0b)}
+.kol-card:hover{transform:translateY(-4px);box-shadow:0 8px 32px rgba(108,99,255,.15);border-color:rgba(108,99,255,.4)}
+.kol-tier-name{font-size:13px;font-weight:700;margin-bottom:4px;color:var(--text)}
+.kol-fans{font-size:11px;color:var(--text-muted);margin-bottom:14px}
+.kol-commission{font-size:22px;font-weight:800;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:4px}
+.kol-commission-sub{font-size:11px;color:var(--text-muted)}
+.node-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:20px 0}
+.node-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:18px 20px;transition:all .2s}
+.node-card:hover{border-color:rgba(79,195,247,.3);box-shadow:0 4px 20px rgba(79,195,247,.08)}
+.node-name{font-size:14px;font-weight:600;color:var(--text);margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--card-border)}
+.node-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.node-stat-label{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:3px}
+.node-stat-value{font-size:12px;font-weight:600}
+.flywheel{background:var(--bg3);border:1px solid var(--card-border);border-radius:14px;padding:28px;margin:20px 0;text-align:center}
+.flywheel-step{display:inline-block;background:var(--card);border:1px solid var(--card-border);border-radius:8px;padding:10px 20px;font-size:14px;font-weight:500;color:var(--text);margin:6px}
+.flywheel-arrow{display:block;font-size:22px;color:var(--accent1);margin:4px 0;line-height:1}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:20px 0}
+.compare-card{background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:20px}
+.compare-card.old{border-top:3px solid #ff6b6b}
+.compare-card.new{border-top:3px solid var(--accent1)}
+.compare-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:10px}
+.compare-card.old .compare-label{color:#ff6b6b}
+.compare-card.new .compare-label{color:var(--accent1)}
+.compare-text{font-size:14px;color:var(--text-muted)}
+.highlight-box{background:linear-gradient(135deg,rgba(108,99,255,.12),rgba(79,195,247,.08));border:1px solid rgba(108,99,255,.3);border-radius:12px;padding:20px 24px;margin:16px 0;font-size:14.5px;color:var(--text)}
+.highlight-number{font-size:28px;font-weight:800;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;display:block;margin-bottom:4px}
+.page-footer{text-align:center;padding:40px 0 20px;color:var(--text-muted);font-size:12px;border-top:1px solid var(--card-border);margin-top:60px}
+.page-footer a{color:var(--accent1);text-decoration:none}
+blockquote{border-left:4px solid var(--accent1);background:var(--purple-soft);padding:14px 20px;border-radius:0 8px 8px 0;margin:16px 0;font-style:italic;color:#c0c0e0;font-size:14.5px}
+code{background:var(--bg3);padding:2px 8px;border-radius:4px;font-family:"SF Mono",Consolas,monospace;font-size:13px}
+@media(max-width:900px){
+  body{flex-direction:column}
+  .sidebar{display:none}
+  .mobile-header{display:flex}
+  .mobile-nav-toggle{display:flex}
+  .main{padding:16px 16px 60px;max-width:100%}
+  .kol-tiers,.node-grid,.compare-grid{grid-template-columns:1fr}
+  .page-title{font-size:24px;letter-spacing:-.3px}
+  .api-desc{display:none}
+  .top-badge{margin:20px 0 16px}
+  .page-header{margin-bottom:32px;padding-bottom:24px}
+  .section{margin-bottom:48px}
+  .flywheel-step{font-size:13px;padding:8px 14px}
+  .data-table th,.data-table td{padding:10px 12px;font-size:13px}
+  .highlight-number{font-size:22px}
+}
+@media(min-width:901px){.mobile-header{display:none!important}.mobile-nav-toggle{display:none!important}}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg2)}
+::-webkit-scrollbar-thumb{background:var(--card-border);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--accent1)}
+</style>
+</head>
+<body>
+
+<!-- 移动端顶部 header -->
+<div class="mobile-header" style="display:none;position:sticky;top:0;z-index:200;background:#0f0f1a;border-bottom:1px solid #2a2a45;padding:14px 18px;align-items:center;justify-content:space-between;">
+  <div>
+    <div style="font-size:14px;font-weight:800;background:linear-gradient(135deg,#6c63ff,#4fc3f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">🌀 MyClaw</div>
+    <div style="font-size:10px;color:#8888aa;margin-top:1px;">生态增长战略 v2.0</div>
+  </div>
+  <button onclick="document.getElementById('mobile-drawer').style.transform='translateX(0)'" style="background:rgba(108,99,255,0.15);border:1px solid rgba(108,99,255,0.3);color:#a89fff;border-radius:8px;padding:7px 14px;font-size:12px;font-weight:600;cursor:pointer;">☰ 目录</button>
+</div>
+
+<!-- 移动端抽屉导航 -->
+<div id="mobile-drawer" style="display:none;position:fixed;inset:0;z-index:300;transform:translateX(-100%);transition:transform .28s cubic-bezier(.4,0,.2,1);">
+  <div style="width:82%;max-width:300px;height:100%;background:#161625;border-right:1px solid #2a2a45;overflow-y:auto;padding:24px 0;display:flex;flex-direction:column;">
+    <div style="padding:0 20px 20px;border-bottom:1px solid #2a2a45;display:flex;justify-content:space-between;align-items:center;">
+      <div>
+        <div style="font-size:15px;font-weight:800;background:linear-gradient(135deg,#6c63ff,#4fc3f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">🌀 MyClaw 生态战略</div>
+        <div style="font-size:11px;color:#8888aa;margin-top:3px;">v2.0 · The Doctor 🌀</div>
+      </div>
+      <button onclick="document.getElementById('mobile-drawer').style.transform='translateX(-100%)'" style="background:transparent;border:none;color:#8888aa;font-size:20px;cursor:pointer;padding:4px;">✕</button>
+    </div>
+    <nav id="mobile-nav" style="padding:16px 0;flex:1;"></nav>
+  </div>
+  <div onclick="document.getElementById('mobile-drawer').style.transform='translateX(-100%)'" style="flex:1;background:rgba(0,0,0,0.6);"></div>
+</div>
+
+<nav class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-text">&#127744; MyClaw</div>
+    <div class="logo-sub">&#29983;&#24577;&#22686;&#38271;&#25112;&#30053; v2.0</div>
+  </div>
+  <div class="nav-section-label">&#25112;&#30053;&#26694;&#26550;</div>
+  <a class="nav-item" href="#core-logic">&#x1F9ED; &#26680;&#24515;&#36923;&#36753;</a>
+  <a class="nav-item" href="#layer-zero">&#127758; &#31295;&#38646;&#23618;&#65306;&#24320;&#28304;&#29983;&#24577;</a>
+  <a class="nav-item" href="#api-platform">&#9881; &#24320;&#21457;&#32773; API</a>
+  <a class="nav-item" href="#eco-nodes">&#127897; &#19977;&#31867;&#29983;&#24577;&#33410;&#28857;</a>
+  <a class="nav-item" href="#node-overview">&#128202; &#33410;&#28857;&#20840;&#26223;&#22270;</a>
+  <a class="nav-item" href="#roadmap">&#128197; &#33853;&#22320;&#33410;&#22959;</a>
+  <a class="nav-item" href="#essence">&#127919; &#25112;&#30053;&#26412;&#36136;</a>
+</nav>
+
+<main class="main">
+<div class="top-badge">&#9889; Powered by MyClaw.ai</div>
+
+<div class="page-header">
+  <h1 class="page-title">MyClaw &#29983;&#24577;&#22686;&#38271;&#25112;&#30053; v2.0</h1>
+  <p class="page-subtitle">&#24314;&#31435;&#22810;&#26679;&#21270;&#29983;&#24577;&#33410;&#28857;&#65292;&#27599;&#22825;&#31283;&#23450;&#20135;&#29983;&#26032;&#22686;&#23454;&#20363;</p>
+  <div class="page-meta">
+    <span>&#128197; Last updated: 2026-03-21</span>
+    <span>&#127744; Author: The Doctor</span>
+    <span>&#128204; Version 2.0</span>
+  </div>
+</div>
+
+<!-- Section 1: Core Logic -->
+<section class="section" id="core-logic">
+  <h2 class="section-title"><span>&#x1F9ED;</span> 核心逻辑</h2>
+  <p>MyClaw 不是应用，是平台。平台的增长靠生态，不靠买量。</p>
+  <div class="flywheel">
+    <div class="flywheel-step">🔓 开源生态（流量入口）</div>
+    <span class="flywheel-arrow">↓</span>
+    <div class="flywheel-step">⚙️ 开发者 API（核心基础设施）— MyClaw 唯一要做好的技术产品</div>
+    <span class="flywheel-arrow">↓</span>
+    <div class="flywheel-step">🌐 三类生态节点（开发者 / 渠道方自驱动）</div>
+    <span class="flywheel-arrow">↓</span>
+    <div class="flywheel-step">📈 每日新增实例（目标）</div>
+  </div>
+  <div class="callout">
+    <strong>收敛后的核心原则：</strong><br>
+    MyClaw 只做两件事——<strong>把 API 做到极致好用</strong>，<strong>把生态节点激励设计好</strong>。<br>
+    具体场景、具体应用、具体内容，交给生态方去做。
+  </div>
+</section>
+
+<!-- Section 2: Layer Zero -->
+<section class="section" id="layer-zero">
+  <h2 class="section-title"><span>🌐</span> 第零层：开源生态（流量总闸）</h2>
+  <p>这是所有节点的上游，做好了其他一切都受益。</p>
+
+  <div class="subsection">
+    <div class="subsection-title">🎯 动作 1｜成为 OpenClaw 官方推荐托管方</div>
+    <ul class="styled">
+      <li>路径：先以技术贡献者身份进入（提 PR、修 bug）→ 建立可信度 → 谈官方合作</li>
+      <li>目标 A：OpenClaw README 加「推荐托管：MyClaw」官方链接</li>
+      <li>目标 B：OpenClaw 安装流程内嵌「一键迁移到 MyClaw」选项</li>
+      <li><strong>价值：OpenClaw 27.5 万 stars，每天数万精准高意向 UV，永久免费流量</strong></li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">🛠️ 动作 2｜开源工具矩阵，覆盖开发者工作流</div>
+    <p>每个工具 README 带「Powered by MyClaw」+ 注册链接，持续曝光品牌：</p>
+    <table class="data-table">
+      <thead><tr><th>工具</th><th>作用</th></tr></thead>
+      <tbody>
+        <tr><td><code>myclaw-sdk-js / python</code></td><td>API 集成必用，开发者天天接触</td></tr>
+        <tr><td><code>myclaw-cli</code></td><td>命令行管理实例</td></tr>
+        <tr><td><code>myclaw-templates</code></td><td>常用 Agent 模板库，fork 即用</td></tr>
+        <tr><td><code>openclaw-installer</code></td><td>一键装 OpenClaw，结尾推 MyClaw 托管</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">🚀 动作 3｜「Install on MyClaw」按钮——Skill/App 联合增长引擎</div>
+    <p>类比 Vercel 的「Deploy to Vercel」按钮，但更强：<strong>同时解决用户获取和 skill 开发者商业化两个问题</strong>。</p>
+
+    <div class="callout">
+      <strong>核心机制：</strong>开发者在 GitHub README 或官网放一行嵌入代码，用户点击后：<br>
+      <strong>已有实例</strong> → 一键安装该 skill&nbsp;&nbsp;|&nbsp;&nbsp;<strong>没有实例</strong> → 实时创建新 OpenClaw 实例 + 预装 skill，全程 &lt; 60 秒
+    </div>
+
+    <div class="subsection-title" style="margin-top:20px;">💰 开发者商业化激励</div>
+    <table class="data-table">
+      <thead><tr><th>触发行为</th><th>开发者获得</th></tr></thead>
+      <tbody>
+        <tr><td>用户通过按钮创建新实例并订阅</td><td><span class="badge badge-green">首月订阅 20%</span></td></tr>
+        <tr><td>用户通过按钮安装 skill 并消耗 Token</td><td><span class="badge badge-blue">Token 持续 8%</span></td></tr>
+        <tr><td>Verified skill 额外加成</td><td><span class="badge badge-purple">+3% 加成</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="flywheel" style="margin-top:20px;">
+      <div style="font-size:12px;color:var(--text-muted);margin-bottom:14px;text-transform:uppercase;letter-spacing:1px;">飞轮效应</div>
+      <span class="flywheel-step">免费 skill 开发者放按钮（零成本）</span>
+      <span class="flywheel-arrow">↓</span>
+      <span class="flywheel-step">用户点击 → 新实例创建</span>
+      <span class="flywheel-arrow">↓</span>
+      <span class="flywheel-step">开发者获得持续 Token 分成</span>
+      <span class="flywheel-arrow">↓</span>
+      <span class="flywheel-step">开发者主动宣传 skill → 带来更多用户</span>
+      <span class="flywheel-arrow">↓</span>
+      <span class="flywheel-step">MyClaw 获得精准高意向新用户</span>
+    </div>
+
+    <div class="callout" style="border-left-color:var(--accent2);background:var(--blue-soft);margin-top:16px;">
+      <strong>与「Deploy to Vercel」的核心差异：</strong>Vercel 按钮只解决部署，开发者无收益。MyClaw 按钮让开发者有<strong>持续被动收入</strong>——免费 skill 变成了开发者的「分销渠道」，驱动力完全不同。
+    </div>
+
+    <div class="subsection-title" style="margin-top:20px;">⚡ 执行路径</div>
+    <ul class="styled">
+      <li><strong>技术 MVP</strong>：1个接口 + 1个落地页，2周上线</li>
+      <li><strong>冷启动</strong>：定向邀请 ClawHub top 50 热门 skill 作者，给早期 Verified + 额外 +5% 分成</li>
+      <li><strong>传播效果</strong>：每个开发者的 README 都变成 MyClaw 的免费广告位</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">📦 动作 4｜ClawHub 做成「AI Skills 的 npm」</div>
+    <ul class="styled">
+      <li><strong>Verified 认证标签</strong>：官方审核，解决恶意 skill 信任危机</li>
+      <li><strong>Install on MyClaw 按钮</strong>：任何 skill/app 仓库一键嵌入（见动作3）</li>
+      <li><strong>开发者 Credits 分成</strong>：热门 skill top 10% 开发者拿 token 奖励</li>
+      <li><strong>飞轮效应</strong>：skill 越丰富 → OpenClaw 越好用 → 更多人需要 MyClaw 托管</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">👥 动作 5｜社区渗透，开源社区即 B2B 销售渠道</div>
+    <ul class="styled">
+      <li>监控 OpenClaw Issues 里「self-hosting 太复杂」类帖子，团队真实介入帮助</li>
+      <li>开发者评估 → 推给公司使用 → 企业版漏斗自然形成</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Section 3: API Platform -->
+<section class="section" id="api-platform">
+  <h2 class="section-title"><span>⚙️</span> 核心基础设施：开发者 API Platform</h2>
+  <p>这是整个生态战略的地基。入口一（嵌入场景）不再由 MyClaw 自己做，全部开放给开发者，他们用 API 构建。</p>
+
+  <div class="subsection">
+    <div class="subsection-title">🔌 MVP 五个核心接口</div>
+    <div class="api-block">
+      <div class="api-block-header">MyClaw REST API v1</div>
+      <div class="api-endpoint">
+        <span class="api-method method-post">POST</span>
+        <span class="api-path">/v1/instances</span>
+        <span class="api-desc">创建实例</span>
+      </div>
+      <div class="api-endpoint">
+        <span class="api-method method-get">GET</span>
+        <span class="api-path">/v1/instances/:id</span>
+        <span class="api-desc">查询状态</span>
+      </div>
+      <div class="api-endpoint">
+        <span class="api-method method-delete">DELETE</span>
+        <span class="api-path">/v1/instances/:id</span>
+        <span class="api-desc">销毁实例</span>
+      </div>
+      <div class="api-endpoint">
+        <span class="api-method method-post">POST</span>
+        <span class="api-path">/v1/instances/:id/message</span>
+        <span class="api-desc">向实例发消息</span>
+      </div>
+      <div class="api-endpoint">
+        <span class="api-method method-post">POST</span>
+        <span class="api-path">/v1/instances/:id/topup</span>
+        <span class="api-desc">充值 token</span>
+      </div>
+    </div>
+    <p style="font-size:13.5px;color:var(--text-muted)">+ Webhook：实例状态变更 / token 余额不足时回调通知开发者。</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">✨ 开发者体验（DX）要求</div>
+    <ul class="styled">
+      <li>5 分钟快速开始，复制 3 行代码跑通第一个实例</li>
+      <li>Sandbox 环境（测试不扣费）</li>
+      <li>Dashboard：实时查看带来的实例数 + 累计收益</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">💰 开发者分成（激励生态构建者）</div>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>月带量</th>
+          <th>订阅分成（首月）</th>
+          <th>Token 分成（持续）</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1–9 个</td><td><span class="badge badge-purple">15%</span></td><td>—</td></tr>
+        <tr><td>10–99 个</td><td><span class="badge badge-blue">20%</span></td><td><span class="badge badge-green">5%</span></td></tr>
+        <tr style="background:rgba(108,99,255,0.08)"><td>100–499 个</td><td><span class="badge badge-orange">30%</span></td><td><span class="badge badge-green">8%</span></td></tr>
+        <tr><td>500+ 个</td><td><span class="badge badge-red">定制</span></td><td><span class="badge badge-red">定制</span></td></tr>
+      </tbody>
+    </table>
+    <div class="callout">
+      <strong>Token 持续分成是核心钩子</strong>：开发者的用户越活跃，开发者赚得越多 → 主动优化用户深度使用 → MyClaw 留存同步提升。
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">🏪 Partner Marketplace</div>
+    <p>在 MyClaw 官网做「Built on MyClaw」展示页：</p>
+    <ul class="styled">
+      <li>所有基于 API 构建的应用上架展示</li>
+      <li>用户在这里发现各类垂直应用（Shopify 版、Notion 版、教育版…）</li>
+      <li>开发者有展示位和流量激励，持续做高质量产品</li>
+      <li>MyClaw 不生产内容，只运营市场</li>
+    </ul>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">📡 API 触达路径</div>
+    <ul class="styled">
+      <li>OpenClaw GitHub README 加「Build on MyClaw API」</li>
+      <li>dev.myclaw.ai 开发者文档独立站</li>
+      <li>HackerNews Show HN 发布</li>
+      <li>Product Hunt Developer Platform 发布</li>
+    </ul>
+  </div>
+</section>
+
+<!-- Section 4: Eco Nodes -->
+<section class="section" id="eco-nodes">
+  <h2 class="section-title"><span>🎙️</span> 三类生态节点</h2>
+  <p>API 是基础设施，三类节点是在上面跑的不同分发层，互不依赖，各自产生实例。</p>
+
+  <div class="subsection">
+    <div class="subsection-title">🎬 节点 A：内容 KOL（最快出量）</div>
+    <p>从一次性付费改为<strong>长期分成合同</strong>，把 KOL 变成永久合伙人：</p>
+    <div class="kol-tiers">
+      <div class="kol-card nano">
+        <div class="kol-tier-name">纳米 KOL</div>
+        <div class="kol-fans">&lt; 1 万粉丝</div>
+        <div class="kol-commission">30%</div>
+        <div class="kol-commission-sub">首月 + 8% 持续</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--text-muted)">纯分成，零固定费</div>
+      </div>
+      <div class="kol-card mid">
+        <div class="kol-tier-name">中腰部 KOL</div>
+        <div class="kol-fans">1–50 万粉丝</div>
+        <div class="kol-commission">25%</div>
+        <div class="kol-commission-sub">首月 + 6% 持续</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--text-muted)">小固定 + 分成</div>
+      </div>
+      <div class="kol-card top">
+        <div class="kol-tier-name">头部 KOL</div>
+        <div class="kol-fans">50 万+ 粉丝</div>
+        <div class="kol-commission" style="font-size:18px">定制谈判</div>
+        <div class="kol-commission-sub">定制分成方案</div>
+        <div style="margin-top:12px;font-size:12px;color:var(--text-muted)">一对一合作</div>
+      </div>
+    </div>
+    <div class="highlight-box">
+      <span class="highlight-number">500 × 50 = 25,000</span>
+      <strong>纳米 KOL 批量策略</strong>：500 个垂直小 KOL × 每人带 50 注册 = 25,000 实例。分散风险，单个成本极低。KOL 接受的原因：YouTube 视频永久产生流量 = 永久被动收入，比一次性固定费强得多。
+    </div>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">🎓 节点 B：AI 课程 / 训练营（最高 LTV）</div>
+    <div class="code-block">课程作者批发购买实例（$15/月，零售价 7 折）
+「本课程配套 MyClaw 实例 3 个月」打包进课程定价
+学员完课后继续订阅 → 天然高留存</div>
+    <p>目标：<strong>Udemy AI Agent 课程作者</strong>、独立训练营、企业内训机构</p>
+  </div>
+
+  <div class="subsection">
+    <div class="subsection-title">🏢 节点 C：企业 IT 顾问 / MSP（最高客单价）</div>
+    <div class="code-block">IT 顾问帮中小企业部署 AI 助手
+向客户收 $200–500/月服务费
+MyClaw 实例成本 $39/月，毛利极厚
+顾问主动推，因为 MyClaw 是利润最高的方案</div>
+  </div>
+</section>
+
+<!-- Section 5: Node Overview -->
+<section class="section" id="node-overview">
+  <h2 class="section-title"><span>📊</span> 节点全景图</h2>
+  <p>七大节点对比——启动难度、出量速度、规模量级、生命周期价值与壁垒。</p>
+
+  <div class="node-grid">
+    <div class="node-card">
+      <div class="node-name">🤝 OpenClaw 官方合作</div>
+      <div class="node-stats">
+        <div><div class="node-stat-label">启动难度</div><div class="node-stat-value"><span class="badge badge-red">高</span></div></div>
+        <div><div class="node-stat-label">出量速度</div><div class="node-stat-value"><span class="badge badge-orange">慢</span></div></div>
+        <div><div class="node-stat-label">量级</div><div class="node-stat-value"><span class="badge badge-green">极高</span></div></div>
+        <div><div class="node-stat-label">壁垒</div><div class="node-stat-value"><span class="badge badge-green">极高</span></div></div>
+      </div>
+    </div>
+    <div class="node-card" style="border-top:3px solid #6c63ff;">
+      <div class="node-name">🔘 Install on MyClaw 按钮 <span class="badge badge-purple" style="margin-left:6px;font-size:10px;">NEW</span></div>
+      <div class="node-stats">
+        <div><div class="node-stat-label">启动难度</div><div class="node-stat-value"><span class="badge badge-green">低</span></div></div>
+        <div><div class="node-stat-label">出量速度</div><div class="node-stat-value"><span class="badge badge-green">快</span></div></div>
+        <div><div class="node-stat-label">量级</div><div class="node-stat-value"><span class="badge badge-green">极高</span></div></div>
+        <div><div class="node-stat-label">壁垒</div><div class="node-stat-value"><span class="badge badge-blue">中</span></div></div>
+      </div>
+    </div>
+    <div class="node-card">
+      <div class="node-name">🛠️ 开源工具矩阵</div>
+      <div class="node-stats">
+        <div><div class="node-stat-label">启动难度</div><div class="node-stat-value"><span class="badge badge-green">低</span></div></div>
+        <div><div class="node-stat-label">出量速度</div><div class="node-stat-value"><span class="badge badge-blue">中</span></div></div>
+        <div><div class="node-stat-label">量级</div><div class="node-stat-value"><span class="badge badge-blue">中</span></div></div>
+        <div><div class="node-stat-label">壁垒</div><div class="node-stat-value"><span class="badge badge-orange">高</span></div></div>
+      </div>
+    </div>
+    <div class="node-card">
+      <div class="node-name">🚀 ClawHub 飞轮</div>
+      <div class="node-stats">
+        <div><div class="node-stat-label">启动难度</div><div class="node-stat-value"><span class="badge badge-blue">中</span></div></div>
+        <div><div class="node-stat-label">出量速度</div><div class="node-stat-value"><span class="badge badge-orange">慢</span></div></div>
+        <div><div class="node-stat-label">量级</div><div class="node-stat-value"><span class="badge badge-orange">高</span></div></div>
+        <div><div class="node-stat-label">壁垒</div><div class="node-stat-value"><span class="badge badge-green">极高</span></div></div>
+      </div>
+    </div>
+    <div class="node-card">
+      <div class="node-name">⚙️ 开发者 API + Marketplace</div>
+      <div class="node-stats">
+        <div><div class="node-stat-label">启动难度</div><div class="node-stat-value"><span class="badge badge-red">高</span></div></div>
+        <div><div class="node-stat-label">出量速度</div><div class="node-stat-value"><span class="badge badge-blue">中</span></div></div>
+        <div><div class="node-stat-label">量级</div><div class="node-stat-value"><span class="badge badge-green">极高</span></div></div>
+        <div><div class="node-stat-label">壁垒</div><div class="node-stat-value"><span class="badge badge-green">极高</span></div></div>
+      </div>
+    </div>
+    <div class="node-card">
+      <div class="node-name">🎙️ KOL 分成体系</div>
+      <div class="node-stats">
+        <div><div class="node-stat-label">启动难度</div><div class="node-stat-value"><span class="badge badge-green">低</span></div></div>
+        <div><div class="node-stat-label">出量速度</div><div class="node-stat-value"><span class="badge badge-green">快</span></div></div>
+        <div><div class="node-stat-label">量级</div><div class="node-stat-value"><span class="badge badge-blue">中</span></div></div>
+        <div><div class="node-stat-label">壁垒</div><div class="node-stat-value"><span class="badge badge-purple">低</span></div></div>
+      </div>
+    </div>
+    <div class="node-card">
+      <div class="node-name">🎓 AI 训练营</div>
+      <div class="node-stats">
+        <div><div class="node-stat-label">启动难度</div><div class="node-stat-value"><span class="badge badge-green">低</span></div></div>
+        <div><div class="node-stat-label">出量速度</div><div class="node-stat-value"><span class="badge badge-blue">中</span></div></div>
+        <div><div class="node-stat-label">LTV</div><div class="node-stat-value"><span class="badge badge-orange">高</span></div></div>
+        <div><div class="node-stat-label">壁垒</div><div class="node-stat-value"><span class="badge badge-blue">中</span></div></div>
+      </div>
+    </div>
+    <div class="node-card">
+      <div class="node-name">🏢 企业 IT 顾问</div>
+      <div class="node-stats">
+        <div><div class="node-stat-label">启动难度</div><div class="node-stat-value"><span class="badge badge-blue">中</span></div></div>
+        <div><div class="node-stat-label">出量速度</div><div class="node-stat-value"><span class="badge badge-orange">慢</span></div></div>
+        <div><div class="node-stat-label">LTV</div><div class="node-stat-value"><span class="badge badge-green">极高</span></div></div>
+        <div><div class="node-stat-label">壁垒</div><div class="node-stat-value"><span class="badge badge-blue">中</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 6: Roadmap -->
+<section class="section" id="roadmap">
+  <h2 class="section-title"><span>🗓️</span> 落地节奏</h2>
+  <p>四阶段滚动推进，商务先行，技术跟上，数据驱动优化。</p>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="timeline-month">⚡ Month 1 — 商务先跑，API 开始开发</div>
+      <div class="timeline-tasks">
+        <div class="timeline-task"><div class="task-dot"></div><span>KOL 分成体系上线，改造现有合作（一次性 → 长期分成）</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>找 2–3 个 AI 训练营谈批发合作</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>API MVP 开始开发（5 个核心接口 + Webhook）</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>ClawHub 加 Verified 认证标签</span></div>
+        <div class="timeline-task" style="background:rgba(108,99,255,0.06);border-left:3px solid var(--accent1);"><div class="task-dot" style="border-color:var(--accent1);"></div><span><strong>「Install on MyClaw」按钮 MVP 上线（1个接口 + 落地页，2周）</strong></span></div>
+        <div class="timeline-task" style="background:rgba(108,99,255,0.06);border-left:3px solid var(--accent1);"><div class="task-dot" style="border-color:var(--accent1);"></div><span><strong>邀请 ClawHub top 50 热门 skill 作者内测，给早期 Verified + 额外 +5% 分成</strong></span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>情报系统加入 OpenClaw Issues 监控，团队介入</span></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month">🚀 Month 2 — API 上线，开源矩阵起步</div>
+      <div class="timeline-tasks">
+        <div class="timeline-task"><div class="task-dot"></div><span>API MVP 上线，找 10 个种子开发者内测</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>myclaw-sdk-js 开源发布</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>openclaw-installer 脚本开源</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>dev.myclaw.ai 文档站上线</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>HackerNews Show HN 发布</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>联系 OpenClaw maintainer，建立贡献者关系</span></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month">🌐 Month 3 — Partner Marketplace 上线，生态节点验证</div>
+      <div class="timeline-tasks">
+        <div class="timeline-task"><div class="task-dot"></div><span>Built on MyClaw 展示页上线</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>「Deploy to MyClaw」按钮在 GitHub 上铺开</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>开发者 Credits 分成计划上线</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>企业版产品形态完成</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>OpenClaw 官方合作谈判推进</span></div>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-month">📊 Month 4+ — 数据驱动，压最优节点</div>
+      <div class="timeline-tasks">
+        <div class="timeline-task"><div class="task-dot"></div><span>各节点日均新增实例数统计对比</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>Top 3 节点加倍投入资源</span></div>
+        <div class="timeline-task"><div class="task-dot"></div><span>启动第二批垂直场景（开发者自发构建）</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section 7: Essence -->
+<section class="section" id="essence">
+  <h2 class="section-title"><span>🎯</span> 战略本质</h2>
+
+  <div class="compare-grid">
+    <div class="compare-card old">
+      <div class="compare-label">v1.0 旧思路</div>
+      <div class="compare-text">MyClaw <strong>自己铺多个入口</strong>，亲力亲为构建每个场景，资源分散，难以规模化。</div>
+    </div>
+    <div class="compare-card new">
+      <div class="compare-label">v2.0 收敛</div>
+      <div class="compare-text">MyClaw <strong>做平台</strong>，生态方铺入口。专注 API 和激励机制，让一千个开发者替你创造一千个入口。</div>
+    </div>
+  </div>
+
+  <blockquote>
+    MyClaw 的角色是平台运营者，不是应用开发者。<br>
+    把 API 做好，把激励设计好，让一千个开发者替你创造一千个入口。<br>
+    <strong>这才是 Stripe 真正的秘密。</strong>
+  </blockquote>
+
+  <div class="callout" style="margin-top:28px">
+    <strong>v2.0 更新说明：</strong><br>
+    入口一（嵌入型）不再由 MyClaw 自建，合并入开发者 API 生态，由开发者用 API 自主构建各类垂直场景。MyClaw 专注平台基础设施和激励机制。
+  </div>
+</section>
+
+<div class="page-footer">
+  <p style="margin-bottom:8px">Built with ❤️ by <a href="https://myclaw.ai">MyClaw.ai</a> — The AI Personal Assistant Platform</p>
+  <p>🌀 The Doctor &nbsp;·&nbsp; Last updated: 2026-03-21 &nbsp;·&nbsp; Version 2.0</p>
+</div>
+
+</main>
+
+<script>
+// Highlight active nav item on scroll
+const sections = document.querySelectorAll('.section');
+const navItems = document.querySelectorAll('.nav-item');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navItems.forEach(item => {
+        item.style.color = '';
+        item.style.background = '';
+        item.style.borderLeftColor = 'transparent';
+      });
+      const id = entry.target.id;
+      const active = document.querySelector('.nav-item[href="#' + id + '"]');
+      if (active) {
+        active.style.color = '#4fc3f7';
+        active.style.background = 'rgba(79,195,247,0.1)';
+        active.style.borderLeftColor = '#4fc3f7';
+      }
+    }
+  });
+}, { threshold: 0.3 });
+
+sections.forEach(s => observer.observe(s));
+
+// 移动端：同步侧边栏导航到抽屉
+function initMobileNav() {
+  const mobileNav = document.getElementById('mobile-nav');
+  const sidebar = document.querySelector('.sidebar');
+  if (!mobileNav || !sidebar) return;
+  // 克隆导航内容到抽屉
+  mobileNav.innerHTML = sidebar.innerHTML;
+  // 点击导航项关闭抽屉
+  mobileNav.querySelectorAll('a, [onclick]').forEach(el => {
+    el.addEventListener('click', () => {
+      document.getElementById('mobile-drawer').style.transform = 'translateX(-100%)';
+    });
+  });
+}
+
+// 移动端显示控制
+function handleResize() {
+  const isMobile = window.innerWidth <= 900;
+  const mobileHeader = document.querySelector('.mobile-header');
+  const mobileDrawer = document.getElementById('mobile-drawer');
+  if (mobileHeader) mobileHeader.style.display = isMobile ? 'flex' : 'none';
+  if (mobileDrawer) mobileDrawer.style.display = isMobile ? 'flex' : 'none';
+}
+
+initMobileNav();
+handleResize();
+window.addEventListener('resize', handleResize);
+</script>
+</body>
+</html>
