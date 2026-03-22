@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Install on MyClaw — Badge Preview</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0d1117;
+    color: #e6edf3;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 40px 24px;
+    min-height: 100vh;
+  }
+  h1 {
+    font-size: 18px;
+    color: #8b949e;
+    font-weight: 500;
+    margin-bottom: 40px;
+    letter-spacing: .5px;
+  }
+  .section {
+    margin-bottom: 52px;
+  }
+  .section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #484f58;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #21262d;
+    padding-bottom: 10px;
+  }
+  .badges-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+  }
+
+  /* ── Badge 1: 扁平简洁（Shields.io 风格） ── */
+  .badge-flat {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 4px;
+    overflow: hidden;
+    font-size: 12px;
+    font-weight: 600;
+    height: 20px;
+    text-decoration: none;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+  }
+  .badge-flat .lbl {
+    background: #555;
+    color: #fff;
+    padding: 0 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .badge-flat .val {
+    background: #7c3aed;
+    color: #fff;
+    padding: 0 8px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  .badge-flat.v2 .val { background: #0ea5e9; }
+  .badge-flat.v3 .val { background: #059669; }
+  .badge-flat.v4 .lbl { background: #1f2328; }
+  .badge-flat.v4 .val { background: #7c3aed; }
+
+  /* ── Badge 2: 圆角现代风 ── */
+  .badge-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #1e1b4b 0%, #312e81 100%);
+    border: 1px solid rgba(124,58,237,.4);
+    border-radius: 9999px;
+    padding: 6px 14px 6px 10px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #e0d9ff;
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(124,58,237,.25);
+    transition: all .15s;
+    cursor: pointer;
+  }
+  .badge-pill:hover {
+    border-color: rgba(124,58,237,.8);
+    box-shadow: 0 4px 16px rgba(124,58,237,.4);
+    transform: translateY(-1px);
+  }
+  .badge-pill .icon {
+    width: 20px;
+    height: 20px;
+    background: #7c3aed;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+  }
+  .badge-pill.cyan {
+    background: linear-gradient(135deg, #0c1a2e 0%, #0f2744 100%);
+    border-color: rgba(14,165,233,.4);
+    color: #bae6fd;
+    box-shadow: 0 2px 8px rgba(14,165,233,.2);
+  }
+  .badge-pill.cyan .icon { background: #0ea5e9; }
+  .badge-pill.cyan:hover { border-color: rgba(14,165,233,.8); box-shadow: 0 4px 16px rgba(14,165,233,.35); }
+
+  /* ── Badge 3: GitHub 深色卡片风 ── */
+  .badge-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 8px 16px 8px 12px;
+    font-size: 13px;
+    color: #e6edf3;
+    text-decoration: none;
+    transition: all .15s;
+    cursor: pointer;
+  }
+  .badge-card:hover {
+    border-color: #7c3aed;
+    background: #1a1433;
+  }
+  .badge-card .logo {
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .badge-card .text-wrap { display: flex; flex-direction: column; gap: 1px; }
+  .badge-card .main-text { font-weight: 600; font-size: 12px; line-height: 1; color: #e6edf3; }
+  .badge-card .sub-text { font-size: 10px; color: #8b949e; }
+
+  /* ── Badge 4: 彩色渐变大按钮 ── */
+  .badge-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(90deg, #6d28d9 0%, #7c3aed 50%, #8b5cf6 100%);
+    border-radius: 10px;
+    padding: 10px 20px 10px 14px;
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(124,58,237,.5);
+    transition: all .2s;
+    cursor: pointer;
+    letter-spacing: .3px;
+  }
+  .badge-hero:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(124,58,237,.65);
+  }
+  .badge-hero .logo {
+    width: 26px; height: 26px;
+    background: rgba(255,255,255,.2);
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .badge-hero.dark {
+    background: linear-gradient(90deg, #0f172a 0%, #1e1b4b 100%);
+    border: 1px solid rgba(124,58,237,.5);
+    box-shadow: 0 4px 15px rgba(0,0,0,.4);
+  }
+  .badge-hero.dark:hover { box-shadow: 0 8px 25px rgba(124,58,237,.4); }
+
+  /* ── 使用示例区域 ── */
+  .readme-mock {
+    background: #0d1117;
+    border: 1px solid #30363d;
+    border-radius: 10px;
+    padding: 24px 28px;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  .readme-mock h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #e6edf3;
+    border-bottom: 1px solid #21262d;
+    padding-bottom: 12px;
+    margin-bottom: 16px;
+  }
+  .readme-mock p { color: #8b949e; margin-bottom: 14px; }
+  .readme-mock .badge-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 16px 0;
+  }
+  .readme-mock code {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 4px;
+    padding: 1px 6px;
+    font-size: 12px;
+    color: #79c0ff;
+    font-family: 'SF Mono', monospace;
+  }
+  .readme-mock pre {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 6px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: #8b949e;
+    font-family: 'SF Mono', monospace;
+    margin-top: 8px;
+    overflow-x: auto;
+  }
+  pre .c { color: #6e7681; }
+  pre .s { color: #a5d6ff; }
+
+  /* SVG Embed code */
+  .embed-code {
+    background: #161b22;
+    border: 1px solid #30363d;
+    border-radius: 8px;
+    padding: 16px;
+    font-family: 'SF Mono', Consolas, monospace;
+    font-size: 12px;
+    color: #8b949e;
+    margin-top: 12px;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+  .embed-code .tag { color: #7ee787; }
+  .embed-code .attr { color: #79c0ff; }
+  .embed-code .str { color: #a5d6ff; }
+
+  .tip {
+    font-size: 11px;
+    color: #484f58;
+    margin-top: 8px;
+  }
+</style>
+</head>
+<body>
+
+<h1>🔘 Install on MyClaw — Badge Design Preview</h1>
+
+<!-- ── Style A: Shields.io 扁平 ── -->
+<div class="section">
+  <div class="section-label">Style A — 扁平极简（Shields.io 风格）</div>
+  <div class="badges-row">
+    <!-- 基础版 -->
+    <a class="badge-flat" href="#">
+      <span class="lbl">🌀 myclaw</span>
+      <span class="val">Install</span>
+    </a>
+    <!-- 蓝色 -->
+    <a class="badge-flat v2" href="#">
+      <span class="lbl">🌀 myclaw</span>
+      <span class="val">Install</span>
+    </a>
+    <!-- 绿色 -->
+    <a class="badge-flat v3" href="#">
+      <span class="lbl">🌀 myclaw</span>
+      <span class="val">Install</span>
+    </a>
+    <!-- 深色 lbl -->
+    <a class="badge-flat v4" href="#">
+      <span class="lbl">install on</span>
+      <span class="val">🌀 MyClaw</span>
+    </a>
+  </div>
+  <p class="tip">↑ 适合放在 GitHub README 顶部 badges 行，和 npm/license badge 排一行</p>
+</div>
+
+<!-- ── Style B: 胶囊圆角 ── -->
+<div class="section">
+  <div class="section-label">Style B — 胶囊圆角</div>
+  <div class="badges-row">
+    <a class="badge-pill" href="#">
+      <span class="icon">🌀</span>
+      Install on MyClaw
+    </a>
+    <a class="badge-pill cyan" href="#">
+      <span class="icon">🌀</span>
+      Install on MyClaw
+    </a>
+  </div>
+  <p class="tip">↑ 适合放在 README 说明段落旁，或 ProductHunt 页面</p>
+</div>
+
+<!-- ── Style C: GitHub 卡片 ── -->
+<div class="section">
+  <div class="section-label">Style C — GitHub 卡片风</div>
+  <div class="badges-row">
+    <a class="badge-card" href="#">
+      <span class="logo">🌀</span>
+      <span class="text-wrap">
+        <span class="main-text">Install on MyClaw</span>
+        <span class="sub-text">One-click OpenClaw deploy</span>
+      </span>
+    </a>
+    <a class="badge-card" href="#">
+      <span class="logo">🌀</span>
+      <span class="text-wrap">
+        <span class="main-text">Deploy to MyClaw</span>
+        <span class="sub-text">Free · &lt; 60 seconds</span>
+      </span>
+    </a>
+  </div>
+  <p class="tip">↑ 适合放在 README 的 Quick Start 区域</p>
+</div>
+
+<!-- ── Style D: 大按钮 Hero ── -->
+<div class="section">
+  <div class="section-label">Style D — 大按钮（官网 Hero 区）</div>
+  <div class="badges-row">
+    <a class="badge-hero" href="#">
+      <span class="logo">🌀</span>
+      Install on MyClaw
+    </a>
+    <a class="badge-hero dark" href="#">
+      <span class="logo">🌀</span>
+      Install on MyClaw
+    </a>
+  </div>
+  <p class="tip">↑ 适合放在开源服务官网首页的 CTA 按钮区</p>
+</div>
+
+<!-- ── 真实 README 模拟 ── -->
+<div class="section">
+  <div class="section-label">实际使用效果 — GitHub README 模拟</div>
+  <div class="readme-mock">
+    <h2>🔥 Firecrawl</h2>
+    <p>Turn websites into LLM-ready data. Crawl, scrape, and extract structured content from any URL.</p>
+
+    <div class="badge-row">
+      <!-- npm version -->
+      <img src="https://img.shields.io/npm/v/firecrawl?style=flat&label=npm" alt="npm" style="height:20px;border-radius:4px;" onerror="this.style.display='none'">
+      <!-- license -->
+      <img src="https://img.shields.io/badge/license-MIT-green?style=flat" alt="MIT" style="height:20px;border-radius:4px;" onerror="this.style.display='none'">
+      <!-- Install on MyClaw badge -->
+      <a class="badge-flat v4" href="#" style="height:20px;">
+        <span class="lbl">install on</span>
+        <span class="val">🌀 MyClaw</span>
+      </a>
+    </div>
+
+    <p>The most powerful web scraping API for AI applications. Works with JavaScript-heavy sites, handles auth, and outputs clean markdown.</p>
+
+    <p><strong>Quick Start</strong></p>
+    <a class="badge-card" href="#" style="margin-bottom:12px;display:inline-flex;">
+      <span class="logo">🌀</span>
+      <span class="text-wrap">
+        <span class="main-text">Install on MyClaw</span>
+        <span class="sub-text">One-click · Free to start</span>
+      </span>
+    </a>
+
+    <pre>
+<span class="c"># Or self-host manually:</span>
+npm install firecrawl
+</pre>
+  </div>
+</div>
+
+<!-- ── Embed 代码 ── -->
+<div class="section">
+  <div class="section-label">开发者嵌入代码（一行 Markdown）</div>
+  <div class="embed-code">
+<span class="tag">[![</span><span class="str">Install on MyClaw</span><span class="tag">](</span><span class="str">https://img.myclaw.ai/badge/install.svg</span><span class="tag">)](</span><span class="str">https://app.myclaw.ai/install?repo=firecrawl/firecrawl</span><span class="tag">)</span>
+  </div>
+  <p class="tip">↑ 开发者只需把这一行加进 README，按钮自动出现</p>
+</div>
+
+</body>
+</html>
