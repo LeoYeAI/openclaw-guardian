@@ -184,20 +184,76 @@ code{background:var(--bg3);padding:2px 8px;border-radius:4px;font-family:"SF Mon
 <!-- Section 1: Core Logic -->
 <section class="section" id="core-logic">
   <h2 class="section-title"><span>&#x1F9ED;</span> 核心逻辑</h2>
-  <p>MyClaw 不是应用，是平台。平台的增长靠生态，不靠买量。</p>
-  <div class="flywheel">
-    <div class="flywheel-step">🔓 开源生态（流量入口）</div>
-    <span class="flywheel-arrow">↓</span>
-    <div class="flywheel-step">⚙️ 开发者 API（核心基础设施）— MyClaw 唯一要做好的技术产品</div>
-    <span class="flywheel-arrow">↓</span>
-    <div class="flywheel-step">🤝 Influencer & Partner 联盟（外部推广者自驱动）</div>
-    <span class="flywheel-arrow">↓</span>
-    <div class="flywheel-step">📈 每日新增实例（目标）</div>
+  <p>MyClaw 不是应用，是平台。多条并行获客路径汇入同一套基础设施，驱动实例增长。</p>
+
+  <div style="margin:28px 0;">
+    <!-- 流量入口层 -->
+    <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);text-align:center;margin-bottom:12px;">流量入口层（并行，互不依赖）</div>
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:0;">
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:14px 10px;text-align:center;font-size:12.5px;line-height:1.5;">
+        <div style="font-size:20px;margin-bottom:6px;">🔓</div>
+        <div style="font-weight:600;color:var(--text);">开源生态</div>
+        <div style="color:var(--text-muted);font-size:11px;margin-top:4px;">开发者自然流量</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:14px 10px;text-align:center;font-size:12.5px;line-height:1.5;">
+        <div style="font-size:20px;margin-bottom:6px;">🤝</div>
+        <div style="font-weight:600;color:var(--text);">Influencer 联盟</div>
+        <div style="color:var(--text-muted);font-size:11px;margin-top:4px;">KOL / 训练营 / IT顾问</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:14px 10px;text-align:center;font-size:12.5px;line-height:1.5;">
+        <div style="font-size:20px;margin-bottom:6px;">🔘</div>
+        <div style="font-weight:600;color:var(--text);">Install 按钮</div>
+        <div style="color:var(--text-muted);font-size:11px;margin-top:4px;">Skill / App 生态嵌入</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:14px 10px;text-align:center;font-size:12.5px;line-height:1.5;">
+        <div style="font-size:20px;margin-bottom:6px;">🌐</div>
+        <div style="font-weight:600;color:var(--text);">第三方推荐站</div>
+        <div style="color:var(--text-muted);font-size:11px;margin-top:4px;">SEO 长尾流量</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:14px 10px;text-align:center;font-size:12.5px;line-height:1.5;">
+        <div style="font-size:20px;margin-bottom:6px;">🔌</div>
+        <div style="font-weight:600;color:var(--text);">硬件平台</div>
+        <div style="color:var(--text-muted);font-size:11px;margin-top:4px;">设备激活绑定</div>
+      </div>
+    </div>
+
+    <!-- 汇聚箭头 -->
+    <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:6px 0 2px;">
+      <div style="text-align:center;color:var(--accent1);font-size:18px;">↓</div>
+      <div style="text-align:center;color:var(--accent1);font-size:18px;">↓</div>
+      <div style="text-align:center;color:var(--accent1);font-size:18px;">↓</div>
+      <div style="text-align:center;color:var(--accent1);font-size:18px;">↓</div>
+      <div style="text-align:center;color:var(--accent1);font-size:18px;">↓</div>
+    </div>
+
+    <!-- 基础设施层 -->
+    <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);text-align:center;margin-bottom:12px;">基础设施层（MyClaw 唯一要做好的技术产品）</div>
+    <div style="background:linear-gradient(135deg,rgba(108,99,255,.15),rgba(79,195,247,.1));border:1px solid rgba(108,99,255,.4);border-radius:12px;padding:20px 32px;text-align:center;margin-bottom:6px;">
+      <div style="font-size:22px;margin-bottom:8px;">⚙️</div>
+      <div style="font-size:16px;font-weight:700;color:var(--text);">开发者 API + MyClaw 实例</div>
+      <div style="color:var(--text-muted);font-size:13px;margin-top:6px;">订阅费 + Token 消耗 &nbsp;|&nbsp; 嵌入场景全部交给开发者通过 API 构建</div>
+    </div>
+
+    <!-- 底部箭头 -->
+    <div style="text-align:center;color:var(--accent1);font-size:18px;margin:4px 0;">↓</div>
+
+    <!-- 目标层 -->
+    <div style="font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);text-align:center;margin-bottom:12px;">增长目标</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:22px;font-weight:800;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">实例数 ↑</div>
+        <div style="color:var(--text-muted);font-size:12px;margin-top:4px;">每日新增订阅用户</div>
+      </div>
+      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:10px;padding:16px;text-align:center;">
+        <div style="font-size:22px;font-weight:800;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Token 消耗 ↑</div>
+        <div style="color:var(--text-muted);font-size:12px;margin-top:4px;">活跃度 × 高毛利收入</div>
+      </div>
+    </div>
   </div>
+
   <div class="callout">
-    <strong>收敛后的核心原则：</strong><br>
-    MyClaw 只做两件事——<strong>把 API 做到极致好用</strong>，<strong>把生态节点激励设计好</strong>。<br>
-    具体场景、具体应用、具体内容，交给生态方去做。
+    <strong>核心原则：</strong>
+    MyClaw 只做两件事——<strong>把 API 做到极致好用</strong>，<strong>把各入口的激励机制设计好</strong>。具体场景、应用、内容，全部交给生态方。
   </div>
 </section>
 
