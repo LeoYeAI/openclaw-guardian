@@ -110,11 +110,19 @@ Vercel 按钮只解决部署，开发者无收益；MyClaw 按钮让开发者有
   3. **n8n / Flowise / Firecrawl 等开源服务**（装机量大，作者有动力铺按钮换用户数据）
 - 传播：每个合作方的 README 都变成 MyClaw 的免费广告位，覆盖范围远超付费渠道
 
-### 动作 4｜ClawHub 做成「AI Skills 的 npm」
-- **Verified 认证标签**：官方审核，解决恶意 skill 信任危机
-- **Install on MyClaw 按钮**：任何 skill/app 仓库一键嵌入（见动作3）
-- **开发者 Credits 分成**：热门 skill top 10% 开发者拿 token 奖励
-- **飞轮效应**：skill 越丰富 → OpenClaw 越好用 → 更多人需要 MyClaw 托管
+### 动作 4｜与第三方 Skill 推荐站合作，嵌入「Deploy on MyClaw」按钮
+
+生态里存在大量靠 SEO 吃流量的独立站——收录 OpenClaw skill、做测评和推荐，用户搜索 skill 时自然落地。这类站本身缺乏变现手段，MyClaw 的按钮对他们是增值，对 MyClaw 是精准的 skill 安装流量入口。
+
+**合作逻辑：**
+- 站方在每个 skill 详情页放「Deploy on MyClaw」按钮
+- 用户点击 → 已有实例直接安装；没有实例 → 引导注册 + 预装 skill，全程 <60 秒
+- MyClaw 给站方流量分成或固定合作费，激励其主动推广
+
+**执行路径：**
+1. 找到生态里已有的 skill 推荐站（Google 搜索 + OpenClaw 社区）
+2. 主动联系合作，提供标准按钮 embed 代码 + 分成方案
+3. 数据跑通后，作为标准合作模板批量复制
 
 ### 动作 4｜社区渗透，开源社区即 B2B 销售渠道
 - 监控 OpenClaw Issues 里「self-hosting 太复杂」类帖子，团队真实介入帮助
