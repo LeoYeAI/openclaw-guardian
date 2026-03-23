@@ -429,10 +429,10 @@ code{background:var(--bg3);padding:2px 8px;border-radius:4px;font-family:"SF Mon
   </div>
 
   <div class="subsection">
-    <div class="action-title">🛠️ 动作 3｜开源工具矩阵 + 生态开发者项目</div>
-    <p style="color:var(--text-muted);font-size:13.5px;line-height:1.7;margin-bottom:20px;">两层结构：MyClaw 官方工具覆盖开发者工作流；生态开发者的开源项目和 Agent Apps 通过安装量和使用量带动实例增长——包括<strong style="color:var(--text);">非 OpenClaw 用户首次通过 App 激活 MyClaw 实例</strong>，App 本身即获客入口。</p>
+    <div class="action-title">🛠️ 动作 3｜官方开源工具 + Agent Apps 孵化</div>
+    <p style="color:var(--text-muted);font-size:13.5px;line-height:1.7;margin-bottom:20px;">两层结构：第一层 MyClaw 自研官方工具，建立开发者基础设施；第二层主动孵化以 MyClaw 为运行时底座的 Agent Apps，App 本身即获客入口——<strong style="color:var(--text);">非 OpenClaw 用户首次通过 App 激活 MyClaw 实例</strong>。</p>
 
-    <div style="font-size:13px;font-weight:700;color:var(--accent1);margin-bottom:10px;letter-spacing:.5px;">第一层：MyClaw 官方开源工具</div>
+    <div style="font-size:13px;font-weight:700;color:var(--accent1);margin-bottom:10px;letter-spacing:.5px;">第一层：MyClaw 官方开源工具（自研）</div>
     <p style="color:var(--text-muted);font-size:13px;margin-bottom:10px;">每个工具 README 带「Powered by MyClaw」+ 注册链接，持续品牌曝光：</p>
     <table class="data-table" style="margin-bottom:24px;">
       <thead><tr><th>工具</th><th>作用</th></tr></thead>
@@ -444,24 +444,34 @@ code{background:var(--bg3);padding:2px 8px;border-radius:4px;font-family:"SF Mon
       </tbody>
     </table>
 
-    <div style="font-size:13px;font-weight:700;color:var(--accent2);margin-bottom:10px;letter-spacing:.5px;">第二层：生态开发者开源项目 + Agent Apps</div>
-    <p style="color:var(--text-muted);font-size:13px;margin-bottom:14px;">MyClaw 提供 API + 分成激励，开发者自主构建，安装量和使用量反哺实例增长：</p>
+    <div style="font-size:13px;font-weight:700;color:var(--accent2);margin-bottom:10px;letter-spacing:.5px;">第二层：Agent Apps 孵化</div>
+    <p style="color:var(--text-muted);font-size:13px;margin-bottom:14px;">核心特征：<strong style="color:var(--text);">底层必须依赖 OpenClaw 持续在线 + 主动执行</strong>，Skill 一次性调用无法完成。MyClaw 提供 API + 分成激励，主动孵化或支持开发者构建：</p>
 
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:8px;">
-      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:18px 20px;border-top:3px solid var(--accent1);">
-        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;">🔧 开源集成项目</div>
-        <div style="font-size:13px;color:var(--text-muted);line-height:1.7;">基于 OpenClaw / MyClaw API 的工具、adapter、集成插件。发布到 GitHub，带 Install 按钮，安装量带来新实例。</div>
-        <div style="margin-top:10px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--card-border);padding-top:10px;">例如：MyClaw × Notion 集成、MyClaw × Slack Bot、自定义 MCP server</div>
-      </div>
-      <div style="background:var(--card);border:1px solid var(--card-border);border-radius:12px;padding:18px 20px;border-top:3px solid var(--accent2);">
-        <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;">🤖 Agent Apps</div>
-        <div style="font-size:13px;color:var(--text-muted);line-height:1.7;">专为 Agent 场景设计的应用。非 OpenClaw 用户使用 App → 被引导创建 MyClaw 实例 → 首次激活；用户用 App 消耗 Token → 带动 MyClaw 收入。</div>
-        <div style="margin-top:10px;font-size:12px;color:var(--text-muted);border-top:1px solid var(--card-border);padding-top:10px;">例如：任务自动化助手、多 Agent 协作平台、垂直场景助手（法律/财务/教育）</div>
-      </div>
-    </div>
+    <table class="data-table" style="margin-bottom:16px;">
+      <thead><tr><th>App 类型</th><th>为什么必须依赖 OpenClaw</th><th>获客路径</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><strong>浏览器自动化产品</strong><br><span style="font-size:12px;color:var(--text-muted)">持续操作网页完成复杂业务流程</span></td>
+          <td>需要 24/7 在线，任务中断即失败</td>
+          <td rowspan="4" style="vertical-align:middle;text-align:center;">用户用 App<br>↓<br>引导创建<br>MyClaw 实例<br>↓<br>首次激活<br>新用户</td>
+        </tr>
+        <tr>
+          <td><strong>自主研究 Agent</strong><br><span style="font-size:12px;color:var(--text-muted)">Deep Research 类，主动驱动数十步</span></td>
+          <td>多轮搜索 + 交叉验证，需要 Agent 持续驱动</td>
+        </tr>
+        <tr>
+          <td><strong>代码仓库自主维护</strong><br><span style="font-size:12px;color:var(--text-muted)">持续监控 Issue/PR，自动修 bug</span></td>
+          <td>事件驱动 + 主动响应，类 Devin / SWE-Agent</td>
+        </tr>
+        <tr>
+          <td><strong>长期追踪 Agent</strong><br><span style="font-size:12px;color:var(--text-muted)">竞品/价格/情报，每日主动推送</span></td>
+          <td>定时主动触发，不是被动等待指令</td>
+        </tr>
+      </tbody>
+    </table>
 
     <div style="background:rgba(79,195,247,0.07);border:1px solid rgba(79,195,247,0.2);border-radius:10px;padding:12px 16px;font-size:13px;color:var(--text-muted);line-height:1.7;margin-top:4px;">
-      🔄 <strong style="color:var(--text);">飞轮：</strong>工具 / App 使用量 → 安装量 → 新实例创建 → Token 消耗 → 开发者分成 → 开发者主动推广 → 更多安装量
+      🔄 <strong style="color:var(--text);">飞轮：</strong>App 使用量 → Token 消耗 → 开发者分成 → 开发者主动推广 → 更多非 OpenClaw 用户激活 MyClaw 实例
     </div>
   </div>
 
