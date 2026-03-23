@@ -31,7 +31,7 @@ strong{color:var(--accent2);font-weight:600}
 .code-block{background:#09091a;border:1px solid var(--card-border);border-radius:10px;padding:20px 24px;font-family:"SF Mono","Fira Code",Consolas,monospace;font-size:13px;line-height:1.7;color:#a8b4d0;margin:20px 0;overflow-x:auto;position:relative;white-space:pre}
 .code-block::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--accent-grad);border-radius:10px 10px 0 0}
 .callout{background:var(--purple-soft);border:1px solid rgba(108,99,255,.3);border-left:4px solid var(--accent1);border-radius:8px;padding:16px 20px;margin:20px 0;font-size:14.5px;color:var(--text)}
-.subsection{margin-bottom:36px}
+.subsection{margin-bottom:64px;padding-bottom:48px;border-bottom:1px solid var(--card-border)}.subsection:last-child{border-bottom:none}
 .subsection-title{font-size:14px;font-weight:600;color:var(--accent2);margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .action-title{font-size:20px;font-weight:800;color:var(--text);margin-bottom:16px;display:flex;align-items:center;gap:10px;letter-spacing:-.3px;line-height:1.3}
 .data-table{width:100%;border-collapse:separate;border-spacing:0;margin:20px 0;border-radius:10px;overflow:hidden;border:1px solid var(--card-border)}
@@ -282,9 +282,15 @@ code{background:var(--bg3);padding:2px 8px;border-radius:4px;font-family:"SF Mon
           <td>扩大安装量，获用户量数据</td>
         </tr>
         <tr>
-          <td><strong>面向 AI Agent 的产品/工具</strong></td>
-          <td>MCP server、Agent框架、评测工具、向量DB、Tool 套件</td>
-          <td>用户即目标客户，精准导流</td>
+          <td><strong>驱动 AI Agent 的工具层产品</strong></td>
+          <td>
+            <strong>MCP Servers</strong>（让 Agent 调用外部服务）：Zapier MCP、GitHub MCP、Browserbase、Playwright MCP、Stripe MCP<br>
+            <strong>Agent 编排框架</strong>：LangGraph、CrewAI、AutoGen、Agno<br>
+            <strong>Agent 基础设施</strong>：E2B（代码沙箱）、Modal（无服务器 GPU）、Inngest（事件驱动工作流）<br>
+            <strong>记忆 / 上下文层</strong>：Mem0、Zep、Letta（前 MemGPT）<br>
+            <strong>可观测性 / 评测</strong>：LangSmith、Langfuse、Helicone、Braintrust
+          </td>
+          <td>用户即 OpenClaw 开发者，装机即激活精准用户</td>
         </tr>
       </tbody>
     </table>
