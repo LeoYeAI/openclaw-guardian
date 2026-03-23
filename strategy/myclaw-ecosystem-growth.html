@@ -761,58 +761,99 @@ code{background:var(--bg3);padding:2px 8px;border-radius:4px;font-family:"SF Mon
 <!-- Section 6: Roadmap -->
 <section class="section" id="roadmap">
   <h2 class="section-title"><span>🗓️</span> 落地节奏</h2>
-  <p>四阶段滚动推进，商务先行，技术跟上，数据驱动优化。</p>
 
-  <div style="background:rgba(108,99,255,0.08);border:1px solid rgba(108,99,255,0.2);border-left:4px solid var(--accent1);border-radius:10px;padding:14px 18px;margin-bottom:24px;font-size:13px;color:var(--text-muted);line-height:1.7;">
-    🚀 <strong style="color:var(--accent1);">时间观：现在就是窗口期。</strong>这套生态策略不是"增长遇到瓶颈时的备用引擎"，而是<strong style="color:var(--text);">现在就要抢占生态位的窗口期行动</strong>。生态位先占先得——开发者、KOL、硬件厂商一旦被绑定，竞争对手进场成本极高。各动作<strong style="color:var(--text);">并行推进 + 快速验证</strong>，不等前一个完成再启动下一个。
+  <div style="background:rgba(108,99,255,0.08);border:1px solid rgba(108,99,255,0.2);border-left:4px solid var(--accent1);border-radius:10px;padding:14px 18px;margin-bottom:28px;font-size:13px;color:var(--text-muted);line-height:1.7;">
+    🚀 <strong style="color:var(--accent1);">时间观：现在就是窗口期。</strong>生态位先占先得——开发者、KOL、硬件厂商一旦被绑定，竞争对手进场成本极高。各动作<strong style="color:var(--text);">按优先级并行推进</strong>，不等前一个完成再启动下一个。
   </div>
 
-  <div class="timeline">
-    <div class="timeline-item">
-      <div class="timeline-month">⚡ Month 1 — 商务先跑，API 开始开发</div>
-      <div class="timeline-tasks">
-        <div class="timeline-task"><div class="task-dot"></div><span>KOL 分成体系上线，改造现有合作（一次性 → 长期分成）</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>找 2–3 个 AI 训练营谈批发合作</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>API MVP 开始开发（5 个核心接口 + Webhook）</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>ClawHub 加 Verified 认证标签</span></div>
-        <div class="timeline-task" style="background:rgba(108,99,255,0.06);border-left:3px solid var(--accent1);"><div class="task-dot" style="border-color:var(--accent1);"></div><span><strong>「Install on MyClaw」按钮 MVP 上线（1个接口 + 落地页，2周）</strong></span></div>
-        <div class="timeline-task" style="background:rgba(108,99,255,0.06);border-left:3px solid var(--accent1);"><div class="task-dot" style="border-color:var(--accent1);"></div><span><strong>邀请 ClawHub top 50 热门 skill 作者内测，给早期 Verified + 额外 +5% 分成</strong></span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>情报系统加入 OpenClaw Issues 监控，团队介入</span></div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-month">🚀 Month 2 — API 上线，开源矩阵起步</div>
-      <div class="timeline-tasks">
-        <div class="timeline-task"><div class="task-dot"></div><span>API MVP 上线，找 10 个种子开发者内测</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>myclaw-sdk-js 开源发布</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>openclaw-installer 脚本开源</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>dev.myclaw.ai 文档站上线</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>HackerNews Show HN 发布</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>联系 OpenClaw maintainer，建立贡献者关系</span></div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-month">🌐 Month 3 — Partner Marketplace 上线，生态节点验证</div>
-      <div class="timeline-tasks">
-        <div class="timeline-task"><div class="task-dot"></div><span>Built on MyClaw 展示页上线</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>「Deploy to MyClaw」按钮在 GitHub 上铺开</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>开发者 Credits 分成计划上线</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>企业版产品形态完成</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>OpenClaw 官方合作谈判推进</span></div>
-      </div>
-    </div>
-
-    <div class="timeline-item">
-      <div class="timeline-month">📊 Month 4+ — 数据驱动，压最优节点</div>
-      <div class="timeline-tasks">
-        <div class="timeline-task"><div class="task-dot"></div><span>各节点日均新增实例数统计对比</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>Top 3 节点加倍投入资源</span></div>
-        <div class="timeline-task"><div class="task-dot"></div><span>启动第二批垂直场景（开发者自发构建）</span></div>
+  <!-- P0 -->
+  <div style="margin-bottom:10px;display:flex;align-items:center;gap:10px;">
+    <span style="background:linear-gradient(135deg,#6c63ff,#4fc3f7);color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px;">P0 · 最高优先级</span>
+    <span style="font-size:13px;color:var(--text-muted);">现在立即启动</span>
+  </div>
+  <div class="timeline-tasks" style="margin-bottom:24px;border-radius:12px;border:1px solid rgba(108,99,255,0.35);overflow:hidden;">
+    <div class="timeline-task" style="background:rgba(108,99,255,0.08);border-left:4px solid var(--accent1);">
+      <div class="task-dot" style="border-color:var(--accent1);flex-shrink:0;"></div>
+      <div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:3px;">动作3｜「Install on MyClaw」按钮 MVP 上线</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">① 前置：找到 ClawHub 头部 Skill 作者联系方式（Discord / GitHub），制定触达方案<br>② 技术：按钮跳转 + 实例创建接口 + 安装落地页<br>③ 推广：邀请前 50 个 Skill 作者内测，给早期 +5% 额外分成</div>
       </div>
     </div>
   </div>
+
+  <!-- P1 -->
+  <div style="margin-bottom:10px;display:flex;align-items:center;gap:10px;">
+    <span style="background:rgba(79,195,247,0.15);color:var(--accent2);border:1px solid rgba(79,195,247,0.3);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px;">P1 · 同期并行</span>
+    <span style="font-size:13px;color:var(--text-muted);">与 P0 同步启动，不互相等待</span>
+  </div>
+  <div class="timeline-tasks" style="margin-bottom:24px;border-radius:12px;border:1px solid var(--card-border);overflow:hidden;">
+    <div class="timeline-task">
+      <div class="task-dot" style="flex-shrink:0;"></div>
+      <div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:3px;">动作6｜Influencer & Partner 联盟上线</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">KOL 分成体系上线，现有合作改造为永久分成模式；同步找 2–3 个 AI 训练营谈批发；IT 顾问/MSP 首批招募</div>
+      </div>
+    </div>
+    <div class="timeline-task">
+      <div class="task-dot" style="flex-shrink:0;"></div>
+      <div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:3px;">动作2｜官方开源工具首批发布</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">myclaw-sdk-js / python、myclaw-cli 开源；文档站 dev.myclaw.ai 上线；每个 README 带注册入口</div>
+      </div>
+    </div>
+    <div class="timeline-task">
+      <div class="task-dot" style="flex-shrink:0;"></div>
+      <div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:3px;">核心基础设施｜开发者 API MVP 启动开发</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">5 个核心接口 + Webhook；目标 6 周内上线内测；种子开发者同步招募</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P2 -->
+  <div style="margin-bottom:10px;display:flex;align-items:center;gap:10px;">
+    <span style="background:rgba(255,183,77,0.12);color:#ffb74d;border:1px solid rgba(255,183,77,0.3);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px;">P2 · 中期推进</span>
+    <span style="font-size:13px;color:var(--text-muted);">P0/P1 跑起来后启动</span>
+  </div>
+  <div class="timeline-tasks" style="margin-bottom:24px;border-radius:12px;border:1px solid var(--card-border);overflow:hidden;">
+    <div class="timeline-task">
+      <div class="task-dot" style="flex-shrink:0;"></div>
+      <div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:3px;">动作1｜向 OpenClaw 社区贡献 PR，建立技术信任</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">找到核心 maintainer，找到切入点，先贡献代码后谈合作；目标 3 个月建立可信度</div>
+      </div>
+    </div>
+    <div class="timeline-task">
+      <div class="task-dot" style="flex-shrink:0;"></div>
+      <div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:3px;">动作5｜AI 硬件生态平台早期合作</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">以投流能力为核心筹码，接触早期 AI 硬件团队；先跑 1–2 个单品验证 ROI 模型</div>
+      </div>
+    </div>
+    <div class="timeline-task">
+      <div class="task-dot" style="flex-shrink:0;"></div>
+      <div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:3px;">动作2｜生态开发者招募：开源项目 + Agent Apps</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">API 上线后对外招募；引导开发者在 README 嵌入 Install 按钮；Apps 作为新实例获客入口</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- P3 -->
+  <div style="margin-bottom:10px;display:flex;align-items:center;gap:10px;">
+    <span style="background:rgba(128,128,128,0.12);color:var(--text-muted);border:1px solid rgba(128,128,128,0.25);font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px;">P3 · 待验证</span>
+    <span style="font-size:13px;color:var(--text-muted);">先调研，有信号再投入</span>
+  </div>
+  <div class="timeline-tasks" style="margin-bottom:8px;border-radius:12px;border:1px solid var(--card-border);overflow:hidden;opacity:.75;">
+    <div class="timeline-task">
+      <div class="task-dot" style="flex-shrink:0;"></div>
+      <div>
+        <div style="font-weight:700;color:var(--text);margin-bottom:3px;">动作4｜第三方 Skill 推荐站合作</div>
+        <div style="font-size:12px;color:var(--text-muted);line-height:1.6;">先调研是否存在足量独立推荐站，确认流量规模后再谈"Deploy on MyClaw"按钮 + 分成合作</div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- Section 7: Essence -->
