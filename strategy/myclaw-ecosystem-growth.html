@@ -272,35 +272,28 @@ code{background:var(--bg3);padding:2px 8px;border-radius:4px;font-family:"SF Mon
       <thead><tr><th>类型</th><th>具体例子</th><th>为什么会放按钮</th></tr></thead>
       <tbody>
         <tr>
-          <td><strong>OpenClaw Skills</strong></td>
+          <td><strong>① OpenClaw Skills</strong></td>
           <td>各类免费 skill（爬虫/代码/助理等）</td>
           <td>直接商业化，获得被动收入</td>
         </tr>
         <tr>
-          <td><strong>可部署到 OpenClaw 的开源服务</strong></td>
-          <td>n8n、Flowise、Open-WebUI、SearXNG、Browserless、Firecrawl、Langfuse、Dify 等</td>
-          <td>扩大安装量，获用户量数据</td>
-        </tr>
-        <tr>
-          <td><strong>驱动 AI Agent 的工具层产品</strong></td>
+          <td><strong>② 开源项目 &amp; 工具</strong><br><span style="font-size:12px;color:var(--text-muted)">合作逻辑相同：README 放按钮，扩大安装量</span></td>
           <td>
-            <strong>MCP Servers</strong>（让 Agent 调用外部服务）：Zapier MCP、GitHub MCP、Browserbase、Playwright MCP、Stripe MCP<br>
-            <strong>Agent 编排框架</strong>：LangGraph、CrewAI、AutoGen、Agno<br>
-            <strong>Agent 基础设施</strong>：E2B（代码沙箱）、Modal（无服务器 GPU）、Inngest（事件驱动工作流）<br>
-            <strong>记忆 / 上下文层</strong>：Mem0、Zep、Letta（前 MemGPT）<br>
-            <strong>可观测性 / 评测</strong>：LangSmith、Langfuse、Helicone、Braintrust
+            <strong>可部署服务类</strong>：n8n、Flowise、Open-WebUI、SearXNG、Firecrawl、Dify 等（部署即用）<br>
+            <strong>MCP Servers</strong>：Zapier MCP、GitHub MCP、Playwright MCP、Stripe MCP（让 Agent 调用外部服务）<br>
+            <strong>Agent 编排 / 基础设施</strong>：LangGraph、CrewAI、E2B（代码沙箱）、Inngest（事件驱动）<br>
+            <strong>记忆 / 可观测性</strong>：Mem0、Zep、Letta、LangSmith、Langfuse、Braintrust
           </td>
-          <td>用户即 OpenClaw 开发者，装机即激活精准用户</td>
+          <td>扩大安装量 + 获用户数据；工具层用户即 OpenClaw 开发者，装机即精准激活</td>
         </tr>
         <tr>
-          <td><strong>Agent Apps 应用层</strong><br><span style="font-size:12px;color:var(--text-muted)">🆕 当前正在涌现的新品类</span></td>
+          <td><strong>③ Agent Apps 应用层</strong><br><span style="font-size:12px;color:var(--text-muted)">🆕 当前正在涌现的新品类</span></td>
           <td>
-            核心特征：<strong>底层必须依赖 OpenClaw 持续在线 + 主动执行能力</strong>，不是一次性 Skill 调用能完成的<br><br>
-            <strong>浏览器自动化产品</strong>：自动操作网页完成复杂业务流程（填表、采购、数据录入），如 Browserbase、Playwright Agent App<br>
-            <strong>自主研究 Agent</strong>：Deep Research 类——持续搜索、阅读、交叉验证、生成报告，整个过程需要 Agent 主动驱动数十步<br>
-            <strong>代码仓库自主维护 Agent</strong>：持续监控 Issue/PR、自动修复 bug、自动写测试，类 Devin / SWE-Agent<br>
-            <strong>业务流程 RPA + AI 融合</strong>：旧式 RPA 遇到异常时由 AI Agent 接管判断，需要 OpenClaw 24/7 在线托管<br>
-            <strong>长期目标追踪 Agent</strong>：监控竞品动态 / 价格 / 招聘信息，每日主动推送洞察，类 MyClaw 情报系统本身
+            核心特征：<strong>底层必须依赖 OpenClaw 持续在线 + 主动执行能力</strong>，Skill 一次性调用无法完成<br><br>
+            <strong>浏览器自动化产品</strong>：持续操作网页完成复杂业务流程（填表、采购、数据录入）<br>
+            <strong>自主研究 Agent</strong>：Deep Research 类——主动驱动数十步搜索、阅读、交叉验证、生成报告<br>
+            <strong>代码仓库自主维护</strong>：持续监控 Issue/PR、自动修复 bug、类 Devin / SWE-Agent<br>
+            <strong>长期追踪 Agent</strong>：竞品监控、价格追踪、行业情报，每日主动推送洞察
           </td>
           <td>非 OpenClaw 用户用 App → 引导创建 MyClaw 实例 → 首次激活新用户</td>
         </tr>
@@ -309,7 +302,8 @@ code{background:var(--bg3);padding:2px 8px;border-radius:4px;font-family:"SF Mon
 
     <div class="callout" style="margin-top:16px;">
       <strong>核心机制：</strong>以上三类项目在 GitHub README 或官网放一行嵌入代码，用户点击后：<br>
-      <strong>已有实例</strong> → 一键安装该 skill/服务&nbsp;&nbsp;|&nbsp;&nbsp;<strong>没有实例</strong> → 实时创建新 OpenClaw 实例 + 预装目标服务，全程 &lt; 60 秒
+      <strong>已有实例</strong> → 一键安装该 skill/服务&nbsp;&nbsp;|&nbsp;&nbsp;<strong>没有实例</strong> → 实时创建新 OpenClaw 实例 + 预装目标服务，全程 &lt; 60 秒<br>
+      <span style="color:var(--text-muted);font-size:13px;">① Skills 和 ② 开源工具放按钮逻辑相同；③ Agent Apps 以 MyClaw 为运行时底座，合作方式略有差异</span>
     </div>
 
     <div class="subsection-title" style="margin-top:20px;">💰 商业化激励（让对方主动铺按钮的原因）</div>
