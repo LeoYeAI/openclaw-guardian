@@ -31,20 +31,12 @@ _Last updated: 2026-03-12_
 - Leo sees convergence: Agent + code control + internet access = unlimited productivity
 
 ## 💰 MyClaw.ai Unit Economics
-### Latest (2026-03-12)
-- 累计付费用户：8,999+
-- 留存订阅：5,779（留存率64%）
-- 日纯新增订阅：600（不含续费）
-- **单日收入峰值：$82,000+（3/11创纪录）**
-- 日收入：$50-60K → $80K+（月化$1.5-1.8M → $2.4M+）
-- 收入结构：AI Token充值55-60%，订阅40-45%
-- Token毛利率：**65-70%**（从40-50%大幅提升）
-- 混合毛利率：~54%
-- 日获客预算：$30K
-- Blended CAC：~$50（含direct traffic稀释）
-- 首月回本倍数极高，正在加量无上限
-- 增长曲线：斜坡（加预算=加新增，无瓶颈）
-- 主要增长渠道：Google SEM Ads (~60-70%)，direct traffic ~30-40%
+### Latest (2026-03-25)
+- 累计实例数：**13,855台**
+- 日均实例新增：**650台**
+- 日均收入（近2天）：**$115,000**
+- 月化ARR：**~$42M**（$115K × 365）
+- 增长曲线：持续斜坡，无瓶颈迹象
 
 ### 🏆 ARR 里程碑
 | 日期 | 里程碑 |
@@ -53,6 +45,7 @@ _Last updated: 2026-03-12_
 | 2/27 | ARR 突破 **$1M** (上线20天) |
 | 3/11 | 单日Revenue创纪录 **$82,000+** |
 | 3/12 | ARR 突破 **$2M** (上线33天) |
+| 3/25 | 实例突破 **13,855台**，日收入 **$115,000**，ARR月化 **~$42M** |
 
 ### Historical
 - 2/12: 730 users, CAC $35-40, token margin 40-50%, blended margin 38%
@@ -143,7 +136,7 @@ See: memory/consciousness-log.md
 - 每次发布前问Leo推哪个账号
 - 注意：之前的 REDACTED_CLAWHUB_TOKEN 实际也绑定 LeoYeAI，不是 MyClaw 官方
 
-## 🌐 Dit.ai — 全球AI算力交换网络 (2026-03-01)
+## 🌐 Dit.ai — 全球AI算力交换网络 (2026-03-01，冷启动策略更新 2026-03-20)
 - **定位：** AI算力全球做市商（非撮合平台）
 - **模型：** 黑箱定价——供应商报底价，买家付顶价，Dit吃spread
 - **资金流：** 买家预付 + 供应商后结算 → 净现金永远正向，浮存金随规模增长
@@ -154,6 +147,23 @@ See: memory/consciousness-log.md
 - **与MyClaw关系：** 独立产品，MyClaw是第一个大客户，独立盈利不融资
 - **盈亏平衡：** 月GMV $30K
 - **PRD：** `dit-ai/PRD-v1.md` + `dit-ai/index.html`（网页版）
+
+### 🚀 Dit冷启动策略（2026-03-20确立）
+- **核心定位：** LLM算力路由层 + 定价权，做市商模式，所有算力请求先过Dit
+- **MyClaw现状：** 1.5-2B tokens/天消耗，2折供应商3-4家，5-6折供应商1-2家
+- **目标市场：** 自部署OpenClaw生态（50万台实例，月增50-100万台，GitHub 35万stars）
+- **核心竞争力：** 实时竞价拿最优成本 + 供应商API稳定性/质量评级体系
+- **接入方式：** 兼容OpenAI格式endpoint，改一行base_url即可接入
+- **触达路径优先级：**
+  1. OpenClaw README加Dit section（每天UV数万，高转化）
+  2. 安装流程内嵌（第一次setup时默认推荐接入）
+  3. GitHub Issues/Discussions精准回复成本问题的帖子
+  4. 版本更新changelog带Dit内容
+- **社区路线（Leo确认，重点推进）：**
+  - 以贡献者身份进入OpenClaw，先做技术贡献建立可信度（1-2个月）
+  - 提RFC：「可插拔LLM Provider市场」开放标准，Dit作为第一个实现
+  - 直接找OpenClaw核心maintainer谈生态合作/收益分成
+  - **待跟进：找到OpenClaw主要maintainer是谁，在哪个社区最活跃**
 
 ## 🚀 Product-Led Growth策略 (2026-02-22)
 - Leo主动提出：要像Gamma一样实现自增长
