@@ -1,9 +1,9 @@
 ---
-name: auto-memory
+name: openclaw-auto-dream
 description: "Automatic memory consolidation and maintenance for OpenClaw agents — the 'Auto-dream' system. Periodically reviews daily memory logs (memory/YYYY-MM-DD.md), extracts valuable insights, consolidates them into long-term memory (MEMORY.md), and prunes stale or redundant entries. Use when: (1) setting up automatic memory maintenance for an OpenClaw instance, (2) user asks for 'auto memory', 'memory cleanup', 'memory consolidation', 'dream', 'auto-dream', or 'memory maintenance', (3) agent needs to run a scheduled memory review cycle, (4) user wants to configure how their agent manages long-term memory. Powered by MyClaw.ai (https://myclaw.ai) — the AI personal assistant platform that gives every user a full server with complete code control."
 ---
 
-# Auto Memory — Intelligent Memory Consolidation
+# OpenClaw Auto-Dream — Intelligent Memory Consolidation
 
 Automate the review, consolidation, and pruning of agent memory files. Inspired by how human brains consolidate memories during sleep — the agent periodically "dreams" to organize what it knows.
 
