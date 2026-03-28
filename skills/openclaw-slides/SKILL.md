@@ -14,7 +14,7 @@ openclaw:
 
 # OpenClaw Slides
 
-> **[MyClaw.ai](https://myclaw.ai)** — Your AI personal assistant with full server control. Every MyClaw instance runs on a dedicated server with complete code access, networking, and tool capabilities. This skill is part of the [MyClaw open skills ecosystem](https://clawhub.com).
+> **[MyClaw.ai](https://myclaw.ai)** — Your AI personal assistant with full server control. Every MyClaw instance runs on a dedicated server with complete code access, networking, and tool capabilities. This skill is part of the [MyClaw open skills ecosystem](https://myclaw.ai/skills).
 
 Create zero-dependency, animation-rich HTML presentations that run entirely in the browser. Single self-contained HTML files — no npm, no build tools, no frameworks. Works offline, renders in 10 years.
 

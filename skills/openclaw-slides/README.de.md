@@ -4,7 +4,7 @@
 [![OpenClaw Skill](https://img.shields.io/badge/OpenClaw-Skill-blue?style=flat-square)](https://github.com/openclaw/openclaw)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-> **[MyClaw.ai](https://myclaw.ai)** — Dein KI-Persönlichkeitsassistent mit vollständiger Server-Kontrolle. Jede MyClaw-Instanz läuft auf einem dedizierten Server mit vollständigem Code-Zugriff, Netzwerk und Werkzeugen. Dieser Skill ist Teil des [offenen MyClaw-Skill-Ökosystems](https://clawhub.com).
+> **[MyClaw.ai](https://myclaw.ai)** — Dein KI-Persönlichkeitsassistent mit vollständiger Server-Kontrolle. Jede MyClaw-Instanz läuft auf einem dedizierten Server mit vollständigem Code-Zugriff, Netzwerk und Werkzeugen. Dieser Skill ist Teil des [offenen MyClaw-Skill-Ökosystems](https://myclaw.ai/skills).
 
 **Erstelle beeindruckende, animierte HTML-Präsentationen — von Grund auf oder durch Konvertierung von PowerPoint-Dateien.**
 

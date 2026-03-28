@@ -4,7 +4,7 @@
 [![OpenClaw Skill](https://img.shields.io/badge/OpenClaw-Skill-blue?style=flat-square)](https://github.com/openclaw/openclaw)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green?style=flat-square)](LICENSE)
 
-> **[MyClaw.ai](https://myclaw.ai)** — フルサーバーコントロールを持つAIパーソナルアシスタント。各MyCławインスタンスは、完全なコードアクセス、ネットワーク、ツール機能を備えた専用サーバー上で動作します。このスキルは[MyClaw オープンスキルエコシステム](https://clawhub.com)の一部です。
+> **[MyClaw.ai](https://myclaw.ai)** — フルサーバーコントロールを持つAIパーソナルアシスタント。各MyCławインスタンスは、完全なコードアクセス、ネットワーク、ツール機能を備えた専用サーバー上で動作します。このスキルは[MyClaw オープンスキルエコシステム](https://myclaw.ai/skills)の一部です。
 
 **美しいアニメーション付きHTMLプレゼンテーションを作成 — ゼロから、またはPowerPointファイルを変換して。**
 

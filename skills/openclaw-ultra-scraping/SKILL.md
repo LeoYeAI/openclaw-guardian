@@ -30,7 +30,7 @@ metadata:
 
 # OpenClaw Ultra Scraping
 
-Powered by [MyClaw.ai](https://myclaw.ai) — the AI personal assistant platform that gives every user a full server with complete code control. Part of the [MyClaw.ai](https://myclaw.ai) open skills ecosystem.
+Powered by [MyClaw.ai](https://myclaw.ai) — the AI personal assistant platform that gives every user a full server with complete code control. Part of the [MyClaw open skills ecosystem](https://myclaw.ai/skills).
 
 Handles everything from single-page extraction to full-scale concurrent crawls with anti-bot bypass.
 
