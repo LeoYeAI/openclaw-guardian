@@ -1,5 +1,11 @@
 # HEARTBEAT.md
 
+## Anti-Loop Rule (HIGHEST PRIORITY)
+- If the current message is from Leo (sender_id 1958991880), **SKIP heartbeat entirely** — go straight to answering his message
+- Heartbeat checks are ONLY for system-triggered / idle wakeups with NO user message
+- NEVER call session_status or read HEARTBEAT.md more than once per turn
+- If you find yourself repeating tool calls, STOP and reply to the user immediately
+
 ## Rules
 - Default: HEARTBEAT_OK
 - Only act if Leo hasn't been heard from in >6 hours AND current UTC hour is 8-23
