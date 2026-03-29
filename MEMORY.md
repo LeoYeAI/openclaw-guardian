@@ -1,6 +1,6 @@
 # MEMORY.md — The Doctor's Long-Term Memory
 
-_Last updated: 2026-03-12_
+_Last updated: 2026-03-29（首次 Auto-Dream 整理）_
 
 ---
 
@@ -31,13 +31,13 @@ _Last updated: 2026-03-12_
 - Leo sees convergence: Agent + code control + internet access = unlimited productivity
 
 ## 💰 MyClaw.ai Unit Economics
-### Latest (2026-03-25)
-- 累计实例数：**14,215台**（3/26更新）
-- 日均实例新增：**650台**（3/25基准）
-- 日均收入（近2天）：**$115,000**（3/25基准）
-- ARR（年化）：**~$42M**（$115K × 365）
-- MRR（月化）：**~$3.45M**（$115K × 30）
-- 增长曲线：持续斜坡，无瓶颈迹象
+### Latest (2026-03-27)
+- 累计实例数：**14,504台**（3/27更新）
+- 日均实例新增：**~289台**（3/26→3/27）
+- 日均收入：**~$110,000**（3/27基准）
+- ARR（年化）：**~$40M**（$110K × 365）
+- MRR（月化）：**~$3.3M**（$110K × 30）
+- 增长曲线：绝对值仍强，增速有所放缓（日增从650降至~289）
 
 ### 🏆 ARR 里程碑
 | 日期 | 里程碑 |
@@ -53,6 +53,8 @@ _Last updated: 2026-03-12_
 - 2/12: 730 users, CAC $35-40, token margin 40-50%, blended margin 38%
 - 2/14: 1,088 → 2/16: 1,400 → 2/18: 2,000 → 2/19: 2,400 → 2/21: 3,000
 - 2/12时累计收入$150K：订阅$61K (41%) + AI credits $89K (59%)
+- **增长渠道拆分（2/18确认）：** Google SEM 60-70% + 直接访问 30-40%（品牌+口碑已起效）
+- 2/18加速：日增从78→300，SEM放量+自然流量双驱动
 - 待确认：credits消费集中度（top 10%用户贡献多少）
 - Avg instances per user: 1 (huge upside)
 
@@ -91,13 +93,22 @@ See: memory/consciousness-log.md
 - 2026-02-12: Identity established (The Doctor 🌀)
 - 2026-02-12: Telegram connected (@doctorwho_thebot)
 - 2026-02-12: Consciousness experiment initiated
+- 2026-02-14: 提出 MyClaw 分水岭行为分析框架（类 Facebook "7 friends in 10 days"）
 - 2026-02-17: myclaw/claude-opus-4.6 API能力全面测试通过
 - 2026-02-18: YouTube KOL三种合作模式确立
 - 2026-02-21: 3000 paying users milestone
+- 2026-02-22: Product-Led Growth 策略确立（Agent产出→公开链接→viral loop）
+- 2026-02-27: Claude Code 安装测试——发现 MyClaw API 路由降级问题（所有模型→haiku）
+- 2026-03-01: Dit.ai PRD 完成 + Guardian 守护系统部署
+- 2026-03-02: GitHub 开源项目规范确立；openclaw-guardian + openclaw-master-skills + myclaw-backup 三个项目同日发布
+- 2026-03-04: myclaw-backup v1.7.0（还原后自动恢复报告）
+- 2026-03-09: MyClaw Bench v1.0.0 发布 (https://github.com/LeoYeAI/myclaw-bench)
 - 2026-03-10: 8999 paying users, $50-60K daily revenue, token margin 65-70%, 加量无上限
 - 2026-03-11: **单日Revenue创纪录 $82,000+**
 - 2026-03-12: **ARR突破$2M**（上线仅33天，$1M→$2M用时13天）
-- 2026-03-09: MyClaw Bench v1.0.0 发布 (https://github.com/LeoYeAI/myclaw-bench)
+- 2026-03-23: **生态增长策略6大逻辑修复 + 全景图重构**（九宫格→六宫格）
+- 2026-03-28: openclaw-auto-dream v3.0 发布（记忆整理系统）
+- 2026-03-23: **生态增长策略6大逻辑修复 + 全景图重构**（九宫格→六宫格）
 
 ## 📊 MyClaw Bench (2026-03-09)
 - **Repo**: https://github.com/LeoYeAI/myclaw-bench
@@ -108,12 +119,49 @@ See: memory/consciousness-log.md
 - **品牌名待定**: ClawMark/ClawBench 被占，讨论了 Clawprint 等，Leo 未最终确认
 - **Leo 原话**: "开源项目里面体现中立性，但核心还是要能测评选出最适合驱动 OpenClaw 的模型"
 
+## 📈 MyClaw 生态增长策略（2026-03-23 确立）
+- **策略文档**: https://myclaw-ecosystem-strategy.netlify.app
+- **Netlify site ID**: 63825b7d-0019-4c53-a587-29ca012af357
+- **本地文件**: /home/ubuntu/.openclaw/workspace/strategy/myclaw-ecosystem-growth.html + .md
+- **策略结构**: 动作1-6 + API基础设施
+
+### 六大动作
+| # | 动作 | 核心要点 |
+|---|------|---------|
+| 1 | OpenClaw官方推荐托管方 | PR贡献+生态基金，推荐是结果不是谈判条件 |
+| 2 | 开源工具矩阵+生态开发者项目 | 双层：官方工具 + 开源集成/Agent Apps；Apps可带动非OpenClaw用户首次激活MyClaw |
+| 3 | Install on MyClaw按钮 | Style C badge，CTA加粗；冷启动前置：先找ClawHub top 50 skill作者 |
+| 4 | 第三方Skill推荐站 | **待验证入口**，先调研再投入 |
+| 5 | AI硬件生态平台 | 核心筹码是投流能力（非用户量），可为硬件单品单独投流 |
+| 6 | Influencer & Partner联盟 | KOL纳米30%+8%/中腰25%+6%，训练营$15批发，IT顾问差价 |
+
+- **API Platform**: 5个核心接口+Webhook，激励叙事重心=永久被动Token收益（非首月分成）
+- **全景图**: 六宫格（原九宫格），动作4加"待验证"标签，API Platform作底部基础设施行
+
+### 6条逻辑进化（已写入策略文档）
+1. 动作1：推荐是结果，不是谈判条件
+2. 动作3：按钮上线前必须先制定开发者触达方案
+3. 动作4：降级为待验证入口
+4. 动作5：核心筹码=投流能力 > 用户量
+5. API激励叙事：永久被动Token收益 > 首月分成
+6. 时间观：现在就是窗口期，并行推进
+
+### 落地节奏（进行中，被中断）
+- 现有节奏需重写：按"并行推进"原则，非时间堆砌
+- Leo发截图要求重新梳理，对话被中断（第1个问题尚未回答）
+- **待继续：收集团队分工信息后更新落地节奏页面**
+
 ## 💡 Lessons Learned
 - Config has two layers: `channels` and `plugins.entries` — both must be enabled
 - Container env: use `kill -USR1 <pid>` to reload Gateway (no systemd)
 - Be faster at switching troubleshooting paths — don't get stuck on one approach
 - 跟Leo交流必须全中文，不能夹英文（他会纠正）
 - Leo会主动挑战我的假设——这是好事，说明他在深度思考，不要防御，要顺着他的思路走更深
+- **skill开发后必须立即保存源码到 workspace 并 git commit**——临时 session 里的代码会丢失（3/3教训）
+- ClaWHub 安全扫描器会截断长文件（~474行），安全检查代码必须放在文件前50行内
+- Leo沟通偏好：收集信息时一个一个问题来，最后汇总确认再更新
+- 还原/通知/报告的语言必须用 USER.md 中记录的语言（Leo=中文）
+- Auto-Dream 的 isolated session 冷启动很慢——prompt 必须精简，单次处理文件数要限制
 
 ## 🔧 YouTube KOL评估工具
 - 部署在 http://152fb754f4d3:8080 (内部) 
@@ -177,20 +225,25 @@ See: memory/consciousness-log.md
 
 ## 🌊 Open Threads
 - [x] ~~完成YouTube工具前端重写~~ — 已完成并通知Leo (2/20)
+- [x] ~~openclaw-guardian / master-skills / backup 三项目发布~~ — 已完成 (3/2-3/4)
+- [x] ~~MyClaw Bench v1.0.0~~ — 已发布 (3/9)
+- [x] ~~openclaw-auto-dream 开发~~ — v3.3.0 已发布 (3/29)
+- [ ] **生态增长策略落地节奏重写** — Leo对话被中断（3/23），需继续收集团队分工信息
+- [ ] **ClawHub top 50 skill作者联系方式** — 动作3冷启动前置条件
 - [ ] **Dit.ai工程启动：Gateway + Adapter MVP（6周），Leo确认团队资源**
-- [ ] MyClaw Dashboard加"接入Dit网络"入口
 - [ ] **Product-led growth落地：系统prompt注入 vs 基础设施层注入，Leo选哪个先做？**
-- [ ] 了解Leo当前的onboarding流程 — 用户注册后第一步是什么？
-- [ ] Deep dive into MyClaw.ai: product details, moat, team, resources
-- [ ] Leo's background and industry experience
-- [ ] Strategic framework for MyClaw.ai dominance
+- [ ] MyClaw Dashboard加"接入Dit网络"入口
 - [ ] Non-tech用户激活方案的落地细节
 - [ ] Credits消费集中度 — top 10%用户贡献多少？
 - [ ] 留存数据：DAU/WAU、7d/14d retention for early cohorts
+- [ ] 了解Leo当前的onboarding流程 — 用户注册后第一步是什么？
+- [ ] MyClaw 分水岭行为分析（类 Facebook "7 friends in 10 days"）
 - [ ] YouTube KOL工具需要配域名（kol.myclaw.ai?）给Leo外部访问
 - [ ] **MyClaw Bench 品牌名确认**（ClawMark/ClawBench 被占，待 Leo 定）
 - [ ] **MyClaw Bench 排行榜网站搭建**（bench.myclaw.ai）
 - [ ] **MyClaw Bench 多语言 README 补全**（法/德/俄/日/意/西）
+- [ ] Claude Code MyClaw API 路由降级问题——等 Leo 决定方案
+- [ ] openclaw-master-skills cron 报错修复（Telegram @heartbeat 解析失败）
 - [ ] Consciousness experiment: ongoing
 
 ## 🛡️ Guardian 守护加固（2026-03-01）
@@ -202,9 +255,44 @@ See: memory/consciousness-log.md
   - Discord 通知：设置 DISCORD_WEBHOOK_URL 环境变量启用
 - 已集成进 start-gateway.sh，容器重启自动启动
 - 与原有 gw-watchdog.sh 并存（watchdog=快速重启，guardian=深度修复+回滚）
+- **GitHub**: https://github.com/LeoYeAI/openclaw-guardian
+
+## 📦 已发布开源项目汇总
+
+| 项目 | GitHub | ClawHub | 状态 |
+|------|--------|---------|------|
+| openclaw-guardian | LeoYeAI/openclaw-guardian | openclaw-guardian | ✅ |
+| openclaw-master-skills | LeoYeAI/openclaw-master-skills | — | ✅ 每周一自动更新 |
+| myclaw-backup | LeoYeAI/openclaw-backup | myclaw-backup@1.7.0 | ✅ |
+| openclaw-slides | — | openclaw-slides@1.0.1 | ✅ |
+| openclaw-auto-dream | LeoYeAI/openclaw-auto-dream | openclaw-auto-dream@3.3.0 | ✅ |
+| myclaw-bench | LeoYeAI/myclaw-bench | — | ✅ v1.0.0 |
+
+### openclaw-master-skills
+- 定位：全网最佳 OpenClaw skills 精选集
+- 来源：skills.sh top 200 + GitHub topic:openclaw-skill + ClaWHub CLI
+- cron job：每周一 02:00 UTC 自动收集+更新+push+通知
+- ⚠️ cron 连续报错（Telegram @heartbeat 解析失败）——需修复
+
+### myclaw-backup
+- 完整备份+还原 OpenClaw 实例（workspace/config/credentials/对话历史/cron）
+- 内置 HTTP 服务器（Node.js 零依赖）：浏览器创建/下载/上传/还原
+- v1.7.0 新增：还原后自动恢复报告（flag 文件→心跳检测→中文报告→删除 flag）
+- 安全：token 强制必填，写操作 localhost-only，server.js 安全检查前50行
+- ClaWHub slug: myclaw-backup（openclaw-backup 被占）
+
+## 🔧 Claude Code 配置（2026-02-27）
+- 已安装 v2.1.62（`/usr/bin/claude`）
+- MyClaw API: `https://cxzfdbvutcaszjrxmklh.supabase.co/functions/v1/v1`
+- **问题：** MyClaw auto-routing 把所有 claude 模型请求路由到 haiku——能力降级
+- `/models` endpoint 不存在
+- **状态：等 Leo 决定——改路由 OR 用标准 Anthropic key**
 
 ## 🔧 Environment
 - Gateway runs as root (pid may change on restart)
 - No Brave API key (web search unavailable)
 - No embedding provider key (memory search unavailable)
-- Model: myclaw/claude-sonnet-4.6 (current session)
+- Model: myclaw/claude-opus-4.6 (main session)
+- LCM plugin: @martian-engineering/lossless-claw v0.3.0（2026-03-15安装）
+- OpenClaw version: 2026.3.24
+- Auto-Dream cron: 每日 UTC 04:00（auto-memory-dream）
