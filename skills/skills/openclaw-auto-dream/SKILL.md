@@ -11,7 +11,7 @@ A multi-layered memory system inspired by human cognition. The agent periodicall
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  Working Memory          (LCM — auto-installed by setup)    │
+│  Working Memory          (LCM — optional, detected at setup)│
 ├─────────────────────────────────────────────────────────────┤
 │  Episodic Memory         memory/episodes/*.md               │
 │  (project narratives, event timelines)                      │
@@ -31,7 +31,7 @@ A multi-layered memory system inspired by human cognition. The agent periodicall
 
 | Layer | File(s) | Purpose | Mutability |
 |-------|---------|---------|------------|
-| Working | LCM (auto-installed) | Real-time context compression & recall | Managed by LCM plugin |
+| Working | LCM (optional, detected at setup) | Real-time context compression & recall | Managed by LCM plugin |
 | Long-term | `MEMORY.md` | Structured knowledge base | Append, update, prune |
 | Episodic | `memory/episodes/*.md` | Project/event narratives | Append-only |
 | Procedural | `memory/procedures.md` | Learned workflows & preferences | Append, update |
@@ -41,38 +41,20 @@ A multi-layered memory system inspired by human cognition. The agent periodicall
 
 ## Setup
 
-### 0. Ensure LCM (Lossless Context Management) is active
+### 0. Check LCM (Lossless Context Management) status
 
-Auto-Dream requires LCM for the Working Memory layer. Check and install automatically:
+Auto-Dream's Working Memory layer is powered by LCM. Check whether it is already installed:
 
 1. **Detect**: Read the OpenClaw config (`openclaw.json`) and check if `plugins.slots.contextEngine` is set to `"lossless-claw"` and `plugins.entries.lossless-claw.enabled` is `true`.
 
-2. **If LCM is already active** → skip to Step 1.
+2. **If LCM is active** → skip to Step 1.
 
-3. **If LCM is not installed** → install and configure it:
-   ```bash
-   openclaw plugins install @martian-engineering/lossless-claw
-   ```
-   Then patch the config:
-   ```json5
-   {
-     plugins: {
-       slots: {
-         contextEngine: "lossless-claw"
-       },
-       entries: {
-         "lossless-claw": {
-           enabled: true
-         }
-       }
-     }
-   }
-   ```
-   Restart the gateway after config change.
+3. **If LCM is not installed** → inform the user:
+   > "Auto-Dream works best with the LCM plugin for Working Memory. LCM is not currently installed. You can install it by running: `openclaw plugins install @martian-engineering/lossless-claw` — see https://github.com/nicobailon/lossless-claw for details. Auto-Dream will continue to work without LCM, but the Working Memory layer (conversation context recall) will be unavailable."
 
-4. **Verify**: Run `openclaw plugins list` and confirm `lossless-claw` shows as active.
+   Do **not** install plugins or modify config automatically. Only the user should decide to install plugins.
 
-> **Note**: LCM provides the Working Memory layer — real-time context compression, semantic search across conversation history, and DAG-based lossless compaction. Without it, Auto-Dream still works for the other four layers, but the agent loses the ability to recall compressed conversation context.
+> **Note**: Without LCM, Auto-Dream still works for the other four memory layers (Long-term, Episodic, Procedural, Index). The only limitation is that the agent cannot recall compressed conversation context from previous sessions.
 
 ### 1. Create the cron job
 
@@ -123,7 +105,7 @@ If upgrading from v2, read `references/migration-v2-to-v3.md` § "v2 → v3 Upgr
 
 ### 5. Verify
 
-- [ ] LCM plugin installed and active (`plugins.slots.contextEngine: "lossless-claw"`)
+- [ ] LCM plugin status checked (installed → ✅ Working Memory active; not installed → user informed)
 - [ ] Cron job created and enabled
 - [ ] `MEMORY.md` exists with section headers
 - [ ] `memory/procedures.md` exists
@@ -333,7 +315,7 @@ This applies to:
 4. **Backup index** — copy `index.json` → `index.json.bak` before each dream
 5. **Episodes are append-only** — never delete episode files
 6. **Procedures changes logged** — any modification to `procedures.md` must appear in the dream report
-7. **Secrets policy** — only consolidate secrets already present in MEMORY.md; never create new secret entries
+7. **Sensitive data policy** — only consolidate sensitive entries already present in MEMORY.md; never create new sensitive entries from daily logs
 8. **Migration backup** — before any import operation, back up all current memory files to `memory/pre-import-backup/`
 9. **Dashboard is read-only output** — `memory/dashboard.html` is generated; never treat it as an input source
 
