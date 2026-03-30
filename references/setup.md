@@ -56,8 +56,8 @@ Guardian's rollback feature requires a git repo in the workspace:
 
 ```bash
 cd ~/.openclaw/workspace
-git config --global user.email "guardian@example.com"
-git config --global user.name "Guardian"
+git -C ~/.openclaw/workspace config user.email "guardian@example.com"
+git -C ~/.openclaw/workspace config user.name "Guardian"
 git init && git add -A && git commit -m "initial"
 ```
 
