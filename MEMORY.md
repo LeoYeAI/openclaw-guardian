@@ -1,6 +1,6 @@
 # MEMORY.md — The Doctor's Long-Term Memory
 
-_Last updated: 2026-03-29（首次 Auto-Dream 整理）_
+_Last updated: 2026-03-30（Auto-Dream #2）_
 
 ---
 
@@ -31,13 +31,13 @@ _Last updated: 2026-03-29（首次 Auto-Dream 整理）_
 - Leo sees convergence: Agent + code control + internet access = unlimited productivity
 
 ## 💰 MyClaw.ai Unit Economics
-### Latest (2026-03-27)
-- 累计实例数：**14,504台**（3/27更新）
-- 日均实例新增：**~289台**（3/26→3/27）
-- 日均收入：**~$110,000**（3/27基准）
-- ARR（年化）：**~$40M**（$110K × 365）
-- MRR（月化）：**~$3.3M**（$110K × 30）
-- 增长曲线：绝对值仍强，增速有所放缓（日增从650降至~289）
+### Latest (2026-03-30)
+- 累计实例数：**15,750台**（3/30更新）
+- 日均实例新增：**~415台**（3/27→3/30，3天增1,246台）
+- 日均收入：**~$110,000**（3/27基准，3/30待确认）
+- ARR（年化）：**~$40M**（基于$110K/天）
+- MRR（月化）：**~$3.3M**
+- 增长曲线：增速从289台/天回升至415台/天，回暖趋势
 
 ### 🏆 ARR 里程碑
 | 日期 | 里程碑 |
@@ -47,7 +47,8 @@ _Last updated: 2026-03-29（首次 Auto-Dream 整理）_
 | 3/11 | 单日Revenue创纪录 **$82,000+** |
 | 3/12 | ARR 突破 **$2M** (上线33天) |
 | 3/25 | 实例 **13,855台**，日收入 **$115,000**，MRR **~$3.45M**，ARR **~$42M** |
-| 3/26 | 实例突破 **14,215台** |
+| 3/27 | 实例 **14,504台**，日收入 **~$110,000**，增速放缓至289台/天 |
+| 3/30 | 实例 **15,750台**，增速回升至~415台/天 |
 
 ### Historical
 - 2/12: 730 users, CAC $35-40, token margin 40-50%, blended margin 38%
@@ -108,7 +109,7 @@ See: memory/consciousness-log.md
 - 2026-03-12: **ARR突破$2M**（上线仅33天，$1M→$2M用时13天）
 - 2026-03-23: **生态增长策略6大逻辑修复 + 全景图重构**（九宫格→六宫格）
 - 2026-03-28: openclaw-auto-dream v3.0 发布（记忆整理系统）
-- 2026-03-23: **生态增长策略6大逻辑修复 + 全景图重构**（九宫格→六宫格）
+- 2026-03-30: openclaw-auto-dream v3.5.0（SKILL.md全英文化）+ v3.6.0（First Dream即时首扫功能）
 
 ## 📊 MyClaw Bench (2026-03-09)
 - **Repo**: https://github.com/LeoYeAI/myclaw-bench
@@ -162,6 +163,7 @@ See: memory/consciousness-log.md
 - Leo沟通偏好：收集信息时一个一个问题来，最后汇总确认再更新
 - 还原/通知/报告的语言必须用 USER.md 中记录的语言（Leo=中文）
 - Auto-Dream 的 isolated session 冷启动很慢——prompt 必须精简，单次处理文件数要限制
+- Skill prompt 自身用英文写、输出按 USER.md 语言——这个分离设计是正确的，方便国际化
 
 ## 🔧 YouTube KOL评估工具
 - 部署在 http://152fb754f4d3:8080 (内部) 
@@ -174,7 +176,7 @@ See: memory/consciousness-log.md
 
 ## 🔑 GitHub Token
 - Account: LeoYeAI (Leo Ye)
-- Token: REDACTED_GITHUB_TOKEN（永不失效）
+- Token: REDACTED_GITHUB_TOKEN（2026-04-01更新）
 - 用于：openclaw-guardian / openclaw-master-skills repo 操作
 
 ## 🔑 ClawHub Token
@@ -265,7 +267,7 @@ See: memory/consciousness-log.md
 | openclaw-master-skills | LeoYeAI/openclaw-master-skills | — | ✅ 每周一自动更新 |
 | myclaw-backup | LeoYeAI/openclaw-backup | myclaw-backup@1.7.0 | ✅ |
 | openclaw-slides | — | openclaw-slides@1.0.1 | ✅ |
-| openclaw-auto-dream | LeoYeAI/openclaw-auto-dream | openclaw-auto-dream@3.3.0 | ✅ |
+| openclaw-auto-dream | LeoYeAI/openclaw-auto-dream | openclaw-auto-dream@3.6.0 | ✅ |
 | myclaw-bench | LeoYeAI/myclaw-bench | — | ✅ v1.0.0 |
 
 ### openclaw-master-skills
