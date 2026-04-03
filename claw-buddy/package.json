@@ -1,0 +1,31 @@
+{
+  "name": "@openclaw/claw-buddy",
+  "version": "0.1.0",
+  "description": "Virtual pet companion plugin for OpenClaw — ASCII art pets that live in your chat",
+  "type": "module",
+  "main": "index.ts",
+  "license": "MIT",
+  "keywords": [
+    "openclaw",
+    "openclaw-plugin",
+    "virtual-pet",
+    "buddy",
+    "companion"
+  ],
+  "files": [
+    "index.ts",
+    "src/**/*.ts",
+    "openclaw.plugin.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "@sinclair/typebox": "^0.34.49",
+    "better-sqlite3": "^11.0.0",
+    "gif-encoder-2": "^1.0.5",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.0",
+    "typescript": "^5.5.0"
+  }
+}
