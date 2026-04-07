@@ -59,7 +59,7 @@ nohup ~/.openclaw/guardian.sh >> /tmp/openclaw-guardian.log 2>&1 &
 ## OpenClaw Skillとしてインストール
 
 ```bash
-clawhub install myclaw-guardian
+clawhub install openclaw-guardian
 ```
 
 ## ライセンス
