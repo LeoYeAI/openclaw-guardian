@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claws.ai 战略框架 v1.0</title>
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg2: #121933;
+      --card: #141c38;
+      --card2: #1a2448;
+      --text: #eef2ff;
+      --muted: #9fb0d9;
+      --line: rgba(255,255,255,0.08);
+      --accent: #7c5cff;
+      --accent2: #28c7fa;
+      --good: #39d98a;
+      --warn: #ffb020;
+      --grad: linear-gradient(135deg, #7c5cff 0%, #28c7fa 100%);
+      --shadow: 0 12px 40px rgba(0,0,0,0.35);
+      --maxw: 1040px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top right, rgba(124,92,255,0.18), transparent 28%),
+        radial-gradient(circle at left center, rgba(40,199,250,0.12), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.72;
+    }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 40px 24px 96px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      background: rgba(124,92,255,0.15);
+      border: 1px solid rgba(124,92,255,0.35);
+      color: #cbbdff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 48px;
+      line-height: 1.08;
+      margin: 0 0 14px;
+      letter-spacing: -1.2px;
+      max-width: 900px;
+    }
+    .grad { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .subtitle {
+      font-size: 20px;
+      color: var(--muted);
+      max-width: 880px;
+      margin-bottom: 22px;
+    }
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+    }
+    .meta span {
+      font-size: 12px;
+      color: var(--muted);
+      border: 1px solid var(--line);
+      padding: 6px 12px;
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+    }
+    .hero {
+      padding: 28px;
+      border-radius: 24px;
+      background: linear-gradient(180deg, rgba(124,92,255,0.14), rgba(40,199,250,0.08));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+    }
+    .hero p { margin: 0; font-size: 18px; color: #d9e4ff; }
+    .section { margin-top: 56px; }
+    .section h2 { font-size: 28px; margin: 0 0 18px; letter-spacing: -0.5px; }
+    .section h3 { font-size: 20px; margin: 28px 0 12px; color: #dfe8ff; }
+    p { font-size: 16px; color: #d6e1ff; margin: 0 0 14px; }
+    strong { color: #fff; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 18px;
+      margin-top: 20px;
+    }
+    .card {
+      grid-column: span 12;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035), rgba(255,255,255,0.02));
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+    .card h3 { margin-top: 0; }
+    .kpi {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .kpi .item {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+    }
+    .kpi .label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+    .kpi .value { font-size: 28px; font-weight: 800; margin-top: 8px; }
+    ul { margin: 12px 0 0 0; padding-left: 20px; }
+    li { margin: 8px 0; color: #d7e2ff; }
+    .quote {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-left: 4px solid var(--accent2);
+      background: rgba(40,199,250,0.08);
+      border-radius: 0 14px 14px 0;
+      color: #dff8ff;
+      font-size: 17px;
+    }
+    .flow {
+      background: var(--card2);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 20px;
+      margin-top: 18px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      color: #cde6ff;
+      font-size: 14px;
+    }
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 18px;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+    }
+    .table th, .table td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+    }
+    .table th {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      background: rgba(255,255,255,0.03);
+    }
+    .table tr:last-child td { border-bottom: none; }
+    .pill {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      margin-right: 8px;
+    }
+    .pill.good { background: rgba(57,217,138,0.14); color: #82efb7; }
+    .pill.warn { background: rgba(255,176,32,0.12); color: #ffd37a; }
+    .pill.blue { background: rgba(40,199,250,0.12); color: #7ee7ff; }
+    .footer {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 13px;
+    }
+    @media (min-width: 900px) {
+      .span-6 { grid-column: span 6; }
+      .span-4 { grid-column: span 4; }
+      .span-8 { grid-column: span 8; }
+    }
+    @media (max-width: 700px) {
+      h1 { font-size: 34px; }
+      .subtitle { font-size: 17px; }
+      .wrap { padding: 28px 18px 72px; }
+      .hero { padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="badge">Claws.ai / Strategic Framework / v1.0</div>
+    <h1><span class="grad">Claws.ai 战略框架</span><br>把教育博主的新一代变现方式，变成卖自己的 AI 实例</h1>
+    <div class="subtitle">
+      Claws.ai 不是一个简单的 marketplace。它表面上是 AI 实例镜像市场，底层则是 MyClaw 生态最强的获客引擎、激活引擎与留存引擎。
+    </div>
+    <div class="meta">
+      <span>作者：The Doctor</span>
+      <span>面向：Leo / MyClaw 核心团队</span>
+      <span>日期：2026-04-09</span>
+      <span>阶段：冷启动战略梳理</span>
+    </div>
+
+    <div class="hero">
+      <p><strong>一句话定义：</strong>Claws.ai 让创作者把自己花上万美金、数周时间调试成熟的 AI 工作流，打包成可被 MyClaw 一键复制部署的完整实例镜像，并直接卖给观众与客户。</p>
+    </div>
+
+    <section class="section">
+      <h2>1. 核心洞察：卖的不是配置，而是试错成本</h2>
+      <p>一个成熟可用的 Claws 实例，里面封装的不是几条 prompt，也不只是几个 skill，而是完整的试错沉淀。</p>
+      <div class="grid">
+        <div class="card span-6">
+          <h3>买家如果自己从零调试</h3>
+          <ul>
+            <li>花费上万美金的 token 成本</li>
+            <li>花费数周甚至更久的时间成本</li>
+            <li>要自己摸索 workflow、边界条件、异常处理</li>
+            <li>需要具备方法论理解与执行能力</li>
+          </ul>
+        </div>
+        <div class="card span-6">
+          <h3>买一个成熟镜像</h3>
+          <ul>
+            <li>只需支付 500-1000 美金，甚至更低</li>
+            <li>通过 MyClaw 一键复制部署</li>
+            <li>直接获得已经被调试好的能力</li>
+            <li>跳过前期最贵、最慢、最容易失败的阶段</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quote">Claws.ai 的本质不是“卖 AI 配置”，而是把创作者的试错成本、时间成本和方法论沉淀，转化成可被复制、可被交易的数字资产。</div>
+    </section>
+
+    <section class="section">
+      <h2>2. 商品定义：完整配置镜像实例</h2>
+      <p>当前阶段，Claws.ai 上卖的不是单个 skill，也不是课程，而是<strong>可以通过 MyClaw 一键复制部署的完整配置镜像实例</strong>。</p>
+      <div class="grid">
+        <div class="card span-4">
+          <h3>交付形态</h3>
+          <ul>
+            <li>完整实例镜像</li>
+            <li>一键复制部署</li>
+            <li>跑在买家自己的 MyClaw 环境</li>
+          </ul>
+        </div>
+        <div class="card span-4">
+          <h3>可差异化的维度</h3>
+          <ul>
+            <li>使用场景不同</li>
+            <li>专业方向不同</li>
+            <li>方法论与 workflow 不同</li>
+          </ul>
+        </div>
+        <div class="card span-4">
+          <h3>用户买到的东西</h3>
+          <ul>
+            <li>可用能力</li>
+            <li>成熟工作流</li>
+            <li>创作者的 know-how 封装</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>3. 类比：Claws.ai 是 AI 时代的 Skool，但卖的是“成品”</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>维度</th>
+            <th>Skool</th>
+            <th>Claws.ai</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>博主卖什么</td>
+            <td>课程 + 社群</td>
+            <td>调试成熟的 AI 实例镜像</td>
+          </tr>
+          <tr>
+            <td>买家获得什么</td>
+            <td>知识，需要自己执行</td>
+            <td>能力，一键部署即可开始使用</td>
+          </tr>
+          <tr>
+            <td>交付结果</td>
+            <td>“学会怎么做”</td>
+            <td>“直接拥有一个能跑的结果”</td>
+          </tr>
+          <tr>
+            <td>创作者变现逻辑</td>
+            <td>卖知识产品</td>
+            <td>卖自己调试好的数字资产</td>
+          </tr>
+          <tr>
+            <td>平台底层收益</td>
+            <td>平台费/订阅费</td>
+            <td>MyClaw 订阅 + token 消耗</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="quote">Skool 让教育博主从“卖课”变成“卖社群”；Claws.ai 让教育博主从“卖教程”变成“卖成品”。</div>
+    </section>
+
+    <section class="section">
+      <h2>4. 为什么教育类 YouTube 博主是最好的冷启动供给方</h2>
+      <p>最合适的第一批卖家，不一定是 MyClaw 官方，也不一定是普通 power users，而是已经在 YouTube 上通过长视频教授 workflow、方法论和实战用法的教育型创作者。</p>
+      <div class="grid">
+        <div class="card span-6">
+          <h3>他们已经具备供给能力</h3>
+          <ul>
+            <li>已经有成熟的工作流和方法论</li>
+            <li>已经愿意花时间做深度打磨</li>
+            <li>已经在公开讲解自己的体系</li>
+            <li>比普通用户更可能做出高质量镜像</li>
+          </ul>
+        </div>
+        <div class="card span-6">
+          <h3>他们天然具备分发能力</h3>
+          <ul>
+            <li>自己的观众就是最精准的买家</li>
+            <li>视频本身就是销售页面</li>
+            <li>信任关系早已建立，不需要从零说服</li>
+            <li>每条教程视频都能持续带来交易</li>
+          </ul>
+        </div>
+      </div>
+      <div class="quote">这批博主过去卖的是“解释权”，未来可以卖“可复制的执行结果”。</div>
+    </section>
+
+    <section class="section">
+      <h2>5. 商业模型：100% 镜像收入归博主，Claws 只收 payment fee</h2>
+      <p>Claws.ai 的最强设计，不是抽佣，而是<strong>不抽佣</strong>。</p>
+      <div class="kpi">
+        <div class="item">
+          <div class="label">Creator 收入</div>
+          <div class="value">100%</div>
+        </div>
+        <div class="item">
+          <div class="label">平台抽佣</div>
+          <div class="value">0%</div>
+        </div>
+        <div class="item">
+          <div class="label">平台收取</div>
+          <div class="value">Payment Fee</div>
+        </div>
+        <div class="item">
+          <div class="label">底层收益来源</div>
+          <div class="value">MyClaw LTV</div>
+        </div>
+      </div>
+      <h3>为什么不能把重心放在抽佣</h3>
+      <ul>
+        <li>抽佣会降低优质创作者上架意愿</li>
+        <li>抽佣收益是一次性的，而 MyClaw 订阅与 token 收益是持续性的</li>
+        <li>每个卖出的镜像本质上都是一个新的 MyClaw 用户入口</li>
+        <li>“我们不从创作者身上赚钱”本身就是极强的招商话术</li>
+      </ul>
+      <h3>真正的经济引擎</h3>
+      <ul>
+        <li>买家要运行镜像，必须拥有 MyClaw 实例</li>
+        <li>买家开始使用后，会持续消耗 token</li>
+        <li>高价值镜像用户通常留存更高、ARPU 更高</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>6. Claws.ai 的战略本质：MyClaw 生态最强获客引擎</h2>
+      <p>Claws.ai 不是一个独立于 MyClaw 的产品，它是 MyClaw 增长飞轮里的战略发动机。</p>
+      <div class="flow">创作者调好实例 → 上架到 Claws.ai → 在视频/内容里推广 → 观众购买镜像
+↓
+需要 MyClaw 才能一键部署和运行
+↓
+买家开通订阅 → 开始使用 → 产生 token 消耗 → 持续续费
+↓
+一部分买家成长为新的创作者/卖家
+↓
+供给增加，内容增加，分发增加，生态继续扩大</div>
+      <div class="grid">
+        <div class="card span-4">
+          <h3>获客引擎</h3>
+          <p>每个博主都是一个自带流量、持续更新、按结果付费的渠道。相比广告投放，Claws 流量更精准，CAC 理论上接近 0。</p>
+        </div>
+        <div class="card span-4">
+          <h3>激活引擎</h3>
+          <p>non-tech 用户不再面对一个空白输入框，而是直接拿到一个调试成熟、可立即使用的成品实例。</p>
+        </div>
+        <div class="card span-4">
+          <h3>留存引擎</h3>
+          <p>愿意花 500-1000 美金买镜像的用户，天然具备更高投入度与更明确目标，留存会显著优于普通新用户。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>7. 它解决的，不只是一个问题，而是 MyClaw 当前三大核心痛点</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>MyClaw 当前痛点</th>
+            <th>Claws.ai 的解法</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>获客成本持续上升，CAC 高</td>
+            <td>通过创作者内容分发获取用户，减少对广告投放的依赖</td>
+          </tr>
+          <tr>
+            <td>non-tech 用户激活难</td>
+            <td>通过成熟镜像跳过“自由度的诅咒”，从空白输入框变成一键上手</td>
+          </tr>
+          <tr>
+            <td>用户留存差、流失高</td>
+            <td>买镜像用户的投入度更高，且实际业务更容易跑起来，留存与付费深度都会更高</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>8. 冷启动策略：从“卖家优先”出发，而不是先做大而全的市场</h2>
+      <p>Claws.ai 冷启动的关键，不是先堆很多功能，而是先把最强的第一批卖家拉进来。</p>
+      <h3>第一批目标卖家画像</h3>
+      <ul>
+        <li>YouTube 上做 OpenClaw / AI workflow / 自动化 / agent 实战教学的教育型博主</li>
+        <li>已经有系统化方法论和代表性案例</li>
+        <li>拥有信任型受众，而不是纯泛流量</li>
+        <li>愿意持续内容创作和产品化变现</li>
+      </ul>
+      <h3>核心招商话术</h3>
+      <div class="quote">你过去通过长视频教别人怎么搭，现在可以把自己花数周时间调好的完整实例直接卖出去。零抽佣，100% 收入归你，观众买完即可一键部署，不再需要跟着教程一点点抄作业。</div>
+      <h3>冷启动的最小闭环</h3>
+      <ul>
+        <li>先签 10-20 个高质量创作者，而不是先追求海量供给</li>
+        <li>每个创作者只需要 1-3 个真正成熟的标杆镜像</li>
+        <li>每个镜像都对应明确场景、明确结果、明确人群</li>
+        <li>先跑通“内容 → 镜像购买 → MyClaw 部署 → 持续使用”的闭环</li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <h2>9. 平台定位建议：不是模板市场，而是 AI 能力资产市场</h2>
+      <p>如果定位成 template marketplace，会天然显得便宜、浅层、容易被替代。更准确的定位应该是：<strong>一个把 AI 能力资产化、产品化、交易化的市场</strong>。</p>
+      <div class="grid">
+        <div class="card span-6">
+          <h3><span class="pill blue">推荐</span>能力资产市场</h3>
+          <p>卖的是经过高成本打磨的 AI 能力封装，是工作流、prompt、工具组合、边界处理和方法论的综合体。</p>
+        </div>
+        <div class="card span-6">
+          <h3><span class="pill warn">避免</span>模板市场</h3>
+          <p>“模板”会让用户以为是低价、低壁垒、轻量级素材，无法体现创作者投入的调试成本与业务价值。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>10. Claws.ai 的长期飞轮</h2>
+      <div class="grid">
+        <div class="card span-6">
+          <h3>供给飞轮</h3>
+          <ul>
+            <li>创作者靠卖镜像赚到钱</li>
+            <li>更多创作者愿意投入时间打磨实例</li>
+            <li>高质量镜像增多</li>
+            <li>平台吸引力增强</li>
+          </ul>
+        </div>
+        <div class="card span-6">
+          <h3>需求飞轮</h3>
+          <ul>
+            <li>用户通过内容认识镜像</li>
+            <li>购买后快速获得结果</li>
+            <li>使用效果越好，口碑越强</li>
+            <li>更多用户愿意为成熟实例付费</li>
+          </ul>
+        </div>
+        <div class="card span-12">
+          <h3>生态飞轮</h3>
+          <p>当越来越多的用户不是“注册 MyClaw 自己摸索”，而是“因为某个创作者的成品实例而进入 MyClaw”，MyClaw 的增长模式就从广告拉新，升级为生态拉新。届时 Claws.ai 不只是一个附属产品，而会成为整个 MyClaw 生态的增长核心。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>11. 当前结论</h2>
+      <div class="quote">Claws.ai 应被定义为：创作者售卖 AI 实例镜像的 marketplace；但从战略层面，它真正的意义是把教育博主、workflow 博主和 power users，全部转化为 MyClaw 的分销者、激活者和留存放大器。</div>
+      <ul>
+        <li>对创作者：这是比卖课更轻、更强、更结果导向的变现方式</li>
+        <li>对买家：这是比自己摸索更快、更便宜、更确定的能力获取方式</li>
+        <li>对 MyClaw：这是比广告更便宜、比自然注册更高质的增长引擎</li>
+      </ul>
+    </section>
+
+    <div class="footer">
+      Claws.ai Strategic Framework v1.0 · Powered by MyClaw.ai · 2026-04-09
+    </div>
+  </div>
+</body>
+</html>
