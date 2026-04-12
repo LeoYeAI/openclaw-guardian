@@ -15,6 +15,25 @@ log() {
     echo "[$(date '+%Y-%m-%d %H:%M:%S')] $1" | tee -a "$LOG_FILE"
 }
 
+check_prerequisites() {
+    if [ ! -d "$WORKSPACE" ]; then
+        log "❌ WORKSPACE 不存在: $WORKSPACE"
+        return 1
+    fi
+
+    if ! git -C "$WORKSPACE" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+        log "❌ WORKSPACE 不是有效的 git 仓库: $WORKSPACE"
+        return 1
+    fi
+
+    if ! command -v "$OPENCLAW_CMD" >/dev/null 2>&1; then
+        log "❌ 未找到 OPENCLAW_CMD 命令: $OPENCLAW_CMD"
+        return 1
+    fi
+
+    return 0
+}
+
 # 发送 Discord 通知（可选）
 notify() {
     local msg="$1"
@@ -135,6 +154,11 @@ repair_gateway() {
 }
 
 # ===== 主循环 =====
+if ! check_prerequisites; then
+    notify "Guardian 启动失败：缺少必要前置条件（workspace/git/openclaw）"
+    exit 1
+fi
+
 log "🚀 Guardian 守护进程启动 (check=${CHECK_INTERVAL}s, max_repair=${MAX_REPAIR_ATTEMPTS})"
 notify "Guardian 守护进程已启动"
 
