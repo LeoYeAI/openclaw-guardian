@@ -87,7 +87,11 @@ Collect top 3 oldest stale items for the notification.
 
 ## Step 3: Generate Report
 
-Append to memory/dream-log.md:
+Append to memory/dream-log.md using the write tool (append mode) or exec shell (`cat >> memory/dream-log.md << 'DREAM_EOF' ... DREAM_EOF`). Do NOT use the edit tool on dream-log.md — the file may be too large for reliable edit matching.
+
+If dream-log.md exceeds 200 lines, archive older entries: move all but the last 5 dream entries to `memory/dream-log-archive-NNN.md` before appending.
+
+Format:
 
 ```markdown
 ## 🌙 Dream #{DREAM_COUNT+1} — YYYY-MM-DD

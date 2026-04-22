@@ -63,7 +63,9 @@ Scan Open Threads in MEMORY.md. Find items not marked [x] that haven't been ment
 
 ## Step 6: Report
 
-Create or append to memory/dream-log.md:
+Create or append to memory/dream-log.md using exec shell (`cat >> memory/dream-log.md << 'DREAM_EOF' ... DREAM_EOF`) or the write tool in append mode. Do NOT use the edit tool on dream-log.md — the file grows over time and edit matching will fail.
+
+If dream-log.md exceeds 200 lines, archive older entries first: move all but the last 5 dream entries to `memory/dream-log-archive-NNN.md`.
 
 ```markdown
 ## 🌙 Dream #{N} — YYYY-MM-DD

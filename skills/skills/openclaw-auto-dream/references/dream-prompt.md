@@ -208,7 +208,9 @@ Trim `healthHistory` to the most recent 90 entries to keep the index compact.
 
 ### 3.6 Generate dream report
 
-Append to `memory/dream-log.md`:
+Append to `memory/dream-log.md` using exec shell (`cat >> memory/dream-log.md << 'DREAM_EOF' ... DREAM_EOF`) or the write tool in append mode. Do NOT use the edit tool on dream-log.md — the file may be too large for reliable edit matching.
+
+If dream-log.md exceeds 200 lines, archive older entries first: move all but the last 5 dream entries to `memory/dream-log-archive-NNN.md`.
 
 ```markdown
 ## 🌀 Dream Report — YYYY-MM-DD HH:MM UTC
