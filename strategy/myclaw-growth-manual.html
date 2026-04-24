@@ -6,41 +6,37 @@
   <title>MyClaw Growth 战略问题手册</title>
   <style>
     :root {
-      --paper: #f6f1e8;
-      --paper-2: #fbf8f3;
-      --ink: #231f1b;
-      --ink-soft: #62574f;
-      --line: rgba(35, 31, 27, 0.12);
-      --line-strong: rgba(35, 31, 27, 0.2);
-      --accent: #b8663a;
-      --accent-soft: rgba(184, 102, 58, 0.12);
-      --olive: #78725f;
-      --card: rgba(255, 255, 255, 0.44);
-      --shadow: 0 20px 60px rgba(70, 52, 37, 0.08);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
-      --radius-md: 14px;
-      --maxw: 1180px;
+      --bg: #f7f3ec;
+      --paper: #fcfaf6;
+      --ink: #1f1b18;
+      --muted: #6a6159;
+      --line: rgba(31, 27, 24, 0.12);
+      --soft: rgba(31, 27, 24, 0.05);
+      --accent: #a35b33;
+      --accent-soft: rgba(163, 91, 51, 0.1);
+      --maxw: 860px;
+      --shadow: 0 18px 45px rgba(77, 57, 39, 0.06);
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Noto Serif SC", serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at top left, rgba(184, 102, 58, 0.09), transparent 28%),
-        radial-gradient(circle at top right, rgba(120, 114, 95, 0.1), transparent 22%),
-        linear-gradient(180deg, #f7f2e9 0%, #f3ede3 48%, #f8f4ee 100%);
+        radial-gradient(circle at top right, rgba(163,91,51,0.08), transparent 24%),
+        linear-gradient(180deg, #f6f1e8 0%, #f8f4ed 100%);
+      line-height: 1.84;
     }
 
     a { color: inherit; }
 
     .page {
-      max-width: var(--maxw);
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 28px 24px 120px;
+      padding: 24px 20px 100px;
     }
 
     .topbar {
@@ -48,552 +44,345 @@
       align-items: center;
       justify-content: space-between;
       gap: 16px;
-      padding: 10px 0 28px;
+      margin-bottom: 26px;
+      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
+      min-width: 0;
     }
 
     .brand-mark {
-      width: 36px;
-      height: 36px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #d9a07e, #9d5b35);
-      box-shadow: 0 10px 30px rgba(157, 91, 53, 0.22);
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, #ca8c64, #8f4d28);
+      box-shadow: 0 10px 24px rgba(143, 77, 40, 0.22);
       position: relative;
-      overflow: hidden;
+      flex-shrink: 0;
     }
 
-    .brand-mark::before,
-    .brand-mark::after {
+    .brand-mark::before {
       content: "";
       position: absolute;
-      inset: 7px;
-      border: 1.5px solid rgba(255,255,255,0.65);
+      inset: 8px;
+      border: 1.5px solid rgba(255,255,255,0.66);
       border-radius: 999px;
     }
 
-    .brand-mark::after {
-      inset: 12px 9px;
-      border-radius: 999px;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
+    .brand-copy { min-width: 0; }
     .brand-title {
       font-size: 13px;
       font-weight: 700;
       letter-spacing: 0.08em;
       text-transform: uppercase;
+      white-space: nowrap;
     }
-
     .brand-sub {
+      margin-top: 2px;
       font-size: 11px;
-      color: var(--ink-soft);
+      color: var(--muted);
       letter-spacing: 0.04em;
     }
 
     .topnav {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
+      justify-content: flex-end;
+      gap: 8px;
     }
 
     .topnav a {
       text-decoration: none;
       font-size: 12px;
-      padding: 8px 12px;
-      border: 1px solid var(--line);
+      color: var(--muted);
+      padding: 8px 10px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.4);
-      color: var(--ink-soft);
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.45);
     }
 
     .hero {
-      position: relative;
-      padding: 64px 56px 48px;
-      border: 1px solid rgba(35, 31, 27, 0.08);
-      border-radius: 36px;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,0.72), rgba(255,255,255,0.46)),
-        linear-gradient(180deg, rgba(184,102,58,0.05), rgba(120,114,95,0.03));
+      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.68));
+      border: 1px solid rgba(31,27,24,0.08);
+      border-radius: 28px;
       box-shadow: var(--shadow);
-      overflow: hidden;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      top: -120px;
-      right: -80px;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(184,102,58,0.18), rgba(184,102,58,0.02) 62%, transparent 70%);
-    }
-
-    .hero::after {
-      content: "";
-      position: absolute;
-      bottom: -120px;
-      left: -90px;
-      width: 280px;
-      height: 280px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(120,114,95,0.16), rgba(120,114,95,0.02) 60%, transparent 72%);
+      padding: 46px 44px 38px;
+      margin-bottom: 32px;
     }
 
     .eyebrow {
-      position: relative;
-      z-index: 1;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.55);
-      border: 1px solid rgba(35,31,27,0.08);
+      display: inline-block;
       font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.08em;
+      font-size: 11px;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--ink-soft);
-      margin-bottom: 22px;
+      color: var(--accent);
+      margin-bottom: 18px;
     }
 
     h1 {
-      position: relative;
-      z-index: 1;
       margin: 0;
-      font-size: clamp(42px, 7vw, 82px);
-      line-height: 0.98;
+      font-size: clamp(34px, 6vw, 66px);
+      line-height: 1.02;
       letter-spacing: -0.045em;
-      max-width: 920px;
+      max-width: 780px;
       font-weight: 700;
     }
 
     .hero-subtitle {
-      position: relative;
-      z-index: 1;
-      margin: 24px 0 0;
       max-width: 760px;
-      font-size: 21px;
-      line-height: 1.7;
-      color: var(--ink-soft);
+      margin: 20px 0 0;
+      font-size: 20px;
+      line-height: 1.8;
+      color: var(--muted);
     }
 
     .hero-meta {
-      position: relative;
-      z-index: 1;
-      margin-top: 32px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
+      margin-top: 24px;
       font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
     }
 
     .hero-meta span {
-      padding: 10px 14px;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 8px 12px;
       border-radius: 999px;
       border: 1px solid var(--line);
-      background: rgba(255,255,255,0.48);
-      font-size: 12px;
-      color: var(--ink-soft);
+      background: rgba(255,255,255,0.5);
     }
 
-    .hero-grid {
-      position: relative;
-      z-index: 1;
+    .layout {
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 20px;
-      margin-top: 38px;
+      grid-template-columns: 220px minmax(0, var(--maxw));
+      gap: 26px;
+      align-items: start;
+      justify-content: center;
     }
 
-    .statement,
-    .signal-card {
-      padding: 24px;
-      border-radius: var(--radius-xl);
-      background: var(--card);
-      border: 1px solid rgba(35,31,27,0.08);
-      backdrop-filter: blur(8px);
-    }
-
-    .statement p,
-    .signal-card p {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.75;
-      color: var(--ink-soft);
-    }
-
-    .statement strong {
-      color: var(--ink);
-    }
-
-    .signal-stack {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
+    .sidebar {
+      position: sticky;
+      top: 18px;
+      background: rgba(255,255,255,0.56);
+      border: 1px solid rgba(31,27,24,0.08);
+      border-radius: 18px;
+      padding: 18px 16px;
+      box-shadow: 0 10px 28px rgba(77,57,39,0.04);
       font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
     }
 
-    .signal {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.48);
-      border: 1px solid rgba(35,31,27,0.06);
-      font-size: 13px;
+    .sidebar h3 {
+      margin: 0 0 12px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
     }
 
-    .signal label { color: var(--ink-soft); }
-    .signal strong { font-weight: 700; }
+    .sidebar a {
+      display: block;
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 13px;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(31,27,24,0.06);
+    }
+
+    .sidebar a:last-child { border-bottom: none; }
+
+    .article {
+      background: var(--paper);
+      border: 1px solid rgba(31,27,24,0.08);
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+      padding: 42px 44px 54px;
+    }
 
     .section {
-      margin-top: 92px;
+      margin-top: 52px;
+      scroll-margin-top: 24px;
     }
 
-    .section-head {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 24px;
-      align-items: start;
-      margin-bottom: 28px;
-    }
+    .section:first-child { margin-top: 0; }
 
     .section-label {
       font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
-      font-size: 12px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 14px;
-    }
-
-    .section-title {
-      margin: 0;
-      font-size: clamp(28px, 4vw, 48px);
-      line-height: 1.08;
-      letter-spacing: -0.04em;
-    }
-
-    .section-intro {
-      margin: 0;
-      font-size: 18px;
-      line-height: 1.8;
-      color: var(--ink-soft);
-      max-width: 760px;
-    }
-
-    .grid-3,
-    .grid-2,
-    .grid-4 {
-      display: grid;
-      gap: 18px;
-    }
-
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-
-    .card {
-      background: rgba(255,255,255,0.52);
-      border: 1px solid rgba(35,31,27,0.08);
-      border-radius: var(--radius-lg);
-      padding: 22px;
-      box-shadow: 0 10px 28px rgba(70,52,37,0.04);
-    }
-
-    .card.kicker {
-      background: linear-gradient(180deg, rgba(255,255,255,0.68), rgba(255,255,255,0.42));
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      font-size: 23px;
-      line-height: 1.2;
-      letter-spacing: -0.03em;
-    }
-
-    .card p {
-      margin: 0;
-      font-size: 15px;
-      line-height: 1.72;
-      color: var(--ink-soft);
-    }
-
-    .mini-label {
-      display: inline-block;
-      margin-bottom: 14px;
-      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
       font-size: 11px;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--accent);
+      margin-bottom: 10px;
     }
 
-    .problem-card {
-      min-height: 240px;
-      position: relative;
-      overflow: hidden;
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(26px, 4vw, 40px);
+      line-height: 1.16;
+      letter-spacing: -0.035em;
     }
 
-    .problem-card::after {
-      content: "";
-      position: absolute;
-      right: -18px;
-      bottom: -18px;
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(184,102,58,0.12), transparent 68%);
-    }
-
-    .problem-index {
-      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
-      font-size: 12px;
-      color: var(--ink-soft);
-      margin-bottom: 12px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .problem-card ul,
-    .module-card ul,
-    .roadmap-card ul,
-    .pillar-card ul {
-      margin: 14px 0 0;
-      padding-left: 18px;
-      color: var(--ink-soft);
-      line-height: 1.8;
-      font-size: 14px;
-    }
-
-    .table-wrap {
-      overflow: auto;
-      border-radius: var(--radius-xl);
-      border: 1px solid rgba(35,31,27,0.08);
-      background: rgba(255,255,255,0.54);
-      box-shadow: 0 10px 28px rgba(70,52,37,0.04);
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      min-width: 760px;
-      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
-    }
-
-    th,
-    td {
-      padding: 18px 20px;
-      text-align: left;
-      border-bottom: 1px solid rgba(35,31,27,0.08);
-      vertical-align: top;
-    }
-
-    th {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--ink-soft);
-      background: rgba(255,255,255,0.52);
-    }
-
-    td {
-      font-size: 15px;
-      line-height: 1.7;
-    }
-
-    tr:last-child td { border-bottom: none; }
-
-    .budget-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 12px;
-      border-radius: 999px;
-      background: var(--accent-soft);
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.03em;
-    }
-
-    .stack {
-      display: grid;
-      gap: 18px;
-    }
-
-    .flow {
-      display: grid;
-      grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 22px;
-    }
-
-    .flow-step {
-      position: relative;
-      padding: 18px 16px;
-      border-radius: 18px;
-      background: rgba(255,255,255,0.52);
-      border: 1px solid rgba(35,31,27,0.08);
-      min-height: 140px;
-    }
-
-    .flow-step:not(:last-child)::after {
-      content: "→";
-      position: absolute;
-      top: 50%;
-      right: -14px;
-      transform: translateY(-50%);
-      color: var(--accent);
-      font-size: 24px;
-      z-index: 2;
-    }
-
-    .flow-step span {
-      display: block;
-      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 12px;
-    }
-
-    .flow-step strong {
-      display: block;
-      font-size: 18px;
-      margin-bottom: 8px;
+    h3 {
+      margin: 26px 0 12px;
+      font-size: 22px;
       line-height: 1.3;
-    }
-
-    .flow-step p {
-      margin: 0;
-      font-size: 14px;
-      color: var(--ink-soft);
-      line-height: 1.7;
-    }
-
-    .module-card {
-      min-height: 230px;
-    }
-
-    .priority {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .priority .card {
-      min-height: 280px;
-    }
-
-    .priority-tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
-      font-size: 11px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .tag-p0 { background: rgba(184, 102, 58, 0.12); color: #a34c20; }
-    .tag-p1 { background: rgba(120, 114, 95, 0.13); color: #6d6555; }
-    .tag-p2 { background: rgba(52, 73, 94, 0.1); color: #556375; }
-
-    .metric-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px;
-    }
-
-    .metric-card h4,
-    .pillar-card h4,
-    .roadmap-card h4 {
-      margin: 0 0 12px;
-      font-size: 20px;
-      line-height: 1.25;
       letter-spacing: -0.02em;
     }
 
-    .quote {
-      margin-top: 36px;
-      padding: 34px 32px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, rgba(184,102,58,0.1), rgba(255,255,255,0.58));
-      border: 1px solid rgba(184,102,58,0.12);
-      box-shadow: 0 18px 50px rgba(70,52,37,0.06);
+    p {
+      margin: 0 0 16px;
+      font-size: 18px;
+      color: var(--ink);
     }
 
-    .quote p {
-      margin: 0;
-      font-size: clamp(24px, 3vw, 40px);
-      line-height: 1.28;
-      letter-spacing: -0.035em;
-      max-width: 920px;
+    .lead {
+      font-size: 19px;
+      color: var(--muted);
+    }
+
+    strong { color: var(--ink); }
+
+    .pullquote {
+      margin: 26px 0;
+      padding: 22px 24px;
+      border-left: 3px solid var(--accent);
+      background: var(--accent-soft);
+      border-radius: 0 16px 16px 0;
+      font-size: 24px;
+      line-height: 1.55;
+      letter-spacing: -0.02em;
+    }
+
+    .note {
+      margin: 24px 0;
+      padding: 18px 20px;
+      border-radius: 16px;
+      background: var(--soft);
+      border: 1px solid rgba(31,27,24,0.08);
+    }
+
+    .note p:last-child { margin-bottom: 0; }
+
+    ul, ol {
+      margin: 0 0 18px 0;
+      padding-left: 22px;
+      font-size: 17px;
+      color: var(--ink);
+    }
+
+    li { margin: 8px 0; }
+
+    .simple-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
+      font-size: 14px;
+    }
+
+    .simple-table th,
+    .simple-table td {
+      text-align: left;
+      vertical-align: top;
+      padding: 14px 14px;
+      border-bottom: 1px solid rgba(31,27,24,0.1);
+    }
+
+    .simple-table th {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      background: rgba(31,27,24,0.03);
+    }
+
+    .simple-table tr:last-child td { border-bottom: none; }
+
+    .block {
+      margin: 22px 0;
+      padding: 18px 20px;
+      border: 1px solid rgba(31,27,24,0.08);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.46);
+    }
+
+    .block-title {
+      margin: 0 0 10px;
+      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .priority-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .priority-card {
+      border: 1px solid rgba(31,27,24,0.08);
+      border-radius: 18px;
+      padding: 18px 18px 20px;
+      background: rgba(255,255,255,0.52);
+    }
+
+    .priority-tag {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .priority-card h4 {
+      margin: 0 0 10px;
+      font-size: 20px;
+      line-height: 1.3;
     }
 
     .footer {
-      margin-top: 88px;
-      padding-top: 24px;
+      margin-top: 36px;
+      padding-top: 20px;
       border-top: 1px solid var(--line);
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      flex-wrap: wrap;
       font-family: "Helvetica Neue", Helvetica, Arial, "PingFang SC", sans-serif;
-      color: var(--ink-soft);
       font-size: 12px;
+      color: var(--muted);
     }
 
-    @media (max-width: 1080px) {
-      .hero-grid,
-      .section-head,
-      .grid-3,
-      .grid-4,
-      .priority,
-      .metric-grid,
-      .flow {
+    @media (max-width: 980px) {
+      .layout {
         grid-template-columns: 1fr;
       }
 
-      .flow-step:not(:last-child)::after {
-        content: "↓";
-        right: auto;
-        left: 50%;
-        top: auto;
-        bottom: -18px;
-        transform: translateX(-50%);
+      .sidebar {
+        position: static;
       }
     }
 
     @media (max-width: 760px) {
-      .page { padding: 18px 16px 84px; }
-      .topbar { padding-bottom: 18px; }
+      .page { padding: 16px 12px 72px; }
+      .topbar { margin-bottom: 18px; }
       .topnav { display: none; }
-      .hero { padding: 34px 24px 24px; border-radius: 28px; }
+      .hero { padding: 28px 22px 24px; }
       .hero-subtitle { font-size: 17px; }
-      .statement, .signal-card, .card { padding: 18px; }
-      .section { margin-top: 64px; }
-      .quote { padding: 22px 18px; border-radius: 22px; }
-      .footer { margin-top: 60px; }
+      .article { padding: 28px 22px 34px; }
+      p { font-size: 17px; }
+      .pullquote { font-size: 21px; }
+      .priority-grid { grid-template-columns: 1fr; }
+      .simple-table { font-size: 13px; display: block; overflow-x: auto; }
     }
   </style>
 </head>
@@ -602,407 +391,273 @@
     <header class="topbar">
       <div class="brand">
         <div class="brand-mark"></div>
-        <div class="brand-text">
+        <div class="brand-copy">
           <div class="brand-title">MyClaw Growth</div>
           <div class="brand-sub">Strategic Retention Manual</div>
         </div>
       </div>
       <nav class="topnav">
-        <a href="#thesis">总判断</a>
+        <a href="#judgement">总判断</a>
         <a href="#segments">用户分层</a>
         <a href="#problem-tree">问题树</a>
         <a href="#directions">三大方向</a>
         <a href="#missing">缺失模块</a>
-        <a href="#roadmap">优先级</a>
+        <a href="#priorities">优先级</a>
       </nav>
     </header>
 
-    <section class="hero" id="thesis">
-      <div class="eyebrow">MyClaw.ai · Growth Strategy Manual · 2026</div>
-      <h1>不要再卖<br/>“最强 Agent”<br/>要卖“在预算内持续完成工作的系统”</h1>
-      <p class="hero-subtitle">这份手册的核心，不是解释 MyClaw 为什么强，而是定义下一阶段应该如何把 OpenClaw 从一个强大但难驾驭的能力容器，重构成不同预算用户都能长期使用的工作流产品。</p>
+    <section class="hero" id="judgement">
+      <div class="eyebrow">MyClaw.ai · Growth Strategy Manual</div>
+      <h1>下一阶段别再卖“最强 Agent”<br/>而是卖“在预算内持续完成工作的系统”</h1>
+      <p class="hero-subtitle">这份手册的目标，不是堆叠功能想象，而是重新定义 MyClaw 的留存问题：如何把 OpenClaw 从一个强大但难驾驭的能力容器，重构成普通用户也能长期复用的工作流产品。</p>
       <div class="hero-meta">
         <span>目标：提升留存质量，而不是只追求新增</span>
-        <span>作者：The Doctor</span>
         <span>更新：2026-04-24</span>
-      </div>
-
-      <div class="hero-grid">
-        <div class="statement">
-          <p><strong>真正的问题不是用户不够聪明。</strong> 真正的问题是，MyClaw 还没有把“强能力”包装成“低门槛、低风险、低认知负担的稳定价值”。当价值路径太长、配置成本太高、预算又不可控时，用户不会留下来。</p>
-        </div>
-        <div class="signal-card">
-          <p>当前最重要的战略信号，不是 DAU，而是留存结构本身已经极度分化。</p>
-          <div class="signal-stack">
-            <div class="signal"><label>头部用户</label><strong>$100-$300 / day</strong></div>
-            <div class="signal"><label>普通用户目标</label><strong>$3-$5 / day</strong></div>
-            <div class="signal"><label>核心矛盾</label><strong>强能力 ≠ 易留存</strong></div>
-          </div>
-        </div>
+        <span>作者：The Doctor</span>
       </div>
     </section>
 
-    <section class="section" id="segments">
-      <div class="section-head">
-        <div>
+    <div class="layout">
+      <aside class="sidebar">
+        <h3>目录</h3>
+        <a href="#judgement">一句话判断</a>
+        <a href="#segments">不是让所有人都变重度</a>
+        <a href="#problem-tree">五种流失死法</a>
+        <a href="#directions">你提出的三条主线</a>
+        <a href="#missing">真正缺的四个模块</a>
+        <a href="#sequence">正确的产品顺序</a>
+        <a href="#priorities">P0 / P1 / P2</a>
+        <a href="#metrics">该盯哪些指标</a>
+      </aside>
+
+      <main class="article">
+        <section class="section" id="intro">
+          <p class="lead">你上一次的判断已经抓到了重点，但上一版网页的问题是：我把“看起来像设计稿”放在了“读得进去”前面。战略文档不该先追求舞台感，而该先解决阅读阻力。</p>
+          <div class="pullquote">真正的问题不是用户不够聪明，而是 MyClaw 还没有把强能力包装成低门槛、低风险、低认知负担的稳定价值。</div>
+          <p>这句话其实就是整份手册的总纲。后面所有分析，都围绕它展开。</p>
+        </section>
+
+        <section class="section" id="segments">
           <div class="section-label">Segmentation</div>
-          <h2 class="section-title">不是让所有人都变成重度用户</h2>
-        </div>
-        <p class="section-intro">正确目标不是把所有用户都推向高消耗，而是让不同层级用户进入各自合理的价值密度区间。增长战略要从统一漏斗，转向分层经营。</p>
-      </div>
+          <h2>不是让所有人都变成重度用户</h2>
+          <p>正确目标不是把所有用户都推向高消耗，而是让不同层级用户进入各自合理的价值密度区间。你要经营的不是统一漏斗，而是三种不同成熟度的人群。</p>
 
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>用户层级</th>
-              <th>典型状态</th>
-              <th>目标日均算力</th>
-              <th>核心任务</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>浅层用户</strong></td>
-              <td>偶尔尝试，不稳定使用</td>
-              <td><span class="budget-chip">$3-$5 / day</span></td>
-              <td>先活下来，形成轻度依赖</td>
-            </tr>
-            <tr>
-              <td><strong>中度用户</strong></td>
-              <td>已有部分 workflow，但复用不稳定</td>
-              <td><span class="budget-chip">$30-$50 / day</span></td>
-              <td>从偶发使用走向周度复用</td>
-            </tr>
-            <tr>
-              <td><strong>重度用户</strong></td>
-              <td>已经高度工作流化</td>
-              <td><span class="budget-chip">$100-$300 / day</span></td>
-              <td>扩场景、提粘性、扩大钱包份额</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+          <table class="simple-table">
+            <thead>
+              <tr>
+                <th>用户层级</th>
+                <th>典型状态</th>
+                <th>目标日均算力</th>
+                <th>核心任务</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>浅层用户</strong></td>
+                <td>偶尔尝试，不稳定使用</td>
+                <td>$3-$5</td>
+                <td>先活下来，形成轻度依赖</td>
+              </tr>
+              <tr>
+                <td><strong>中度用户</strong></td>
+                <td>已有部分 workflow，但复用不稳定</td>
+                <td>$30-$50</td>
+                <td>从偶发使用走向周度复用</td>
+              </tr>
+              <tr>
+                <td><strong>重度用户</strong></td>
+                <td>已高度工作流化</td>
+                <td>$100-$300</td>
+                <td>扩场景、提粘性、扩大钱包份额</td>
+              </tr>
+            </tbody>
+          </table>
 
-    <section class="section" id="problem-tree">
-      <div class="section-head">
-        <div>
+          <div class="note">
+            <p><strong>关键点：</strong>这三层不是价格带，而是价值成熟度带。浅层用户要的是第一次成功，中度用户要的是工作流固化，重度用户要的是继续扩深度。</p>
+          </div>
+        </section>
+
+        <section class="section" id="problem-tree">
           <div class="section-label">Problem Tree</div>
-          <h2 class="section-title">当前留存主要死在五个地方</h2>
-        </div>
-        <p class="section-intro">留存差不是一个单点问题，而是五种死亡方式叠加。只要其中任何一条链路没有被打通，用户就很难形成稳定使用习惯。</p>
-      </div>
+          <h2>当前留存主要死在五个地方</h2>
 
-      <div class="grid-3">
-        <article class="card problem-card kicker">
-          <div class="problem-index">01 · 配置死</div>
-          <h3>用户想买结果，却先被迫做工程接入</h3>
-          <p>provider、token、callback、env 配置都被前置了。用户遇到第一个报错，往往就直接退出。</p>
-          <ul>
-            <li>基础配置难以一次成功</li>
-            <li>大量调试负担落在用户身上</li>
-            <li>首次体验被 setup 成本吞掉</li>
-          </ul>
-        </article>
-        <article class="card problem-card">
-          <div class="problem-index">02 · 技能死</div>
-          <h3>装了很多 skills，不等于真的能用</h3>
-          <p>当前生态更像开发者扩展系统，不像普通用户产品。可安装，不等于可激活，更不等于可留存。</p>
-          <ul>
-            <li>API key 与 token 获取太复杂</li>
-            <li>“装了即能用”的预期被打破</li>
-            <li>skills 越多，挫败感越强</li>
-          </ul>
-        </article>
-        <article class="card problem-card">
-          <div class="problem-index">03 · 场景死</div>
-          <h3>知道它很强，但不知道拿来干什么</h3>
-          <p>用户缺少可立即执行的任务入口，只能面对一个开放输入框和一堆抽象能力描述。</p>
-          <ul>
-            <li>没有被整理好的任务答案</li>
-            <li>无法形成日常工作入口</li>
-            <li>首次体验缺少具体痛点命中</li>
-          </ul>
-        </article>
-      </div>
+          <h3>1. 配置死</h3>
+          <p>用户购买的是能力结果，却被迫先完成工程接入。provider、token、callback、env 这些复杂度都被前置了，于是第一次体验被 setup 成本吞掉。</p>
 
-      <div class="grid-2" style="margin-top:18px;">
-        <article class="card problem-card">
-          <div class="problem-index">04 · 成本死</div>
-          <h3>预算焦虑本身，就是流失机制</h3>
-          <p>当成本不透明、路由不智能，普通用户会迅速产生“越用越亏”的感受。没有预算边界，就没有习惯形成。</p>
-          <ul>
-            <li>单任务成本不可预测</li>
-            <li>用户不知何时该用高配</li>
-            <li>首周超预算会直接打断使用</li>
-          </ul>
-        </article>
-        <article class="card problem-card kicker">
-          <div class="problem-index">05 · 习惯死</div>
-          <h3>第一次惊艳，不会自动变成长期留存</h3>
-          <p>没有周期性触发点，MyClaw 就只会停留在工具栏里，而不是进入用户每天的节奏之中。</p>
-          <ul>
-            <li>缺少第二次、第三次触发机制</li>
-            <li>没有嵌入用户已有工作流</li>
-            <li>满意度高也未必留下来</li>
-          </ul>
-        </article>
-      </div>
-    </section>
+          <h3>2. 技能死</h3>
+          <p>装了很多 skills，不等于真的能用。当前生态更像开发者扩展系统，不像普通用户产品。可安装，不等于可激活，更不等于可留存。</p>
 
-    <section class="section" id="directions">
-      <div class="section-head">
-        <div>
+          <h3>3. 场景死</h3>
+          <p>用户知道这东西很强，但不知道拿来干什么。面对开放输入框和抽象能力说明，大多数人都无法自然形成日常任务入口。</p>
+
+          <h3>4. 成本死</h3>
+          <p>预算焦虑本身就是流失机制。成本不透明、路由不智能时，用户会迅速产生“越用越亏”的心理，这会直接打断习惯形成。</p>
+
+          <h3>5. 习惯死</h3>
+          <p>第一次惊艳不会自动变成长期留存。没有周期性触发点，MyClaw 就只会停留在工具栏里，而不是进入用户每天的节奏中。</p>
+        </section>
+
+        <section class="section" id="directions">
           <div class="section-label">Three Directions</div>
-          <h2 class="section-title">你提的三个方向是对的，但还不够闭环</h2>
-        </div>
-        <p class="section-intro">这三件事都必须做，但做法不能停留在字面层面。每一条都需要被推进到更产品化、更留存导向的形态。</p>
-      </div>
+          <h2>你提出的三条主线，判断是对的</h2>
 
-      <div class="stack">
-        <article class="card kicker">
-          <div class="mini-label">Direction 01</div>
-          <h3>智能 AI 路由，要升级成任务预算系统</h3>
-          <p>仅仅做模型自动切换还不够。真正要做的，是把“选模型”翻译成“选任务等级”，再把成本从不可控黑箱变成用户可以信任的系统。</p>
-          <div class="grid-3" style="margin-top:18px;">
-            <div class="card" style="padding:18px;">
-              <div class="mini-label">Fast</div>
-              <p>轻问答、分类、摘要、整理。默认省钱，适合浅层用户和高频低价值任务。</p>
+          <div class="block">
+            <div class="block-title">Direction 1</div>
+            <h3>智能 AI 路由，要升级成任务预算系统</h3>
+            <p>如果只做模型自动切换，还不够。真正应该发生的变化是：让用户不是在选模型，而是在选任务等级。系统再根据任务等级、时延要求、可靠性要求和历史效果自动路由。</p>
+            <ul>
+              <li><strong>Fast</strong>：轻问答、整理、分类、摘要，默认省钱</li>
+              <li><strong>Smart</strong>：覆盖大多数工作任务，平衡质量与成本</li>
+              <li><strong>Max</strong>：高价值决策、复杂代码、深度研究</li>
+            </ul>
+            <p>真正要补的是预算保护、单任务预估、超预算降级、特定 workflow 高配锁定。这不是“省一点钱”，而是把成本从黑箱变成可被信任的系统。</p>
+          </div>
+
+          <div class="block">
+            <div class="block-title">Direction 2</div>
+            <h3>一键接入生产力工具，不要先做开放 connector</h3>
+            <p>普通用户不应该先研究 OAuth、token、env 和 callback URL。他应该看到的是：点击连接 Google，授权，立刻拿到 3 到 5 个能直接运行的工作流。</p>
+            <p>优先顺序建议还是一样：</p>
+            <ol>
+              <li>Gmail / Google Calendar / Google Docs</li>
+              <li>Notion</li>
+              <li>Google Drive</li>
+              <li>Slack / Discord</li>
+              <li>Sheets / Airtable</li>
+            </ol>
+            <p>关键不是支持多少集成，而是先做最短价值链路的一键接入。</p>
+          </div>
+
+          <div class="block">
+            <div class="block-title">Direction 3</div>
+            <h3>数据挖掘与用例化，终点不是案例库，而是 workflow</h3>
+            <p>真正的增长不是从抽象能力出发，而是从高频任务出发。头部用户的数据价值，不在于证明 MyClaw 很强，而在于告诉你哪些任务值得产品化。</p>
+            <ul>
+              <li><strong>Use Case 层</strong>：提炼真实任务类型</li>
+              <li><strong>Solution 层</strong>：包装成普通用户看得懂的解决方案</li>
+              <li><strong>Workflow 层</strong>：落成按钮、模板、入口命令和可复跑流程</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="section" id="missing">
+          <div class="section-label">Missing Modules</div>
+          <h2>真正缺的，是四个决定留存的模块</h2>
+
+          <h3>1. 首日激活设计</h3>
+          <p>大部分流失不发生在第 30 天，而发生在第 30 分钟。首日目标不是让用户理解产品全貌，而是让他在 5 分钟内完成一次真实任务闭环。</p>
+
+          <h3>2. 默认 workflow 产品化</h3>
+          <p>如果一切都要用户自己搭，绝大多数人永远不会完成搭建。官方必须先给出一批可反复调用的骨架，例如今日邮件清理、今日日程总结、会议纪要整理、周报生成。</p>
+
+          <h3>3. 主动触发机制</h3>
+          <p>MyClaw 不能只在被问到时出现。它需要围绕高价值时刻主动出现，比如早晨邮件摘要、会前 briefing、会后纪要整理、异常提醒。</p>
+
+          <h3>4. 分层产品面</h3>
+          <p>所有用户都塞进同一套能力体系，是最危险的错误。应该拆成新手面、进阶面、专家面，做认知隔离，而不是一股脑开放全部自由度。</p>
+        </section>
+
+        <section class="section" id="sequence">
+          <div class="section-label">Sequence</div>
+          <h2>真正正确的产品顺序</h2>
+          <p>如果顺序错了，团队会一直很忙，但留存起不来。这里最重要的不是做什么，而是先后顺序。</p>
+          <ol>
+            <li>先控成本，再扩使用</li>
+            <li>先做官方托管接入，再做开放生态接入</li>
+            <li>先做默认 workflow，再做抽象 agent 能力教育</li>
+            <li>先做头部用例拆解，再做广义场景库</li>
+            <li>先做触发和复用，再追求首日惊艳</li>
+          </ol>
+          <div class="note">
+            <p><strong>一句话概括：</strong>先解决留存，再解决扩张；先解决可用，再解决丰富。</p>
+          </div>
+        </section>
+
+        <section class="section" id="priorities">
+          <div class="section-label">Priorities</div>
+          <h2>P0 / P1 / P2 应该怎么排</h2>
+
+          <div class="priority-grid">
+            <div class="priority-card">
+              <div class="priority-tag">P0</div>
+              <h4>必须立刻推进</h4>
+              <ul>
+                <li>智能路由 + 预算系统</li>
+                <li>Google / Notion 一键接入</li>
+                <li>首批 10 个官方默认 workflow</li>
+                <li>新手面产品化入口</li>
+              </ul>
             </div>
-            <div class="card" style="padding:18px;">
-              <div class="mini-label">Smart</div>
-              <p>平衡质量与成本，覆盖绝大多数日常工作任务，作为系统默认主干。</p>
+            <div class="priority-card">
+              <div class="priority-tag">P1</div>
+              <h4>紧接着做</h4>
+              <ul>
+                <li>头部用户用例挖掘</li>
+                <li>行业 solution library</li>
+                <li>主动触发机制</li>
+                <li>workflow 保存、复跑、参数化</li>
+              </ul>
             </div>
-            <div class="card" style="padding:18px;">
-              <div class="mini-label">Max</div>
-              <p>高价值决策、复杂代码、深度研究。默认不滥用，但允许用户为关键场景锁定。</p>
+            <div class="priority-card">
+              <div class="priority-tag">P2</div>
+              <h4>后续放大器</h4>
+              <ul>
+                <li>更广泛的 app / skill 生态</li>
+                <li>更多第三方 connector</li>
+                <li>行业模板市场</li>
+                <li>创作者分发体系</li>
+              </ul>
             </div>
           </div>
-          <ul>
-            <li>每日预算保护</li>
-            <li>单任务预算预估</li>
-            <li>超预算自动降级</li>
-            <li>指定 workflow 永远走高配</li>
-          </ul>
-        </article>
+        </section>
 
-        <article class="card">
-          <div class="mini-label">Direction 02</div>
-          <h3>一键接入生产力工具，不要先做开放 connector</h3>
-          <p>这里最关键的不是支持多少接入，而是先做最短价值链路的一键接入，让普通用户不需要研究 OAuth、token、callback、env，点连接之后就能直接获得可运行的工作流。</p>
-          <div class="flow">
-            <div class="flow-step">
-              <span>Step 1</span>
-              <strong>连接 Google</strong>
-              <p>一键授权，而不是进入复杂的开发者配置页。</p>
-            </div>
-            <div class="flow-step">
-              <span>Step 2</span>
-              <strong>自动识别资产</strong>
-              <p>邮件、日历、文档、Drive 等可用对象自动接入。</p>
-            </div>
-            <div class="flow-step">
-              <span>Step 3</span>
-              <strong>立刻附赠场景</strong>
-              <p>不是给 connector，而是给 3-5 个直接可运行 workflow。</p>
-            </div>
-            <div class="flow-step">
-              <span>Step 4</span>
-              <strong>跑出第一次闭环</strong>
-              <p>让用户在 5 分钟内完成一个真实任务，而不是看文档。</p>
-            </div>
-            <div class="flow-step">
-              <span>Step 5</span>
-              <strong>进入复用</strong>
-              <p>把 workflow 固定下来，作为后续留存基础。</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="card kicker">
-          <div class="mini-label">Direction 03</div>
-          <h3>数据挖掘与用例化，终点不是案例库，而是可运行的 workflow</h3>
-          <p>真正的增长不是从抽象能力出发，而是从高频任务出发。头部用户的数据价值，不在于证明 MyClaw 很强，而在于告诉我们哪些任务值得产品化。</p>
-          <div class="grid-3" style="margin-top:18px;">
-            <div class="card" style="padding:18px;">
-              <div class="mini-label">Use Case</div>
-              <p>从真实行为中抽取任务类型，识别不同行业与高频场景。</p>
-            </div>
-            <div class="card" style="padding:18px;">
-              <div class="mini-label">Solution</div>
-              <p>把任务类型包装成普通用户看得懂的解决方案包。</p>
-            </div>
-            <div class="card" style="padding:18px;">
-              <div class="mini-label">Workflow</div>
-              <p>把解决方案拆成按钮、模板、入口命令和可复跑流程。</p>
-            </div>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="missing">
-      <div class="section-head">
-        <div>
-          <div class="section-label">Missing Pieces</div>
-          <h2 class="section-title">真正缺的，是四个决定留存的模块</h2>
-        </div>
-        <p class="section-intro">如果没有这四块，即使前面三条都在做，系统仍然不会形成闭环。因为留存不是能力堆叠出来的，而是通过产品结构被组织出来的。</p>
-      </div>
-
-      <div class="grid-4">
-        <article class="card module-card">
-          <div class="mini-label">Module 01</div>
-          <h3>首日激活设计</h3>
-          <p>大部分流失不发生在第 30 天，而发生在第 30 分钟。首日目标不是让用户理解全貌，而是 5 分钟内完成一个真实任务。</p>
-          <ul>
-            <li>首屏应该是场景入口，不是空白聊天框</li>
-            <li>先让用户选择预算偏好</li>
-            <li>先让用户完成一次成功闭环</li>
-          </ul>
-        </article>
-        <article class="card module-card kicker">
-          <div class="mini-label">Module 02</div>
-          <h3>默认 workflow 产品化</h3>
-          <p>官方要先给出一批可反复调用的骨架，用户才会开始复用，而不是一直从零搭建。</p>
-          <ul>
-            <li>今日邮件清理</li>
-            <li>今日日程总结</li>
-            <li>会议纪要整理</li>
-            <li>周报生成</li>
-          </ul>
-        </article>
-        <article class="card module-card">
-          <div class="mini-label">Module 03</div>
-          <h3>主动触发机制</h3>
-          <p>MyClaw 不能只在被问到时出现。它需要围绕高价值时刻主动出现，进入用户的日常节奏。</p>
-          <ul>
-            <li>早晨邮件摘要</li>
-            <li>会前 briefing</li>
-            <li>会后纪要整理</li>
-            <li>异常提醒</li>
-          </ul>
-        </article>
-        <article class="card module-card kicker">
-          <div class="mini-label">Module 04</div>
-          <h3>分层产品面</h3>
-          <p>所有用户都塞进同一套能力体系，是最危险的错误。要做认知隔离，而不是功能堆叠。</p>
-          <ul>
-            <li>新手面：少量入口、低认知负担</li>
-            <li>进阶面：预算、保存、连接器</li>
-            <li>专家面：保留 OpenClaw 自由度</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="roadmap">
-      <div class="section-head">
-        <div>
-          <div class="section-label">Roadmap</div>
-          <h2 class="section-title">顺序如果错了，团队会一直忙但留存起不来</h2>
-        </div>
-        <p class="section-intro">先解决留存，再解决扩张；先解决可用，再解决丰富。真正正确的顺序，决定了团队能否从“做很多功能”走到“做出增长结果”。</p>
-      </div>
-
-      <div class="priority">
-        <article class="card roadmap-card kicker">
-          <div class="priority-tag tag-p0">P0</div>
-          <h4>必须立刻推进</h4>
-          <ul>
-            <li>智能路由 + 预算系统</li>
-            <li>Google / Notion 一键接入</li>
-            <li>首批 10 个官方默认 workflow</li>
-            <li>新手面产品化入口</li>
-          </ul>
-        </article>
-        <article class="card roadmap-card">
-          <div class="priority-tag tag-p1">P1</div>
-          <h4>紧接着做</h4>
-          <ul>
-            <li>头部用户用例挖掘</li>
-            <li>行业 solution library</li>
-            <li>主动触发机制</li>
-            <li>workflow 保存、复跑、参数化</li>
-          </ul>
-        </article>
-        <article class="card roadmap-card kicker">
-          <div class="priority-tag tag-p2">P2</div>
-          <h4>后续放大器</h4>
-          <ul>
-            <li>更广泛的 app / skill 生态</li>
-            <li>更多第三方 connector</li>
-            <li>行业模板市场</li>
-            <li>创作者分发体系</li>
-          </ul>
-        </article>
-      </div>
-    </section>
-
-    <section class="section" id="metrics">
-      <div class="section-head">
-        <div>
+        <section class="section" id="metrics">
           <div class="section-label">Metrics</div>
-          <h2 class="section-title">增长团队真正该盯的，不只是 DAU 和收入</h2>
-        </div>
-        <p class="section-intro">如果指标不穿透到激活、复用、预算控制和结构变化，团队很容易在表面繁荣中失去方向。</p>
-      </div>
+          <h2>增长团队真正该盯的指标</h2>
+          <p>不要只看 DAU、收入和实例数。要看是否真正穿透到激活、复用、预算控制和结构变化。</p>
 
-      <div class="metric-grid">
-        <article class="card metric-card">
-          <h4>激活指标</h4>
+          <h3>激活指标</h3>
           <ul>
             <li>24 小时内是否完成首次成功任务</li>
             <li>24 小时内是否连接至少一个生产力工具</li>
             <li>24 小时内是否运行至少一个默认 workflow</li>
           </ul>
-        </article>
-        <article class="card metric-card kicker">
-          <h4>留存指标</h4>
+
+          <h3>留存指标</h3>
           <ul>
             <li>D1 / D7 / D30 留存</li>
             <li>有工具接入用户 vs 无接入用户的留存差</li>
             <li>有 workflow 保存行为用户 vs 无保存行为用户的留存差</li>
           </ul>
-        </article>
-        <article class="card metric-card kicker">
-          <h4>成本指标</h4>
+
+          <h3>成本指标</h3>
           <ul>
             <li>不同层用户是否落入目标预算区间</li>
             <li>首周超预算用户占比</li>
             <li>智能路由带来的平均任务成本下降</li>
           </ul>
-        </article>
-        <article class="card metric-card">
-          <h4>结构性指标</h4>
+
+          <h3>结构性指标</h3>
           <ul>
             <li>头部用户收入占比是否过高</li>
             <li>中度用户占比是否提升</li>
             <li>浅层用户跨入中度用户的转化率</li>
           </ul>
-        </article>
-      </div>
-    </section>
+        </section>
 
-    <section class="section" id="conclusion">
-      <div class="section-head">
-        <div>
+        <section class="section" id="ending">
           <div class="section-label">Conclusion</div>
-          <h2 class="section-title">最后的判断</h2>
-        </div>
-        <p class="section-intro">头部用户已经证明了价值存在。现在真正的战略任务，不是继续证明 MyClaw 很强，而是证明普通用户也能上手、普通预算也能长期用、普通工作流也能不断复用。</p>
-      </div>
+          <h2>最后的判断</h2>
+          <div class="pullquote">MyClaw Growth 下一阶段的核心，不是再卖“最强 Agent”，而是卖“在你的预算内，持续替你完成工作的工作流系统”。</div>
+          <p>头部用户已经证明了价值存在。现在真正的战略任务，不是继续证明 MyClaw 很强，而是证明普通用户也能上手、普通预算也能长期用、普通工作流也能不断复用。</p>
+        </section>
 
-      <div class="quote">
-        <p>MyClaw Growth 下一阶段的核心，不是再卖“最强 Agent”，而是卖“在你的预算内，持续替你完成工作的工作流系统”。</p>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div>MyClaw Growth Strategic Manual · Private Working Draft</div>
-      <div>Designed in HTML with an editorial, Claude-like presentation style</div>
-    </footer>
+        <footer class="footer">
+          Private working draft · rebuilt for readability first, visual style second
+        </footer>
+      </main>
+    </div>
   </div>
 </body>
 </html>
