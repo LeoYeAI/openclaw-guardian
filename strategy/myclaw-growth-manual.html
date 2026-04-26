@@ -126,9 +126,9 @@
 
     h1 {
       margin: 0;
-      font-size: clamp(34px, 6vw, 66px);
-      line-height: 1.02;
-      letter-spacing: -0.045em;
+      font-size: clamp(30px, 5.2vw, 56px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
       max-width: 780px;
       font-weight: 700;
     }
@@ -399,6 +399,8 @@
       <nav class="topnav">
         <a href="#judgement">总判断</a>
         <a href="#segments">用户分层</a>
+        <a href="#playbook">分层打法</a>
+        <a href="#activation">7天激活</a>
         <a href="#problem-tree">问题树</a>
         <a href="#directions">三大方向</a>
         <a href="#missing">缺失模块</a>
@@ -420,27 +422,29 @@
     <div class="layout">
       <aside class="sidebar">
         <h3>目录</h3>
-        <a href="#judgement">一句话判断</a>
-        <a href="#segments">不是让所有人都变重度</a>
-        <a href="#problem-tree">五种流失死法</a>
-        <a href="#directions">你提出的三条主线</a>
-        <a href="#missing">真正缺的四个模块</a>
-        <a href="#sequence">正确的产品顺序</a>
-        <a href="#priorities">P0 / P1 / P2</a>
-        <a href="#metrics">该盯哪些指标</a>
+        <a href="#judgement">核心判断</a>
+        <a href="#segments">分层目标</a>
+        <a href="#playbook">分层打法</a>
+        <a href="#activation">7天激活链路</a>
+        <a href="#problem-tree">流失机制</a>
+        <a href="#directions">三条主线</a>
+        <a href="#missing">缺失模块</a>
+        <a href="#sequence">执行顺序</a>
+        <a href="#priorities">优先级</a>
+        <a href="#metrics">关键指标</a>
       </aside>
 
       <main class="article">
         <section class="section" id="intro">
-          <p class="lead">你上一次的判断已经抓到了重点，但上一版网页的问题是：我把“看起来像设计稿”放在了“读得进去”前面。战略文档不该先追求舞台感，而该先解决阅读阻力。</p>
+          <p class="lead">这份文档按内部执行版来写。目标不是展示观点，而是把留存问题、执行顺序和优先级讲清楚。</p>
           <div class="pullquote">真正的问题不是用户不够聪明，而是 MyClaw 还没有把强能力包装成低门槛、低风险、低认知负担的稳定价值。</div>
-          <p>这句话其实就是整份手册的总纲。后面所有分析，都围绕它展开。</p>
+          <p>后面所有判断，都围绕这句话展开。</p>
         </section>
 
         <section class="section" id="segments">
           <div class="section-label">Segmentation</div>
-          <h2>不是让所有人都变成重度用户</h2>
-          <p>正确目标不是把所有用户都推向高消耗，而是让不同层级用户进入各自合理的价值密度区间。你要经营的不是统一漏斗，而是三种不同成熟度的人群。</p>
+          <h2>分层目标：不是让所有人都变重度</h2>
+          <p>正确目标不是把所有用户都推向高消耗，而是让不同层级用户进入各自合理的价值密度区间。经营逻辑不是统一漏斗，而是分层经营。</p>
 
           <table class="simple-table">
             <thead>
@@ -474,50 +478,139 @@
           </table>
 
           <div class="note">
-            <p><strong>关键点：</strong>这三层不是价格带，而是价值成熟度带。浅层用户要的是第一次成功，中度用户要的是工作流固化，重度用户要的是继续扩深度。</p>
+            <p><strong>执行含义：</strong>浅层用户要第一次成功，中度用户要 workflow 固化，重度用户要继续扩深度。三层的产品面和运营策略不能混在一起。</p>
+          </div>
+        </section>
+
+        <section class="section" id="playbook">
+          <div class="section-label">Playbook</div>
+          <h2>用户分层打法：三层用户要三套经营逻辑</h2>
+          <p>分层不是为了写一张表，而是为了决定不同用户该被推向什么产品动作、什么运营动作，以及什么升级路径。</p>
+
+          <h3>浅层用户：目标是活下来，不是立刻榨出高 ARPU</h3>
+          <p>这一层用户的核心问题不是需求不足，而是门槛太高、成功太慢、预算太不确定。对这层人，最重要的是第一次成功和第二次返回。</p>
+          <div class="block">
+            <div class="block-title">浅层用户打法</div>
+            <ul>
+              <li>默认走省钱路由，不让用户第一周产生预算惊吓</li>
+              <li>默认只暴露少量入口，不暴露复杂自由度</li>
+              <li>优先推无需配置或轻配置的官方 workflow</li>
+              <li>运营目标是让用户完成第一次成功任务和第一次复用</li>
+            </ul>
+          </div>
+
+          <h3>中度用户：目标是从偶发使用，走向固定 workflow</h3>
+          <p>这一层用户已经相信价值存在，但还没有形成稳定工作流。他们流失通常不是因为不懂，而是因为没有完成 workflow 固化。</p>
+          <div class="block">
+            <div class="block-title">中度用户打法</div>
+            <ul>
+              <li>推动连接 Google / Notion 等真实生产力工具</li>
+              <li>推动保存、复跑、参数化已有 workflow</li>
+              <li>推动从单场景扩到相邻场景，比如邮件 → 日程 → 周报</li>
+              <li>运营目标是让用户形成每周至少一次固定复用</li>
+            </ul>
+          </div>
+
+          <h3>重度用户：目标是扩深度，不是只维持现状</h3>
+          <p>这一层用户已经给出高价值反馈。他们的问题不是能不能用，而是能不能在更多场景里继续花更多时间、更多预算，并且不流向别处。</p>
+          <div class="block">
+            <div class="block-title">重度用户打法</div>
+            <ul>
+              <li>允许锁定高配模型和更高预算上限</li>
+              <li>优先给他们开放更深的 workflow 编排和自动化能力</li>
+              <li>优先挖他们的真实行为数据，反向提炼官方模板</li>
+              <li>运营目标是扩场景、提高钱包份额、降低替代风险</li>
+            </ul>
+          </div>
+
+          <div class="note">
+            <p><strong>关键点：</strong>浅层用户关注第一次成功，中度用户关注 workflow 固化，重度用户关注场景扩张。三层共用一套界面和一套推进逻辑，会把效率全部吃掉。</p>
+          </div>
+        </section>
+
+        <section class="section" id="activation">
+          <div class="section-label">Activation</div>
+          <h2>7天激活链路：留存不是首日惊艳，而是 7 天内形成节奏</h2>
+          <p>新用户留存不是 onboarding 问题，而是节奏问题。真正要拆的是前 7 天里，系统如何把一次偶然尝试变成连续使用。</p>
+
+          <h3>Day 0：第一次成功</h3>
+          <p>用户刚进来时，目标不是理解平台，而是完成一个真实任务。这个阶段最怕的不是功能少，而是配置多。</p>
+          <div class="block">
+            <div class="block-title">Day 0 目标</div>
+            <ul>
+              <li>用户完成一次真实任务闭环</li>
+              <li>用户感受到成本可控</li>
+              <li>用户知道下一步可以做什么</li>
+            </ul>
+          </div>
+
+          <h3>Day 1-3：让第二次使用自然发生</h3>
+          <p>很多产品的问题不是没有首次成功，而是第二次使用没有被设计出来。用户离开后没有被系统重新拉回，就会迅速忘掉。</p>
+          <div class="block">
+            <div class="block-title">Day 1-3 目标</div>
+            <ul>
+              <li>推动连接第一个真实生产力工具</li>
+              <li>推动运行第二个相关 workflow</li>
+              <li>通过提醒或建议，把使用从一次性动作变成连续动作</li>
+            </ul>
+          </div>
+
+          <h3>Day 4-7：形成第一个固定 workflow</h3>
+          <p>7 天内如果还没有出现可复跑 workflow，留存大概率会掉。真正的分水岭不是用户是否满意，而是有没有把一个动作固化下来。</p>
+          <div class="block">
+            <div class="block-title">Day 4-7 目标</div>
+            <ul>
+              <li>保存第一个 workflow</li>
+              <li>完成至少一次复跑</li>
+              <li>建立一个定期触发点，比如每天或每周一次</li>
+            </ul>
+          </div>
+
+          <div class="note">
+            <p><strong>执行判断：</strong>如果一个新用户在 7 天内没有连接至少一个工具、没有完成至少一次复跑、没有形成一个固定触发点，那么这个用户大概率还没有进入真正的留存轨道。</p>
           </div>
         </section>
 
         <section class="section" id="problem-tree">
           <div class="section-label">Problem Tree</div>
-          <h2>当前留存主要死在五个地方</h2>
+          <h2>流失机制：当前主要死在五个地方</h2>
 
           <h3>1. 配置死</h3>
-          <p>用户购买的是能力结果，却被迫先完成工程接入。provider、token、callback、env 这些复杂度都被前置了，于是第一次体验被 setup 成本吞掉。</p>
+          <p>用户想买结果，却先被迫做工程接入。setup 成本被前置，第一次体验直接被拖垮。</p>
 
           <h3>2. 技能死</h3>
-          <p>装了很多 skills，不等于真的能用。当前生态更像开发者扩展系统，不像普通用户产品。可安装，不等于可激活，更不等于可留存。</p>
+          <p>当前 skill 生态更像开发者扩展系统，不像普通用户产品。可安装，不等于可激活，更不等于可留存。</p>
 
           <h3>3. 场景死</h3>
-          <p>用户知道这东西很强，但不知道拿来干什么。面对开放输入框和抽象能力说明，大多数人都无法自然形成日常任务入口。</p>
+          <p>用户知道它很强，但不知道拿来干什么。没有被整理好的任务入口，就不会形成日常使用。</p>
 
           <h3>4. 成本死</h3>
-          <p>预算焦虑本身就是流失机制。成本不透明、路由不智能时，用户会迅速产生“越用越亏”的心理，这会直接打断习惯形成。</p>
+          <p>成本不透明、路由不智能时，预算焦虑本身就是流失机制。用户不是不用，而是不敢用。</p>
 
           <h3>5. 习惯死</h3>
-          <p>第一次惊艳不会自动变成长期留存。没有周期性触发点，MyClaw 就只会停留在工具栏里，而不是进入用户每天的节奏中。</p>
+          <p>第一次惊艳不会自动变成留存。没有周期性触发点，MyClaw 就进不了用户的工作节奏。</p>
         </section>
 
         <section class="section" id="directions">
           <div class="section-label">Three Directions</div>
-          <h2>你提出的三条主线，判断是对的</h2>
+          <h2>三条主线：方向是对的，但要更产品化</h2>
 
           <div class="block">
             <div class="block-title">Direction 1</div>
             <h3>智能 AI 路由，要升级成任务预算系统</h3>
-            <p>如果只做模型自动切换，还不够。真正应该发生的变化是：让用户不是在选模型，而是在选任务等级。系统再根据任务等级、时延要求、可靠性要求和历史效果自动路由。</p>
+            <p>如果只做模型自动切换，还不够。用户不该选模型，而该选任务等级。系统再根据任务等级、时延要求和历史效果自动路由。</p>
             <ul>
               <li><strong>Fast</strong>：轻问答、整理、分类、摘要，默认省钱</li>
               <li><strong>Smart</strong>：覆盖大多数工作任务，平衡质量与成本</li>
               <li><strong>Max</strong>：高价值决策、复杂代码、深度研究</li>
             </ul>
-            <p>真正要补的是预算保护、单任务预估、超预算降级、特定 workflow 高配锁定。这不是“省一点钱”，而是把成本从黑箱变成可被信任的系统。</p>
+            <p>要补的不是小优化，而是预算保护、单任务预估、超预算降级、特定 workflow 高配锁定。目标不是省一点钱，而是把成本从黑箱变成系统承诺。</p>
           </div>
 
           <div class="block">
             <div class="block-title">Direction 2</div>
             <h3>一键接入生产力工具，不要先做开放 connector</h3>
-            <p>普通用户不应该先研究 OAuth、token、env 和 callback URL。他应该看到的是：点击连接 Google，授权，立刻拿到 3 到 5 个能直接运行的工作流。</p>
+            <p>普通用户不应该先研究 OAuth、token、env 和 callback URL。他应该直接看到：点击连接 Google，授权，立刻拿到 3 到 5 个能运行的 workflow。</p>
             <p>优先顺序建议还是一样：</p>
             <ol>
               <li>Gmail / Google Calendar / Google Docs</li>
@@ -526,7 +619,7 @@
               <li>Slack / Discord</li>
               <li>Sheets / Airtable</li>
             </ol>
-            <p>关键不是支持多少集成，而是先做最短价值链路的一键接入。</p>
+            <p>关键不是支持多少集成，而是先做最短价值链路的一键接入，再谈开放生态。</p>
           </div>
 
           <div class="block">
@@ -543,25 +636,25 @@
 
         <section class="section" id="missing">
           <div class="section-label">Missing Modules</div>
-          <h2>真正缺的，是四个决定留存的模块</h2>
+          <h2>缺失模块：真正决定留存的四件事</h2>
 
           <h3>1. 首日激活设计</h3>
-          <p>大部分流失不发生在第 30 天，而发生在第 30 分钟。首日目标不是让用户理解产品全貌，而是让他在 5 分钟内完成一次真实任务闭环。</p>
+          <p>大部分流失不发生在第 30 天，而发生在第 30 分钟。首日目标只有一个：让用户在 5 分钟内完成一次真实任务闭环。</p>
 
           <h3>2. 默认 workflow 产品化</h3>
-          <p>如果一切都要用户自己搭，绝大多数人永远不会完成搭建。官方必须先给出一批可反复调用的骨架，例如今日邮件清理、今日日程总结、会议纪要整理、周报生成。</p>
+          <p>如果一切都要用户自己搭，绝大多数人永远不会完成搭建。官方必须先给出一批可反复调用的骨架。</p>
 
           <h3>3. 主动触发机制</h3>
-          <p>MyClaw 不能只在被问到时出现。它需要围绕高价值时刻主动出现，比如早晨邮件摘要、会前 briefing、会后纪要整理、异常提醒。</p>
+          <p>MyClaw 不能只在被问到时出现。它需要围绕高价值时刻主动出现，进入用户的工作节奏。</p>
 
           <h3>4. 分层产品面</h3>
-          <p>所有用户都塞进同一套能力体系，是最危险的错误。应该拆成新手面、进阶面、专家面，做认知隔离，而不是一股脑开放全部自由度。</p>
+          <p>所有用户都塞进同一套能力体系，是最危险的错误。要拆成新手面、进阶面、专家面，做认知隔离。</p>
         </section>
 
         <section class="section" id="sequence">
           <div class="section-label">Sequence</div>
-          <h2>真正正确的产品顺序</h2>
-          <p>如果顺序错了，团队会一直很忙，但留存起不来。这里最重要的不是做什么，而是先后顺序。</p>
+          <h2>执行顺序：顺序错了，团队会一直忙但结果很差</h2>
+          <p>这里最重要的不是做什么，而是先后顺序。先后顺序决定留存能不能起来。</p>
           <ol>
             <li>先控成本，再扩使用</li>
             <li>先做官方托管接入，再做开放生态接入</li>
@@ -570,13 +663,13 @@
             <li>先做触发和复用，再追求首日惊艳</li>
           </ol>
           <div class="note">
-            <p><strong>一句话概括：</strong>先解决留存，再解决扩张；先解决可用，再解决丰富。</p>
+            <p><strong>一句话概括：</strong>先解决留存，再解决扩张；先解决可用，再解决丰富；先做成产品，再做成生态。</p>
           </div>
         </section>
 
         <section class="section" id="priorities">
           <div class="section-label">Priorities</div>
-          <h2>P0 / P1 / P2 应该怎么排</h2>
+          <h2>优先级：P0 / P1 / P2 应该怎么排</h2>
 
           <div class="priority-grid">
             <div class="priority-card">
@@ -614,7 +707,7 @@
 
         <section class="section" id="metrics">
           <div class="section-label">Metrics</div>
-          <h2>增长团队真正该盯的指标</h2>
+          <h2>关键指标：增长团队真正该盯什么</h2>
           <p>不要只看 DAU、收入和实例数。要看是否真正穿透到激活、复用、预算控制和结构变化。</p>
 
           <h3>激活指标</h3>
@@ -650,7 +743,7 @@
           <div class="section-label">Conclusion</div>
           <h2>最后的判断</h2>
           <div class="pullquote">MyClaw Growth 下一阶段的核心，不是再卖“最强 Agent”，而是卖“在你的预算内，持续替你完成工作的工作流系统”。</div>
-          <p>头部用户已经证明了价值存在。现在真正的战略任务，不是继续证明 MyClaw 很强，而是证明普通用户也能上手、普通预算也能长期用、普通工作流也能不断复用。</p>
+          <p>头部用户已经证明了价值存在。下一阶段的任务，不是继续证明 MyClaw 很强，而是把这个价值翻译成普通用户也能长期复用的产品结构。</p>
         </section>
 
         <footer class="footer">
