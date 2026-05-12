@@ -40,7 +40,7 @@
   "output": {
     "language": "zh",
     "max_items": 15,
-    "save_to": "horizon/briefings"
+    "save_to": "signal/briefings"
   },
   "schedule": {
     "cron": "0 1 * * *",

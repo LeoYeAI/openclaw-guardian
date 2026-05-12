@@ -40,7 +40,7 @@
 For file archival and long-form delivery:
 
 ```markdown
-🌅 **Horizon Daily — 2026-05-12**
+🌅 **Signal Daily — 2026-05-12**
 > From 127 items, 12 important pieces selected
 
 ---
@@ -69,7 +69,7 @@ Anthropic releases Claude 4 with native computer use, 200K context, and 3x faste
 For Telegram/Discord delivery where space is limited:
 
 ```
-🌅 Horizon Daily — 2026-05-12
+🌅 Signal Daily — 2026-05-12
 12 items from 127 sources
 
 1. 🔴 Claude 4 Released (9/10)
@@ -81,7 +81,7 @@ For Telegram/Discord delivery where space is limited:
 3. 🟡 YC W26 Recap (7/10)
    ycombinator.com — #startup
 
-Full briefing: horizon/briefings/2026-05-12.md
+Full briefing: signal/briefings/2026-05-12.md
 ```
 
 Score indicators: 🔴 9-10 | 🟡 7-8 | 🔵 5-6
@@ -89,7 +89,7 @@ Score indicators: 🔴 9-10 | 🟡 7-8 | 🔵 5-6
 ### Chinese Format (zh)
 
 ```markdown
-🌅 **Horizon 每日速递 — 2026-05-12**
+🌅 **Signal 每日速递 — 2026-05-12**
 > 从 127 条内容中筛选出 12 条重要资讯
 
 ---

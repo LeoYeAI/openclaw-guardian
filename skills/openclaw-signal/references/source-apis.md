@@ -138,7 +138,7 @@ web_fetch https://www.reddit.com/r/{subreddit}/top/.rss?t=day&limit=20
 
 Some networks allow Reddit JSON. Try first:
 ```bash
-curl -s -H "User-Agent: Mozilla/5.0 OpenClaw-Horizon/1.0" \
+curl -s -H "User-Agent: Mozilla/5.0 OpenClaw-Signal/1.0" \
   "https://www.reddit.com/r/{subreddit}/hot.json?limit=20"
 ```
 If 403, fall back to `web_fetch` on rendered HTML.

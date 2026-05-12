@@ -1,17 +1,20 @@
 ---
-name: openclaw-horizon
+name: openclaw-signal
 description: >
-  AI-powered daily news briefing skill inspired by Horizon. Fetches content from
-  Hacker News, RSS feeds, Reddit, and GitHub; scores, deduplicates, enriches, and
-  delivers a personalized daily briefing — all using OpenClaw native tools with zero
-  external dependencies. Use when: user wants automated daily news digests, tech news
-  monitoring, information aggregation, personalized news radar, or asks for "daily
-  briefing", "news summary", "what happened today in tech", "horizon", "news radar".
+  AI-powered daily news briefing skill — your personal Signal from the noise.
+  Fetches content from Hacker News, RSS feeds, Reddit, and GitHub; scores,
+  deduplicates, enriches, and delivers a personalized daily briefing — all using
+  OpenClaw native tools with zero external dependencies. Use when: user wants
+  automated daily news digests, tech news monitoring, information aggregation,
+  personalized news radar, or asks for "daily briefing", "news summary",
+  "what happened today in tech", "signal", "run signal", "news radar".
   NOT for: real-time alerts (use webhooks), historical research, or single-URL
   content extraction (use web_fetch directly).
 ---
 
-# OpenClaw Horizon
+# Signal
+
+**Your AI news radar. From noise to signal.**
 
 Zero-dependency daily news briefing powered by OpenClaw's native tools.
 Inspired by [Horizon](https://github.com/Thysrael/Horizon).
@@ -25,13 +28,13 @@ Scheduling via `cron`, delivery via `message`, fetching via `exec` + `web_fetch`
 
 ## Quick Start
 
-1. Create config: `horizon/config.json` in workspace (see Config section)
-2. Run manually: user says "run my daily briefing" or "horizon"
+1. Create config: `signal/config.json` in workspace (see Config section)
+2. Run manually: user says "run signal" or "signal"
 3. Schedule: set up cron for daily automated runs (see Scheduling section)
 
 ## Config
 
-Store at `{workspace}/horizon/config.json`. Create `horizon/` dir if needed.
+Store at `{workspace}/signal/config.json`. Create `signal/` dir if needed.
 
 ```json
 {
@@ -59,7 +62,7 @@ Store at `{workspace}/horizon/config.json`. Create `horizon/` dir if needed.
   "output": {
     "language": "zh",
     "max_items": 15,
-    "save_to": "horizon/briefings"
+    "save_to": "signal/briefings"
   },
   "schedule": {
     "cron": "0 8 * * *",
@@ -78,6 +81,10 @@ Store at `{workspace}/horizon/config.json`. Create `horizon/` dir if needed.
 - `schedule.cron` — Cron expression for automated daily runs.
 
 If no config exists, use sensible defaults: HN top 30 + threshold 7 + language from USER.md.
+
+## Trigger
+
+User says any of: "run signal", "signal", "daily briefing", "news summary", "what's new today".
 
 ## Workflow
 
@@ -160,7 +167,7 @@ web_fetch https://news.ycombinator.com/item?id={id}
 Use the language from `output.language` (or USER.md if not specified).
 
 ```markdown
-🌅 **Horizon Daily — {YYYY-MM-DD}**
+📡 **Signal — {YYYY-MM-DD}**
 > From {total} items, {count} important pieces selected
 
 ---
@@ -184,7 +191,7 @@ Non-enriched items (ranked below top 5-8) get a compact format: title + score + 
 
 #### Delivery
 
-1. **Save to file**: Write to `{workspace}/horizon/briefings/{YYYY-MM-DD}.md`
+1. **Save to file**: Write to `{workspace}/signal/briefings/{YYYY-MM-DD}.md`
 2. **Send via message**: Use the `message` tool to push briefing to the user's primary channel
 3. For long briefings, split into: overview message (TOC with scores) + detailed items
 
@@ -194,7 +201,7 @@ If the briefing is too long for a single message (>4000 chars), split:
 
 ### Step 6: Archive
 
-After delivery, update `horizon/state.json`:
+After delivery, update `signal/state.json`:
 ```json
 {
   "last_run": "2026-05-12T08:00:00Z",
@@ -213,19 +220,19 @@ After delivery, update `horizon/state.json`:
 Set up automated daily runs via cron:
 
 ```
-cron add --schedule "0 8 * * *" --payload "Run my Horizon daily briefing" --delivery channel
+cron add --schedule "0 8 * * *" --payload "Run signal" --delivery channel
 ```
 
 Adjust the cron expression and timezone per user preference. The cron job triggers the skill workflow automatically.
 
 ## First Run Setup
 
-If user says "set up horizon" or "configure my news radar":
+If user says "set up signal" or "configure my news radar":
 
 1. Ask about their interests (3-5 topics)
 2. Ask about preferred sources (suggest HN + 2-3 RSS + 1-2 subreddits)
 3. Ask about preferred language and delivery time
-4. Generate `horizon/config.json`
+4. Generate `signal/config.json`
 5. Do a first run immediately to show results
 6. Set up cron for daily delivery
 
@@ -238,9 +245,9 @@ If user says "set up horizon" or "configure my news radar":
 
 ## Maintenance
 
-- `horizon/config.json` — User edits to change sources/interests
-- `horizon/briefings/` — Archive of past briefings (auto-created)
-- `horizon/state.json` — Run state tracking
+- `signal/config.json` — User edits to change sources/interests
+- `signal/briefings/` — Archive of past briefings (auto-created)
+- `signal/state.json` — Run state tracking
 - Clean up briefings older than 30 days periodically
 
 ## Tips
