@@ -1,0 +1,49 @@
+{
+  "sources": {
+    "hackernews": {
+      "enabled": true,
+      "min_score": 100,
+      "limit": 30
+    },
+    "rss": [
+      { "name": "Simon Willison", "url": "https://simonwillison.net/atom/everything/" },
+      { "name": "The Verge AI", "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml" },
+      { "name": "TechCrunch", "url": "https://techcrunch.com/feed/" },
+      { "name": "Ars Technica", "url": "https://feeds.arstechnica.com/arstechnica/index" },
+      { "name": "HN RSS 100+", "url": "https://hnrss.org/frontpage?points=100" }
+    ],
+    "reddit": [
+      { "subreddit": "MachineLearning", "sort": "top", "time": "day" },
+      { "subreddit": "LocalLLaMA", "sort": "top", "time": "day" },
+      { "subreddit": "selfhosted", "sort": "top", "time": "day" }
+    ],
+    "github_releases": [
+      { "owner": "astral-sh", "repo": "uv" },
+      { "owner": "openai", "repo": "codex" }
+    ]
+  },
+  "scoring": {
+    "threshold": 7,
+    "interests": [
+      "AI Agent", "LLM", "personal AI assistant", "OpenClaw",
+      "startup growth", "developer tools", "open source",
+      "AI safety", "AI security", "entrepreneurship",
+      "SaaS metrics", "product-led growth"
+    ],
+    "boost_keywords": [
+      "breakthrough", "launch", "funding", "acquisition",
+      "vulnerability", "open source", "agent", "Claude", "GPT",
+      "OpenClaw", "personal assistant"
+    ],
+    "penalty_keywords": ["listicle", "sponsored", "ad"]
+  },
+  "output": {
+    "language": "zh",
+    "max_items": 15,
+    "save_to": "horizon/briefings"
+  },
+  "schedule": {
+    "cron": "0 1 * * *",
+    "timezone": "Asia/Shanghai"
+  }
+}
