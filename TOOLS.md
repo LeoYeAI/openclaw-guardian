@@ -52,6 +52,25 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - Token: REDACTED_GITHUB_TOKEN
 - Updated: 2026-04-01
 
+### MyClaw Blog API
+- Endpoint: `https://myclaw.ai/api/blog/submit` (POST=create, PUT=update)
+- Read: `https://myclaw.ai/api/blog/post?slug={slug}&locale={locale}`
+- Categories: `https://myclaw.ai/api/blog/categories`
+- API Key: `mck_blog_2f06eb0a9193c340366f4e3e01f8cf5150526713f31f61e1`
+- Header: `X-API-Key: <key>`
+- Content format: Markdown
+- Scopes: posts:write, posts:publish, posts:delete, categories:write, categories:delete
+- Default status: draft; set `"status": "published"` to publish immediately
+- Categories: skills, guides, usecases, comparison, tutorials, news, updates
+- API doc: saved at `pr/myclaw-blog-api.md`
+
+### Email SMTP (leo@myclaw.ai)
+- SMTP: smtp.gmail.com:587
+- Login: leo@flot.ai (leo@myclaw.ai is Send-As alias)
+- App Password: REDACTED_APP_PASSWORD
+- From header: `Leo Ye <leo@myclaw.ai>`
+- Also available: leoye123@gmail.com (App Password: orlqftbsuiyfreoj)
+
 ---
 
 Add whatever helps you do your job. This is your cheat sheet.
