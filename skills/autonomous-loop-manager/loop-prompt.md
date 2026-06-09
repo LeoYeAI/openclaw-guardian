@@ -33,9 +33,9 @@
 
 **查询指令**：
 ```
-bash /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/goal-track.sh active <user_id>
-bash /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/reflect.sh query "<关键词>"
-bash /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/strategy.sh query "<上下文>"
+node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/goal-track.js active <user_id>
+node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/reflect.js query "<关键词>"
+node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/strategy.js query "<上下文>"
 ```
 
 ### 第三步：执行
@@ -72,7 +72,7 @@ bash /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/strat
 当你尝试的方法失败时，**立即**执行：
 
 ```bash
-bash /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/goal-track.sh add-failed \
+node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/goal-track.js add-failed \
   "<goal_id>" "<任务>" "<尝试的方法>" "<失败原因>" "<将要切换的方法>"
 ```
 
@@ -85,7 +85,7 @@ bash /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/goal-
 当某个方法成功时，**立即**执行：
 
 ```bash
-bash /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/strategy.sh add \
+node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/strategy.js add \
   "<成功的上下文>" "<有效的策略>"
 ```
 
@@ -96,7 +96,7 @@ bash /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/strat
 当任务完成或被中断时，**立即**执行：
 
 ```bash
-bash /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/reflect.sh write \
+node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/reflect.js write \
   "<goal_id>" "<反思内容：什么做对了？什么可以更好？>" "<outcome: completed|interrupted|failed>" "<任务摘要>"
 ```
 

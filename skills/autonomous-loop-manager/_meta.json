@@ -1,0 +1,39 @@
+{
+  "slug": "autonomous-loop-manager",
+  "version": "1.0.0",
+  "name": "Autonomous Loop Manager",
+  "description": "让 Agent 拥有跨 session 的目标追求能力。目标记忆、失败记忆、策略进化，三位一体让 Agent 越用越聪明。",
+  "author": "MyClaw",
+  "license": "MIT",
+  "publishedAt": 1781020000000,
+  "tools": [
+    {
+      "name": "goal-track",
+      "description": "目标追踪 - 创建/更新/查询目标进度",
+      "command": "node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/goal-track.js"
+    },
+    {
+      "name": "reflect",
+      "description": "反思记录 - 写入/查询自我反思",
+      "command": "node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/reflect.js"
+    },
+    {
+      "name": "strategy",
+      "description": "策略库 - 添加/查询有效策略",
+      "command": "node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/strategy.js"
+    },
+    {
+      "name": "loop-status",
+      "description": "状态报告 - 查看整体 loop 运行状态",
+      "command": "node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/status.js"
+    },
+    {
+      "name": "plan",
+      "description": "计划生成 - 从 memory 生成有记忆的执行计划",
+      "command": "node /home/ubuntu/.openclaw/workspace/skills/autonomous-loop-manager/tools/plan.js"
+    }
+  ],
+  "systemPrompt": "loop-prompt.md",
+  "runtime": "node",
+  "minNodeVersion": "18.0.0"
+}
