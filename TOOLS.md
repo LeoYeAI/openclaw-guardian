@@ -49,7 +49,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ### GitHub Token
 - Account: LeoYeAI (Leo Ye)
-- Token: REDACTED_GITHUB_TOKEN
+- Token: [REDACTED — 存储在 openclaw.json credentials 中]
 - Updated: 2026-04-01
 
 ### MyClaw Blog API
@@ -67,7 +67,7 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 ### Email SMTP (leo@myclaw.ai)
 - SMTP: smtp.gmail.com:587
 - Login: leo@flot.ai (leo@myclaw.ai is Send-As alias)
-- App Password: REDACTED_APP_PASSWORD
+- App Password: [REDACTED — 存储在 openclaw.json credentials 中]
 - From header: `Leo Ye <leo@myclaw.ai>`
 - Also available: leoye123@gmail.com (App Password: orlqftbsuiyfreoj)
 
